@@ -4,7 +4,9 @@ In this lab, you will configure and validate the environment that will be used t
 
 ## Scenario
 
-TBC
+Coho Winery is a distributor and exporter of fine wine, within the European Union and North America. The company employees 600 people across different countries, and has been using the Microsoft Power Platform for several years. SharePoint Online is used as the central document repository tool for all regions. The company uses a bespoke Enterprise Resource Planning (ERP) system for the food and beverage industry. The ERP system has a public facing REST API, that allows consumers to retrieve purchase order information from vendors.
+
+You have recently joined Coho Winery as a Power Platform developer, and you have been instructed to configure your initial environments, publishers and solution, to prepare yourself for the first project you will be involved in. 
 
 ## Instructions
 
