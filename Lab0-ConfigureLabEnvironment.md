@@ -6,7 +6,7 @@ In this lab, you will configure and validate the environment that will be used t
 
 Coho Winery is a distributor and exporter of fine wine, within the European Union and North America. The company employees 600 people across different countries, and has been using the Microsoft Power Platform for several years. SharePoint Online is used as the central document repository tool for all regions. The company uses a bespoke Enterprise Resource Planning (ERP) system for the food and beverage industry. The ERP system has a public facing REST API, that allows consumers to retrieve purchase order information from vendors.
 
-You have recently joined Coho Winery as a Power Platform developer, and you have been instructed to configure your initial environments, publishers and solution, to prepare yourself for the first project you will be involved in. 
+You have recently joined Coho Winery as a Power Platform developer, and you have been instructed to configure your initial environments, publishers and solution, to prepare yourself for the first project you will be involved in. You will also check to confirm that you can successfully access the SharePoint site that will be used in the later lab steps.
 
 ## Instructions
 
@@ -15,6 +15,7 @@ In this lab, you will do the following:
 - Redeem your [Developer plan license for Power Apps](https://learn.microsoft.com/en-us/power-platform/developer/plan), to create an environment to build your solution - this will be your **Development** environment.
 - Setup an environment to deploy your solution - this will be your **Production** environment.
 - Create a publisher and solution to store your components.
+- Confirm you can successfully connect to the Coho Winery SharePoint site.
 
 This lab will take approximately 15 minutes to complete.
 
@@ -83,5 +84,7 @@ This lab will take approximately 15 minutes to complete.
 ## Exercise 3: Create a Publisher and Solution
 
 TBC
+
+## Exercise 4: Validate SharePoint Access
 
 **Congratulations, you've finished Lab 0** 🥳
