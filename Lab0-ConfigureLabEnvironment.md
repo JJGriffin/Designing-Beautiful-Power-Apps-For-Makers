@@ -6,7 +6,7 @@ In this lab, you will configure and validate the environment that will be used t
 
 Coho Winery is a distributor and exporter of fine wine, within the European Union and North America. The company employees 600 people across different countries, and has been using the Microsoft Power Platform for several years. SharePoint Online is used as the central document repository tool for all regions. The company uses a bespoke Enterprise Resource Planning (ERP) system for the food and beverage industry. The ERP system has a public facing REST API, that allows consumers to retrieve purchase order information from vendors.
 
-You have recently joined Coho Winery as a Power Platform developer, and you have been instructed to configure your initial environments, publishers and solution, to prepare yourself for the first project you will be involved in. You will also check to confirm that you can successfully access the SharePoint site that will be used in the later lab steps.
+You have recently joined Coho Winery as a Power Platform developer, and you have been instructed to configure your initial environments, publishers and solution, to prepare yourself for the first project you will be involved in. You will also upload some documents to your OneDrive for Business folder in preparation for the later lab steps; this will represent the "mock" default document library for Coho Winery.
 
 ## Instructions
 
@@ -15,7 +15,7 @@ In this lab, you will do the following:
 - Redeem your [Developer plan license for Power Apps](https://learn.microsoft.com/en-us/power-platform/developer/plan), to create an environment to build your solution - this will be your **Development** environment.
 - Setup an environment to deploy your solution - this will be your **Production** environment.
 - Create a publisher and solution to store your components.
-- Confirm you can successfully connect to the Coho Winery SharePoint site.
+- Upload the Coho Winery documents to your OneDrive for Business folder.
 
 This lab will take approximately 15 minutes to complete.
 
@@ -83,8 +83,40 @@ This lab will take approximately 15 minutes to complete.
 
 ## Exercise 3: Create a Publisher and Solution
 
-TBC
+1. Navigate to the [Power Apps Maker Portal](https://make.powerapps.com).
+2. Ensure your **Development** environment is selected by default; if not, select the current environment name and then click on your **Development** environment:
 
-## Exercise 4: Validate SharePoint Access
+    ![](Images/Lab0-ConfigureLabEnvironment/E3_1.png)
+
+3. Click on **Solutions**:
+
+    ![](Images/Lab0-ConfigureLabEnvironment/E3_2.png)
+
+4. On the **Solutions** page, select **New solution**:
+
+    ![](Images/Lab0-ConfigureLabEnvironment/E3_3.png)
+
+5. the **Create a solution** pane, enter the following details and then click on the **Create** button:
+    - **Display name**: `Coho Winery PP Solution`
+    - **Name**: `CohoWineryPPSolution`
+    - **Publisher**: Select **New publisher**, enter the following details and then press **Save**. Then, select the newly created publisher in the dropdown:
+        - **Display name**: `Coho Winery`
+        - **Name**: `CohoWinery`
+        - **Description**: `Publisher for Coho Winery Power Platform solutions`
+        - **Prefix**: `coh`
+        - **Choice value prefix**: `76908`
+    - **Version**: `1.0.0.0`
+
+    ![](Images/Lab0-ConfigureLabEnvironment/E3_4.png)
+
+    ![](Images/Lab0-ConfigureLabEnvironment/E3_5.png)
+
+6. You will be taken through automatically to the new Solution. Leave this page open, as we will return here in the next lab.
+
+    ![](Images/Lab0-ConfigureLabEnvironment/E3_6.png)
+
+## Exercise 4: Upload Documents to OneDrive for Business
+
+TBC
 
 **Congratulations, you've finished Lab 0** 🥳
