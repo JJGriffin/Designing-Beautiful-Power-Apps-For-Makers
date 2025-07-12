@@ -1,4 +1,4 @@
-# Lab 1 - Create Model-Driven Power Apps
+# Lab 1 - Create Model-Driven Power App
 
 In this lab, you will create the Model-Driven App used to display and edit purchase order (PO) information. 
 
@@ -44,7 +44,96 @@ This lab will take approximately 60 minutes to complete.
 
 ## Exercise 1: Create Purchase Order Table
 
-TBC
+1. Navigate to the [Power Apps Maker portal](https://make.powerapps.com) and ensure you are in the **Developer** environment you created in Lab 0.
+2. Select **Solutions** from the left navigation pane.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E1_1.png](Images/Lab1-CreateModelDrivenPowerApp/E1_1.png)
+
+3. Select the **Coho Winery** solution you created in Lab 0.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E1_2.png](Images/Lab1-CreateModelDrivenPowerApp/E1_2.png)
+
+4. In the solution, select **New** > **Table** -> **Table (advanced properties)** from the command bar.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E1_3.png](Images/Lab1-CreateModelDrivenPowerApp/E1_3.png)
+
+5. In the **Create table** dialog, enter the following details. You may need to select **Advanced options** to see all fields:
+   - **Display name**: `Purchase Order`
+   - **Plural display name**: `Purchase Orders`
+   - **Description**: `Table to store purchase order requests.`
+   - **Name**: `purchaseorder`
+   - **Type**: Standard
+   - **Record Ownership**: User or team
+
+![Images/Lab1-CreateModelDrivenPowerApp/E1_4.png](Images/Lab1-CreateModelDrivenPowerApp/E1_4.png)
+
+6. Select the **Primary column** tab and enter the following details. You may need to select **Advanced options** to see all fields:
+   - **Display name**: `Purchase Order Number`
+   - **Description**: `Internal reference number for the purchase order.`
+   - **Name**: `purchaseordernumber`
+   - **Column Requirement**: Business required
+   - **Maximum Character Count**: `10`
+
+![Images/Lab1-CreateModelDrivenPowerApp/E1_5.png](Images/Lab1-CreateModelDrivenPowerApp/E1_5.png)
+
+7. Select **Save** to create the table.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E1_6.png](Images/Lab1-CreateModelDrivenPowerApp/E1_6.png)
+
+8. Once the table is created, you will be taken to the table designer. Our first step is to enable the autonumbering for the tables primary column, because it's not possible to do this on create. Select **Columns**.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E1_7.png](Images/Lab1-CreateModelDrivenPowerApp/E1_7.png)
+
+9. In the **Columns** tab, select the **Purchase Order Number** column.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E1_8.png](Images/Lab1-CreateModelDrivenPowerApp/E1_8.png)
+
+10. On the **Edit columns** pane, change the **Data type** to **Autonumber** and then update the fields as follows. When you are finished, click **Save**:
+    - **Autonumber type**: String prefixed number
+    - **Prefix**: `PO-`
+    - **Minimum number of digits**: `7`
+    - **Seed**: `1`
+
+![Images/Lab1-CreateModelDrivenPowerApp/E1_9.png](Images/Lab1-CreateModelDrivenPowerApp/E1_9.png)
+
+11. We will now proceed to create the additional columns needed for the table. The table below outlines all of the columns we will need:
+
+| Display Name | Name | Data Type | Required | Description |
+|-------|-----|-----------|----------|-------------|
+| Requested By | requestedby | Lookup (User) | Business Required | The user who requested the purchase order. |
+| Requested Date | requesteddate | Date and Time | Business Required | The date the purchase order was requested. |
+| Approved By | approvedby | Lookup (User) | Optional | The user who approved the purchase order. |
+| Approved Date | approveddate | Date and Time | Optional | The date the purchase order was approved. |
+| Value | value | Currency | Optional | The total value of the purchase order. |
+| Status | status | Choice | Business Required | The current status of the purchase order. |
+| Description | description | Text | Optional | A description of the purchase order. |
+| Account | account | Lookup (Account) | Business Required | The account associated with the purchase order. |
+| Contact | contact | Lookup (Contact) | Business Required | The contact associated with the purchase order. |
+| ERP ID | erpid | Text | Optional | The ID of the purchase order in the ERP system. |
+
+12. Let's begin by creating the **Requested By** column. In the **Columns** page, select **+ Add column**.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E1_10.png](Images/Lab1-CreateModelDrivenPowerApp/E1_10.png)
+
+13. In the **Add column** pane, enter the following details and then press **Save**. You may need to select **Advanced options** to see all fields:
+    - **Display name**: `Requested By`
+    - **Description**: `The user who requested the purchase order.`
+    - **Data type**: Lookup --> Lookup
+    - **Column Requirement**: Business required
+    - **Related table**: User
+    - **Schema name**: `requestedby`
+    - **Relationship name**: `purchaseorder_systemuser_requestedby`
+
+![Images/Lab1-CreateModelDrivenPowerApp/E1_11.png](Images/Lab1-CreateModelDrivenPowerApp/E1_11.png)
+
+14. Repeat step 13 for the remaining columns. For the following columns, use the following **Relationship name** values:
+    - **Approved By**: purchaseorder_systemuser_approvedby
+    - **Account**: purchaseorder_account
+    - **Contact**: purchaseorder_contact
+
+15. When you are finished, your **Purchase Order** table column list should resemble the below.
+
+
 
 ## Exercise 2: Customise the Account and Contact Tables
 
