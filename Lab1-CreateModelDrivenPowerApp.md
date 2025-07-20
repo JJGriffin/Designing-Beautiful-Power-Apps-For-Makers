@@ -105,11 +105,10 @@ This lab will take approximately 60 minutes to complete.
 | Approved By | approvedby | Lookup (User) | Optional | The user who approved the purchase order. |
 | Approved Date | approveddate | Date and Time | Optional | The date the purchase order was approved. |
 | Value | value | Currency | Optional | The total value of the purchase order. |
-| Status | status | Choice | Business Required | The current status of the purchase order. |
-| Description | description | Text | Optional | A description of the purchase order. |
+| Description | description | Multiple lines of text | Optional | A description of the purchase order. |
 | Account | account | Lookup (Account) | Business Required | The account associated with the purchase order. |
 | Contact | contact | Lookup (Contact) | Business Required | The contact associated with the purchase order. |
-| ERP ID | erpid | Text | Optional | The ID of the purchase order in the ERP system. |
+| ERP ID | erpid | Single line of text | Optional | The ID of the purchase order in the ERP system. |
 
 12. Let's begin by creating the **Requested By** column. In the **Columns** page, select **+ Add column**.
 
@@ -133,7 +132,68 @@ This lab will take approximately 60 minutes to complete.
 
 15. When you are finished, your **Purchase Order** table column list should resemble the below.
 
+![Images/Lab1-CreateModelDrivenPowerApp/E1_12.png](Images/Lab1-CreateModelDrivenPowerApp/E1_12.png)
 
+16. We will now add some custom status reason values to the **Purchase Order** table. Remaining in the **Columns** tab, select the **Status Reason** column.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E1_13.png](Images/Lab1-CreateModelDrivenPowerApp/E1_13.png)
+
+17. In the **Edit column** pane, change the **Active** value to **Draft** and then select **+ New choice**.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E1_14.png](Images/Lab1-CreateModelDrivenPowerApp/E1_14.png)
+
+18. Populate the label for the new choice as **Submitted**.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E1_15.png](Images/Lab1-CreateModelDrivenPowerApp/E1_15.png)
+
+19. Click on the chevron next to **Active (1 of 2)** and select **Inactive (2 of 2)**.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E1_16.png](Images/Lab1-CreateModelDrivenPowerApp/E1_16.png)
+
+20. Change the **Inactive** value to **Approved** and then select **+ Add status reason**. Populate the label for the new choice as **Rejected**. Click **Save** to save the changes.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E1_17.png](Images/Lab1-CreateModelDrivenPowerApp/E1_17.png)
+
+21. Click on **Advanced** -> **Publish table** in the command bar to ensure all column changes are saved and published. The publishing process may take a few minutes to complete.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E1_18.png](Images/Lab1-CreateModelDrivenPowerApp/E1_18.png)
+
+22. In the **Objects** pane, select **Forms** under the **Purchase Order** table.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E1_19.png](Images/Lab1-CreateModelDrivenPowerApp/E1_19.png)
+
+23. In the **Forms** tab, select the **Information** main form.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E1_20.png](Images/Lab1-CreateModelDrivenPowerApp/E1_20.png)
+
+24. In the form designer, drag the **Owner** column into the header to reposition it accordingly.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E1_21.png](Images/Lab1-CreateModelDrivenPowerApp/E1_21.png)
+
+![Images/Lab1-CreateModelDrivenPowerApp/E1_22.png](Images/Lab1-CreateModelDrivenPowerApp/E1_22.png)
+
+25. From the **Table columns** list, drag and drop the following columns directly below the **Purchase Order Number** field. Position them as you desire:
+    - Requested By
+    - Requested Date
+    - Approved By
+    - Approved Date
+    - Value
+    - Description
+    - Account
+    - Contact
+    - ERP ID
+
+![Images/Lab1-CreateModelDrivenPowerApp/E1_23.png](Images/Lab1-CreateModelDrivenPowerApp/E1_23.png)
+
+26. Your form should look similar to the below. When you are finished, click on **Save and publish**. The process may take a few minutes to complete.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E1_24.png](Images/Lab1-CreateModelDrivenPowerApp/E1_24.png)
+
+27. Once the form is saved and published, click on **Back** to return the **Purchase Order** table designer.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E1_25.png](Images/Lab1-CreateModelDrivenPowerApp/E1_25.png)
+
+28. We have now finished customizing the **Purchase Order** table. Keep the **Coho Winery PP Solution** solution open, as we will continue to work on it in the next exercise.
 
 ## Exercise 2: Customise the Account and Contact Tables
 
