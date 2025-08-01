@@ -5,7 +5,7 @@ In this lab, you will learn how to **build Custom Pages** with focus on **respon
 
 ## Lab Overview 
 
-**Goal:** 
+**🎯 Goal:** 
 - Build Custom Pages to be used as a full page, side pane and dialog in a solution
 - Connect to relevant datasources
 - Fetch record details using the Param() function and connecting to the record context
@@ -48,5 +48,16 @@ Y: (Parent.Height - Self.Height) / 2
 
 
 **Fetch Record Information**
-1. Select **App** in the left corner and click **Formulas**
-2. 
+1. Add datasource (Dataverse, SharePoint etc.)
+2. Select **App** in the left corner and click **Formulas**
+2. Create a formula for referencing the Record GUID
+
+nfRecordItem =
+    If(
+        "," in Text(Param("recordId")),
+        LookUp(Table, 'Unique GUID field' = GUID(Last(Split(Param("recordId"), ",")).Value)),
+        LookUp(Table, 'Unique GUID field'  = GUID(Param("recordId")))
+    );
+
+*Explanation: Param() function gets the record GUID parsed from the JavaScript, and GUID() formats the output as GUID, not a string. 
+We are also checking if there are several records selected by splitting the string after ","*
