@@ -6,7 +6,7 @@ In this lab, you will learn how to **build Custom Pages** with focus on **respon
 ## Lab Overview 
 
 **🎯 Goal:** 
-- Build Custom Pages to be used as a full page, side pane and dialog in a solution
+- Build Custom Pages to be used as a full page, side pane and dialog in a Model-Driven App
 - Connect to relevant datasources
 - Fetch record details using the Param() function and connecting to the record context
 - Develop responsive apps
@@ -52,12 +52,17 @@ Y: (Parent.Height - Self.Height) / 2
 2. Select **App** in the left corner and click **Formulas**
 2. Create a formula for referencing the Record GUID
 
+<pre> '''Power Fx 
 nfRecordItem =
     If(
         "," in Text(Param("recordId")),
         LookUp(Table, 'Unique GUID field' = GUID(Last(Split(Param("recordId"), ",")).Value)),
         LookUp(Table, 'Unique GUID field'  = GUID(Param("recordId")))
-    );
+    );''' </pre>
 
-*Explanation: Param() function gets the record GUID parsed from the JavaScript, and GUID() formats the output as GUID, not a string. 
-We are also checking if there are several records selected by splitting the string after ","*
+The record can also be wrapped in {} so that needs to be removed in some cases:
+
+<pre> ''' Power Fx GUID(Substitute(Substitute(Param("recordId"), "{", ""), "}", ""))'''</pre>
+
+
+*Explanation: Param() function gets the record GUID parsed from the JavaScript, and GUID() formats the output as GUID, not a string. We are also checking if there are several records selected by splitting the string after ","*
