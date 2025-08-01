@@ -20,20 +20,15 @@ In this lab, you will learn how to **build Custom Pages** with focus on **respon
 
 TBC
 
-## Instructions
+## **✍️ Task 1: Create a Landing Page**
 
-In this lab, you will do the following:
-
-**Build responsive Custom Pages with modern design elements**
-
-**✍️ Task 1: Create a Landing Page**
 1. Within your solution, click **+ New** -> **App** -> **Page**
 2. Name it **Main Landing Page**
 3. Check settings. 
     - *Scale to Fit* should be **Off**
     - *Automatic save every 2 minutes* is recommended to be **On**
 
-**✍️ Task 2: Build a Responsive Layout**
+## **✍️ Task 2: Build a Responsive Layout**
 
 Nest containers to group related content (build one horizontal container in a Vertical)
 
@@ -48,9 +43,11 @@ Y: (Parent.Height - Self.Height) / 2
 
 *💡 This will center and align the main container*
 
+4. Nest horizontal containers within the main container
 
 
-**✍️Task 3: Fetch Record Information**
+
+## **✍️Task 3: Fetch Record Information**
 1. Add datasource (Dataverse, SharePoint etc.)
 2. Select **App** in the left corner and click **Formulas**
 3. Create a formula for referencing the record GUID and use the function GUID() to ensure correct type
@@ -72,3 +69,10 @@ GUID(Substitute(Substitute(Param("recordId"), "{", ""), "}", ""))</pre>
 *Named Formulas needs to be closed using ;*
 
 *Param() function gets the record GUID parsed from the JavaScript, and GUID() formats the output as GUID, not a string. We are also checking if there are several records selected by splitting the string after ","*
+
+## **🌟 Extra Challenges** 
+
+- Add dark mode 
+- Add CSS styling 
+- Add SVGs for design 
+- Adjust styling of the container and alignment of items
