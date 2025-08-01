@@ -2,6 +2,7 @@
 
 Repository to store all assets for the **Designing Beautiful Apps for Functional Makers: A Masterclass in Fusing Power Apps Capabilities** workshop, first delivered as part of [Nordic Summit](https://nordicsummit.info/) 2025.
 
+
 ## Abstract
 
 In the beginning, there were two Power App types – canvas and model-driven. And everything was good…well, kind of. Creating visually compelling apps was still incredibly challenging, often requiring the skills of a front-end developer and a whole bunch of HTML / CSS to make things look pretty. Today, we are a lot more fortunate. With extraordinary capabilities such as custom pages, the division between apps is slowly disappearing. But, the challenge of easily embedding canvas apps into model-driven apps still exists. So how can we, as makers, go from building typically functional solutions to something that can impress our colleagues, users and clients? And can this all be done in a nice, efficient, low-code way?
