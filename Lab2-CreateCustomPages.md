@@ -34,6 +34,7 @@ In this lab, you will do the following:
     - *Automatic save every 2 minutes* is recommended to be **On**
 
 **Build a Responsive Layout**
+
 #Nest containers to group related content (build one horizontal container in a Vertical)
 
 1. Add a vertical container for structured alignment
@@ -64,8 +65,8 @@ nfRecordItem =
 
 The record can also be wrapped in {} so that needs to be removed in some cases:
 
-<pre> 
-Power Fx GUID(Substitute(Substitute(Param("recordId"), "{", ""), "}", ""))</pre>
+<pre> Power Fx 
+GUID(Substitute(Substitute(Param("recordId"), "{", ""), "}", ""))</pre>
 
 *Named Formulas needs to be closed using ;*
 
