@@ -26,20 +26,20 @@ In this lab, you will do the following:
 
 **Build responsive Custom Pages with modern design elements**
 
-**Create a Landing Page**
+**✍️ Task 1: Create a Landing Page**
 1. Within your solution, click **+ New** -> **App** -> **Page**
 2. Name it **Main Landing Page**
 3. Check settings. 
     - *Scale to Fit* should be **Off**
     - *Automatic save every 2 minutes* is recommended to be **On**
 
-**Build a Responsive Layout**
+**✍️ Task 2: Build a Responsive Layout**
 
-#Nest containers to group related content (build one horizontal container in a Vertical)
+Nest containers to group related content (build one horizontal container in a Vertical)
 
 1. Add a vertical container for structured alignment
 2. Adjust X property to (Parent.Height - Self.Height)/2
-3. Adjust Y property to (Parent.Width-Self.Width)/2
+3. Adjust Y property to (Parent.Width - Self.Width)/2
 
 <pre> Power Fx 
 X: (Parent.Width - Self.Width) / 2
@@ -50,7 +50,7 @@ Y: (Parent.Height - Self.Height) / 2
 
 
 
-**Fetch Record Information**
+**✍️Task 3: Fetch Record Information**
 1. Add datasource (Dataverse, SharePoint etc.)
 2. Select **App** in the left corner and click **Formulas**
 3. Create a formula for referencing the record GUID and use the function GUID() to ensure correct type
@@ -68,6 +68,7 @@ The record can also be wrapped in {} so that needs to be removed in some cases:
 <pre> Power Fx 
 GUID(Substitute(Substitute(Param("recordId"), "{", ""), "}", ""))</pre>
 
+> **Note:** 
 *Named Formulas needs to be closed using ;*
 
-*Explanation: Param() function gets the record GUID parsed from the JavaScript, and GUID() formats the output as GUID, not a string. We are also checking if there are several records selected by splitting the string after ","*
+*Param() function gets the record GUID parsed from the JavaScript, and GUID() formats the output as GUID, not a string. We are also checking if there are several records selected by splitting the string after ","*
