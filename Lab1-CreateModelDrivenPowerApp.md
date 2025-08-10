@@ -26,6 +26,7 @@ After analysing the requirements in detail, you identify the following platform 
 - To handle the landing page and document display requirements, [custom pages](https://learn.microsoft.com/en-us/power-apps/maker/model-driven-apps/model-app-page-overview).
 - [Power Automate cloud flows](https://learn.microsoft.com/en-us/power-automate/overview-cloud), to handle the approval process using the [modern flow approvals engine](https://learn.microsoft.com/en-us/power-automate/get-started-approvals) and any other automation requirements.
 - A [custom prompt in AI Builder](https://learn.microsoft.com/en-us/ai-builder/prompts-overview) to assist with document contents search.
+- A [custom connector](https://learn.microsoft.com/en-us/connectors/custom-connectors/) to connect to the ERP API easily from a cloud flow and the custom page.
 
 You begin your work by planning out the data model you will use and all necessary Dataverse customisations to support the solution. You identify that new table, called **Purchase Order**, will be required, alongside the existing **Account** and **Contact** tables. You will complete all necessary steps to build the model-driven Power App, including all required form and view customisations, before then creating some test records. Finally, you will initiate and test the integration with the ERP by connecting to it's API and create the automation to generate the physical request documents.
 
@@ -71,7 +72,7 @@ This lab will take approximately 60 minutes to complete.
    - **Display name**: `Purchase Order Number`
    - **Description**: `Internal reference number for the purchase order.`
    - **Name**: `purchaseordernumber`
-   - **Column Requirement**: Business required
+   - **Column Requirement**: Optional
    - **Maximum Character Count**: `10`
 
 ![Images/Lab1-CreateModelDrivenPowerApp/E1_5.png](Images/Lab1-CreateModelDrivenPowerApp/E1_5.png)
@@ -373,9 +374,50 @@ To start this process, select the **New group** group in the sitemap, expand the
 
 ## Exercise 4: Add Test Records
 
-TBC
+To ensure we can test our app successfully with the ERP API integration and document generation, we will add some test records to the **Purchase Order**, **Account**, and **Contact** tables.
+
+1. In the **Coho Winery Purchase Order Management** app, navigate to the **Accounts** page and click on **New**.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E4_1.png](Images/Lab1-CreateModelDrivenPowerApp/E4_1.png)
+
+2. In the **New Account** form, enter the following details and then click **Save & Close**:
+   - **Account Name**: `Wingtip Toys`
+   - **Phone**: `555-1234`
+   - **Website**: `https://www.wingtiptoys.com`
+
+![Images/Lab1-CreateModelDrivenPowerApp/E4_2.png](Images/Lab1-CreateModelDrivenPowerApp/E4_2.png)
+
+3. Navigate to the **Contacts** page and click on **New**.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E4_3.png](Images/Lab1-CreateModelDrivenPowerApp/E4_3.png)
+
+4. In the **New Contact** form, enter the following details and then click **Save & Close**:
+   - **First Name**: `John`
+   - **Last Name**: `Doe`
+   - **Account Name**: Select the **Wingtip Toys** account you created earlier in this exercise.
+   - **Email**: `john.doe@wingtiptoys.com`
+   - **Business Phone**: `555-5678`
+
+![Images/Lab1-CreateModelDrivenPowerApp/E4_4.png](Images/Lab1-CreateModelDrivenPowerApp/E4_4.png)
+
+5. Navigate to the **Purchase Orders** page and click on **New**.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E4_5.png](Images/Lab1-CreateModelDrivenPowerApp/E4_5.png)
+
+6. In the **New Purchase Order** form, enter the following details and then click **Save & Close**:
+   - **Account**: Select the **Wingtip Toys** account you created earlier in this exercise.
+   - **Contact**: Select the **John Doe** contact you created earlier in this exercise.
+   - **Requested Date**: Select today's date and time.
+   - **Value**: `2500`
+   - **Description**: `Purchase order miniature toys representing wine bottles and grapes.`
+
+![Images/Lab1-CreateModelDrivenPowerApp/E4_6.png](Images/Lab1-CreateModelDrivenPowerApp/E4_6.png)
+
+7. Feel free to create additional test records in the **Purchase Order**, **Account**, and **Contact** tables as needed.
 
 ## Exercise 5: Integrate with the ERP API
+
+In this exercise, we will integrate our app with the ERP API to enable data retrieval and manipulation. This will be done by creating a custom connector that connects to the ERP API, allowing us to retrieve the remaining value on a purchase order.
 
 TBC
 
