@@ -279,13 +279,103 @@ We want to make it easy for users of our app to see a list of all related purcha
 
 ## Exercise 3: Create the Model-Driven App
 
-TBC
+Our model-driven app will be used to display and edit purchase order information, including related customer information. We will also use it to provide a landing page for users to navigate to internal and external links, and display current data from the ERP system when we create our custom pages in the next lab.
+
+1. In the **Coho Winery PP Solution** solution, select **+ New** > **App** > **Model-driven app** from the command bar.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E3_1.png](Images/Lab1-CreateModelDrivenPowerApp/E3_1.png)
+
+2. In the **New model-driven app** dialog, provide the following details and then click **Create**. You may need to select **Advanced** to see all options:
+   - **Name**: `Coho Winery Purchase Order Management`
+   - **Description**: `Model-driven app for managing purchase orders`
+   - **Use components from a custom solution**: Tick
+    - **Solution**: Select the **Coho Winery PP Solution** solution
+
+![Images/Lab1-CreateModelDrivenPowerApp/E3_2.png](Images/Lab1-CreateModelDrivenPowerApp/E3_2.png)
+
+3. In the app designer, under the **Pages** tab, remove the **User** table by clicking the elipses (...) next to **User views** and selecting **Remove from app**.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E3_3.png](Images/Lab1-CreateModelDrivenPowerApp/E3_3.png)
+
+4. In the "What You See Is What You Get" (WYSIWYG) designer, select the **+ Add page** button.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E3_4.png](Images/Lab1-CreateModelDrivenPowerApp/E3_4.png)
+
+5. In the **Add page** dialog, click the **Table** option, select the following tables and then click **Add**. Make sure the **Show in navigation** option is ticked:
+   - **Purchase Order**
+   - **Account**
+   - **Contact**
+
+![Images/Lab1-CreateModelDrivenPowerApp/E3_5.png](Images/Lab1-CreateModelDrivenPowerApp/E3_5.png)
+
+![Images/Lab1-CreateModelDrivenPowerApp/E3_6.png](Images/Lab1-CreateModelDrivenPowerApp/E3_6.png)
+
+![Images/Lab1-CreateModelDrivenPowerApp/E3_7.png](Images/Lab1-CreateModelDrivenPowerApp/E3_7.png)
+
+![Images/Lab1-CreateModelDrivenPowerApp/E3_8.png](Images/Lab1-CreateModelDrivenPowerApp/E3_8.png)
+
+6. The tables will appear in the sitemap navigation, underneath a default **New group** sitemap group.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E3_9.png](Images/Lab1-CreateModelDrivenPowerApp/E3_9.png)
+
+7. We will now proceed to reorganize the sitemap, so that it resembles the following structure:
+
+   - **Home**
+     - **Home Page** - This will be left empty for now, as we will add the custom page for this in the next lab.
+   - **Customers**
+     - **Accounts** 
+     - **Contacts**
+   - **Finance**
+     - **Purchase Orders**
+     - **PO Request Documents** - This will be left empty for now, as we will add the custom page for this in the next lab.
+
+To start this process, select the **New group** group in the sitemap, expand the **New group** properties pane on the right, and then update the following properties:
+   - **Title**: `Home`
+   - **ID**: `group_home`
+
+![Images/Lab1-CreateModelDrivenPowerApp/E3_10.png](Images/Lab1-CreateModelDrivenPowerApp/E3_10.png)
+
+8. Click the ellipses (...) next to the **Home** group and select **New group**.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E3_11.png](Images/Lab1-CreateModelDrivenPowerApp/E3_11.png)
+
+9. In the **New group** properties pane, update the following properties:
+   - **Title**: `Customers`
+   - **ID**: `group_customers`
+
+![Images/Lab1-CreateModelDrivenPowerApp/E3_12.png](Images/Lab1-CreateModelDrivenPowerApp/E3_12.png)
+
+10. Repeat steps 8-9 to create a new group called **Finance** with the following properties:
+    - **Title**: `Finance`
+    - **ID**: `group_finance`
+
+![Images/Lab1-CreateModelDrivenPowerApp/E3_13.png](Images/Lab1-CreateModelDrivenPowerApp/E3_13.png)
+
+11. Reorder the groups and the areas in the sitemap by clicking on the elipses (...) next to each group and selecting **Move up** or **Move down**. The sitemap should resemble the structure above and screenshots below when you are finished.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E3_14.png](Images/Lab1-CreateModelDrivenPowerApp/E3_14.png)
+
+![Images/Lab1-CreateModelDrivenPowerApp/E3_15.png](Images/Lab1-CreateModelDrivenPowerApp/E3_15.png)
+
+12. Click on **Save** in the command bar to save your changes, and then **Publish** to publish the app. The publishing process may take several minutes to complete.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E3_16.png](Images/Lab1-CreateModelDrivenPowerApp/E3_16.png)
+
+13. Once the app is published, click on **Play** to open the app in a new tab.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E3_17.png](Images/Lab1-CreateModelDrivenPowerApp/E3_17.png)
+
+14. Browse around the newly created app, ensuring you can navigate to the **Purchase Orders**, **Accounts**, and **Contacts** pages. You will see that all of the pages are empty, as we have not yet added any data to the system; we will do this in the next exercise.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E3_18.png](Images/Lab1-CreateModelDrivenPowerApp/E3_18.png)
+
+15. Leave the **Coho Winery Purchase Order Management** app open, as we will continue to work on it in the next exercise.
 
 ## Exercise 4: Add Test Records
 
 TBC
 
-## Exercise 5: Integrate with ERP API
+## Exercise 5: Integrate with the ERP API
 
 TBC
 
