@@ -90,7 +90,7 @@ This lab will take approximately 60 minutes to complete.
 
 10. On the **Edit columns** pane, change the **Data type** to **Autonumber** and then update the fields as follows. When you are finished, click **Save**:
     - **Autonumber type**: String prefixed number
-    - **Prefix**: `PO-`
+    - **Prefix**: Use your initials or another unique 3 character prefix
     - **Minimum number of digits**: `7`
     - **Seed**: `1`
 
@@ -197,7 +197,85 @@ This lab will take approximately 60 minutes to complete.
 
 ## Exercise 2: Customise the Account and Contact Tables
 
-TBC
+We want to make it easy for users of our app to see a list of all related purchase orders for a company or individual. To do this, we will add a subgrid to the **Account** and **Contact** forms that displays this data.
+
+1. In the **Coho Winery PP Solution** solution, select the **Account** table from the **Objects** pane. You may need to expand the **Tables** section to see it.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E2_1.png](Images/Lab1-CreateModelDrivenPowerApp/E2_1.png)
+
+2. Under the **Data experience** section, select **Forms**.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E2_2.png](Images/Lab1-CreateModelDrivenPowerApp/E2_2.png)
+
+3. On the **Forms** tab, select **Add existing form**.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E2_3.png](Images/Lab1-CreateModelDrivenPowerApp/E2_3.png)
+
+4. In the **Add existing form** dialog, select the **Account** main form and click **Add**.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E2_4.png](Images/Lab1-CreateModelDrivenPowerApp/E2_4.png)
+
+5. In the **Forms** tab, select the **Account** main form.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E2_5.png](Images/Lab1-CreateModelDrivenPowerApp/E2_5.png)
+
+6. In the form designer, select the **Components** icon in the left pane.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E2_6.png](Images/Lab1-CreateModelDrivenPowerApp/E2_6.png)
+
+7. In the **Components** pane, drag and drop the **1-Column tab** into the form header, directly after the **Details** tab.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E2_7.png](Images/Lab1-CreateModelDrivenPowerApp/E2_7.png)
+
+8. With the new tab selected, in the **Details** pane on the right, configure the following properties:
+   - **Label**: `Purchase Orders`
+   - **Name**: `tab_purchaseorders`
+   - **Expand this tab by default**: Untick
+
+![Images/Lab1-CreateModelDrivenPowerApp/E2_8.png](Images/Lab1-CreateModelDrivenPowerApp/E2_8.png)
+
+9. With the **Purchase Orders** tab selected, click on the **New section** section and configure the following properties:
+   - **Label**: `Related Purchase Orders`
+   - **Name**: `tab_purchaseorders_section_pos`
+   - **Hide label**: Tick
+
+![Images/Lab1-CreateModelDrivenPowerApp/E2_9.png](Images/Lab1-CreateModelDrivenPowerApp/E2_9.png)
+
+10. From the **Components** pane, drag and drop the **Subgrid** component into the **Related Purchase Orders** section.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E2_10.png](Images/Lab1-CreateModelDrivenPowerApp/E2_10.png)
+
+11. In the **Select subgrid views** dialog, select the following options and then click **Done**:
+    - **Show related records**: Tick
+    - **Table**: Select **Purchase Orders (Account)**
+    - **Default view**: Select **Active Purchase Orders**
+
+![Images/Lab1-CreateModelDrivenPowerApp/E2_11.png](Images/Lab1-CreateModelDrivenPowerApp/E2_11.png)
+
+12. In the **Subgrid** properties pane on the right, configure the following properties:
+    - **Label**: `Related Purchase Orders`
+    - **Name**: `subgrid_purchaseorders`
+    - **Hide label**: Untick
+
+![Images/Lab1-CreateModelDrivenPowerApp/E2_12.png](Images/Lab1-CreateModelDrivenPowerApp/E2_12.png)
+
+13. Click on **Save and publish** in the command bar to save your changes. It may take several minutes for the changes to be published.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E2_13.png](Images/Lab1-CreateModelDrivenPowerApp/E2_13.png)
+
+14. Once the form is saved and published, click on **Back** to return to the **Account** table designer.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E2_14.png](Images/Lab1-CreateModelDrivenPowerApp/E2_14.png)
+
+15. Repeat steps 1-14 for the **Contact** table, making sure you use the **Contact** main form. The form should resemble the below when you are finished.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E2_15.png](Images/Lab1-CreateModelDrivenPowerApp/E2_15.png)
+
+16. Returning back to the **Coho Winery PP Solution** solution, click on **All** and then select **Publish all customizations** from the command bar to ensure all changes are published. This may take several minutes to complete.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E2_16.png](Images/Lab1-CreateModelDrivenPowerApp/E2_16.png)
+
+17. Leave the **Coho Winery PP Solution** solution open, as we will continue to work on it in the next exercise.
 
 ## Exercise 3: Create the Model-Driven App
 
