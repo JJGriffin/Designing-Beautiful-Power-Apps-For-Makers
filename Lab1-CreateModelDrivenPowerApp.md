@@ -413,13 +413,164 @@ To ensure we can test our app successfully with the ERP API integration and docu
 
 ![Images/Lab1-CreateModelDrivenPowerApp/E4_6.png](Images/Lab1-CreateModelDrivenPowerApp/E4_6.png)
 
-7. Feel free to create additional test records in the **Purchase Order**, **Account**, and **Contact** tables as needed.
+7. Feel free to create additional test records in the **Purchase Order**, **Account**, and **Contact** tables as needed. When you are finished, close the browser tab.
 
 ## Exercise 5: Integrate with the ERP API
 
-In this exercise, we will integrate our app with the ERP API to enable data retrieval and manipulation. This will be done by creating a custom connector that connects to the ERP API, allowing us to retrieve the remaining value on a purchase order.
+In this exercise, we will integrate our app with the ERP API to enable the creation and retrieval of purchase orders. This will be done by creating a custom connector that connects to the ERP API via a [Swagger definition](https://swagger.io/solutions/api-documentation/), which describes the two core operations of the API:
 
-TBC
+- **CreatePurchaseOrder**: This operation allows us to create a new purchase order in the ERP system.
+- **RetrieveRemainingValue**: This operation allows us to retrieve the remaining value of a purchase order from the ERP system.
+
+Once we have created the custom connector, we will then perform a test to ensure the connection is working correctly.
+
+> [!IMPORTANT]
+> The API key for the endpoint should have already been shared with you by your instructors. Ensure you have this key available before proceeding with the steps below.
+
+1. Open a new browser tab and navigate to the following URL: https://beautifulappsformakers-functions.azurewebsites.net/api/swagger/ui
+
+2. The Swagger UI will load, displaying the API documentation for the Coho Winery ERP API. You should see two operations: **CreatePurchaseOrder** and **RetrieveRemainingValue**. You can expand each operation to see the details, including the request and response formats.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E5_1.png](Images/Lab1-CreateModelDrivenPowerApp/E5_1.png)
+
+![Images/Lab1-CreateModelDrivenPowerApp/E5_2.png](Images/Lab1-CreateModelDrivenPowerApp/E5_2.png)
+
+2. On the top of the page, click on the URL hyperlink for the **swagger.json** file. This will open the Swagger JSON definition in a new tab.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E5_3.png](Images/Lab1-CreateModelDrivenPowerApp/E5_3.png)
+
+![Images/Lab1-CreateModelDrivenPowerApp/E5_4.png](Images/Lab1-CreateModelDrivenPowerApp/E5_4.png)
+
+3. Right-click on the page and select **Save as...** to save the Swagger JSON file to your local machine. Name the file `coho-winery-erp-api.json` and save it in a location you can easily access later.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E5_5.png](Images/Lab1-CreateModelDrivenPowerApp/E5_5.png)
+
+4. Close the JSON file and Swagger UI tabs.
+
+5. Navigate back to the [Power Apps Maker portal](https://make.powerapps.com) and ensure you are in the **Developer** environment you created in Lab 0. Navigate to the **Coho Winery PP Solution** solution.
+
+6. In the solution, select **+ New** > **Automation** > **Custom connector**.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E5_6.png](Images/Lab1-CreateModelDrivenPowerApp/E5_6.png)
+
+7. On the **General information** page, populate the following details and then click **Create connector**:
+   - **Connector name**: `Coho Winery ERP API`
+   - **Host**: `beautifulappsformakers-functions.azurewebsites.net`
+
+![Images/Lab1-CreateModelDrivenPowerApp/E5_7.png](Images/Lab1-CreateModelDrivenPowerApp/E5_7.png)
+
+8. Once the connector has finished saving, click on the back icon.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E5_8.png](Images/Lab1-CreateModelDrivenPowerApp/E5_8.png)
+
+9. On the **Custom connectors** page, click on the elipses (...) next to the **Coho Winery ERP API** connector and select **Update from OpenAPI file**.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E5_9.png](Images/Lab1-CreateModelDrivenPowerApp/E5_9.png)
+
+10. On the **Import an OpenAPI file** dialog, click on **Import** and select the `coho-winery-erp-api.json` file you saved earlier. Then click **Continue**.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E5_10.png](Images/Lab1-CreateModelDrivenPowerApp/E5_10.png)
+
+11. The connector will now be updated with the operations defined in the Swagger file. Click on **Update connector** to save the changes. Once the update is complete, click on **2. Security**.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E5_11.png](Images/Lab1-CreateModelDrivenPowerApp/E5_11.png)
+
+12. Review the **Security** page and confirm that the **Authentication type** is set to **API key**. Click on **3. Definition**.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E5_12.png](Images/Lab1-CreateModelDrivenPowerApp/E5_12.png)
+
+13. On the **Definition** page, verify that you can see the two operations: **CreatePurchaseOrder** and **RetrieveRemainingValue**.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E5_13.png](Images/Lab1-CreateModelDrivenPowerApp/E5_13.png)
+
+14. With the **CreatePurchaseOrder** operation selected, click on the **Import from sample** button under the **Request** section.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E5_14.png](Images/Lab1-CreateModelDrivenPowerApp/E5_14.png)
+
+15. On the **Import from sample** pane, configure the following details and then click **Import**:
+    - **Verb**: Select **POST**
+    - **URL**: `https://beautifulappsformakers-functions.azurewebsites.net/api/CreatePurchaseOrder`
+    - **Headers**: 
+      - `Content-Type: application/json`
+
+    - **Body**: 
+      ```json
+      {
+        "ReferenceNumber": "PO1234567",
+        "TotalValue": 2500.00
+      }
+      ```
+![Images/Lab1-CreateModelDrivenPowerApp/E5_15.png](Images/Lab1-CreateModelDrivenPowerApp/E5_15.png)
+
+16. Click on **Content-Type** under **Headers**, and select **Edit**.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E5_16.png](Images/Lab1-CreateModelDrivenPowerApp/E5_16.png)
+
+17. In the **Parameter** section, configure the following details and then click **Update connector**. This will ensure that this header value is always set correctly:
+    - **Default value**: `application/json`
+    - **Is required?**: Select **Yes**
+    - **Visibility**: Select **internal**
+
+![Images/Lab1-CreateModelDrivenPowerApp/E5_17.png](Images/Lab1-CreateModelDrivenPowerApp/E5_17.png)
+
+18. We are now ready to test the connector. Click on **5. Test** at the top of the page.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E5_18.png](Images/Lab1-CreateModelDrivenPowerApp/E5_18.png)
+
+19. In the **Test operation** section, click on **New connection**.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E5_19.png](Images/Lab1-CreateModelDrivenPowerApp/E5_19.png)
+
+20. A new browser tab will open, prompting you to enter the API key. Enter the API key provided by your instructors and click **Create connection**.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E5_20.png](Images/Lab1-CreateModelDrivenPowerApp/E5_20.png)
+
+21. Close the browser tab to return to the previous page.
+
+22. Click the refresh icon and then select the newly created connection from the dropdown list.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E5_21.png](Images/Lab1-CreateModelDrivenPowerApp/E5_21.png)
+
+23. We will now proceed to test both operations, starting with the **CreatePurchaseOrder** operation, which should already be selected. If not, select it under the **Operations** heading and then enter the following details. Click on **Test operation** to run the test:
+    - **ReferenceNumber**: Your initials followed by a hyphen and then seven 9's (e.g., `JD-9999999`)
+    - **TotalValue**: `2500.00`
+
+![Images/Lab1-CreateModelDrivenPowerApp/E5_22.png](Images/Lab1-CreateModelDrivenPowerApp/E5_22.png)
+
+24. If the test is successful, you should see a 200 response similar to the following, which contains the Unique Identifier (GUID) of the newly created purchase order:
+    ```json
+    {
+      "PurchaseOrderUID": "6f5febfe-6e5c-488e-9352-609249402116"
+    }
+    ```
+
+![Images/Lab1-CreateModelDrivenPowerApp/E5_23.png](Images/Lab1-CreateModelDrivenPowerApp/E5_23.png)
+
+25. Now, let's test the **RetrieveRemainingValue** operation. Click on the **RetrieveRemainingValue** operation under the **Operations** heading and enter the following details. Click on **Test operation** to run the test:
+    - **ReferenceNumber**: The reference number used in step 23 (e.g., `JD-9999999`)
+
+![Images/Lab1-CreateModelDrivenPowerApp/E5_24.png](Images/Lab1-CreateModelDrivenPowerApp/E5_24.png)
+
+26. If the test is successful, you should see a 200 response similar to the following, which contains the remaining value of the purchase order. This is a randomly generated value for the purpose of this lab, and may differ from the example below:
+    ```json
+    {
+      "remainingValue": 905
+    }
+    ```
+
+![Images/Lab1-CreateModelDrivenPowerApp/E5_25.png](Images/Lab1-CreateModelDrivenPowerApp/E5_25.png)
+
+27. Our custom connector is now successfully configured and tested. Click on **Update connector** for a final time to save the changes and then close the browser tab.
+
+28. On the **Coho Winery PP Solution** solution page, click on **Done** and then verify that the custom connector has been added to the solution. The **Name** value may differ from the example below.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E5_26.png](Images/Lab1-CreateModelDrivenPowerApp/E5_26.png)
+
+![Images/Lab1-CreateModelDrivenPowerApp/E5_27.png](Images/Lab1-CreateModelDrivenPowerApp/E5_27.png)
+
+29. Click on **Publish all customizations** in the command bar to ensure all changes are published. This may take several minutes to complete.
+
+30. Leave the **Coho Winery PP Solution** solution open, as we will continue to work in it during the next exercise.
 
 ## Exercise 6: Create Cloud Flow for Document Creation
 
