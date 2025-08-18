@@ -1,3 +1,7 @@
+## Introduction 
+In this lab you're going to learn how to configure the command bar to trigger the Custom Page in the Model-Driven app and how to use the record information in the Custom Page. 
+
+
 ## ✨ Getting Started with Command Bar Configuration for a form
 
 To trigger the pop up dialog or side pane with the custom page, you will have to configure a command bar button to execute the JavaScript with the custom page reference
@@ -20,3 +24,36 @@ To trigger the pop up dialog or side pane with the custom page, you will have to
 12. **Set the function name** to `JavaScriptFunction`  
 13. **Set parameters**  
 14. **Save and publish** – then **Play** the app to test
+
+## 💡 Fetch Record Details in the Custom Page
+
+We now want to get the current record details from the open and selected item in the Model-Driven app, and display related information in the Custom Page 
+
+1. **Open Custom Page** and select the .app properties - OnStart
+   Configure the syntax to get the GUID of the current record from the JavaScript:
+
+   <pre> Power fx
+   Set(
+    RecordItem,
+    If(
+        IsBlank(Param("recordId")),
+        First(Sessions),
+        "," in Text(Param("recordId")),
+        LookUp(
+            Sessions,
+            Sessions= GUID(
+                Last(
+                    Split(
+                        Param("recordId"),
+                        ","
+                    )
+                ).Value
+            )
+        ),
+        LookUp(
+            Sessions,
+            Sessions = GUID(Param("recordId"))
+        )
+    )
+);
+</pre>
