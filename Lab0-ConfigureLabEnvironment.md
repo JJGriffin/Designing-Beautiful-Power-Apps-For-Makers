@@ -119,7 +119,7 @@ This lab will take approximately 15 minutes to complete.
 
 For the purposes of this lab, we will use OneDrive for Business as our document repository. In a real-world scenario, SharePoint Online would typically be used instead.
 
-1. We will first download the document template that will be used to populate the purchase order documents. This file is currently saved in [the Assets folder here in the repository](Assets/PO-Request-TEMPLATE.docx). The template resembles the screenshot below. Download and save this file to your local machine
+1. We will first download the document template that will be used to populate the purchase order documents. This file is currently saved in [the Assets folder here in the repository](Assets/Lab0/PO-Request-TEMPLATE.docx). The template resembles the screenshot below. Download and save this file to your local machine
 
 ![Images/Lab0-ConfigureLabEnvironment/E4_1.png](Images/Lab0-ConfigureLabEnvironment/E4_1.png)
 
