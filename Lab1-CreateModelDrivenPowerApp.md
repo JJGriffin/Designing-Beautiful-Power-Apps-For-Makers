@@ -415,7 +415,7 @@ To ensure we can test our app successfully with the ERP API integration and docu
 
 7. Feel free to create additional test records in the **Purchase Order**, **Account**, and **Contact** tables as needed. When you are finished, close the browser tab.
 
-## Exercise 5: Integrate with the ERP API
+## Exercise 5: Setup Custom Connector for the EPI API
 
 In this exercise, we will integrate our app with the ERP API to enable the creation and retrieval of purchase orders. This will be done by creating a custom connector that connects to the ERP API via a [Swagger definition](https://swagger.io/solutions/api-documentation/), which describes the two core operations of the API:
 
@@ -572,6 +572,302 @@ Once we have created the custom connector, we will then perform a test to ensure
 
 30. Leave the **Coho Winery PP Solution** solution open, as we will continue to work in it during the next exercise.
 
-## Exercise 6: Create Cloud Flow for Document Creation
+## Exercise 6: Integrate with the ERP API
 
-TBC
+Now that our custom connector is setup, let's configure a cloud flow that triggers whenever a new Purchase Order record is created. The cloud flow will POST the record details to the ERP and then save back the **PurchaseOrderUID** field to the Purchase Order **ERP ID** column.
+
+1. You should still be in the **Coho Winery PP Solution** from the previous exercise. In this solution, select **+ New** > **Automation** > **Cloud flow** > **Automated**.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E6_1.png](Images/Lab1-CreateModelDrivenPowerApp/E6_1.png)
+
+2. In the **Build an automated cloud flow** dialog, enter the following details and then click **Create**:
+   - **Flow name**: `Create Purchase Order in ERP`
+   - **Choose your flow's trigger**: Search for `Dataverse` and select the **When a row is added, modified or deleted** trigger.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E6_2.png](Images/Lab1-CreateModelDrivenPowerApp/E6_2.png)
+
+3. You will be taken to the cloud flow designer and prompted to authenticate to sign in. Ensure that **OAuth** is selected as the **Authentication type** and then click on **Sign in**. A pop-up window may appear, prompting you to sign in again with your Microsoft 365 credentials.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E6_3.png](Images/Lab1-CreateModelDrivenPowerApp/E6_3.png)
+
+4. Once you have signed in, configure the **When a row is added, modified or deleted** trigger as follows:
+   - **Change type**: Select **Added**
+   - **Table name**: Select **Purchase Orders**
+   - **Scope**: Select **Organization**
+
+![Images/Lab1-CreateModelDrivenPowerApp/E6_4.png](Images/Lab1-CreateModelDrivenPowerApp/E6_4.png)
+
+5. Click on the elipses (...) next to the trigger and select **Rename**. Change the name of the trigger to **When a new Purchase Order is created**.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E6_5.png](Images/Lab1-CreateModelDrivenPowerApp/E6_5.png)
+
+> [!TIP]
+> It is always a good practice to rename your flow triggers and steps to make them more descriptive and easier to understand.
+
+6. Click on **+ New step** to add a new action to the flow.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E6_6.png](Images/Lab1-CreateModelDrivenPowerApp/E6_6.png)
+
+7. In the **Choose an operation** pane, click on **Custom** and then select the **Coho Winery ERP API** connector.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E6_7.png](Images/Lab1-CreateModelDrivenPowerApp/E6_7.png)
+
+8. Select the **CreatePurchaseOrder** action.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E6_8.png](Images/Lab1-CreateModelDrivenPowerApp/E6_8.png)
+
+9. Enter **ERP API Connection** as **Connection name** and then enter the API key provided by your instructors as the **API key**. Click on **Create** to create the connection.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E6_9.png](Images/Lab1-CreateModelDrivenPowerApp/E6_9.png)
+
+10. In the **CreatePurchaseOrder** action, configure the following details:
+    - **ReferenceNumber**: Select the **Purchase Order Number** dynamic content from the trigger.
+    - **TotalValue**: Select the **Value** dynamic content from the trigger. You may need to click on **See more** to find this value.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E6_10.png](Images/Lab1-CreateModelDrivenPowerApp/E6_10.png)
+
+![Images/Lab1-CreateModelDrivenPowerApp/E6_11.png](Images/Lab1-CreateModelDrivenPowerApp/E6_11.png)
+
+![Images/Lab1-CreateModelDrivenPowerApp/E6_12.png](Images/Lab1-CreateModelDrivenPowerApp/E6_12.png)
+
+11. Rename the action to **Create Purchase Order in ERP**.
+
+12. Click on **+ New step** to add a new action to the flow.
+
+13. In the **Choose an operation** pane, search for `Dataverse` and select the **Dataverse** connector.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E6_13.png](Images/Lab1-CreateModelDrivenPowerApp/E6_13.png)
+
+14. Select the **Update a row** action. You may need to scroll down to find it.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E6_14.png](Images/Lab1-CreateModelDrivenPowerApp/E6_14.png)
+
+15. In the **Update a row** action, configure the following details. You may need to click on **Show advanced options** to see all options:
+    - **Table name**: Select **Purchase Orders**
+    - **Row ID**: Select the **Purchase Order** dynamic content from the trigger.
+    - **ERP ID**: Select the **purchaseOrderUID** dynamic content from the **Create Purchase Order in ERP** action.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E6_15.png](Images/Lab1-CreateModelDrivenPowerApp/E6_15.png)
+
+![Images/Lab1-CreateModelDrivenPowerApp/E6_16.png](Images/Lab1-CreateModelDrivenPowerApp/E6_16.png)
+
+16. Rename the action to **Update Purchase Order with ERP ID**.
+
+17. Your completed cloud flow should resemble the below. Click on **Save** in the command bar to save your changes.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E6_17.png](Images/Lab1-CreateModelDrivenPowerApp/E6_17.png)
+
+18. It's now time to test the cloud flow. First, duplicate the current browser tab to keep the flow open.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E6_18.png](Images/Lab1-CreateModelDrivenPowerApp/E6_18.png)
+
+19. In the new browser tab, click on the **Coho Winery Purchase Order Management** app and select **Play** to open the app in a new tab.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E6_19.png](Images/Lab1-CreateModelDrivenPowerApp/E6_19.png)
+
+20. In the app, navigate to the **Purchase Orders** page and click on **New**.
+
+21. The new record form should open. Do **NOT** create the record just yet. Instead, return to the original browser tab that was duplicated and click on **Test** in the command bar.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E6_20.png](Images/Lab1-CreateModelDrivenPowerApp/E6_20.png)
+
+22. In the **Test flow** pane, select **Manually** and then click on **Test**.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E6_21.png](Images/Lab1-CreateModelDrivenPowerApp/E6_21.png)
+
+23. Return to the other browser tab with the app and complete the **New Purchase Order** form with the following details. Then click on **Save** to create the record:
+    - **Account**: Select the **Wingtip Toys** account you created earlier in this lab.
+    - **Contact**: Select the **John Doe** contact you created earlier in this lab.
+    - **Requested Date**: Select today's date and time.
+    - **Value**: `3000`
+    - **Description**: `ERP creation test.`
+
+![Images/Lab1-CreateModelDrivenPowerApp/E6_22.png](Images/Lab1-CreateModelDrivenPowerApp/E6_22.png)
+
+24. After clicking **Save**, return to the original browser tab with the cloud flow and monitor the flow run. It may take a few moments for the flow to trigger and complete. Verify that is has run successfully.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E6_23.png](Images/Lab1-CreateModelDrivenPowerApp/E6_23.png)
+
+25. Return to the other browser tab with the app and refresh the **Purchase Orders** page. Verify that the **ERP ID** field has been populated with a GUID value from the ERP API.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E6_24.png](Images/Lab1-CreateModelDrivenPowerApp/E6_24.png)
+
+26. Close the **Coho Winery Purchase Order Management** app browser tab to return to the solution.
+
+27. In the solution, click on **Publish all customizations** in the command bar to ensure all changes are published. This may take several minutes to complete.
+
+28. Leave the **Coho Winery PP Solution** solution open, as we will continue to work on it during the next exercise.
+
+## Exercise 7: Create Cloud Flow for Document Creation
+
+We will now create a second cloud flow that will generate a Word document from a template whenever a Purchase Order request is approved. The document will then be saved to the OneDrive for Business folder we created in Lab 0.
+
+> [!NOTE]
+> The workflow to handle the approval process will be done in the next lab, so for now, we will just simulate the approval by manually changing some fields on the Purchase Order record.
+
+1. You should still be in the **Coho Winery PP Solution** from the previous exercise. In this solution, select **+ New** > **Automation** > **Cloud flow** > **Automated**.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E7_1.png](Images/Lab1-CreateModelDrivenPowerApp/E7_1.png)
+
+2. In the **Build an automated cloud flow** dialog, enter the following details and then click **Create**:
+   - **Flow name**: `Generate Purchase Order Document`
+   - **Choose your flow's trigger**: Search for `Dataverse` and select the **When a row is added, modified or deleted** trigger.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E7_2.png](Images/Lab1-CreateModelDrivenPowerApp/E7_2.png)
+
+3. You will be taken to the cloud flow designer and prompted to sign in. Ensure that **OAuth** is selected as the **Authentication type** and then click on **Sign in**. A pop-up window may appear, prompting you to sign in again with your Microsoft 365 credentials.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E7_3.png](Images/Lab1-CreateModelDrivenPowerApp/E7_3.png)
+
+4. Once you have signed in, configure the **When a row is added, modified or deleted** trigger as follows:
+   - **Change type**: Select **Modified**
+   - **Table name**: Select **Purchase Orders**
+   - **Scope**: Select **Organization**
+   - **Select columns**: Type `coh_approvedby,coh_approveddate`
+   - **Filter rows**: Type `_coh_approvedby_value ne null and coh_approveddate ne null`
+
+5. Rename the trigger to **When a Purchase Order is approved**. It should resemble the below when you are finished.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E7_4.png](Images/Lab1-CreateModelDrivenPowerApp/E7_4.png)
+
+6. Click on **+ New step** to add a new action to the flow.
+
+7. In the **Choose an operation** pane, search for `Dataverse` and select the **Dataverse** connector. Then, select the **Get a row by ID** action. You may need to scroll down to find it.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E7_5.png](Images/Lab1-CreateModelDrivenPowerApp/E7_5.png)
+
+8. In the **Get a row by ID** action, configure the following details. You will need to click on **Show advanced options** to see all options:
+   - **Table name**: Select **Purchase Orders**
+   - **Row ID**: Select the **Purchase Order** dynamic content from the trigger.
+   - **Return full metadata**: Select **Yes**
+
+9. Rename the action to **Get Purchase Order friendly values**. The action should resemble the below when you are finished.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E7_6.png](Images/Lab1-CreateModelDrivenPowerApp/E7_6.png)
+
+> [!NOTE]
+> This action is necessary to retrieve the "friendly" display values of the different lookup properties, such as the **Contact** and **Account** fields. These values are not available directly from the trigger. In a real-world example, we would also want to limit the number of columns that are returned using the **Select columns** input, but for the purpose of this lab, we will leave it blank.
+
+10. Click on **+ New step** to add a new action to the flow.
+
+11. In the **Choose an operation** pane, search for `Word` and select the **Word Online (Business)** connector. Then, select the **Populate a Microsoft Word template** action.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E7_7.png](Images/Lab1-CreateModelDrivenPowerApp/E7_7.png)
+
+![Images/Lab1-CreateModelDrivenPowerApp/E7_8.png](Images/Lab1-CreateModelDrivenPowerApp/E7_8.png)
+
+12. In the **Populate a Microsoft Word template** action, configure the following details. The flow should resemble the below when you are finished:
+   - **Location**: Select **OneDrive for Business**
+   - **Document Library**: Select **OneDrive**
+   - **File**: Click on the folder icon and navigate to the `Beautiful Power Apps for Makers Lab` folder you created in Lab 0. Select the `PO-Request-TEMPLATE.docx` file.
+   - **coh_erpid**: Select the **ERP ID** dynamic content from the trigger.
+   - **coh_purchaseordernumber**: Select the **Purchase Order Number** dynamic content from the trigger.
+   - **coh_approvedby**: Paste the following value in the input. This will return the full name of the approver from the **Get Purchase Order friendly values** action: `@{outputs('Get_Purchase_Order_friendly_values')?['body/_coh_approvedby_value@OData.Community.Display.V1.FormattedValue']}`
+   - **coh_requestedby**: Paste the following value in the input. This will return the full name of the **User** requesting the purchase order from the **Get Purchase Order friendly values** action: `@{outputs('Get_Purchase_Order_friendly_values')?['body/_coh_requestedby_value@OData.Community.Display.V1.FormattedValue']}`
+   - **coh_requesteddate**: Select the **Requested Date** dynamics content from the trigger.
+   - **coh_description**: Select the **Description** dynamic content from the trigger.
+   - **coh_account**: Paste the following value in the input. This will return the name of the **Account** from the **Get Purchase Order friendly values** action: `@{outputs('Get_Purchase_Order_friendly_values')?['body/_coh_account_value@OData.Community.Display.V1.FormattedValue']}` 
+   - **coh_contact**: Paste the following value in the input. This will return the full name of the **Contact** from the **Get Purchase Order friendly values** action: `@{outputs('Get_Purchase_Order_friendly_values')?['body/_coh_contact_value@OData.Community.Display.V1.FormattedValue']}`
+   - **coh_value**: Select the **Value** dynamic content from the trigger.
+   - **coh_approveddate**: Select the **Approved Date** dynamic content from the trigger.
+
+13. Rename the action to **Populate Purchase Order Request template**. The action should resemble the below when you are finished.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E7_9.png](Images/Lab1-CreateModelDrivenPowerApp/E7_9.png)
+
+14. Click on **+ New step** to add a new action to the flow.
+
+15. In the **Choose an operation** pane, search for `OneDrive` and select the **OneDrive for Business** connector. Then, select the **Create file** action.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E7_10.png](Images/Lab1-CreateModelDrivenPowerApp/E7_10.png)
+
+![Images/Lab1-CreateModelDrivenPowerApp/E7_11.png](Images/Lab1-CreateModelDrivenPowerApp/E7_11.png)
+
+16. In the **Create file** action, configure the following details. The flow should resemble the below when you are finished:
+   - **Folder Path**: Click on the folder icon and navigate to the `Generated Documents` folder you created in Lab 0.
+   - **File Name**: Paste the following value in the input. This will create a unique file name for each document: `PO-Request-@{triggerOutputs()?['body/coh_purchaseordernumber']}.docx`
+   - **File Content**: Select the **Microsoft Word document** dynamic content from the **Populate Purchase Order Request template** action.
+
+17. Rename the action to **Save staging document to OneDrive**. The action should resemble the below when you are finished.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E7_12.png](Images/Lab1-CreateModelDrivenPowerApp/E7_12.png)
+
+18. We need the document to be in PDF format, so we will add three additional steps - one to convert the Word document to PDF, the second to delete the staging Word document file and third to delete the "staging" file created above. Click on **+ New step** to add a new action to the flow.
+
+19. In the **Choose an operation** pane, search for `Word` and select the **Word Online (Business)** connector. Then, select the **Convert Word Document to PDF** action.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E7_13.png](Images/Lab1-CreateModelDrivenPowerApp/E7_13.png)
+
+20. In the **Convert Word Document to PDF** action, configure the following details:
+   - **Location**: Select **OneDrive for Business**
+   - **Document Library**: Select **OneDrive**
+   - **File**: Paste in the following formula, which will navigate the Word document created in the previous action step: `@{concat('/Beautiful Power Apps for Makers Lab/Generated Documents/PO-Request-',triggerOutputs()?['body/coh_purchaseordernumber'], '.docx')}`
+
+21. Rename the action to **Convert Purchase Order Request to PDF**. The action should resemble the below when you are finished.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E7_14.png](Images/Lab1-CreateModelDrivenPowerApp/E7_14.png)
+
+22. Click on **+ New step** to add a new action to the flow.
+
+22. In the **Choose an operation** pane, search for `OneDrive` and select the **OneDrive for Business** connector. Then, select the **Create file** action.
+
+23. In the **Create file** action, configure the following details:
+   - **Folder Path**: Click on the folder icon and navigate to the `Generated Documents` folder you created in Lab 0.
+   - **File Name**: Paste the following value in the input. This will create a unique file name for each document: `PO-Request-@{triggerOutputs()?['body/coh_purchaseordernumber']}.pdf`
+   - **File Content**: Select the **PDF document** dynamic content from the **Convert Purchase Order Request to PDF** action.
+
+24. Rename the action to **Save PDF document to OneDrive**. The action should resemble the below when you are finished.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E7_15.png](Images/Lab1-CreateModelDrivenPowerApp/E7_15.png)
+
+25. Click on **+ New step** to add a new action to the flow.
+
+26. In the **Choose an operation** pane, search for `OneDrive` and select the **OneDrive for Business** connector. Then, select the **Delete file** action.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E7_16.png](Images/Lab1-CreateModelDrivenPowerApp/E7_16.png)
+
+27. In the **Delete file** action, configure the following details:
+   - **File**: Select the **Id** dynamic content from the **Save staging document to OneDrive** action.
+
+28. Rename the action to **Delete staging Word document**. The action should resemble the below when you are finished.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E7_17.png](Images/Lab1-CreateModelDrivenPowerApp/E7_17.png)
+
+29. Your completed cloud flow should resemble the below. Click on **Save** in the command bar to save your changes.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E7_18.png](Images/Lab1-CreateModelDrivenPowerApp/E7_18.png)
+
+30. We are now ready to test the cloud flow. First, click on **Test** in the command bar.
+
+31. In the **Test flow** pane, select **Manually** and then click **Test**.
+
+30. Next, in a new browser tab, open the **Coho Winery Purchase Order Management** app, and navigate to the **Purchase Order** record that was created in Exercise 6.
+
+31. Update the record by populating the following fields and then click on **Save** to simulate the approval process:
+   - **Approved By**: Select your user account.
+   - **Approved Date**: Select today's date and time.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E7_19.png](Images/Lab1-CreateModelDrivenPowerApp/E7_19.png)
+
+32. Navigate back to the original browser tab with the cloud flow and monitor the flow run. It may take a few moments for the flow to trigger and complete. Verify that it has run successfully.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E7_20.png](Images/Lab1-CreateModelDrivenPowerApp/E7_20.png)
+
+33. Open a new browser tab and navigate to [OneDrive for Business](https://onedrive.live.com/about/en-us/signin/). Ensure you are signed in with the same Microsoft 365 account used for this lab.
+
+34. In OneDrive, navigate to the `Beautiful Power Apps for Makers Lab` folder and then open the `Generated Documents` folder. Verify that a new PDF document has been created with the correct file name. You can open the document to verify that all details are correct.
+
+>[!NOTE]
+> The **Requested By** column in the document may show as blank. This is expected, as we did not set this field when creating the Purchase Order record in Exercise 6.
+
+![Images/Lab1-CreateModelDrivenPowerApp/E7_21.png](Images/Lab1-CreateModelDrivenPowerApp/E7_21.png)
+
+![Images/Lab1-CreateModelDrivenPowerApp/E7_22.png](Images/Lab1-CreateModelDrivenPowerApp/E7_22.png)
+
+35. Close the OneDrive browser tab to return to the flow designer and click on **Back** to return to the solution.
+
+36. In the solution, click on **Publish all customizations** in the command bar to ensure all changes are published. This may take several minutes to complete.
+
+37. If you are planning to continue to Lab 2, leave the **Coho Winery PP Solution** solution open, as we will continue to work on it during the next lab. If you are finished for now, you can close the browser tab.
+
+**Congratulations, you've finished Lab 1** 🥳
