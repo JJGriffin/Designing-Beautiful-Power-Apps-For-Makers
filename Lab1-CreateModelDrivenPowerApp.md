@@ -2,7 +2,22 @@
 
 In this lab, you will create the Model-Driven App used to display and edit purchase order (PO) information. 
 
-## Scenario
+## Lab Overview
+
+### 🎯 Goal
+
+- Create a new table called **Purchase Order** and customise it accordingly.
+- Add in the **Account** and **Contact** tables to your solution and customise accordingly.
+- Create and define the configuration for your model-driven app, before testing it further.
+- Add some test records into the system.
+- Configure the integration with the backend ERP API.
+- Create a cloud flow to generate purchase order request documents, and have this available to trigger from the model-driven app.
+
+### ✅ Prerequisites
+
+- Completion of [Lab 0 - Configure Lab Environment](Lab0-ConfigureLabEnvironment.md)
+
+### Scenario
 
 Now that you have prepared your Power Platform development environment, you have been given your first work package. Coho Winery are wanting to improve their internal processes for handling PO's. Currently, all PO's are raised within the company's ERP system. Users need to manually fill out and send a Word document to the finance team every time a new PO is required. Once a PO is raised within the ERP system, the information then needs to be sent via a screenshot to the relevant individuals in the organisation and, on some occasions, directly to the end customer. Only users who have been configured in the ERP system can raise a PO and also view the remaining monetary value. In addition, there are often long delays in the process, due to the manual effort required and the availability of colleagues in the finance team, particularly during busy periods of the month. To assist with year end audits, physical document records of all PO requests must be retained and stored within the organisations document library. Auditors require the ability to search for documents based on their underlying contents.
 
@@ -30,20 +45,11 @@ After analysing the requirements in detail, you identify the following platform 
 
 You begin your work by planning out the data model you will use and all necessary Dataverse customisations to support the solution. You identify that new table, called **Purchase Order**, will be required, alongside the existing **Account** and **Contact** tables. You will complete all necessary steps to build the model-driven Power App, including all required form and view customisations, before then creating some test records. Finally, you will initiate and test the integration with the ERP by connecting to it's API and create the automation to generate the physical request documents.
 
-## Instructions
-
-In this lab, you will do the following:
-
-- Create a new table called **Purchase Order** and customise it accordingly.
-- Add in the **Account** and **Contact** tables to your solution and customise accordingly.
-- Create and define the configuration for your model-driven app, before testing it further.
-- Add some test records into the system.
-- Configure the integration with the backend ERP API.
-- Create a cloud flow to generate purchase order request documents, and have this available to trigger from the model-driven app.
+### Length
 
 This lab will take approximately 60 minutes to complete.
 
-## Exercise 1: Create Purchase Order Table
+## ✍️ Exercise 1: Create Purchase Order Table
 
 1. Navigate to the [Power Apps Maker portal](https://make.powerapps.com) and ensure you are in the **Developer** environment you created in Lab 0.
 2. Select **Solutions** from the left navigation pane.
@@ -196,7 +202,7 @@ This lab will take approximately 60 minutes to complete.
 
 28. We have now finished customizing the **Purchase Order** table. Keep the **Coho Winery PP Solution** solution open, as we will continue to work on it in the next exercise.
 
-## Exercise 2: Customise the Account and Contact Tables
+## ✍️ Exercise 2: Customise the Account and Contact Tables
 
 We want to make it easy for users of our app to see a list of all related purchase orders for a company or individual. To do this, we will add a subgrid to the **Account** and **Contact** forms that displays this data.
 
@@ -278,7 +284,7 @@ We want to make it easy for users of our app to see a list of all related purcha
 
 17. Leave the **Coho Winery PP Solution** solution open, as we will continue to work on it in the next exercise.
 
-## Exercise 3: Create the Model-Driven App
+## ✍️ Exercise 3: Create the Model-Driven App
 
 Our model-driven app will be used to display and edit purchase order information, including related customer information. We will also use it to provide a landing page for users to navigate to internal and external links, and display current data from the ERP system when we create our custom pages in the next lab.
 
@@ -372,7 +378,7 @@ To start this process, select the **New group** group in the sitemap, expand the
 
 15. Leave the **Coho Winery Purchase Order Management** app open, as we will continue to work on it in the next exercise.
 
-## Exercise 4: Add Test Records
+## ✍️ Exercise 4: Add Test Records
 
 To ensure we can test our app successfully with the ERP API integration and document generation, we will add some test records to the **Purchase Order**, **Account**, and **Contact** tables.
 
@@ -415,7 +421,7 @@ To ensure we can test our app successfully with the ERP API integration and docu
 
 7. Feel free to create additional test records in the **Purchase Order**, **Account**, and **Contact** tables as needed. When you are finished, close the browser tab.
 
-## Exercise 5: Setup Custom Connector for the EPI API
+## ✍️ Exercise 5: Setup Custom Connector for the EPI API
 
 In this exercise, we will integrate our app with the ERP API to enable the creation and retrieval of purchase orders. This will be done by creating a custom connector that connects to the ERP API via a [Swagger definition](https://swagger.io/solutions/api-documentation/), which describes the two core operations of the API:
 
@@ -572,7 +578,7 @@ Once we have created the custom connector, we will then perform a test to ensure
 
 30. Leave the **Coho Winery PP Solution** solution open, as we will continue to work in it during the next exercise.
 
-## Exercise 6: Integrate with the ERP API
+## ✍️ Exercise 6: Integrate with the ERP API
 
 Now that our custom connector is setup, let's configure a cloud flow that triggers whenever a new Purchase Order record is created. The cloud flow will POST the record details to the ERP and then save back the **PurchaseOrderUID** field to the Purchase Order **ERP ID** column.
 
@@ -698,7 +704,7 @@ Now that our custom connector is setup, let's configure a cloud flow that trigge
 
 28. Leave the **Coho Winery PP Solution** solution open, as we will continue to work on it during the next exercise.
 
-## Exercise 7: Create Cloud Flow for Document Creation
+## ✍️ Exercise 7: Create Cloud Flow for Document Creation
 
 We will now create a second cloud flow that will generate a Word document from a template whenever a Purchase Order request is approved. The document will then be saved to the OneDrive for Business folder we created in Lab 0.
 
@@ -869,5 +875,15 @@ We will now create a second cloud flow that will generate a Word document from a
 36. In the solution, click on **Publish all customizations** in the command bar to ensure all changes are published. This may take several minutes to complete.
 
 37. If you are planning to continue to Lab 2, leave the **Coho Winery PP Solution** solution open, as we will continue to work on it during the next lab. If you are finished for now, you can close the browser tab.
+
+## 🌟 Extra Challenges
+
+- Can you think of any additional fields that would be useful to add to the **Purchase Order** table to enhance the functionality of the app? Consider fields that could help with tracking, reporting, or integration with other systems. Try adding these fields and updating the app accordingly.
+- Are there any other tables as part of the Common Data Model that could be useful to include as well? Explore the list of available tables and add any that you think would be suitable.
+- There are many options available to us when setting up a custom connector. Can you think of any additional configurations you could apply? Use the links below to get some insipriation:
+   - [Add a custom logo](https://learn.microsoft.com/en-us/connectors/custom-connectors/define-blank#step-1-update-general-details)
+   - [Policies](https://learn.microsoft.com/en-us/connectors/custom-connectors/policy-templates)
+   - [Custom code](https://learn.microsoft.com/en-us/connectors/custom-connectors/write-code)
+- Currently, our cloud flows have not implemented any error handling. How could we improve the flows with this in mind? Consider adding [conditions](https://learn.microsoft.com/en-us/power-automate/add-condition), [scopes](https://learn.microsoft.com/en-us/power-automate/scopes), or [run after branches](https://learn.microsoft.com/en-us/power-automate/flows-designer#settings) to handle errors gracefully.
 
 **Congratulations, you've finished Lab 1** 🥳

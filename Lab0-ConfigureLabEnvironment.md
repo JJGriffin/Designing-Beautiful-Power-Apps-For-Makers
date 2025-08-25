@@ -2,27 +2,33 @@
 
 In this lab, you will configure and validate the environment that will be used to complete all subsequent lab exercises.
 
-## Scenario
+## Lab Overview
 
-Coho Winery is a distributor and exporter of fine wine, within the European Union and North America. The company employees 600 people across different countries, and has been using the Microsoft Power Platform for several years. SharePoint Online is used as the central document repository tool for all regions. The company uses a bespoke Enterprise Resource Planning (ERP) system for the food and beverage industry. The ERP system has a public facing REST API, that allows consumers to retrieve purchase order information from vendors.
-
-You have recently joined Coho Winery as a Power Platform developer, and you have been instructed to configure your initial environments, publishers and solution, to prepare yourself for the first project you will be involved in. You will also prepare and upload a document template to your OneDrive for Business folder in preparation for the later lab steps; this will represent the "mock" default document library for Coho Winery.
-
-## Instructions
-
-In this lab, you will do the following:
+### 🎯 Goal
 
 - Redeem your [Developer plan license for Power Apps](https://learn.microsoft.com/en-us/power-platform/developer/plan), to create an environment to build your solution - this will be your **Development** environment.
 - Setup an environment to deploy your solution - this will be your **Production** environment.
 - Create a publisher and solution to store your components.
 - Prepare your OneDrive for Business folder and upload the required document template.
 
-This lab will take approximately 15 minutes to complete.
+### ✅ Prerequisites
+
+- A Microsoft 365 account
 
 > [!IMPORTANT]
 > Your admin may have disabled the ability to create a Developer environment on your work tenant. If you encounter any error while attempting to create your developer environment, please reach out to them for further assistance or speak to your instructors for further assistance.
 
-## Exercise 1: Create a Developer Environment
+### Scenario
+
+Coho Winery is a distributor and exporter of fine wine, within the European Union and North America. The company employees 600 people across different countries, and has been using the Microsoft Power Platform for several years. SharePoint Online is used as the central document repository tool for all regions. The company uses a bespoke Enterprise Resource Planning (ERP) system for the food and beverage industry. The ERP system has a public facing REST API, that allows consumers to retrieve purchase order information from vendors.
+
+You have recently joined Coho Winery as a Power Platform developer, and you have been instructed to configure your initial environments, publishers and solution, to prepare yourself for the first project you will be involved in. You will also prepare and upload a document template to your OneDrive for Business folder in preparation for the later lab steps; this will represent the "mock" default document library for Coho Winery.
+
+### Length
+
+This lab will take approximately 15 minutes to complete.
+
+## ✍️ Exercise 1: Create a Developer Environment
 
 [Developer environments](https://learn.microsoft.com/en-us/power-platform/developer/create-developer-environment) allow for any Microsoft 365 user (subject to tenant level restrictions) to create up to three environments for personal development, testing and other non-production purposes. Each developer environment comes with up to 2GB of Dataverse storage, and allows you to create apps, automations and more.
 
@@ -49,7 +55,7 @@ This lab will take approximately 15 minutes to complete.
 
 6. Leave this browser tab open, as you will return here in Exercise 3.
 
-## Exercise 2: Create a Production Environment
+## ✍️ Exercise 2: Create a Production Environment
 
 1. Open a new browser tab and navigate to the [Power Platform Admin Center](https://aka.ms/ppac). If prompted, sign-in again using your work / Microsoft 365 credentials.
 
@@ -81,7 +87,7 @@ This lab will take approximately 15 minutes to complete.
 
 ![Images/Lab0-ConfigureLabEnvironment/E2_7.png](Images/Lab0-ConfigureLabEnvironment/E2_7.png)
 
-## Exercise 3: Create a Publisher and Solution
+## ✍️ Exercise 3: Create a Publisher and Solution
 
 1. Navigate to the [Power Apps Maker Portal](https://make.powerapps.com).
 2. Ensure your **Development** environment is selected by default; if not, select the current environment name and then click on your **Development** environment:
@@ -115,7 +121,7 @@ This lab will take approximately 15 minutes to complete.
 
 ![Images/Lab0-ConfigureLabEnvironment/E3_6.png](Images/Lab0-ConfigureLabEnvironment/E3_6.png)
 
-## Exercise 4: Upload Documents to OneDrive for Business
+## ✍️ Exercise 4: Upload Documents to OneDrive for Business
 
 For the purposes of this lab, we will use OneDrive for Business as our document repository. In a real-world scenario, SharePoint Online would typically be used instead.
 
@@ -157,5 +163,11 @@ For the purposes of this lab, we will use OneDrive for Business as our document 
 9. As a final step, create a new folder within the **Beautiful Power Apps for Makers Lab** folder, called `Generated Documents`. This will be used later in the lab exercises to store the generated purchase order documents.
 
 ![Images/Lab0-ConfigureLabEnvironment/E4_9.png](Images/Lab0-ConfigureLabEnvironment/E4_9.png)
+
+## 🌟 Extra Challenges
+
+- If Coho Winery needed an additional environment for User Acceptance Testing (UAT), how would you create this? Keep in mind that each user can have up to three developer environments.
+- It's possible to set the **Coho Winery** publisher as the default publisher for your environment. How would you do this?
+- Try updating the document template to include a custom logo or additional information. Can you figure out how to add additional dynamic fields to the template? As a small hint, make sure you've enabled the **Developer** tab in Microsoft Word.
 
 **Congratulations, you've finished Lab 0** 🥳

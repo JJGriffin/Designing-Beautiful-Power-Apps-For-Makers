@@ -1,26 +1,29 @@
 # Lab 2 - Create Custom Pages
 
-In this lab, you will learn how to **build Custom Pages** with focus on **responsive design**, and accessing **Model-Driven App record details**
-
+In this lab, you will learn how to **build Custom Pages** with a focus on **responsive design**, and accessing **Model-Driven App record details**
 
 ## Lab Overview 
 
-**🎯 Goal:** 
+### 🎯 Goal
+
 - Build Custom Pages to be used as a full page, side pane and dialog in a Model-Driven App
 - Connect to relevant datasources
 - Fetch record details using the Param() function and connecting to the record context
 - Develop responsive apps
 
-**✅ Prerequisites** 
-- Existing solution in a Power Platform environment
-- System Customizer or System Administrator security role
-- Access to datasources
+### ✅ Prerequisites
 
-## Scenario
+- Completion of [Lab 1 - Create a Model-Driven Power App](Lab1-CreateModelDrivenPowerApp.md)
+
+### Scenario
 
 TBC
 
-## **✍️ Task 1: Create a Landing Page**
+### Length
+
+TBC
+
+## ✍️ Exercise 1: Create a Landing Page
 
 1. Within your solution, click **+ New** -> **App** -> **Page**
 2. Name it **Main Landing Page**
@@ -28,7 +31,7 @@ TBC
     - *Scale to Fit* should be **Off**
     - *Automatic save every 2 minutes* is recommended to be **On**
 
-## **✍️ Task 2: Build a Responsive Layout**
+## ✍️ Exercise 2: Build a Responsive Layout
 
 Nest containers to group related content (build one horizontal container in a Vertical)
 
@@ -47,7 +50,7 @@ Y: (Parent.Height - Self.Height) / 2
 
 
 
-## **✍️Task 3: Fetch Record Information**
+## ✍️ Exercise 3: Fetch Record Information
 1. Add datasource (Dataverse, SharePoint etc.)
 2. Select **App** in the left corner and click **Formulas**
 3. Create a formula for referencing the record GUID and use the function GUID() to ensure correct type
@@ -70,9 +73,11 @@ GUID(Substitute(Substitute(Param("recordId"), "{", ""), "}", ""))</pre>
 
 *Param() function gets the record GUID parsed from the JavaScript, and GUID() formats the output as GUID, not a string. We are also checking if there are several records selected by splitting the string after ","*
 
-## **🌟 Extra Challenges** 
+## 🌟 Extra Challenges
 
 - Add dark mode 
 - Add CSS styling 
 - Add SVGs for design 
 - Adjust styling of the container and alignment of items
+
+**Congratulations, you've finished Lab 2** 🥳

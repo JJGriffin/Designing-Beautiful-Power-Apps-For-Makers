@@ -1,6 +1,24 @@
-## Introduction 
-In this lab you're going to learn how to configure the command bar to trigger the Custom Page in the Model-Driven app and how to use the record information in the Custom Page. 
+# Lab 3: Integrate Custom Pages in a Model-Driven Power App
 
+In this lab, you will learn how to integrate the custom pages you created in Lab 2 into the **Coho Winery Purchase Order Management** app, by configuring the command bar to trigger the custom page and passing record information to the custom page.
+
+## Lab Overview
+
+### 🎯 Goal
+
+TBC
+
+### ✅ Prerequisites
+
+TBC
+
+## Scenario
+
+TBC
+
+### Length
+
+TBC
 
 ## ✨ Getting Started with Command Bar Configuration for a form
 
@@ -57,3 +75,9 @@ We now want to get the current record details from the open and selected item in
     )
 );
 </pre>
+
+## 🌟 Extra Challenges
+
+TBC
+
+**Congratulations, you've finished Lab 3** 🥳
