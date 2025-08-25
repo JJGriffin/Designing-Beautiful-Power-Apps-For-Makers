@@ -33,8 +33,6 @@ All lab exercises are designed to be completed in order. Each lab builds on the 
 
 All lab steps are correct as of the time of writing. However, Microsoft frequently updates its products and services, which may result in steps no longer working as expected. In case of any discrepencies, please raise an issue on the GitHub repository. We will do our best to address any issues, but please note we cannot provide any immediate support.
 
-These lab steps assume you have been given access to an environment from your instructors, containing SharePoint and miscelleanous documents. Therefore, these labs may not function as expected if completed from your own environment.
-
 ## License
 
 This repository is licensed under the [GPL-3.0 license](./LICENSE). You are free to use, modify, and distribute these lab steps as you see fit, as long as you comply with the terms of the GPL-3.0 license.
