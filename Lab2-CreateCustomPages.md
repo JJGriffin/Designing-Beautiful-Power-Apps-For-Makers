@@ -82,7 +82,7 @@ Add HTML blur to your page:
 2. Edit text value to be:
 
 <pre> HTML
-$"<div style='
+$" <div style='
 background: rgba(255, 255, 255, 0.2); /* Solid background */
 border-radius: 16px;
 box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
@@ -100,6 +100,22 @@ left: 0; /* Aligns to the left */
 color: white; /* Default text color for fallback */
 font-family: Poppins, sans-serif; /* Sets the font to Poppins */
 '>
+</pre>
+
+## Exercise 5: Working with YAML
+1. Copy the container you have built
+2. Add it to another screen
+
+
+## Exercise 6: Wokring with SVGs
+1. Add an image control 
+2. Build the SVG code (for icons Bootstrap is a great source for generating SVG code)
+3. Alter the code to your needs with dynamic values using set variables
+
+<pre> SVG code
+"data:image/svg+xml," & EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='" & varHexValue & "' class='bi bi-plus-lg' viewBox='0 0 16 16'>
+  <path fill-rule='evenodd' d='M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2'/>
+</svg>")
 
 </pre>
 
