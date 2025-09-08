@@ -73,6 +73,36 @@ GUID(Substitute(Substitute(Param("recordId"), "{", ""), "}", ""))</pre>
 
 *Param() function gets the record GUID parsed from the JavaScript, and GUID() formats the output as GUID, not a string. We are also checking if there are several records selected by splitting the string after ","*
 
+## ✍️ Exercise 4: Styling 
+1. Add rounded corners for modern look (between 5-10 border radius)
+2. Set a slight box shadow 
+
+Add HTML blur to your page:
+1. insert HTMLtext control
+2. Edit text value to be:
+
+<pre> HTML
+$"<div style='
+background: rgba(255, 255, 255, 0.2); /* Solid background */
+border-radius: 16px;
+box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+width: {Self.Width-2}px;
+height: {Self.Height-2}px;
+padding: 10px; /* Adds space inside the box */
+overflow: hidden; /* Prevents scrollbars */
+box-sizing: border-box; /* Ensures padding is included in width/height */
+position: absolute; /* Allows absolute positioning */
+top: 0; /* Aligns to the top */
+left: 0; /* Aligns to the left */
+color: white; /* Default text color for fallback */
+font-family: Poppins, sans-serif; /* Sets the font to Poppins */
+'>
+
+</pre>
+
 ## 🌟 Extra Challenges
 
 - Add dark mode 
