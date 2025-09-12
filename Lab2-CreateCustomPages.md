@@ -1,15 +1,20 @@
-# Lab 2 - Create Custom Pages
+# Lab 2 - Create Beautiful Custom Pages
 
-In this lab, you will learn how to **build Custom Pages** with a focus on **responsive design**, and accessing **Model-Driven App record details**
+In this lab, you will learn how to **build Custom Pages** with a focus on **responsive design**, **Styling** and accessing **Model-Driven App record details**
 
 ## Lab Overview 
 
 ### 🎯 Goal
 
-- Build Custom Pages to be used as a full page, side pane and dialog in a Model-Driven App
-- Connect to relevant datasources
-- Fetch record details using the Param() function and connecting to the record context
-- Develop responsive apps
+- Build a Custom Page to use as a full page, side pane, and dialog inside a Model-Driven App.
+
+- Connect to your data sources and fetch record details with the Param() function in the Custom Page.
+
+- Master responsive layouts so your page looks good everywhere.
+
+- Add modern styling elements like shadows, rounded corners, blur effects, and SVGs to make apps pop
+
+- Optimised Power Fx syntax for reusability, performance and maintainable applications
 
 ### ✅ Prerequisites
 
@@ -17,33 +22,45 @@ In this lab, you will learn how to **build Custom Pages** with a focus on **resp
 
 ### Scenario
 
-TBC
+Coho Winery are rolling out a new Purchase Order app to replace their manual Word-and-screenshot process. To improve the user experience, you have been asked to design two key pages:
+
+Landing Page – a modern entry point where users can quickly navigate to key links, view PO data from the ERP system, and access important actions.
+
+PO Document Side Pane – a page that displays stored PDF versions of PO requests, giving finance and auditors instant access without leaving the app.
+
+Together, these pages will provide both an attractive front door to the application and a practical way to view and manage PO request documents.
 
 ### Length
 
-TBC
+~60–75 minutes
 
-## ✍️ Exercise 1: Create a Landing Page
+## ✍️ Exercise 1: Create a Landing Page and Configure settings
 
-1. Within your solution, click **+ New** -> **App** -> **Page**
-2. Name it **Main Landing Page**
-3. Check settings. 
-    - *Scale to Fit* should be **Off**
+Create your first custom page as a landing zone for the users
+
+1. The maker studio - Select the **Coho Winery** solution you created in Lab 0.
+2. Click **+ New** -> **App** -> **Page**
+2. Name it **Coho Winery Landing Page**
+3. Configure page: 
+    - *Scale to Fit* should be **Off** (Ensures responsive layouts)
     - *Automatic save every 2 minutes* is recommended to be **On**
+
+💡 This page sets the tone for the app and gives users a clear “home base” to work from as the first thing they will see when opening the MDA
 
 ## ✍️ Exercise 2: Build a Responsive Layout
 
-Nest containers to group related content (build one horizontal container in a Vertical)
+**The goal**: Ensure that the page works and the content looks great on all screens by understanding containers.
 
-1. Add a vertical container for structured alignment
-2. Adjust X property to (Parent.Height - Self.Height)/2
-3. Adjust Y property to (Parent.Width - Self.Width)/2
+1. Insert a vertical container as the main frame for the layout
+2. Name it cntMainVertical
+3. Center it on the screen by setting the X & Y formulas on the container
 
 <pre> Power Fx 
 X: (Parent.Width - Self.Width) / 2
 Y: (Parent.Height - Self.Height) / 2
 </pre>
 
+3. Inside, nest horizontal containers for grouping content (e.g., navigation buttons, ERP data cards).
 *💡 This will center and align the main container*
 
 4. Nest horizontal containers within the main container
@@ -80,7 +97,9 @@ GUID(Substitute(Substitute(Param("recordId"), "{", ""), "}", ""))</pre>
 Add HTML blur to your page:
 1. insert HTMLtext control
 2. Edit text value to be:
+Logo for Coho Winery:
 
+![Coho Winery Logo](image.png)
 <pre> HTML
 $" <div style='
 background: rgba(255, 255, 255, 0.2); /* Solid background */
