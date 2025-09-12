@@ -20,6 +20,10 @@ In this lab, you will learn how to **build Custom Pages** with a focus on **resp
 
 - Completion of [Lab 1 - Create a Model-Driven Power App](Lab1-CreateModelDrivenPowerApp.md)
 
+- Solution for **Coho Winery**
+
+- Access to Dataverse, SharePoint and ERP API (Custom Connector) 
+
 ### Scenario
 
 Coho Winery are rolling out a new Purchase Order app to replace their manual Word-and-screenshot process. To improve the user experience, you have been asked to design two key pages:
@@ -32,7 +36,8 @@ Together, these pages will provide both an attractive front door to the applicat
 
 ### Length
 
-~60–75 minutes
+ ⌛ 60–75 minutes
+
 
 ## ✍️ Exercise 1: Create a Landing Page and Configure settings
 
@@ -45,13 +50,18 @@ Create your first custom page as a landing zone for the users
     - *Scale to Fit* should be **Off** (Ensures responsive layouts)
     - *Automatic save every 2 minutes* is recommended to be **On**
 
-💡 This page sets the tone for the app and gives users a clear “home base” to work from as the first thing they will see when opening the MDA
+💡 *This page sets the tone for the app and gives users a clear “home base” to work from as the first thing they will see when opening the MDA*
+
+![alt text](image-3.png)
+
+*Your Type should be Page*
+
 
 ## ✍️ Exercise 2: Build a Responsive Layout
 
 **The goal**: Ensure that the page works and the content looks great on all screens by understanding containers.
 
-1. Insert a vertical container as the main frame for the layout
+1. Insert a vertical container as the main foundation for the layout
 2. Name it cntMainVertical
 3. Center it on the screen by setting the X & Y formulas on the container
 
@@ -60,10 +70,22 @@ X: (Parent.Width - Self.Width) / 2
 Y: (Parent.Height - Self.Height) / 2
 </pre>
 
-3. Inside, nest horizontal containers for grouping content (e.g., navigation buttons, ERP data cards).
-*💡 This will center and align the main container*
+*💡 This will center and align the main container whenever the screen size is adjusted*
 
+
+**Build the navigation bar**
+4. Inside cntMainVertical - insert a horizontal container
+5. Name it cntHeaderHorizontal and adjust the Width to:
+
+<pre> Power Fx 
+Width: Parent.Width
+</pre>
+
+*💡 This ensures the width of the second container to always reflect the size of the Parent cntMainVerticals width*
+
+6. In the cntHeaderHorizontal container, insert another
 4. Nest horizontal containers within the main container
+5. Create the navigation bar
 
 
 
@@ -91,15 +113,20 @@ GUID(Substitute(Substitute(Param("recordId"), "{", ""), "}", ""))</pre>
 *Param() function gets the record GUID parsed from the JavaScript, and GUID() formats the output as GUID, not a string. We are also checking if there are several records selected by splitting the string after ","*
 
 ## ✍️ Exercise 4: Styling 
-1. Add rounded corners for modern look (between 5-10 border radius)
-2. Set a slight box shadow 
+**Ideas:** 
+- Add rounded corners for modern look (between 5-10 border radius)
+- Set a slight box shadow 
+- Add effects that provides depth and  to your apps
 
-Add HTML blur to your page:
-1. insert HTMLtext control
-2. Edit text value to be:
 Logo for Coho Winery:
 
 ![Coho Winery Logo](image.png)
+
+
+**4b: Add HTML blur to your page - Glass Morphism effect:**
+1. Insert HTMLtext control
+2. Edit text value to be:
+
 <pre> HTML
 $" <div style='
 background: rgba(255, 255, 255, 0.2); /* Solid background */
@@ -120,6 +147,13 @@ color: white; /* Default text color for fallback */
 font-family: Poppins, sans-serif; /* Sets the font to Poppins */
 '>
 </pre>
+
+![Blur effect](image-2.png)
+
+3. Add Horizontal or vertical containers above the HTML TEXT control if you want it to be the background
+
+*💡 Change the effect and looks of the blur on https://css.glass/*
+
 
 ## Exercise 5: Working with YAML
 1. Copy the container you have built
