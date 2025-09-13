@@ -52,7 +52,7 @@ Create your first custom page as a landing zone for the users
 
 💡 *This page sets the tone for the app and gives users a clear “home base” to work from as the first thing they will see when opening the MDA*
 
-![alt text](image-3.png)
+![alt text](/Images/Lab2-CreateCustomPages/image-3.png)
 
 *Your Type should be Page*
 
@@ -120,7 +120,7 @@ GUID(Substitute(Substitute(Param("recordId"), "{", ""), "}", ""))</pre>
 
 Logo for Coho Winery:
 
-![Coho Winery Logo](image.png)
+![Coho Winery Logo](/Images/Lab2-CreateCustomPages/image.png)
 
 
 **4b: Add HTML blur to your page - Glass Morphism effect:**
@@ -148,7 +148,7 @@ font-family: Poppins, sans-serif; /* Sets the font to Poppins */
 '>
 </pre>
 
-![Blur effect](image-2.png)
+![Blur effect](/Images/Lab2-CreateCustomPages/image-2.png)
 
 3. Add Horizontal or vertical containers above the HTML TEXT control if you want it to be the background
 
