@@ -76,35 +76,47 @@ We will begin by creating the first custom **Landing Page** that will be present
 
 ## ✍️ Exercise 2: Build a Responsive Layout
 
-**The goal**: Ensure that the page works and the content looks great on all screens by understanding containers.
+Our goal is to ensure that our new **Coho Winery Landing Page** looks great, regardless of the screen size where it's being rendered, by understanding [containers](https://learn.microsoft.com/en-us/power-apps/maker/canvas-apps/controls/control-container). We will use a combination of vertical and horizontal containers to create a flexible layout that will adapt accordingly.
 
-1. Insert a vertical container as the main foundation for the layout
-2. Name it cntMainVertical
-3. Center it on the screen by setting the X & Y formulas on the container
+1. You should still be in the **Coho Winery** solution from Exercise 1. If not, navigate back to it.
+2. Open the **Coho Winery Landing Page** by selecting it from the list of components in the solution.
+3. On the canvas designer, select the **Insert** tab in the ribbon, expand **Layout** and then select **Vertical container**.
 
-<pre> Power Fx 
-X: (Parent.Width - Self.Width) / 2
-Y: (Parent.Height - Self.Height) / 2
-</pre>
+![Images/Lab2-CreateCustomPages/E2_1.png](Images/Lab2-CreateCustomPages/E2_1.png)
 
-*💡 This will center and align the main container whenever the screen size is adjusted*
+4. A new vertical container will be added to the screen. Rename it to **cntMainVertical** in the **Tree view** pane.
 
+> [!TIP]
+> You can rename any control by either double clicking it, or clicking on the elipses (...) next to the control name and selecting **Rename**.
 
-**Build the navigation bar**
-4. Inside cntMainVertical - insert a horizontal container
-5. Name it cntHeaderHorizontal and adjust the Width to:
+![Images/Lab2-CreateCustomPages/E2_2.png](Images/Lab2-CreateCustomPages/E2_2.png)
 
-<pre> Power Fx 
-Width: Parent.Width
-</pre>
+5. With the **cntMainVertical** container selected, set the following Power Fx formulas in the **Properties** dropdown to center it on the screen. The formulas will also ensure the main container remains aligned whenever the screen size is adjusted:
+- **X**: `(Parent.Width - Self.Width) / 2`
+- **Y**: `(Parent.Height - Self.Height) / 2`
 
-*💡 This ensures the width of the second container to always reflect the size of the Parent cntMainVerticals width*
+![Images/Lab2-CreateCustomPages/E2_3.png](Images/Lab2-CreateCustomPages/E2_3.png)
 
-6. In the cntHeaderHorizontal container, insert another
-4. Nest horizontal containers within the main container
-5. Create the navigation bar
+![Images/Lab2-CreateCustomPages/E2_4.png](Images/Lab2-CreateCustomPages/E2_4.png)
 
+![Images/Lab2-CreateCustomPages/E2_5.png](Images/Lab2-CreateCustomPages/E2_5.png)
 
+6. With the **cntMainVertical** container still selected, insert a new **Horizontal container** inside it by clicking the **+** icon in the container, expanding **Layout** and then selecting **Horizontal container**.
+
+![Images/Lab2-CreateCustomPages/E2_6.png](Images/Lab2-CreateCustomPages/E2_6.png)
+
+7. Rename the new horizontal container to **cntHeaderHorizontal** in the **Tree view** pane.
+
+![Images/Lab2-CreateCustomPages/E2_7.png](Images/Lab2-CreateCustomPages/E2_7.png)
+
+8. With the **cntHeaderHorizontal** container selected, set the following Power Fx formula in the **Properties** dropdown to ensure the width of the second container always reflects the size of the Parent **cntMainVertical** container's width:
+- **Width**: `Parent.Width`
+
+![Images/Lab2-CreateCustomPages/E2_8.png](Images/Lab2-CreateCustomPages/E2_8.png)
+
+9. In the cntHeaderHorizontal container, insert another
+10. Nest horizontal containers within the main container
+11. Create the navigation bar
 
 ## ✍️ Exercise 3: Fetch Record Information
 1. Add datasource (Dataverse, SharePoint etc.)
