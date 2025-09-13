@@ -61,51 +61,61 @@ We will begin by creating the first custom **Landing Page** that will be present
 
 ### On the **General** tab
     
-5. Provide a description of the custom page:
+5. Edit the name of the page to be **Coho Winery Landing Page** by clicking the edit pen and **saving**
+![Edit page name](image-16.png)
 
-*Landing page for Coho Winery Purchase Order Application*
+6. Provide a description of the custom page
 
-6. Add an image - the Coho Winery Logo 
+<pre> Landing page for Coho Winery Purchase Order Application </pre>
+
+7. Add an image - the Coho Winery Logo - download the picture and select **+ Add image** in the settings
 
 <img src="image.png" width="150" alt="alt text" />
 
-7. Set Icon Background Fill to **#f4e6d7**
+8. Set Icon Background Fill to **#f4e6d7**
 
-<img src="image-8.png" width="600" alt="Screenshot of Landing Page setup" />
+<img src="image-15.png" width="600" alt="Screenshot of Landing Page setup" />
 
-8. Scroll to verify that the **Auto save** option is set to **On**. (This will give you peace of mind)
+
+9. Scroll to verify that the **Auto save** option is set to **On**. (This will give you peace of mind)
 
 <img src="image-2.png" width="600" alt="alt text" />
 
 
+
+
 ### On the **Display** tab
 
-9. Click on the **Display** tab and verify that the **Scale to fit** option is set to **Off** (Ensures responsive layout).
-10. Optional: Enable *multiple screens* if you would like to have more than one page
+10. Click on the **Display** tab and verify that the **Scale to fit** option is set to **Off** (Ensures responsive layout).
 
-<img src="image-7.png" width="600" alt="Enable multiple screens" />
+![Settings Scale to fit off](image-22.png)
 
+11. Optional: Scroll down to enable *multiple screens* if you would like to have more than one page. Can be used for navigation purposes, admin screens or other use cases where screen contents should be separated.
 
-### On the **Updates** tab
-
-11. Optional: Enable *Modern Controls and Themes* 
-12. Click on **Close** when you are finished.
-
-On the canvas designer, click the **Save** icon in the upper right corner. In the **Save as** dialog, enter **Coho Winery Landing Page** as the name and click on **Save**.
-
-![Images/Lab2-CreateCustomPages/E1_7.png](Images/Lab2-CreateCustomPages/E1_7.png)
-
-![Images/Lab2-CreateCustomPages/E1_4.png](Images/Lab2-CreateCustomPages/E1_4.png)
+<img src="image-17.png" width="600" alt="Enable multiple screens" />
 
 
-![Images/Lab2-CreateCustomPages/E1_5.png](Images/Lab2-CreateCustomPages/E1_5.png)
+### Optional: On the **Updates** tab
 
+12. Click the **Updates** tab 
+13. Enable *Modern Controls and Themes* 
+14. Click on **Close** when you are finished.
 
-![Images/Lab2-CreateCustomPages/E1_6.png](Images/Lab2-CreateCustomPages/E1_6.png)
+![Setting on updates tab](image-18.png)
 
+15. On the canvas designer, select **Play mode** by clicking the Play icon in the upper right corner to preview the page
 
+![alt text](image-23.png)
 
-9. Once the page has saved, click on **Back** and then **Leave** to return to the solution.
+*You should be able to see that the page width and height expands according to your screen*
+
+15. On the canvas designer, click the **Publish** icon in the upper right corner
+
+![Publish button](image-21.png)
+
+![Publish page](image-20.png)
+
+9. Once the page has saved and published, click on **Back** and then **Leave** to return to the solution.
 
 ![Images/Lab2-CreateCustomPages/E1_8.png](Images/Lab2-CreateCustomPages/E1_8.png)
 
@@ -118,30 +128,27 @@ On the canvas designer, click the **Save** icon in the upper right corner. In th
 11. Keep the **Coho Winery PP Solution** solution open, as we will continue to work on it in the next exercise.
 
 
-**Exercise 1 completed✅** - You should be able to click Play and see that the page width and height expands according to your screen
+**Exercise 1 completed✅** 
+
 
 ## ✍️ Exercise 2: Build a Responsive Layout
 
 Our goal is to ensure that our new **Coho Winery Landing Page** looks great, regardless of the screen size where it's being rendered, by understanding [containers](https://learn.microsoft.com/en-us/power-apps/maker/canvas-apps/controls/control-container). We will use a combination of vertical and horizontal containers to create a flexible layout that will adapt accordingly.
->>>>>>> cfebe4df1d6e7b451c8d92e7636b6cee181d1791
 
-1. Change name of screen to *MainScreen* 
-2. Change background Fill to **f4e6d7** 
-3. Navigate to **App** -> **Formulas** 
-4. Create a Named formula for the font used in the app
+### Preparation
 1. You should still be in the **Coho Winery** solution from Exercise 1. If not, navigate back to it.
 2. Open the **Coho Winery Landing Page** by selecting it from the list of components in the solution.
-3. On the canvas designer, select the **Insert** tab in the ribbon, expand **Layout** and then select **Vertical container**.
+3. Update name of screen1 to *MainScreen* by clicking twice on **screen1** in the **Tree view** on the left side
 
-<Pre> Power Fx
-nfFont = "Inter, Open Sans";
-</pre>
+![Edit Screen name](image-25.png)
 
-![Formulas](image-9.png)
 
-5. Insert a vertical container as the main container for the layout 
-6. Name it *cntMainVertical*
-7. Center it on the screen by setting the X & Y formulas and adjust the Width and Height to dynamic values using %
+4. On the canvas designer, select the **Insert** tab in the ribbon, expand **Layout** and then select **Vertical container**.
+5. A new vertical container will be added to the screen. Rename it to **cntMainVertical** by selecting the container in the **Tree view** pane and clicking twice
+
+![alt text](image-14.png)
+
+6. Select the container **cntMainVertical** and update the **X**, **Y**, **Width** and **Height** properties to dynamic values listed below:
 
 <pre> Power Fx 
 X: (Parent.Width - Self.Width) / 2
@@ -149,21 +156,73 @@ Y: (Parent.Height - Self.Height) / 2
 Width: Parent.Width-(Parent.Width*0.05)
 Height: Parent.Height-(Parent.Height*0.05)
 </pre>
+
+![Set Y property on main container](image-24.png)
+
 ![Images/Lab2-CreateCustomPages/E2_1.png](Images/Lab2-CreateCustomPages/E2_1.png)
 
-4. A new vertical container will be added to the screen. Rename it to **cntMainVertical** in the **Tree view** pane.
+7. Insert a Horizontal container within *cntMainVertical* by clicking on *cntMainVertical*, select the **Insert** tab in the ribbon, expand **Layout** and then select **Horizontal container**. Rename it to **cntMainHeader**
+8. Insert a Vertical container within *cntMainHeader*. Rename it to *cntHeaderVertical*.
+9. Insert a Vertical container within *cntMainVertical*. Rename it to **cntMainBody** - should be below the *cntMainHeader*
 
-8. Insert a Horizontal container within *cntMainVertical* by clicking on it. Rename it to **cntMainHeader**
-9. Insert a Vertical container within *cntMainHeader* - Rename it to *cntHeaderVertical*
-9. Insert a Vertical container within *cntMainVertical* by clicking on it. Rename it to **cntMainBody** - should be below the *cntMainHeader*
 > [!TIP]
 > You can rename any control by either double clicking it, or clicking on the elipses (...) next to the control name and selecting **Rename**.
 
-💡 *This page sets the tone for the app and gives users a clear “home base” to work from as the first thing they will see when opening the MDA*
-*you can also use a template when adding a new screen*
+Your Tree view should look something like the picture below:
+
+![Tree Structure with containers](image-28.png)
+
+
+
+> [!NOTE]
+> ### CONTAINER PROPERTIES
+> The difficult part when working with responsive layouts are the different properties and making sure you have selected the correct nested container.  
+> 
+> You can always adjust the direction of the container after adding it to a screen. The other main properties you will be looking at are **X**, **Y**, **Width** and **Height**. These decide the placement, alignment and the size which makes them resize according to the user screen.
+ 
+
+![Container properties](image-30.png)
+
+
+
+### Extra: Use templates
+
+💡 You can start from a template when working with responsive layouts
+
+**✅ Prerequisites** 
+- Multiple screens in settings under the Display tab must be enabled to add several screens to your Coho Winery page
+
 ![Screen with containers from template](image-10.png)
 
+If you already have a new screen added, you could select **Templates** or **with Layout** to start with a responsive page
 
+![New screen with templates // layout](image-26.png)
+
+1. Click **New screen** on the ribbon and select a layout of your choosing
+2. Have fun 
+
+
+### Styling and preparations
+
+1. On the properties of **MainScreen** on the right side, click on the *paint bucket* for the background Fill 
+
+![alt text](image-12.png)
+
+2. Click on **Custom** and update HEX value to **f4e6d7** 
+
+![alt text](image-13.png)
+
+3. Select **App** -> **Formulas** on the right side in the **Tree View**
+4. Create a *Named formula* for the font used in the app
+
+<Pre> Power Fx
+nfFont = "Inter, Open Sans";
+</pre>
+
+![Formulas nfFont](image-27.png)
+
+> [!TIP]
+> When working with Named Formulas, remember to always end each formula with semicolon ;
 
 **Build the navigation bar**
 
