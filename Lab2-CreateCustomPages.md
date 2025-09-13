@@ -1,6 +1,6 @@
 # Lab 2 - Create Beautiful Custom Pages
 
-In this lab, you will learn how to **build Custom Pages** with a focus on **responsive design**, **Styling** and accessing **Model-Driven App record details**
+In this lab, you will learn how to **build** custom pages with a focus on **responsive design**, **styling** and accessing **Model-Driven App record details**
 
 ## Lab Overview 
 
@@ -16,7 +16,7 @@ In this lab, you will learn how to **build Custom Pages** with a focus on **resp
 
 - Completion of [Lab 1 - Create a Model-Driven Power App](Lab1-CreateModelDrivenPowerApp.md)
 
-### Scenario
+### 💻 Scenario
 
 Coho Winery are rolling out a new Purchase Order app to replace their manual Word-and-screenshot process. To improve the user experience, you have been asked to design two key pages: 
 
@@ -37,60 +37,73 @@ We will begin by creating the first custom **Landing Page** that will be present
 1. Navigate to the [Power Apps Maker portal](https://make.powerapps.com) and ensure you are in the **Developer** environment you created in Lab 0.
 2. Select **Solutions** from the left navigation pane.
 
-![Images/Lab2-CreateCustomPages/E1_1.png](Images/Lab2-CreateCustomPages/E1_1.png)
+
+<img src="Images/Lab2-CreateCustomPages/E1_1.png" width="500" alt="Solution selection in Maker Portal" />
+
 
 3. Select the **Coho Winery** solution you created in Lab 0.
 
-![Images/Lab2-CreateCustomPages/E1_2.png](Images/Lab2-CreateCustomPages/E1_2.png)
 
-1. In the Maker studio - Select the **Coho Winery** solution you created in Lab 0.
-2. Click **+ New** -> **App** -> **Page**
-3. Name it **Coho Winery Landing Page** and wait for the page to load
-4. Configure page settings - Click the three dots OR Settings directly on the navigtion bar: 
+<img src="Images/Lab2-CreateCustomPages/E1_2.png" width="800" alt="Coho Winery solution selection" />
 
-![](image-8.png){width=200px}
 
-**General**
+3. In the solution, select **New** -> **App** -> **Page** from the command bar.
+
+
+<img src="Images/Lab2-CreateCustomPages/E1_3.png" width="600" alt="Landing page settings" />
+
+
+4. The canvas designer page will load. Click on **Settings** in the ribbon (sometimes settings will be located behind the three dots).
+
+<img src="image-1.png" width="600" alt="alt text" />
+
+
+
+### On the **General** tab
     
-- Provide a description about the page :
-    *Landing page for Coho Winery Purchase Order Application*
+5. Provide a description of the custom page:
 
-- Add image - the Coho Winery Logo 
+*Landing page for Coho Winery Purchase Order Application*
 
-- Set Icon Background Fill to **#f4e6d7**
+6. Add an image - the Coho Winery Logo 
 
-- *Automatic save every 2 minutes* is recommended to be **On** (This can potentially save you lots of $$$ and peace of mind)
+<img src="image.png" width="150" alt="alt text" />
 
-Logo for Coho Winery:
+7. Set Icon Background Fill to **#f4e6d7**
 
-![Coho Winery Logo](image.png)
+<img src="image-8.png" width="600" alt="Screenshot of Landing Page setup" />
 
-**Display**
-    - *Scale to Fit* should be **Off** (Ensures responsive layouts)
-    - Optional: Enable *multiple screens* if you would like to have more than one page
-4. In the solution, select **New** -> **App** -> **Page** from the command bar.
+8. Scroll to verify that the **Auto save** option is set to **On**. (This will give you peace of mind)
 
-![Enable multiple screens](image-7.png)
-![Images/Lab2-CreateCustomPages/E1_3.png](Images/Lab2-CreateCustomPages/E1_3.png)
+<img src="image-2.png" width="600" alt="alt text" />
 
-**Updates**
-- Optional: Enable *Modern Controls and Themes* 
-5. The canvas designer page will load. Click on **Settings** in the ribbon.
 
-**Exercise 1 completed✅** - You should be able to click Play and see that the page width and height expands according to your screen
+### On the **Display** tab
+
+9. Click on the **Display** tab and verify that the **Scale to fit** option is set to **Off** (Ensures responsive layout).
+10. Optional: Enable *multiple screens* if you would like to have more than one page
+
+<img src="image-7.png" width="600" alt="Enable multiple screens" />
+
+
+### On the **Updates** tab
+
+11. Optional: Enable *Modern Controls and Themes* 
+12. Click on **Close** when you are finished.
+
+On the canvas designer, click the **Save** icon in the upper right corner. In the **Save as** dialog, enter **Coho Winery Landing Page** as the name and click on **Save**.
+
+![Images/Lab2-CreateCustomPages/E1_7.png](Images/Lab2-CreateCustomPages/E1_7.png)
+
 ![Images/Lab2-CreateCustomPages/E1_4.png](Images/Lab2-CreateCustomPages/E1_4.png)
 
-6. On the **General** tab, verify that the **Auto save** option is set to **On**.
 
 ![Images/Lab2-CreateCustomPages/E1_5.png](Images/Lab2-CreateCustomPages/E1_5.png)
 
-7. Click on the **Display** tab and verify that the **Scale to fit** option is set to **Off**. Click on **Close** when you are finished.
 
 ![Images/Lab2-CreateCustomPages/E1_6.png](Images/Lab2-CreateCustomPages/E1_6.png)
 
-8. On the canvas designer, click the **Save** icon in the upper right corner. In the **Save as** dialog, enter **Coho Winery Landing Page** as the name and click on **Save**.
 
-![Images/Lab2-CreateCustomPages/E1_7.png](Images/Lab2-CreateCustomPages/E1_7.png)
 
 9. Once the page has saved, click on **Back** and then **Leave** to return to the solution.
 
@@ -103,6 +116,9 @@ Logo for Coho Winery:
 ![Images/Lab2-CreateCustomPages/E1_10.png](Images/Lab2-CreateCustomPages/E1_10.png)
 
 11. Keep the **Coho Winery PP Solution** solution open, as we will continue to work on it in the next exercise.
+
+
+**Exercise 1 completed✅** - You should be able to click Play and see that the page width and height expands according to your screen
 
 ## ✍️ Exercise 2: Build a Responsive Layout
 
