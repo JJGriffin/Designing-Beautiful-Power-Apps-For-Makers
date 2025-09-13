@@ -18,34 +18,61 @@ In this lab, you will learn how to **build Custom Pages** with a focus on **resp
 
 ### Scenario
 
-Coho Winery are rolling out a new Purchase Order app to replace their manual Word-and-screenshot process. To improve the user experience, you have been asked to design two key pages:
+Coho Winery are rolling out a new Purchase Order app to replace their manual Word-and-screenshot process. To improve the user experience, you have been asked to design two key pages: 
 
 - **Landing Page** – a modern entry point where users can quickly navigate to key links, view PO data from the ERP system, and access important actions.
 - **PO Document Side Pane** – a page that displays stored PDF versions of PO requests, giving finance and auditors instant access without leaving the app.
 
-Together, these pages will provide both an attractive front door to the application and a practical way to view and manage PO request documents.
+Together, these pages will provide both an attractive front door to the application and a practical way to view and manage PO request documents. 
 
 ### ⌛ Length
 
-This lab will take approximately 60–75 minutes to complete.
+This lab will take approximately 60–75 minutes to complete. 
 
-## ✍️ Exercise 1: Create a Landing Page and Configure settings
+## ✍️ Exercise 1: Create a Landing Page and Configure Settings
 
-Create your first custom page as a landing zone for the users
+We will begin by creating the first custom **Landing Page** that will be presented to the users. This page will set the tone for the app and gives users a clear "home base" to work from as the first thing they will see when opening the **Coho Winery Purchase Order** app.
 
-1. The maker studio - Select the **Coho Winery** solution you created in Lab 0.
-2. Click **+ New** -> **App** -> **Page**
-2. Name it **Coho Winery Landing Page**
-3. Configure page: 
-    - *Scale to Fit* should be **Off** (Ensures responsive layouts)
-    - *Automatic save every 2 minutes* is recommended to be **On**
+1. Navigate to the [Power Apps Maker portal](https://make.powerapps.com) and ensure you are in the **Developer** environment you created in Lab 0.
+2. Select **Solutions** from the left navigation pane.
 
-💡 *This page sets the tone for the app and gives users a clear “home base” to work from as the first thing they will see when opening the MDA*
+![Images/Lab2-CreateCustomPages/E1_1.png](Images/Lab2-CreateCustomPages/E1_1.png)
 
-![alt text](/Images/Lab2-CreateCustomPages/image-3.png)
+3. Select the **Coho Winery** solution you created in Lab 0.
 
-*Your Type should be Page*
+![Images/Lab2-CreateCustomPages/E1_2.png](Images/Lab2-CreateCustomPages/E1_2.png)
 
+4. In the solution, select **New** -> **App** -> **Page** from the command bar.
+
+![Images/Lab2-CreateCustomPages/E1_3.png](Images/Lab2-CreateCustomPages/E1_3.png)
+
+5. The canvas designer page will load. Click on **Settings** in the ribbon.
+
+![Images/Lab2-CreateCustomPages/E1_4.png](Images/Lab2-CreateCustomPages/E1_4.png)
+
+6. On the **General** tab, verify that the **Auto save** option is set to **On**.
+
+![Images/Lab2-CreateCustomPages/E1_5.png](Images/Lab2-CreateCustomPages/E1_5.png)
+
+7. Click on the **Display** tab and verify that the **Scale to fit** option is set to **Off**. Click on **Close** when you are finished.
+
+![Images/Lab2-CreateCustomPages/E1_6.png](Images/Lab2-CreateCustomPages/E1_6.png)
+
+8. On the canvas designer, click the **Save** icon in the upper right corner. In the **Save as** dialog, enter **Coho Winery Landing Page** as the name and click on **Save**.
+
+![Images/Lab2-CreateCustomPages/E1_7.png](Images/Lab2-CreateCustomPages/E1_7.png)
+
+9. Once the page has saved, click on **Back** and then **Leave** to return to the solution.
+
+![Images/Lab2-CreateCustomPages/E1_8.png](Images/Lab2-CreateCustomPages/E1_8.png)
+
+![Images/Lab2-CreateCustomPages/E1_9.png](Images/Lab2-CreateCustomPages/E1_9.png)
+
+10. Verify that the **Coho Winery Landing Page** is listed in the solution. The new component should be of type **Page**.
+
+![Images/Lab2-CreateCustomPages/E1_10.png](Images/Lab2-CreateCustomPages/E1_10.png)
+
+11. Keep the **Coho Winery PP Solution** solution open, as we will continue to work on it in the next exercise.
 
 ## ✍️ Exercise 2: Build a Responsive Layout
 

@@ -60,7 +60,7 @@ This lab will take approximately 60 minutes to complete.
 
 ![Images/Lab1-CreateModelDrivenPowerApp/E1_2.png](Images/Lab1-CreateModelDrivenPowerApp/E1_2.png)
 
-4. In the solution, select **New** > **Table** -> **Table (advanced properties)** from the command bar.
+4. In the solution, select **New** -> **Table** -> **Table (advanced properties)** from the command bar.
 
 ![Images/Lab1-CreateModelDrivenPowerApp/E1_3.png](Images/Lab1-CreateModelDrivenPowerApp/E1_3.png)
 
@@ -124,7 +124,7 @@ This lab will take approximately 60 minutes to complete.
 13. In the **Add column** pane, enter the following details and then press **Save**. You may need to select **Advanced options** to see all fields:
     - **Display name**: `Requested By`
     - **Description**: `The user who requested the purchase order.`
-    - **Data type**: Lookup --> Lookup
+    - **Data type**: Lookup -> Lookup
     - **Column Requirement**: Business required
     - **Related table**: User
     - **Schema name**: `requestedby`
@@ -288,7 +288,7 @@ We want to make it easy for users of our app to see a list of all related purcha
 
 Our model-driven app will be used to display and edit purchase order information, including related customer information. We will also use it to provide a landing page for users to navigate to internal and external links, and display current data from the ERP system when we create our custom pages in the next lab.
 
-1. In the **Coho Winery PP Solution** solution, select **+ New** > **App** > **Model-driven app** from the command bar.
+1. In the **Coho Winery PP Solution** solution, select **+ New** -> **App** -> **Model-driven app** from the command bar.
 
 ![Images/Lab1-CreateModelDrivenPowerApp/E3_1.png](Images/Lab1-CreateModelDrivenPowerApp/E3_1.png)
 
@@ -455,7 +455,7 @@ Once we have created the custom connector, we will then perform a test to ensure
 
 5. Navigate back to the [Power Apps Maker portal](https://make.powerapps.com) and ensure you are in the **Developer** environment you created in Lab 0. Navigate to the **Coho Winery PP Solution** solution.
 
-6. In the solution, select **+ New** > **Automation** > **Custom connector**.
+6. In the solution, select **+ New** -> **Automation** -> **Custom connector**.
 
 ![Images/Lab1-CreateModelDrivenPowerApp/E5_6.png](Images/Lab1-CreateModelDrivenPowerApp/E5_6.png)
 
@@ -582,7 +582,7 @@ Once we have created the custom connector, we will then perform a test to ensure
 
 Now that our custom connector is setup, let's configure a cloud flow that triggers whenever a new Purchase Order record is created. The cloud flow will POST the record details to the ERP and then save back the **PurchaseOrderUID** field to the Purchase Order **ERP ID** column.
 
-1. You should still be in the **Coho Winery PP Solution** from the previous exercise. In this solution, select **+ New** > **Automation** > **Cloud flow** > **Automated**.
+1. You should still be in the **Coho Winery PP Solution** from the previous exercise. In this solution, select **+ New** -> **Automation** -> **Cloud flow** -> **Automated**.
 
 ![Images/Lab1-CreateModelDrivenPowerApp/E6_1.png](Images/Lab1-CreateModelDrivenPowerApp/E6_1.png)
 
@@ -711,7 +711,7 @@ We will now create a second cloud flow that will generate a Word document from a
 > [!NOTE]
 > The workflow to handle the approval process will be done in the next lab, so for now, we will just simulate the approval by manually changing some fields on the Purchase Order record.
 
-1. You should still be in the **Coho Winery PP Solution** from the previous exercise. In this solution, select **+ New** > **Automation** > **Cloud flow** > **Automated**.
+1. You should still be in the **Coho Winery PP Solution** from the previous exercise. In this solution, select **+ New** -> **Automation** -> **Cloud flow** -> **Automated**.
 
 ![Images/Lab1-CreateModelDrivenPowerApp/E7_1.png](Images/Lab1-CreateModelDrivenPowerApp/E7_1.png)
 
