@@ -6,7 +6,7 @@ In this lab, you will learn how to **build** custom pages with a focus on **resp
 
 ### 🎯 Goal
 
-- Build a Custom Page to use as a full page, side pane, and dialog inside a Model-Driven App.
+- Build a Custom Page to use as a full page and a side pane within a Model-Driven App.
 - Connect to your data sources and fetch record details with the Param() function in the Custom Page.
 - Master responsive layouts so your page looks good everywhere.
 - Add modern styling elements like shadows, rounded corners, blur effects, and SVGs to make apps pop
@@ -144,6 +144,10 @@ Our goal is to ensure that our new **Coho Winery Landing Page** looks great, reg
 
 
 4. On the canvas designer, select the **Insert** tab in the ribbon, expand **Layout** and then select **Vertical container**.
+
+
+![Images/Lab2-CreateCustomPages/E2_1.png](Images/Lab2-CreateCustomPages/E2_1.png)
+
 5. A new vertical container will be added to the screen. Rename it to **cntMainVertical** by selecting the container in the **Tree view** pane and clicking twice
 
 ![alt text](image-14.png)
@@ -159,7 +163,7 @@ Height: Parent.Height-(Parent.Height*0.05)
 
 ![Set Y property on main container](image-24.png)
 
-![Images/Lab2-CreateCustomPages/E2_1.png](Images/Lab2-CreateCustomPages/E2_1.png)
+![Properties of the container](image-31.png)
 
 7. Insert a Horizontal container within *cntMainVertical* by clicking on *cntMainVertical*, select the **Insert** tab in the ribbon, expand **Layout** and then select **Horizontal container**. Rename it to **cntMainHeader**
 8. Insert a Vertical container within *cntMainHeader*. Rename it to *cntHeaderVertical*.
@@ -174,11 +178,11 @@ Your Tree view should look something like the picture below:
 
 
 
-> [!NOTE]
-> ### CONTAINER PROPERTIES
+> ### 💡 CONTAINER PROPERTIES
 > The difficult part when working with responsive layouts are the different properties and making sure you have selected the correct nested container.  
 > 
 > You can always adjust the direction of the container after adding it to a screen. The other main properties you will be looking at are **X**, **Y**, **Width** and **Height**. These decide the placement, alignment and the size which makes them resize according to the user screen.
+>
  
 
 ![Container properties](image-30.png)
@@ -202,21 +206,16 @@ If you already have a new screen added, you could select **Templates** or **with
 2. Have fun 
 
 
-### Styling and preparations
 
-1. On the properties of **MainScreen** on the right side, click on the *paint bucket* for the background Fill 
+### Build the header
+We are now adding text and a welcome message to the user, as well as adding the Coho Winery Logo to the page
 
-![alt text](image-12.png)
-
-2. Click on **Custom** and update HEX value to **f4e6d7** 
-
-![alt text](image-13.png)
-
-3. Select **App** -> **Formulas** on the right side in the **Tree View**
-4. Create a *Named formula* for the font used in the app
+1. Select **App** -> **Formulas** on the right side in the **Tree View**
+2. Create *Named formulas* capturing the font used for the title and the background color by setting this formula: 
 
 <Pre> Power Fx
 nfFont = "Inter, Open Sans";
+nfBackgroundColor = "#f4e6d7";
 </pre>
 
 ![Formulas nfFont](image-27.png)
@@ -224,10 +223,507 @@ nfFont = "Inter, Open Sans";
 > [!TIP]
 > When working with Named Formulas, remember to always end each formula with semicolon ;
 
-**Build the navigation bar**
+3. Select the **cntHeaderVertical** on level 3 of the **cntMainVertical**
+4. Adjust the **Height** property of **cntHeaderVertical** to **100**
 
-4. Inside cntMainVertical - insert a horizontal container
-5. Name it cntHeaderHorizontal and adjust the Width to:
+   - Ensure that the flexible height is **Off**
+
+    ![Properties of the container](image-35.png)
+
+5. Insert an HTMLtext control by selecting **+ Insert**, searching for **html** and clicking on **HTML text**
+
+![HTML text for header](image-32.png)
+
+6. Rename the htmlText to **htmlHeaderTitle** 
+7. Select **Font** on the properties of the **htmlHeaderTitle** and set the formula to the Named Formula from step 2 - **nfFont**
+
+![Set font value of html](image-33.png)
+
+8. Set the **HTML text value** located on the properties on the right to:
+
+``` HTML
+$"<div style='font-size: 28px; font-family: Inter, Open Sans; font-weight: bold; color: black;'> 
+  <!-- Welcome text stays black -->
+  Welcome 
+  
+  <a style='font-size: 28px; font-family: Inter, Open Sans; font-weight: bold; 
+            /* Grape gradient for name */
+            background: linear-gradient(90deg, 
+              #7f1d1d,  /* Deep red (Cabernet) */
+              #9b1c31,  /* Wine red */
+              #a21caf  /* Dark magenta */
+            ); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;'> 
+    {  First(Split(User().FullName," ")).Value }! 
+  </a> 
+</div>"
+
+```
+
+![HTML text value](image-34.png)
+
+9. Select the **cntMainHeader** in the **Tree view**, click on **+ Insert** on the ribbon and serach for **image**
+10. Click on the **Image** control under **Media**
+
+![alt text](image-36.png)
+
+11. You should now be able to see the image control next to the HTML text control, on the right side of the container.
+12. Select the image control and set the Height property to: 
+
+<pre> Power Fx
+Height: Parent.Height
+</pre>
+
+![alt text](image-37.png)
+
+This ensures the image always is resized accourding to the parent container height. 
+
+13. Add logo as media if it's not already by selecting the image control, clicking on the **Image** dropdown and **Upload** - Use the image downloaded from earlier.
+
+![Logo for Coho as the image](image-38.png)
+
+14. Add galleries with Purchase Order data. Select the **cntMainBody** and paste the YAML:
+
+<pre> Canvas YAML
+- Container2:
+    Control: GroupContainer@1.3.0
+    Variant: AutoLayout
+    Properties:
+      LayoutDirection: =LayoutDirection.Horizontal
+    Children:
+      - Container1:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            LayoutDirection: =LayoutDirection.Vertical
+          Children:
+            - Container3_1:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  DropShadow: =DropShadow.None
+                  FillPortions: =0
+                  Height: =50
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =3
+                  LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                  LayoutMinHeight: =30
+                  PaddingLeft: =10
+                  PaddingRight: =10
+                Children:
+                  - Label2_5:
+                      Control: FluentV8/Label@1.8.6
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Stretch
+                        Alignment: =Align.Justify
+                        AutoHeight: =true
+                        Color: =RGBA(92, 37, 4, 1)
+                        FillPortions: =1
+                        FontSize: =16
+                        FontWeight: =FontWeight.Bold
+                        LayoutMinWidth: =100
+                        Text: ="Purchase Orders"
+                        TextRole: ='Label.TextRole'.Heading2
+                        Wrap: =false
+                  - Icon1_1:
+                      Control: Classic/Icon@2.5.0
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Stretch
+                        BorderColor: =RGBA(0, 0, 0, 0)
+                        Color: =RGBA(92, 37, 4, 1)
+                        DisabledColor: =RGBA(220, 220, 220, 1)
+                        DisabledFill: =RGBA(0, 0, 0, 0)
+                        Height: =32
+                        HoverBorderColor: =RGBA(0, 0, 0, 0)
+                        HoverColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+                        HoverFill: =RGBA(0, 0, 0, 0)
+                        Icon: =Icon.AddDocument
+                        LayoutMinHeight: =Parent.Height
+                        OnSelect: =ClearCollect(colPurchaseOrders,nfcolPurchaseOrders)
+                        PaddingBottom: =15
+                        PaddingLeft: =15
+                        PaddingRight: =15
+                        PaddingTop: =15
+                        PressedBorderColor: =RGBA(0, 0, 0, 0)
+                        PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+                        PressedFill: =RGBA(0, 0, 0, 0)
+                        Width: =50
+            - Rectangle4:
+                Control: Rectangle@2.3.0
+                Properties:
+                  AlignInContainer: =AlignInContainer.Stretch
+                  BorderColor: =RGBA(166, 166, 166, 1)
+                  BorderStyle: =BorderStyle.None
+                  DisabledFill: =RGBA(166, 166, 166, 1)
+                  Fill: =RGBA(245, 245, 245, 1)
+                  FocusedBorderColor: =RGBA(0, 120, 212, 1)
+                  Height: =1
+                  HoverFill: =RGBA(0, 120, 212, 1)
+                  PressedFill: =RGBA(0, 120, 212, 1)
+            - Gallery1:
+                Control: Gallery@2.15.0
+                Variant: BrowseLayout_Vertical_TwoTextVariant_pcfCore
+                Properties:
+                  BorderColor: =RGBA(166, 166, 166, 1)
+                  FocusedBorderColor: =RGBA(0, 120, 212, 1)
+                  FocusedBorderThickness: =2
+                  Items: =colPurchaseOrders
+                  LayoutMinWidth: =Parent.Width
+                  OnSelect: =Navigate('Sessions (Views)'.Sessions)
+                  TemplateSize: =55
+                  Transition: =Transition.Pop
+                Children:
+                  - Container7:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        DropShadow: =DropShadow.None
+                        Height: =48
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                        Width: =Parent.Width
+                      Children:
+                        - Container6:
+                            Control: GroupContainer@1.3.0
+                            Variant: AutoLayout
+                            Properties:
+                              DropShadow: =DropShadow.None
+                              Height: =48
+                              LayoutDirection: =LayoutDirection.Vertical
+                              LayoutMinHeight: =Parent.Height
+                              PaddingLeft: =15
+                              PaddingRight: =10
+                              Width: =422
+                            Children:
+                              - Title3_1:
+                                  Control: FluentV8/Label@1.8.6
+                                  Properties:
+                                    AutoHeight: =true
+                                    Color: =RGBA(0, 0, 0, 1)
+                                    FillPortions: =1
+                                    FontWeight: =FontWeight.Semibold
+                                    Height: =24
+                                    LayoutMinHeight: =Parent.Height/2
+                                    OnSelect: =//Navigate('Sessions (Views)'.Sessions)
+                                    TabIndex: =-1
+                                    Text: =ThisItem.poNumber
+                                    VerticalAlignment: =VerticalAlign.Middle
+                                    Width: =344
+                                    Wrap: =false
+                                    X: =22
+                                    Y: =
+                              - Subtitle3_1:
+                                  Control: FluentV8/Label@1.8.6
+                                  Properties:
+                                    FillPortions: =1
+                                    FontSize: =9
+                                    FontWeight: =FontWeight.Normal
+                                    Height: =28
+                                    LayoutMinHeight: =Parent.Height/2
+                                    OnSelect: =//Navigate('Sessions (Views)'.Sessions)
+                                    TabIndex: =-1
+                                    Text: =ThisItem.vendorName & " || " & ThisItem.vendorId
+                                    VerticalAlignment: =VerticalAlign.Top
+                                    Width: =355
+                                    X: =5
+                                    Y: =20
+                        - Icon1_2:
+                            Control: Classic/Icon@2.5.0
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Stretch
+                              BorderColor: =RGBA(0, 0, 0, 0)
+                              Color: =RGBA(92, 37, 4, 1)
+                              DisabledColor: =RGBA(220, 220, 220, 1)
+                              DisabledFill: =RGBA(0, 0, 0, 0)
+                              Height: =32
+                              HoverBorderColor: =RGBA(0, 0, 0, 0)
+                              HoverColor: =ColorFade(Self.Color, -30%)
+                              HoverFill: =RGBA(0, 0, 0, 0)
+                              Icon: =Icon.ThumbsDown
+                              LayoutMinHeight: =Parent.Height
+                              OnSelect: =//Remove('Attendee sessions',ThisItem)
+                              PaddingBottom: =15
+                              PaddingLeft: =15
+                              PaddingRight: =15
+                              PaddingTop: =15
+                              PressedBorderColor: =RGBA(0, 0, 0, 0)
+                              PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+                              PressedFill: =RGBA(0, 0, 0, 0)
+                              Width: =50
+      - Container1_1:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            LayoutDirection: =LayoutDirection.Vertical
+          Children:
+            - Container3:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  DropShadow: =DropShadow.None
+                  FillPortions: =0
+                  Height: =50
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =3
+                  LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                  LayoutMinHeight: =30
+                  PaddingLeft: =10
+                  PaddingRight: =10
+                Children:
+                  - Label2_3:
+                      Control: FluentV8/Label@1.8.6
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Stretch
+                        Alignment: =Align.Justify
+                        AutoHeight: =true
+                        Color: =RGBA(92, 37, 4, 1)
+                        FillPortions: =1
+                        FontSize: =16
+                        FontWeight: =FontWeight.Bold
+                        LayoutMinWidth: =100
+                        Text: ="My orders"
+                        TextRole: ='Label.TextRole'.Heading2
+                        Wrap: =false
+                  - Icon1:
+                      Control: Classic/Icon@2.5.0
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Stretch
+                        BorderColor: =RGBA(0, 0, 0, 0)
+                        Color: =RGBA(0, 60, 106, 1)
+                        DisabledColor: =RGBA(220, 220, 220, 1)
+                        DisabledFill: =RGBA(0, 0, 0, 0)
+                        Height: =32
+                        HoverBorderColor: =RGBA(0, 0, 0, 0)
+                        HoverColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+                        HoverFill: =RGBA(0, 0, 0, 0)
+                        Icon: =Icon.Add
+                        LayoutMinHeight: =Parent.Height
+                        OnSelect: =//Navigate(Defaults('Session Feedbacks'))
+                        PaddingBottom: =15
+                        PaddingLeft: =15
+                        PaddingRight: =15
+                        PaddingTop: =15
+                        PressedBorderColor: =RGBA(0, 0, 0, 0)
+                        PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+                        PressedFill: =RGBA(0, 0, 0, 0)
+                        Width: =50
+            - Rectangle4_1:
+                Control: Rectangle@2.3.0
+                Properties:
+                  AlignInContainer: =AlignInContainer.Stretch
+                  BorderColor: =RGBA(166, 166, 166, 1)
+                  BorderStyle: =BorderStyle.None
+                  DisabledFill: =RGBA(166, 166, 166, 1)
+                  Fill: =RGBA(245, 245, 245, 1)
+                  FocusedBorderColor: =RGBA(0, 120, 212, 1)
+                  Height: =1
+                  HoverFill: =RGBA(0, 120, 212, 1)
+                  PressedFill: =RGBA(0, 120, 212, 1)
+            - Gallery1_2:
+                Control: Gallery@2.15.0
+                Variant: BrowseLayout_Vertical_TwoTextVariant_pcfCore
+                Properties:
+                  BorderColor: =RGBA(166, 166, 166, 1)
+                  FocusedBorderColor: =RGBA(0, 120, 212, 1)
+                  FocusedBorderThickness: =2
+                  Items: |+
+                    =colPurchaseOrders
+                  LayoutMinWidth: =Parent.Width
+                  OnSelect: |-
+                    =Navigate(
+                        Gallery1_2.Selected,
+                        {Page: 'Session Feedbacks (Forms)'.Information}
+                    )
+                  Transition: =Transition.Pop
+                Children:
+                  - Container5:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        DropShadow: =DropShadow.None
+                        Height: =48
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutGap: =2
+                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                        PaddingLeft: =15
+                        PaddingRight: =10
+                        Width: =Parent.Width
+                      Children:
+                        - Title2_4:
+                            Control: FluentV8/Label@1.8.6
+                            Properties:
+                              Color: =RGBA(0, 0, 0, 1)
+                              FontWeight: =FontWeight.Semibold
+                              Height: =37
+                              OnSelect: |-
+                                =/*Navigate(
+                                    Gallery1_2.Selected,
+                                    {Page: 'Session Feedbacks (Forms)'.Information}
+                                )*/
+                              TabIndex: =-1
+                              Text: =ThisItem.poNumber
+                              Tooltip: =//ThisItem.'Feedback Text'
+                              VerticalAlignment: =VerticalAlign.Middle
+                              Width: =257
+                              Wrap: =false
+                              X: =15
+                              Y: =9
+      - Container1_2:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            LayoutDirection: =LayoutDirection.Vertical
+          Children:
+            - Label2_4:
+                Control: FluentV8/Label@1.8.6
+                Properties:
+                  AlignInContainer: =AlignInContainer.Stretch
+                  Alignment: =Align.Left
+                  Color: =RGBA(92, 37, 4, 1)
+                  FontSize: =16
+                  FontWeight: =FontWeight.Bold
+                  Height: =50
+                  PaddingStart: =8
+                  Text: ="Purchase Orders Due"
+                  TextRole: ='Label.TextRole'.Heading2
+            - Rectangle4_2:
+                Control: Rectangle@2.3.0
+                Properties:
+                  AlignInContainer: =AlignInContainer.Stretch
+                  BorderColor: =RGBA(166, 166, 166, 1)
+                  BorderStyle: =BorderStyle.None
+                  DisabledFill: =RGBA(166, 166, 166, 1)
+                  Fill: =RGBA(245, 245, 245, 1)
+                  FocusedBorderColor: =RGBA(0, 120, 212, 1)
+                  Height: =1
+                  HoverFill: =RGBA(0, 120, 212, 1)
+                  PressedFill: =RGBA(0, 120, 212, 1)
+            - Gallery1_1:
+                Control: Gallery@2.15.0
+                Variant: BrowseLayout_Vertical_TwoTextVariant_pcfCore
+                Properties:
+                  BorderColor: =RGBA(166, 166, 166, 1)
+                  FocusedBorderColor: =RGBA(0, 120, 212, 1)
+                  FocusedBorderThickness: =2
+                  Items: =colPurchaseOrders
+                  LayoutMinWidth: =Parent.Width
+                  OnSelect: =Navigate(LookUp(Sessions,Sessions=ThisItem.'Session title'.Sessions))
+                  Transition: =Transition.Pop
+                Children:
+                  - Container4:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        DropShadow: =DropShadow.None
+                        Height: =48
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                        LayoutWrap: =true
+                        PaddingLeft: =15
+                        PaddingRight: =10
+                        Width: =Parent.Width
+                      Children:
+                        - Title2_2:
+                            Control: FluentV8/Label@1.8.6
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Stretch
+                              Color: =If(Now()>ThisItem.LastModified,Color.DarkGray,Color.Black)
+                              FillPortions: =1
+                              FontWeight: =FontWeight.Semibold
+                              Height: =48
+                              LayoutMinWidth: =200
+                              OnSelect: |-
+                                =/*Navigate(
+                                    LookUp(
+                                        Sessions,
+                                        Sessions = ThisItem.'Session title'.Sessions
+                                    )
+                                )*/
+                              TabIndex: =-1
+                              Text: =ThisItem.poNumber
+                              VerticalAlignment: =VerticalAlign.Middle
+                              Width: =306
+                              X: =67
+                        - Subtitle2_1:
+                            Control: FluentV8/Label@1.8.6
+                            Properties:
+                              Color: =//If(Now()>ThisItem.Time,Color.DarkGray,Color.Black)
+                              FillPortions: =1
+                              FontSize: =10
+                              FontWeight: =FontWeight.Bold
+                              Height: =48
+                              OnSelect: =//Navigate(LookUp(Sessions,Sessions=ThisItem.'Session title'.Sessions))
+                              TabIndex: =-1
+                              Text: =Text(ThisItem.LastModified, "DD.MM.YYYY","en-GB")
+                              VerticalAlignment: =VerticalAlign.Middle
+                              Width: =46
+                              X: =16
+                        - Icon1_3:
+                            Control: Classic/Icon@2.5.0
+                            Properties:
+                              BorderColor: =RGBA(0, 0, 0, 0)
+                              Color: =RGBA(0, 60, 106, 1)
+                              DisabledColor: =RGBA(220, 220, 220, 1)
+                              DisabledFill: =RGBA(0, 0, 0, 0)
+                              Height: =48
+                              HoverBorderColor: =RGBA(0, 0, 0, 0)
+                              HoverColor: =ColorFade(Self.Color, -30%)
+                              HoverFill: =RGBA(0, 0, 0, 0)
+                              Icon: =Icon.Heart
+                              OnSelect: =//Patch('Attendee sessions',Defaults('Attendee sessions'),{Session:ThisItem.'Session title'})
+                              PaddingBottom: =15
+                              PaddingLeft: =15
+                              PaddingRight: =15
+                              PaddingTop: =15
+                              PressedBorderColor: =RGBA(0, 0, 0, 0)
+                              PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+                              PressedFill: =RGBA(0, 0, 0, 0)
+                              Visible: "=//IsBlank(LookUp(Gallery1.AllItems,Session.'Session title'=ThisItem.'Session title'.'Session title'))\r\n// !(Now()>ThisItem.Time) Or "
+                              Width: =48
+                              X: =369
+                        - Title2_3:
+                            Control: FluentV8/Label@1.8.6
+                            Properties:
+                              Color: =Color.DarkMagenta
+                              FillPortions: =1
+                              FontWeight: =FontWeight.Semibold
+                              Height: =48
+                              LayoutMinWidth: =20
+                              OnSelect: =
+                              TabIndex: =-1
+                              Text: ="Ongoing"
+                              VerticalAlignment: =VerticalAlign.Middle
+                              Visible: =//Now()>=ThisItem.Time && Now()<=ThisItem.Time
+                              Width: =306
+                              X: =67
+                        - Icon1_4:
+                            Control: Classic/Icon@2.5.0
+                            Properties:
+                              BorderColor: =RGBA(0, 0, 0, 0)
+                              Color: =RGBA(109, 49, 162, 1)
+                              DisabledColor: =RGBA(220, 220, 220, 1)
+                              DisabledFill: =RGBA(0, 0, 0, 0)
+                              Height: =48
+                              HoverBorderColor: =RGBA(0, 0, 0, 0)
+                              HoverColor: =ColorFade(Self.Color, -30%)
+                              HoverFill: =RGBA(0, 0, 0, 0)
+                              Icon: =Icon.Draw
+                              OnSelect: =//Navigate(Patch(Defaults('Session Feedbacks'),{Session:ThisItem.'Session title'}))
+                              PaddingBottom: =15
+                              PaddingLeft: =15
+                              PaddingRight: =15
+                              PaddingTop: =15
+                              PressedBorderColor: =RGBA(0, 0, 0, 0)
+                              PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+                              PressedFill: =RGBA(0, 0, 0, 0)
+                              Visible: =//IsBlank(LookUp(Gallery1_2.AllItems,Session.'Session title'=ThisItem.'Session title'.'Session title'))
+                              Width: =48
+                              X: =369
+</pre>
+
+// 5. Name it cntHeaderHorizontal and adjust the Width to:
 ![Images/Lab2-CreateCustomPages/E2_2.png](Images/Lab2-CreateCustomPages/E2_2.png)
 
 5. With the **cntMainVertical** container selected, set the following Power Fx formulas in the **Properties** dropdown to center it on the screen. The formulas will also ensure the main container remains aligned whenever the screen size is adjusted:
@@ -281,6 +777,17 @@ GUID(Substitute(Substitute(Param("recordId"), "{", ""), "}", ""))</pre>
 *Param() function gets the record GUID parsed from the JavaScript, and GUID() formats the output as GUID, not a string. We are also checking if there are several records selected by splitting the string after ","*
 
 ## ✍️ Exercise 4: Styling 
+
+
+1. On the properties of **MainScreen** on the right side, click on the *paint bucket* for the background Fill 
+
+![alt text](image-12.png)
+
+2. Click on **Custom** and update HEX value to **f4e6d7** 
+
+![alt text](image-13.png)
+
+
 **Ideas:** 
 - Add rounded corners to controls, containers and visuals for a modern look (between 5-10 border radius)
 - Set a light drop shadow 
@@ -289,7 +796,6 @@ GUID(Substitute(Substitute(Param("recordId"), "{", ""), "}", ""))</pre>
 
 
 **4a: Add HTML background:**
-![Coho Winery Logo](/Images/Lab2-CreateCustomPages/image.png)
 
 1. Insert HTMLtext control and right click to Reorder ->  **Send to Back**
 
