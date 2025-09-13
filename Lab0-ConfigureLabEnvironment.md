@@ -24,7 +24,7 @@ Coho Winery is a distributor and exporter of fine wine, within the European Unio
 
 You have recently joined Coho Winery as a Power Platform developer, and you have been instructed to configure your initial environments, publishers and solution, to prepare yourself for the first project you will be involved in. You will also prepare and upload a document template to your OneDrive for Business folder in preparation for the later lab steps; this will represent the "mock" default document library for Coho Winery.
 
-### Length
+### ⌛ Length
 
 This lab will take approximately 15 minutes to complete.
 

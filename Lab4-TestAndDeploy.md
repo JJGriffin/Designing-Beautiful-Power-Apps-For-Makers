@@ -18,6 +18,10 @@ In this lab, you will deploy the solution you created in the previous lab to our
 
 Having finalised your development activities for the new purchase order management solution, Coho Winery has requested that you deploy the solution to the Production environment, so that it can be used by the wider business.
 
+### ⌛ Length
+
+TBC
+
 ## ✍️ Exercise 1: Export the Solution
 
 It's always important to remember the correct type of solution to export, depending on the target environment type, per the official Microsoft recommendations:

@@ -7,37 +7,27 @@ In this lab, you will learn how to **build Custom Pages** with a focus on **resp
 ### 🎯 Goal
 
 - Build a Custom Page to use as a full page, side pane, and dialog inside a Model-Driven App.
-
 - Connect to your data sources and fetch record details with the Param() function in the Custom Page.
-
 - Master responsive layouts so your page looks good everywhere.
-
 - Add modern styling elements like shadows, rounded corners, blur effects, and SVGs to make apps pop
-
 - Optimised Power Fx syntax for reusability, performance and maintainable applications
 
 ### ✅ Prerequisites
 
 - Completion of [Lab 1 - Create a Model-Driven Power App](Lab1-CreateModelDrivenPowerApp.md)
 
-- Solution for **Coho Winery**
-
-- Access to Dataverse, SharePoint and ERP API (Custom Connector) 
-
 ### Scenario
 
 Coho Winery are rolling out a new Purchase Order app to replace their manual Word-and-screenshot process. To improve the user experience, you have been asked to design two key pages:
 
-Landing Page – a modern entry point where users can quickly navigate to key links, view PO data from the ERP system, and access important actions.
-
-PO Document Side Pane – a page that displays stored PDF versions of PO requests, giving finance and auditors instant access without leaving the app.
+- **Landing Page** – a modern entry point where users can quickly navigate to key links, view PO data from the ERP system, and access important actions.
+- **PO Document Side Pane** – a page that displays stored PDF versions of PO requests, giving finance and auditors instant access without leaving the app.
 
 Together, these pages will provide both an attractive front door to the application and a practical way to view and manage PO request documents.
 
-### Length
+### ⌛ Length
 
- ⌛ 60–75 minutes
-
+This lab will take approximately 60–75 minutes to complete.
 
 ## ✍️ Exercise 1: Create a Landing Page and Configure settings
 

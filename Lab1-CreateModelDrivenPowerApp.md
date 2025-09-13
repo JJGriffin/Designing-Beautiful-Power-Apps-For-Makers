@@ -45,7 +45,7 @@ After analysing the requirements in detail, you identify the following platform 
 
 You begin your work by planning out the data model you will use and all necessary Dataverse customisations to support the solution. You identify that new table, called **Purchase Order**, will be required, alongside the existing **Account** and **Contact** tables. You will complete all necessary steps to build the model-driven Power App, including all required form and view customisations, before then creating some test records. Finally, you will initiate and test the integration with the ERP by connecting to it's API and create the automation to generate the physical request documents.
 
-### Length
+### ⌛ Length
 
 This lab will take approximately 60 minutes to complete.
 
