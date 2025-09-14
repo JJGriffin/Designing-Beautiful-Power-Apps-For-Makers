@@ -220,7 +220,7 @@ $"<div style='font-size: 28px; font-family: Inter, Open Sans; font-weight: bold;
 
 ![Images/Lab2-CreateCustomPages/E2_15.png](Images/Lab2-CreateCustomPages/E2_15.png)
 
-22. Add Purchase Order Screen to the custom page by copying the YAML code located [here](Assets/Lab2/PurchaseOrderScreen.md) 
+22. Add Purchase Order Screen to the custom page by copying the YAML code located [here](Assets/Lab2/PurchaseOrderScreen.yml) 
 
 23. With the **MainScreen** selected, paste the YAML code by selecting **CTRL + V** on your keyboard. A new screen called **Purchase Orders** should render, resembling the below. It's going to be used later, so disregard any errors for now.
 
