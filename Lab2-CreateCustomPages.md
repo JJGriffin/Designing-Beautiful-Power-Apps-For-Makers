@@ -1065,11 +1065,12 @@ Right:0
 
 8. If you have the HTML **htmlCohoBackground** added to your MainScreen, add it to the **cntHTMLBlur** container by holding and dragging it into the container and Reorder **Send to back** to see the blur above the Text. 
 
+<!--- Another exercise
+
 ### Optional: Working with SVGs
 1. Add an image control 
 2. Build the SVG code (for icons Bootstrap is a great source for generating SVG code)
 3. Alter the code to your needs with dynamic values using set variables
-
 
 <pre> SVG code
 "data:image/svg+xml," & EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='" & varHexValue & "' class='bi bi-plus-lg' viewBox='0 0 16 16'>
@@ -1083,7 +1084,7 @@ Right:0
 "data:image/svg+xml," & EncodeUrl("
 </pre>
 
-
+--->
 
 ### Extra: Use templates
 
