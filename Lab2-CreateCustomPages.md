@@ -176,7 +176,176 @@ Your Tree view should look something like the picture below:
 
 ![Tree Structure with containers](image-28.png)
 
+10. With **cntMainBody** selected, insert a **Horizontal container**. Rename it **cntBodyGalleries**
 
+Configure cntBodyGalleries to behave like a responsive 3-column row:
+
+<pre>Power Fx 
+LayoutDirection: LayoutDirection.Horizontal 
+LayoutGap: 12 
+PaddingLeft: 8 
+PaddingRight: 8 
+PaddingTop: 4 
+PaddingBottom: 4 // Let the row take all remaining height 
+FillPortions: 1 // Responsive behavior 
+LayoutWrap: true // allows columns to wrap on narrow widths 
+</pre>
+
+11. Insert three *Vertical containers* inside **cntBodyGalleries** and rename them:
+
+<Pre>
+cntPurchaseOrders
+
+cntMyPurchaseOrders
+
+cntPurchaseOrderDueDate
+</pre>
+
+Set the same properties on each of the three column containers so they share space evenly and stretch:
+// Apply to: cntPurchaseOrders, cntMyPurchaseOrders, cntPurchaseOrderDueDate 
+
+<pre> Power Fx 
+
+FillPortions: 1 // equal width columns 
+LayoutDirection: LayoutDirection.Vertical 
+LayoutGap: 8 
+PaddingLeft: 10 
+PaddingRight: 10 
+PaddingTop: 8 
+PaddingBottom: 8 
+AlignInContainer: AlignInContainer.Stretch 
+LayoutAlignItems: LayoutAlignItems.Stretch 
+LayoutMinWidth: 260 // lets them wrap on narrow screens </pre>
+
+12. Verify that your **Tree view** looks like somthing like this:
+
+![Container Setup](image-39.png)
+
+13. In **Tree view**, select **cntPurchaseOrders**. Go to **Insert** → **Layout** → **Horizontal** container and rename it **cntPOHeader**.
+
+With **cntPOHeader** selected, set these properties:
+
+<pre>Power Fx 
+DropShadow: DropShadow.None 
+FillPortions: 0 
+Height: 50 
+LayoutDirection: LayoutDirection.Horizontal 
+LayoutGap: 3 
+LayoutJustifyContent: LayoutJustifyContent.SpaceBetween 
+LayoutMinHeight: 30 
+PaddingLeft: 10 
+PaddingRight: 10 </pre>
+
+14. Inside **cntPOHeader**, insert a Label by selecting **+ Insert**, searching for "label" and selecting **Label**. Rename it to **lblTitlePurchaseOrders** and set:
+
+<pre>Power Fx 
+AlignInContainer: AlignInContainer.Stretch 
+Alignment: Align.Justify 
+AutoHeight: true 
+Color: RGBA(92, 37, 4, 1) 
+FillPortions: 1 
+FontSize: 16 
+FontWeight: FontWeight.Bold 
+LayoutMinWidth: 100 
+Text: "Purchase Orders" 
+TextRole: 'Label.TextRole'.Heading2 
+Wrap: false </pre>
+
+![PurchaseOrder Label](image-40.png)
+
+15. Still in **cntPOHeader**, insert an Icon (Classic/Icon) -> **Add Document**. Rename it **icnAddDocument**. 
+
+![Icon Document](image-41.png)
+
+16. Set properties of the added *Document Icon*:
+
+<pre>Power Fx 
+Color: RGBA(92, 37, 4, 1) 
+Height: Parent.Height 
+HoverColor: ColorFade(Self.Color, -30%) 
+HoverFill: RGBA(0,0,0,0) 
+Icon: Icon.AddDocument 
+LayoutMinHeight: Parent.Height 
+PaddingBottom: 15 
+PaddingLeft: 15 
+PaddingRight: 15 
+PaddingTop: 15 
+PressedBorderColor: RGBA(0,0,0,0) 
+PressedColor: ColorFade(Self.Color, -30%) 
+PressedFill: RGBA(0,0,0,0) 
+Width: 50 
+// Use either A or B below for OnSelect // 
+A) If you have a Named Formula nfcolPurchaseOrders: 
+OnSelect: ClearCollect(colPurchaseOrders, nfcolPurchaseOrders) 
+// B) If not, seed dummy data quickly: 
+OnSelect: ClearCollect( colPurchaseOrders, Table( { poNumber:"PO-1001", vendorName:"Vintners AB", vendorId:"V001", LastModified: Now()-Time(1,0,0) }, { poNumber:"PO-1002", vendorName:"GrapeWorks", vendorId:"GW02", LastModified: Now()-Time(0,45,0) }, { poNumber:"PO-1003", vendorName:"Oak & Co", vendorId:"OK03", LastModified: Now()-Time(0,12,0) } ) ) </pre>
+
+17. With **cntPurchaseOrders** selected, insert a Rectangle and rename it recDividerPurchaseOrders. 
+
+18. Set rectangle divider properties:
+
+<pre>Power Fx 
+AlignInContainer: AlignInContainer.Stretch 
+BorderColor: RGBA(166,166,166,1) 
+BorderStyle: BorderStyle.None 
+DisabledFill: RGBA(166,166,166,1) 
+Fill: RGBA(245,245,245,1) 
+FocusedBorderColor: RGBA(0,120,212,1) 
+Height: 1 
+HoverFill: RGBA(0,120,212,1) 
+PressedFill: RGBA(0,120,212,1) </pre>
+
+19. Insert a **Vertical Gallery** from **+ Insert**, search for gallery and select **Vertical gallery**, inside **cntPurchaseOrders**. Rename it galPurchaseOrders and set:
+
+<pre>Power Fx 
+BorderColor: RGBA(166,166,166,1) 
+FocusedBorderColor: RGBA(0,120,212,1) 
+FocusedBorderThickness: 2 
+Items: colPurchaseOrders 
+LayoutMinWidth: Parent.Width 
+TemplateSize: 55 
+Transition: Transition.Pop // optional: bubble selection to item container 
+OnSelect: Select(Parent) </pre>
+
+20. Inside **galPurchaseOrders**, insert a **Horizontal container** and rename it **cntGalleryPOHorizontal**. 
+
+21. Set container properties for **cntGalleryPOHorizontal**:
+
+<pre>Power Fx 
+DropShadow: DropShadow.None 
+Height: 48 
+LayoutDirection: LayoutDirection.Horizontal 
+LayoutJustifyContent: LayoutJustifyContent.SpaceBetween 
+Width: Parent.Width </pre>
+
+22. Inside **cntGalleryPOHorizontal**, insert a Vertical container and rename it **cntGalleryPOVertical**. 
+
+23. Set **cntGalleryPOVertical** containter properties:
+
+<pre>Power Fx 
+DropShadow: DropShadow.None 
+Height: 48 
+LayoutDirection: LayoutDirection.Vertical 
+LayoutMinHeight: Parent.Height 
+PaddingLeft: 15 
+PaddingRight: 10 
+Flexible Width: true </pre>
+
+23. Inside **cntGalleryPOVertical**, insert a **Label** and rename it **lblPurchaseOrderNumber**. Then insert another Label and rename it Subtitle3_1. Set their properties:
+
+<pre>Power Fx // Title3_1 AutoHeight: true Color: RGBA(0,0,0,1) FillPortions: 1 FontWeight: FontWeight.Semibold Height: 24 LayoutMinHeight: Parent.Height/2 TabIndex: -1 Text: ThisItem.poNumber VerticalAlignment: VerticalAlign.Middle Width: 344 Wrap: false X: 22 // Subtitle3_1 FillPortions: 1 FontSize: 9 FontWeight: FontWeight.Normal Height: 28 LayoutMinHeight: Parent.Height/2 TabIndex: -1 Text: ThisItem.vendorName & " || " & ThisItem.vendorId VerticalAlignment: VerticalAlign.Top Width: 355 X: 5 Y: 20 </pre>
+
+Back in Container7, insert an Icon (Classic/Icon), rename it Icon1_2, and set:
+
+<pre>Power Fx AlignInContainer: AlignInContainer.Stretch BorderColor: RGBA(0,0,0,0) Color: RGBA(92, 37, 4, 1) DisabledColor: RGBA(220,220,220,1) DisabledFill: RGBA(0,0,0,0) Height: 32 HoverBorderColor: RGBA(0,0,0,0) HoverColor: ColorFade(Self.Color, -30%) HoverFill: RGBA(0,0,0,0) Icon: Icon.ThumbsDown LayoutMinHeight: Parent.Height PaddingBottom: 15 PaddingLeft: 15 PaddingRight: 15 PaddingTop: 15 PressedBorderColor: RGBA(0,0,0,0) PressedColor: ColorFade(RGBA(0,120,212,1), -30%) PressedFill: RGBA(0,0,0,0) Width: 50 </pre>
+
+Test it: Select Icon1_1 to load the sample data (or use your nfcolPurchaseOrders). You should see rows like:
+
+PO-1001 — Vintners AB || V001
+
+PO-1002 — GrapeWorks || GW02
+
+PO-1003 — Oak & Co || OK03
 
 > ### 💡 CONTAINER PROPERTIES
 > The difficult part when working with responsive layouts are the different properties and making sure you have selected the correct nested container.  
@@ -187,23 +356,6 @@ Your Tree view should look something like the picture below:
 
 ![Container properties](image-30.png)
 
-
-
-### Extra: Use templates
-
-💡 You can start from a template when working with responsive layouts
-
-**✅ Prerequisites** 
-- Multiple screens in settings under the Display tab must be enabled to add several screens to your Coho Winery page
-
-![Screen with containers from template](image-10.png)
-
-If you already have a new screen added, you could select **Templates** or **with Layout** to start with a responsive page
-
-![New screen with templates // layout](image-26.png)
-
-1. Click **New screen** on the ribbon and select a layout of your choosing
-2. Have fun 
 
 
 
@@ -723,6 +875,8 @@ This ensures the image always is resized accourding to the parent container heig
                               X: =369
 </pre>
 
+<!-- This is hidden in the rendered page, but anyone can view the source 
+
 // 5. Name it cntHeaderHorizontal and adjust the Width to:
 ![Images/Lab2-CreateCustomPages/E2_2.png](Images/Lab2-CreateCustomPages/E2_2.png)
 
@@ -753,28 +907,8 @@ This ensures the image always is resized accourding to the parent container heig
 10. Nest horizontal containers within the main container
 11. Create the navigation bar
 
-## ✍️ Exercise 3: Fetch Record Information
-1. Add datasource (Dataverse, SharePoint etc.)
-2. Select **App** in the left corner and click **Formulas**
-3. Create a formula for referencing the record GUID and use the function GUID() to ensure correct type
+-->
 
-<pre> Power Fx 
-nfRecordItem =
-    If(
-        "," in Text(Param("recordId")),
-        LookUp(Table, 'Unique GUID field' = GUID(Last(Split(Param("recordId"), ",")).Value)),
-        LookUp(Table, 'Unique GUID field'  = GUID(Param("recordId")))
-    ); </pre>
-
-The record can also be wrapped in {} so that needs to be removed in some cases:
-
-<pre> Power Fx 
-GUID(Substitute(Substitute(Param("recordId"), "{", ""), "}", ""))</pre>
-
-> **Note:** 
-*Named Formulas needs to be closed using ;*
-
-*Param() function gets the record GUID parsed from the JavaScript, and GUID() formats the output as GUID, not a string. We are also checking if there are several records selected by splitting the string after ","*
 
 ## ✍️ Exercise 4: Styling 
 
@@ -783,7 +917,12 @@ GUID(Substitute(Substitute(Param("recordId"), "{", ""), "}", ""))</pre>
 
 ![alt text](image-12.png)
 
-2. Click on **Custom** and update HEX value to **f4e6d7** 
+2. Click on **Custom** and update HEX value to **f4e6d7** OR click on **Fill** and set the formula to:
+
+<Pre> Power Fx
+Fill: ColorValue(nfBackgroundColor)
+</pre>
+
 
 ![alt text](image-13.png)
 
@@ -926,7 +1065,6 @@ Right:0
 "data:image/svg+xml," & EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='" & varHexValue & "' class='bi bi-plus-lg' viewBox='0 0 16 16'>
   <path fill-rule='evenodd' d='M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2'/>
 </svg>")
-
 </pre>
 
 4. Use the correct encoding format for Power Apps:
@@ -941,5 +1079,46 @@ Right:0
 - Add CSS styling 
 - Add SVGs for design 
 - Adjust styling of the container and alignment of items
+
+
+### Extra: Use templates
+
+💡 You can start from a template when working with responsive layouts
+
+**✅ Prerequisites** 
+- Multiple screens in settings under the Display tab must be enabled to add several screens to your Coho Winery page
+
+![Screen with containers from template](image-10.png)
+
+If you already have a new screen added, you could select **Templates** or **with Layout** to start with a responsive page
+
+![New screen with templates // layout](image-26.png)
+
+1. Click **New screen** on the ribbon and select a layout of your choosing
+2. Have fun 
+
+
+## ✍️ Exercise 3: Fetch Record Information
+1. Add datasource (Dataverse, SharePoint etc.)
+2. Select **App** in the left corner and click **Formulas**
+3. Create a formula for referencing the record GUID and use the function GUID() to ensure correct type
+
+<pre> Power Fx 
+nfRecordItem =
+    If(
+        "," in Text(Param("recordId")),
+        LookUp(Table, 'Unique GUID field' = GUID(Last(Split(Param("recordId"), ",")).Value)),
+        LookUp(Table, 'Unique GUID field'  = GUID(Param("recordId")))
+    ); </pre>
+
+The record can also be wrapped in {} so that needs to be removed in some cases:
+
+<pre> Power Fx 
+GUID(Substitute(Substitute(Param("recordId"), "{", ""), "}", ""))</pre>
+
+> **Note:** 
+*Named Formulas needs to be closed using ;*
+
+*Param() function gets the record GUID parsed from the JavaScript, and GUID() formats the output as GUID, not a string. We are also checking if there are several records selected by splitting the string after ","*
 
 **Congratulations, you've finished Lab 2** 🥳
