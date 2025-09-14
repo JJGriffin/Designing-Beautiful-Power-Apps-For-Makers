@@ -49,78 +49,54 @@ We will begin by creating the first custom **Landing Page** that will be present
 4. The canvas designer page will load. Click on **Settings** in the ribbon (sometimes settings will be located behind the three dots).
 
 ![Images/Lab2-CreateCustomPages/E1_4.png](Images/Lab2-CreateCustomPages/E1_4.png)
+ 
+5. On the **General** tab, edit the name of the page to be **Coho Winery Landing Page** by clicking the edit pen and clicking **Save**.
 
-### On the **General** tab
-    
-5. Edit the name of the page to be **Coho Winery Landing Page** by clicking the edit pen and **saving**
-![Edit page name](image-16.png)
+![Images/Lab2-CreateCustomPages/E1_5.png](Images/Lab2-CreateCustomPages/E1_5.png)
 
-6. Provide a description of the custom page
+6. Update the **Description** of the custom page to `Landing page for Coho Winery Purchase Order Application`
+7. Download [the Coho Winery Logo](Assets/Lab2/CohoWineryLogo.png) from the repository and save it to your computer.
+8. Back in the custom page **Settings**, click on **+ Add image** and upload the **CohoWineryLogo.png** image.
+9. Update the **Icon Background Fill** to `#f4e6d7`
 
-<pre> Landing page for Coho Winery Purchase Order Application </pre>
+![Images/Lab2-CreateCustomPages/E1_6.png](Images/Lab2-CreateCustomPages/E1_6.png)
 
-7. Add an image - the Coho Winery Logo - download the picture and select **+ Add image** in the settings
+10. Scroll to verify that the **Auto save** option is set to **On** (this will give you peace of mind that no changes will be lost 🧘)
 
-<img src="image.png" width="150" alt="alt text" />
+![Images/Lab2-CreateCustomPages/E1_7.png](Images/Lab2-CreateCustomPages/E1_7.png)
 
-8. Set Icon Background Fill to **#f4e6d7**
-
-<img src="image-15.png" width="600" alt="Screenshot of Landing Page setup" />
-
-
-9. Scroll to verify that the **Auto save** option is set to **On**. (This will give you peace of mind)
-
-<img src="image-2.png" width="600" alt="alt text" />
-
-
-
-
-### On the **Display** tab
-
-10. Click on the **Display** tab and verify that the **Scale to fit** option is set to **Off** (Ensures responsive layout).
-
-![Settings Scale to fit off](image-22.png)
-
-11. Optional: Scroll down to enable *multiple screens* if you would like to have more than one page. Can be used for navigation purposes, admin screens or other use cases where screen contents should be separated.
-
-<img src="image-17.png" width="600" alt="Enable multiple screens" />
-
-
-### Optional: On the **Updates** tab
-
-12. Click the **Updates** tab 
-13. Enable *Modern Controls and Themes* 
-14. Click on **Close** when you are finished.
-
-![Setting on updates tab](image-18.png)
-
-15. On the canvas designer, select **Play mode** by clicking the Play icon in the upper right corner to preview the page
-
-![alt text](image-23.png)
-
-*You should be able to see that the page width and height expands according to your screen*
-
-15. On the canvas designer, click the **Publish** icon in the upper right corner
-
-![Publish button](image-21.png)
-
-![Publish page](image-20.png)
-
-9. Once the page has saved and published, click on **Back** and then **Leave** to return to the solution.
+11. Click on the **Display** tab and verify that the **Scale to fit** option is set to **Off**; this will ensure we retain a responsive layout.
 
 ![Images/Lab2-CreateCustomPages/E1_8.png](Images/Lab2-CreateCustomPages/E1_8.png)
 
-![Images/Lab2-CreateCustomPages/E1_9.png](Images/Lab2-CreateCustomPages/E1_9.png)
+> [!TIP]
+> At this stage, there are two (optional) settings you can enable. First, scroll down on the **Display** tab to enable **multiple screens** if you would like to have more than one page. This can be used for navigation purposes, admin screens or other use cases where screen contents should be separated. Secondly, you can click on the **Updates** tab to enable **Modern Controls and Themes**. This will give you access to the latest controls and themes in Power Apps, so that you can create experiences that fit in naturally with the look and feel of Microsoft 365. You can click on **Close** once you are finished to exit the settings.
 
-10. Verify that the **Coho Winery Landing Page** is listed in the solution. The new component should be of type **Page**.
+![Images/Lab2-CreateCustomPages/E1_9.png](Images/Lab2-CreateCustomPages/E1_9.png)
 
 ![Images/Lab2-CreateCustomPages/E1_10.png](Images/Lab2-CreateCustomPages/E1_10.png)
 
+12. On the canvas designer, select **Play mode** by clicking the Play icon in the upper right corner to preview the page. Verify that the the page width and height expands according to your screen size.
+
+![Images/Lab2-CreateCustomPages/E1_11.png](Images/Lab2-CreateCustomPages/E1_11.png)
+
+13. On the canvas designer, click the **Publish** icon in the upper right corner and then **Publish this version** to save and publish the page.
+
+![Images/Lab2-CreateCustomPages/E1_12.png](Images/Lab2-CreateCustomPages/E1_12.png)
+
+![Images/Lab2-CreateCustomPages/E1_13.png](Images/Lab2-CreateCustomPages/E1_13.png)
+
+14. Once the page has saved and published, click on **Back** and then **Leave** to return to the solution.
+
+![Images/Lab2-CreateCustomPages/E1_8.png](Images/Lab2-CreateCustomPages/E1_14.png)
+
+![Images/Lab2-CreateCustomPages/E1_15.png](Images/Lab2-CreateCustomPages/E1_15.png)
+
+10. Verify that the **Coho Winery Landing Page** is listed in the solution. The new component should be of type **Page**.
+
+![Images/Lab2-CreateCustomPages/E1_10.png](Images/Lab2-CreateCustomPages/E1_16.png)
+
 11. Keep the **Coho Winery PP Solution** solution open, as we will continue to work on it in the next exercise.
-
-
-**Exercise 1 completed✅** 
-
 
 ## ✍️ Exercise 2: Build a Responsive Layout
 
