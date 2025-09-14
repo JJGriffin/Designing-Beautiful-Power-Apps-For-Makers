@@ -331,9 +331,37 @@ PaddingLeft: 15
 PaddingRight: 10 
 Flexible Width: true </pre>
 
-23. Inside **cntGalleryPOVertical**, insert a **Label** and rename it **lblPurchaseOrderNumber**. Then insert another Label and rename it Subtitle3_1. Set their properties:
+24. Inside **cntGalleryPOVertical**, insert a **Label** and rename it **lblPurchaseOrderNumber**. Then insert another Label and rename it **lblPOVendorInfo**. 
+25. Set their properties:
 
-<pre>Power Fx // Title3_1 AutoHeight: true Color: RGBA(0,0,0,1) FillPortions: 1 FontWeight: FontWeight.Semibold Height: 24 LayoutMinHeight: Parent.Height/2 TabIndex: -1 Text: ThisItem.poNumber VerticalAlignment: VerticalAlign.Middle Width: 344 Wrap: false X: 22 // Subtitle3_1 FillPortions: 1 FontSize: 9 FontWeight: FontWeight.Normal Height: 28 LayoutMinHeight: Parent.Height/2 TabIndex: -1 Text: ThisItem.vendorName & " || " & ThisItem.vendorId VerticalAlignment: VerticalAlign.Top Width: 355 X: 5 Y: 20 </pre>
+<pre>Power Fx  
+**lblPurchaseOrderNumber** 
+AutoHeight: true 
+Color: RGBA(0,0,0,1) 
+FillPortions: 1 
+FontWeight: FontWeight.Semibold 
+Height: 24 
+LayoutMinHeight: Parent.Height/2 
+TabIndex: -1 
+Text: ThisItem.poNumber 
+VerticalAlignment: VerticalAlign.Middle 
+Width: 344 
+Wrap: false 
+X: 22
+
+**lblPOVendorInfo**
+ FillPortions: 1 
+ FontSize: 9 
+ FontWeight: FontWeight.Normal 
+ Height: 28 
+ LayoutMinHeight: Parent.Height/2 
+ TabIndex: -1 
+ Text: ThisItem.vendorName & " || " & ThisItem.vendorId 
+ VerticalAlignment: VerticalAlign.Top 
+ Width: 355 
+ X: 5 
+ Y: 20 
+ </pre>
 
 Back in Container7, insert an Icon (Classic/Icon), rename it Icon1_2, and set:
 
