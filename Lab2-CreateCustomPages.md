@@ -55,8 +55,8 @@ We will begin by creating the first custom **Landing Page** that will be present
 ![Images/Lab2-CreateCustomPages/E1_5.png](Images/Lab2-CreateCustomPages/E1_5.png)
 
 6. Update the **Description** of the custom page to `Landing page for Coho Winery Purchase Order Application`
-7. Download [the Coho Winery Logo](Assets/Lab2/CohoWineryLogo.png) from the repository and save it to your computer.
-8. Back in the custom page **Settings**, click on **+ Add image** and upload the **CohoWineryLogo.png** image.
+7. Download [the Coho Winery Logo](Assets/Lab2/Coho-Winery.png) from the repository and save it to your computer.
+8. Back in the custom page **Settings**, click on **+ Add image** and upload the **Coho-Winery.png** image.
 9. Update the **Icon Background Fill** to `#f4e6d7`
 
 ![Images/Lab2-CreateCustomPages/E1_6.png](Images/Lab2-CreateCustomPages/E1_6.png)
