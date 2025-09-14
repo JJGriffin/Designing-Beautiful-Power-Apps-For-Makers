@@ -30,7 +30,7 @@ A model-driven app (from Lab 1)
 New JS web resource: pt_coho.custompage.js
 
 ## Exercise 1: Embedding a Full page as part of the Model-driven Application
-We will begin by addin the **Coho Winery Landing page** to the MDA.
+We will begin by adding the **Coho Winery Landing page** to the MDA.
 
 1. Navigate to the [Power Apps Maker portal](https://make.powerapps.com) and ensure you are in the **Developer** environment you created in Lab 0.
 2. Select **Solutions** from the left navigation pane.
@@ -45,6 +45,8 @@ We will begin by addin the **Coho Winery Landing page** to the MDA.
 <img src="Images/Lab2-CreateCustomPages/E1_2.png" width="800" alt="Coho Winery solution selection" />
 
 4. Select the **Coho Winery** model-driven app by clicking the **three dots** and **Edit**
+
+I NEED TO CHANGE IMG
 
 ![alt text](image-45.png)
 
@@ -71,29 +73,89 @@ Result: Your custom page is now a full page in the sitemap. You can test the app
 
 For this exercise, we will implement the JavaScript used to trigger the Side Pane on a Form. This will fetch the record details and pass them on to the custom page for us to work with. 
 
-1. 
+1. Navigate to the [Power Apps Maker portal](https://make.powerapps.com) and ensure you are in the **Developer** environment you created in Lab 0.
+2. Select **Solutions** from the left navigation pane.
 
-## Exercise 2: ✨ Getting Started with Command Bar Configuration
 
-To trigger the pop up dialog or side pane with the custom page, you will have to configure a command bar button to execute the JavaScript with the custom page reference
+<img src="Images/Lab2-CreateCustomPages/E1_1.png" width="500" alt="Solution selection in Maker Portal" />
 
-1. **Open your project solution** and locate the model-driven app which you will need to edit 
 
-   ![image](https://github.com/user-attachments/assets/7e9eb8cc-415a-489c-a143-c0656f6281fd)
+3. Select the **Coho Winery** solution you created in Lab 0.
+
+
+<img src="Images/Lab2-CreateCustomPages/E1_2.png" width="800" alt="Coho Winery solution selection" />
+
+4. Download the JavaScript file from **Assets** -><a href="Assets/Lab3/CohoWinerySidePane.js" download>Download the JavaScript file</a>
+
+
+
+5. Add a new **Web Resource** for the Side Pane by clicking **+ New** → **More** → **Web resource**
+
+![Adding the Web Resource](image-1.png)
+
+
+6. Select **Choose file** and find the **CohoWinerySidePane** JavaScript
+
+![Choose JS file](image-2.png)
+
+7. You should now see that the **Code** section has been populated with the JavaScript code from the file. Check the name of the Web Resource and click **Save**
+
+![Saving the web resource](image-16.png)
+
+8. Verify that the Web Resource **CohoWinerySidePane** is created in the solution.
+
+![Web Resource is present in solution](image-17.png)
+
+
+## Exercise 3: Getting Started with Command Bar Configuration
+
+To trigger the side pane with the custom page, you will have to configure a command bar button to execute the JavaScript with the custom page reference
+
+1. If you don't have the solution for **Coho Winery** open already, select it from **Solutions** and open the **Coho Winery Purchase Orders** model-driven application by clicking on the name
+
+![Opening the model-driven app](image-18.png)
  
-3. **Locate your table** and the three dots on the right - **Select** `Edit Command bar`  
-   ![image](https://github.com/user-attachments/assets/79b4863a-95e3-4482-9fa0-6f50d2f4150b)
+3. **Locate the Purchase Order table** and the three dots on the right - **Select** `Edit Command bar`  
+ ![Locate command bar button](image-20.png)
 
-4. **Choose** to edit the command bar for a form
-5. **Select** `+New` → `Command` from the command bar on the left
+4. **Choose** to edit the command bar on the  `Main Form ` and click  `Edit `
 
-![image](https://github.com/user-attachments/assets/258475b3-c790-4d40-81dc-a5f305be2496)
+![Edit command bar on main form](image-21.png)
 
-9. **Provide a name** for the button on the right side  
-10. **Select** `Run JavaScript`  
-11. **Select or search** for the web resource as the library  
-12. **Set the function name** to `JavaScriptFunction`  
-13. **Set parameters**  
+5. Create a new command bar button by **Selecting** `+New` → `Command` on the ribbon to the left
+
+![Create a new button](image-22.png)
+
+6. Create a type of command for  `JavaScript ` and click  `Continue`
+
+![Create command for JavaScript](image-23.png)
+
+9. **Provide a name** for the button → **Purchase Order Info** and choose an Icon → **ActivateQuote**
+10. **Ensure action is** `Run JavaScript`  
+11. Click **+ Add library**  → Search for *Coho* → Select **CohoWinerySidePane** → **Add**
+
+![Add a library](image-50.png)
+
+12. **Set the function name** to `openSidePaneForRecord`  
+
+!TIP you find the function name in the JavaScript File, it is the `function openSidePaneForRecord(recordId, pageName = "")`
+
+13. **Verify the command bar paramenters** → you should see the following:
+
+    **Label** → `Purchase Order Info`
+
+    **Icon** → `Use Icon` → `ActivateQuote`
+
+    **Action** → `Run JavaScript`
+
+    **Library** →  `coh_CohoWinerySidePane`
+    
+    **Function** →  `openSidePaneForRecord`
+
+    ![Settings for command bar](image-51.png)
+
+### Set parameters for passing information to the custom page
+
 14. **Save and publish** – then **Play** the app to test
 
 ## 💡 Fetch Record Details in the Custom Page
