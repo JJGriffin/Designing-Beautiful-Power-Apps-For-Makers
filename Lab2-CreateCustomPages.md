@@ -888,7 +888,6 @@ font-family: Poppins, sans-serif; /* Sets the font to Poppins */
 
 ```
 
-![Blur effect](image-2.png)
 ![Blur effect](/Images/Lab2-CreateCustomPages/image-2.png)
 
 3. Add Horizontal or vertical containers above the HTML TEXT control if you want it to be the background
