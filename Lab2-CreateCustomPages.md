@@ -102,86 +102,80 @@ We will begin by creating the first custom **Landing Page** that will be present
 
 Our goal is to ensure that our new **Coho Winery Landing Page** looks great, regardless of the screen size where it's being rendered, by understanding [containers](https://learn.microsoft.com/en-us/power-apps/maker/canvas-apps/controls/control-container). We will use a combination of vertical and horizontal containers to create a flexible layout that will adapt accordingly.
 
-### Preparation
-1. You should still be in the **Coho Winery** solution from Exercise 1. If not, navigate back to it.
+1. You should still be in the **Coho Winery** solution from Exercise 1; if not, navigate back to it.
 2. Open the **Coho Winery Landing Page** by selecting it from the list of components in the solution.
-3. Update name of screen1 to *MainScreen* by clicking twice on **screen1** in the **Tree view** on the left side
+3. Change the name of **Screen1** to **MainScreen**.
 
-![Edit Screen name](image-25.png)
-
-### Begin to build the layout
-
-4. On the canvas designer, select the **Insert** tab in the ribbon, expand **Layout** and then select **Vertical container**.
+> [!TIP]
+> You can rename any screen or control by either double clicking it, or clicking on the elipses (...) next to the control name and selecting **Rename**.
 
 ![Images/Lab2-CreateCustomPages/E2_1.png](Images/Lab2-CreateCustomPages/E2_1.png)
 
-5. A new vertical container will be added to the screen. Rename it to **cntMainVertical** by selecting the container in the **Tree view** pane and clicking twice
+4. We will now begin to build the layout. On the canvas designer, select the **Insert** tab in the ribbon, expand **Layout** and then select **Vertical container**.
 
-![alt text](image-14.png)
+![Images/Lab2-CreateCustomPages/E2_2.png](Images/Lab2-CreateCustomPages/E2_2.png)
 
-6. Select the container **cntMainVertical** and update the **X**, **Y**, **Width** and **Height** properties to dynamic values listed below:
+5. A new vertical container will be added to the screen. Rename it to **cntMainVertical** by selecting the container in the **Tree view** pane and clicking twice.
 
-<pre> Power Fx 
-X: (Parent.Width - Self.Width) / 2
-Y: (Parent.Height - Self.Height) / 2
-Width: Parent.Width-(Parent.Width*0.05)
-Height: Parent.Height-(Parent.Height*0.05)
-Border radius: 4
-Drop shadows: None
-</pre>
+![Images/Lab2-CreateCustomPages/E2_3.png](Images/Lab2-CreateCustomPages/E2_3.png)
 
-![Set Y property on main container](image-24.png)
+6. Select the container **cntMainVertical** and update the **X**, **Y**, **Width** and **Height** properties to the dynamic values listed below. The settings can either be updated from the formula dropdown bar or from the properties pane on the right side. Keep in mind, that the labels in the properties pane differ from the formula bar, but they represent the same property.
 
-![Properties of the container](image-31.png)
+    | Property | Formula |
+    | --- | --- |
+    | **X** | `(Parent.Width - Self.Width) / 2` |
+    | **Y** | `(Parent.Height - Self.Height) / 2` |
+    | **Width** | `Parent.Width-(Parent.Width*0.05)` |
+    | **Height** | `Parent.Height-(Parent.Height*0.05)` |
+    | **RadiusTopLeft** | `4` |
+    | **DropShadow** | `None` |
 
-7. Insert a Horizontal container within *cntMainVertical* by clicking on *cntMainVertical*, select the **Insert** tab in the ribbon, expand **Layout** and then select **Horizontal container**. Rename it to **cntMainHeader**
+![Images/Lab2-CreateCustomPages/E2_4.png](Images/Lab2-CreateCustomPages/E2_4.png)
+
+![Images/Lab2-CreateCustomPages/E2_5.png](Images/Lab2-CreateCustomPages/E2_5.png)
+
+7. Insert a Horizontal container within *cntMainVertical* by clicking on *cntMainVertical*, selecting the **Insert** tab in the ribbon, expand **Layout** and then select **Horizontal container**. Rename it to **cntMainHeader**
 8. Insert a Vertical container within *cntMainHeader*. Rename it to *cntHeaderVertical*.
-9. Insert a Vertical container within *cntMainVertical*. Rename it to **cntMainBody** - should be below the *cntMainHeader*
+9. Insert a Vertical container within *cntMainVertical*. Rename it to **cntMainBody**.
+10. Your Tree view should now resemble the below:
 
-> [!TIP]
-> You can rename any control by either double clicking it, or clicking on the elipses (...) next to the control name and selecting **Rename**.
+![Images/Lab2-CreateCustomPages/E2_6.png](Images/Lab2-CreateCustomPages/E2_6.png)
 
-<br>
-Your Tree view should look something like the picture below:
+11. We will now build out the header, by first adding a welcome message to the user. We'll also add the Coho Winery Logo to the page. To do this, we will work with [named formulas](https://learn.microsoft.com/en-us/power-platform/power-fx/reference/object-app#formulas-property). To begin, select **App** in the **Tree View** and then select **Formulas** from the dropdown.
+12. Copy and paste the following code within the formula bar to create two named formulas: one to capture the font used for the title and one for the background color.
 
-![Tree Structure with containers](image-28.png)
-<br>
-
-### Build the header
-We are now adding a welcome message to the user, as well as adding the Coho Winery Logo to the page
-
-10. Select **App** -> **Formulas** on the right side in the **Tree View**
-11. Create *Named formulas* capturing the font used for the title and the background color by setting this formula: 
-
-<Pre> Power Fx
+```
 nfFont = "Inter, Open Sans";
 nfBackgroundColor = "#f4e6d7";
-</pre>
+```
 
-![Formulas nfFont](image-27.png)
-
-<br>
+![Images/Lab2-CreateCustomPages/E2_7.png](Images/Lab2-CreateCustomPages/E2_7.png)
 
 > [!TIP]
 > When working with Named Formulas, remember to always end each formula with semicolon ;
-<br>
 
-12. Select the **cntHeaderVertical** on level 3 of the **cntMainVertical**
-13. Adjust the **Height** property of **cntHeaderVertical** to **100**
-   - Ensure that the flexible height is **Off**
+13. Select the **cntMainHeader** container underneath **cntMainVertical**.
+14. Adjust the properties of the control as listed below. No changes are required if the properties already match the values below:
 
-![Properties of the container](image-35.png)
+    | Property | Formula |
+    | --- | --- |
+    | **Height** | `100` |
+    | **LayoutJustifyContent** | `LayoutJustifyContent.Start` |
+    | **LayoutAlignItems** | `LayoutAlignItems.Start` |
+    | **FillPortions** | `0` |
 
-14. Insert an HTMLtext control by selecting **+ Insert**, searching for **html** and clicking on **HTML text**
+![Images/Lab2-CreateCustomPages/E2_8.png](Images/Lab2-CreateCustomPages/E2_8.png)
 
-![HTML text for header](image-32.png)
+14. Insert an HTML Text control within the **cntMainHeader** container by selecting **+ Insert**, searching for **html** and clicking on **HTML text**.
 
-15. Rename the htmlText to **htmlHeaderTitle** 
-16. Select **Font** on the properties of the **htmlHeaderTitle** and set the formula to the Named Formula from step 11 - **nfFont**
+![Images/Lab2-CreateCustomPages/E2_9.png](Images/Lab2-CreateCustomPages/E2_9.png)
 
-![Set font value of html](image-33.png)
+15. Rename the HTML Text control to **htmlHeaderTitle**. 
+16. Select **Font** on the properties of the **htmlHeaderTitle** and set the formula value to the **nfFont** Named Formula created earlier.
 
-17. Set the **HTML text value** located on the properties on the right to:
+![Images/Lab2-CreateCustomPages/E2_10.png](Images/Lab2-CreateCustomPages/E2_10.png)
+
+17. Set the **HTML text value** located on the properties to the following code. This will create a welcome message with a gradient effect on the user's first name.
 
 ``` HTML
 $"<div style='font-size: 28px; font-family: Inter, Open Sans; font-weight: bold; color: black;'> 
@@ -200,41 +194,40 @@ $"<div style='font-size: 28px; font-family: Inter, Open Sans; font-weight: bold;
     {  First(Split(User().FullName," ")).Value }! 
   </a> 
 </div>"
-
 ```
 
-![HTML text value](image-34.png)
+![Images/Lab2-CreateCustomPages/E2_11.png](Images/Lab2-CreateCustomPages/E2_11.png)
 
-18. Select the **cntMainHeader** in the **Tree view**, click on **+ Insert** on the ribbon and serach for **image**
+18. Adjust the following additional properties of the **htmlHeaderTitle** control to resemble the below:
 
+    | Property | Formula |
+    | --- | --- |
+    | **Height** | `Parent.Height` |
+    | **Width** | `Parent.Width` |
 
-19. Click on the **Image** control under **Media**
+18. Select the **cntMainHeader** in the **Tree view**, click on **+ Insert** on the ribbon and serach for **image**. Click on the **Image** control under **Media**. Proceed to then add the **Coho-Winery** logo by uploading it into the designer and setting the **Image** property to the name of the image, in this case **Coho-Winery**.
 
-![alt text](image-36.png)
+![Images/Lab2-CreateCustomPages/E2_12.png](Images/Lab2-CreateCustomPages/E2_12.png)
 
-<br>
-Add logo as media if it's not already in the app by selecting the image control, clicking on the **Image** dropdown and **Upload** - Use the image downloaded from earlier.
+![Images/Lab2-CreateCustomPages/E2_13.png](Images/Lab2-CreateCustomPages/E2_13.png)
 
-![Logo for Coho as the image](image-38.png)
-<br>
+19. You should now be able to see the image control next to the HTML text control, on the right side of the container.
+20. Select the image control, rename to **imgCohoLogo** and set the Height property to `Parent.Height`. This will ensure that the image height is always the same as the parent container height.
 
-20. You should now be able to see the image control next to the HTML text control, on the right side of the container.
-21. Select the image control, rename to **imgCohoLogo** and set the Height property to: 
+![Images/Lab2-CreateCustomPages/E2_14.png](Images/Lab2-CreateCustomPages/E2_14.png)
 
-<pre> Power Fx
-Height: Parent.Height
-</pre>
+21. Your **MainScreen** should now resemble the below screenshot.
 
-![CohoLogo added](image-42.png)
+![Images/Lab2-CreateCustomPages/E2_15.png](Images/Lab2-CreateCustomPages/E2_15.png)
 
-This ensures the image always is resized according to the parent container height. 
-<br>
-You should now have a layout for the screen to handle a responsive design
+22. Add Purchase Order Screen to the custom page by copying the YAML code located [here](Assets/Lab2/PurchaseOrderScreen.md) 
 
-22. Add Purchase Order Screen to the custom page by copying the YAML code from JJGriffin/Designing-Beautiful-Power-Apps-For-Makers/Assets/Lab0/PurchaseOrderScreen.md
+23. With the **MainScreen** selected, paste the YAML code by selecting **CTRL + V** on your keyboard. A new screen called **Purchase Orders** should render, resembling the below. It's going to be used later, so disregard any errors for now.
 
-23. With **MainScreen** selected, paste the YAML code by selecting **ctrl+v** on your keyboard. A new screen with Purchase orders should be rendering. IT's going to be used for later. 
+![Images/Lab2-CreateCustomPages/E2_16.png](Images/Lab2-CreateCustomPages/E2_16.png)
 
+24. Click on **Save** and then **Publish** to save your progress.
+25. Leave the designer open if you plan to continue to the next Exercise.
 
 ## ✍️ Exercise 3: Build Responsive Galleries
 
