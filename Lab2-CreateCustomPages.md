@@ -31,33 +31,24 @@ This lab will take approximately 60–75 minutes to complete.
 
 ## ✍️ Exercise 1: Create a Landing Page and Configure Settings
 
-
 We will begin by creating the first custom **Landing Page** that will be presented to the users. This page will set the tone for the app and gives users a clear "home base" to work from as the first thing they will see when opening the **Coho Winery Purchase Order** app.
 
 1. Navigate to the [Power Apps Maker portal](https://make.powerapps.com) and ensure you are in the **Developer** environment you created in Lab 0.
 2. Select **Solutions** from the left navigation pane.
 
-
-<img src="Images/Lab2-CreateCustomPages/E1_1.png" width="500" alt="Solution selection in Maker Portal" />
-
+![Images/Lab2-CreateCustomPages/E1_1.png](Images/Lab2-CreateCustomPages/E1_1.png)
 
 3. Select the **Coho Winery** solution you created in Lab 0.
 
-
-<img src="Images/Lab2-CreateCustomPages/E1_2.png" width="800" alt="Coho Winery solution selection" />
-
+![Images/Lab2-CreateCustomPages/E1_2.png](Images/Lab2-CreateCustomPages/E1_2.png)
 
 3. In the solution, select **New** -> **App** -> **Page** from the command bar.
 
-
-<img src="Images/Lab2-CreateCustomPages/E1_3.png" width="600" alt="Landing page settings" />
-
+![Images/Lab2-CreateCustomPages/E1_3.png](Images/Lab2-CreateCustomPages/E1_3.png)
 
 4. The canvas designer page will load. Click on **Settings** in the ribbon (sometimes settings will be located behind the three dots).
 
-<img src="image-1.png" width="600" alt="alt text" />
-
-
+![Images/Lab2-CreateCustomPages/E1_4.png](Images/Lab2-CreateCustomPages/E1_4.png)
 
 ### On the **General** tab
     
