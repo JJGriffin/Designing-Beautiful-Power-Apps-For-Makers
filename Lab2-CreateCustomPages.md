@@ -543,6 +543,8 @@ OnSelect: Navigate(PurchaseOrders)
 11. Create the navigation bar
 
 -->
+## ✍️ Exercise 4: Side Pane custom page
+For the side pane, we have a premade layout 
 
 
 ## ✍️ Exercise 4: Styling 
