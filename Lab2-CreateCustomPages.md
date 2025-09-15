@@ -278,13 +278,12 @@ LayoutMinWidth: 260 // lets them wrap on narrow screens </pre>
 
 6. In the **Tree view**, select **App** and **Formulas** from the App properties dropdown. 
 
-7. In the **Formulas**, create a *Named Formula* for the collection **nfcolPurchaseOrders** by setting the formula: 
+7. In the **Formulas**, create a *Named Formula* for the collection **nfcolPurchaseOrders** by setting the formula from this resource: 
 
-<br>
+https://github.com/JJGriffin/Designing-Beautiful-Power-Apps-For-Makers/blob/360eaeb81cf6d0724fba7acf2c88f20cbef888fd/Assets/Lab2/PurchaseOrderCollection.md
 
-### nfcolPurchaseOrders Named Formula
-
-Resource: 
+<pre> Power Fx 
+nfcol
 
 8. In **Tree view**, select **cntPurchaseOrders**. Go to **Insert** → **Layout** → **Horizontal** container and rename it **cntPOHeader**.
 9. With **cntPOHeader** selected, set these properties:

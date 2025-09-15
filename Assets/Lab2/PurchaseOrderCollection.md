@@ -1,5 +1,8 @@
-//Collection for the Purchase orders
-colMorePurchaseOrder = 
+Collection for the Purchase orders
+
+## Copy Named Formula references below
+
+nfcolMorePurchaseOrder = 
 
     Table(
         {
@@ -127,6 +130,7 @@ colMorePurchaseOrder =
 
 
 nfcolPurchaseOrders =
+
     Table(
         {
             vendorId: "V001",
