@@ -1,5 +1,5 @@
 
-## Collection for the Purchase orders 
+## Collection for the Purchase Orders 
 
 ### Copy Named Formula references below
 

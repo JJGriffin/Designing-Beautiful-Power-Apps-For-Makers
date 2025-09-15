@@ -235,237 +235,217 @@ ColorValue(nfBackgroundColor)
 
 ## ✍️ Exercise 3: Build Responsive Galleries
 
-1. With **cntMainBody** selected, insert a **Horizontal container**. Rename it **cntBodyGalleries**
+1. With **cntMainBody** selected, insert a **Horizontal container**. Rename it to **cntBodyGalleries**
+2. Adjust the following properties on the **cntBodyGalleries** control to resemble the below. The changes will ensure that the container behaves like a responsive 2-column row.
 
-2. Configure **cntBodyGalleries** to behave like a responsive 2-column row:
+    | Property | Formula |
+    | --- | --- |
+    | **LayoutDirection** | `LayoutDirection.Horizontal` |
+    | **LayoutGap** | `12` |
+    | **PaddingLeft** | `8` |
+    | **PaddingRight** | `8` |
+    | **PaddingTop** | `4` |
+    | **PaddingBottom** | `4 // Let the row take all remaining height` |
+    | **FillPortions** | `1 // Responsive behavior` |
+    | **LayoutWrap** | `true // allows columns to wrap on narrow widths` |
 
-<pre>Power Fx 
-LayoutDirection: LayoutDirection.Horizontal 
-LayoutGap: 12 
-PaddingLeft: 8 
-PaddingRight: 8 
-PaddingTop: 4 
-PaddingBottom: 4 // Let the row take all remaining height 
-FillPortions: 1 // Responsive behavior 
-LayoutWrap: true // allows columns to wrap on narrow widths 
-</pre>
+3. Insert two *Vertical containers* inside **cntBodyGalleries** and rename them to **cntPurchaseOrders** and **cntMyPurchaseOrders** respectively. Your **Tree view** should now resemble the below:
 
-3. Insert two *Vertical containers* inside **cntBodyGalleries** and rename them:
+![Images/Lab2-CreateCustomPages/E3_1.png](Images/Lab2-CreateCustomPages/E3_1.png)
 
-<Pre>
-cntPurchaseOrders
+4. Adjust the following properties on each of the two new containers (**cntPurchaseOrders** and **cntMyPurchaseOrders**) so they share space evenly and stretch:
 
-cntMyPurchaseOrders
-</pre>
+    | Property | Formula |
+    | --- | --- |
+    | **FillPortions** | `1 // equal width columns` |
+    | **LayoutDirection** | `LayoutDirection.Vertical` |
+    | **LayoutGap** | `8` |
+    | **PaddingLeft** | `10` |
+    | **PaddingRight** | `10` |
+    | **PaddingTop** | `8` |
+    | **PaddingBottom** | `8` |
+    | **AlignInContainer** | `AlignInContainer.Stretch` |
+    | **LayoutAlignItems** | `LayoutAlignItems.Stretch` |
+    | **LayoutMinWidth** | `260 // lets them wrap on narrow screens` |
 
-4. Set the same properties on each of the two column containers so they share space evenly and stretch:
-// Apply to: cntPurchaseOrders & cntMyPurchaseOrders
+5. In the **Tree view**, select **App** and then **Formulas** from the App properties dropdown. 
 
-<pre> Power Fx 
+6. In the **Formulas**, create a *Named Formula* for the collection **nfcolPurchaseOrders** by setting the formula from [this resource](/Assets/Lab2/PurchaseOrderCollection.md). **Do not overwrite the existing formulas**.
 
-FillPortions: 1 // equal width columns 
-LayoutDirection: LayoutDirection.Vertical 
-LayoutGap: 8 
-PaddingLeft: 10 
-PaddingRight: 10 
-PaddingTop: 8 
-PaddingBottom: 8 
-AlignInContainer: AlignInContainer.Stretch 
-LayoutAlignItems: LayoutAlignItems.Stretch 
-LayoutMinWidth: 260 // lets them wrap on narrow screens </pre>
+![Images/Lab2-CreateCustomPages/E3_2.png](Images/Lab2-CreateCustomPages/E3_2.png)
 
-5. Verify that your **Tree view** now also has two containers below cntBodyGalleries - **cntPurchaseOrders** & **cntMyPurchaseOrders**
+7. In **Tree view**, select **cntPurchaseOrders**. Go to **Insert** → **Layout** → **Horizontal container** and rename it **cntPOHeader**.
+8. With **cntPOHeader** selected, adjust the following properties:
 
-6. In the **Tree view**, select **App** and **Formulas** from the App properties dropdown. 
+    | Property | Formula |
+    | --- | --- |
+    | **DropShadow** | `DropShadow.None` |
+    | **FillPortions** | `0` |
+    | **Height** | `Parent.Height` |
+    | **LayoutDirection** | `LayoutDirection.Horizontal` |
+    | **LayoutGap** | `3` |
+    | **LayoutJustifyContent** | `LayoutJustifyContent.SpaceBetween` |
+    | **LayoutMinHeight** | `30` |
+    | **PaddingLeft** | `10` |
+    | **PaddingRight** | `10` |
 
-7. In the **Formulas**, create a *Named Formula* for the collection **nfcolPurchaseOrders** by setting the formula from this resource: 
+9. Inside the **cntPOHeader** container, insert a Label by selecting **+ Insert**, searching for "label" and selecting **Label**. Rename it to **lblTitlePurchaseOrders** and adjust the following properties:
 
-[Purhcase Order Collection data](https://github.com/JJGriffin/Designing-Beautiful-Power-Apps-For-Makers/blob/8803955ae8152223241d49b14d9a293573556113/Assets/Lab2/PurchaseOrderCollection.md)
+    | Property | Formula |
+    | --- | --- |
+    | **AlignInContainer** | `AlignInContainer.Stretch` |
+    | **Alignment** | `Align.Justify` |
+    | **AutoHeight** | `true` |
+    | **Color** | `RGBA(92, 37, 4, 1)` |
+    | **FillPortions** | `1` |
+    | **FontSize** | `16` |
+    | **FontWeight** | `FontWeight.Bold` |
+    | **Height** | `50` |
+    | **LayoutMinWidth** | `100` |
+    | **Text** | `"Purchase Orders"` |
+    | **TextRole** | `'Label.TextRole'.Heading2` |
+    | **Wrap** | `false` |
 
-**App - Formulas** should resemble the below:
+![Images/Lab2-CreateCustomPages/E3_3.png](Images/Lab2-CreateCustomPages/E3_3.png)
 
-<pre> Power Fx 
-nfcolMorePurchaseOrder =
+11. With **cntPOHeader** still selected, insert an **Icon (Classic/Icon)** -> **Add Document**. Rename it to **icnAddDocument**.
 
-Table(
-    {
-        vendorId: "Vendor001",
-        vendorName: "Acme Corp",
-        manuallyProcessedInApp: false,
-        poNumber: "PO12345",
-        warehouseId: "WH001",
-        result: "Success",
-        LastModified: DateAdd(Today(), -5, TimeUnit.Days),
-        Datasource: "Dataverse",
-        deliveryMethod: "Courier",
-        linesCount: 10
-    }
-</pre>
+![Images/Lab2-CreateCustomPages/E3_4.png](Images/Lab2-CreateCustomPages/E3_4.png)
 
-8. In **Tree view**, select **cntPurchaseOrders**. Go to **Insert** → **Layout** → **Horizontal** container and rename it **cntPOHeader**.
-9. With **cntPOHeader** selected, set these properties:
+12. Adjust the properties of the newly added **icnAddDocument** icon to resemble the below:
 
-<pre>Power Fx 
-DropShadow: DropShadow.None 
-FillPortions: 0 
-Height: Parent.Height 
-LayoutDirection: LayoutDirection.Horizontal 
-LayoutGap: 3 
-LayoutJustifyContent: LayoutJustifyContent.SpaceBetween 
-LayoutMinHeight: 30 
-PaddingLeft: 10 
-PaddingRight: 10
- </pre>
+    | Property | Formula |
+    | --- | --- |
+    | **Color** | `RGBA(92, 37, 4, 1)` |
+    | **Height** | `Parent.Height` |
+    | **HoverColor** | `ColorFade(Self.Color, -30%)` |
+    | **HoverFill** | `RGBA(0,0,0,0)` |
+    | **Icon** | `Icon.AddDocument` |
+    | **LayoutMinHeight** | `Parent.Height` |
+    | **OnSelect** | `ClearCollect(colPurchaseOrders, nfcolPurchaseOrders)` |
+    | **PaddingBottom** | `15` |
+    | **PaddingLeft** | `15` |
+    | **PaddingRight** | `15` |
+    | **PaddingTop** | `15` |
+    | **PressedBorderColor** | `RGBA(0,0,0,0)` |
+    | **PressedColor** | `ColorFade(Self.Color, -30%)` |
+    | **PressedFill** | `RGBA(0,0,0,0)` |
+    | **Width** | `50` |
 
-10. Inside **cntPOHeader**, insert a Label by selecting **+ Insert**, searching for "label" and selecting **Label**. Rename it to **lblTitlePurchaseOrders** and set:
+13. With **cntPurchaseOrders** selected, insert a **Rectangle** and rename it to **recDividerPurchaseOrders**.
+14. Adjust the properties of the newly added **recDividerPurchaseOrders** rectangle to resemble the below:
 
-<pre>Power Fx 
-AlignInContainer: AlignInContainer.Stretch 
-Alignment: Align.Justify 
-AutoHeight: true 
-Color: RGBA(92, 37, 4, 1) 
-FillPortions: 1 
-FontSize: 16 
-FontWeight: FontWeight.Bold 
-LayoutMinWidth: 100 
-Text: "Purchase Orders" 
-TextRole: 'Label.TextRole'.Heading2 
-Wrap: false
-OnSelect: Navigate(PurchaseOrders)  </pre>
+    | Property | Formula |
+    | --- | --- |
+    | **AlignInContainer** | `AlignInContainer.Stretch` |
+    | **BorderColor** | `RGBA(166,166,166,1)` |
+    | **BorderStyle** | `BorderStyle.None` |
+    | **DisabledFill** | `RGBA(166,166,166,1)` |
+    | **Fill** | `RGBA(245,245,245,1)` |
+    | **FocusedBorderColor** | `RGBA(0,120,212,1)` |
+    | **Height** | `1` |
+    | **HoverFill** | `RGBA(0,120,212,1)` |
+    | **PressedFill** | `RGBA(0,120,212,1)` |
 
-![PurchaseOrder Label](image-40.png)
+15. With **cntPurchaseOrders** selected, insert a **Blank vertical gallery** from **+ Insert**, search for `gallery` and select **Vertical gallery**. Rename it to **galPurchaseOrders** and adjust the properties to resemble the below:
 
-11. Still in **cntPOHeader**, insert an Icon (Classic/Icon) -> **Add Document**. Rename it **icnAddDocument**. 
+    | Property | Formula |
+    | --- | --- |
+    | **BorderColor** | `RGBA(166,166,166,1)` |
+    | **FocusedBorderColor** | `RGBA(0,120,212,1)` |
+    | **FocusedBorderThickness** | `2` |
+    | **Height** | `Parent.Height` |
+    | **Items** | `colPurchaseOrders` |
+    | **LayoutMinWidth** | `Parent.Width` |
+    | **TemplateSize** | `55` |
+    | **Transition** | `Transition.Pop // optional: bubble selection to item container` |
+    | **Width** | `Parent.Width` |
 
-![Icon Document](image-41.png)
+16. With **galPurchaseOrders** selected, insert a **Horizontal container** and rename it **cntGalleryPOHorizontal**. Adjust the properties to resemble the below:
 
-12. Set properties of the added *Document Icon*:
+    | Property | Formula |
+    | --- | --- |
+    | **DropShadow** | `DropShadow.None` |
+    | **Height** | `48` |
+    | **LayoutDirection** | `LayoutDirection.Horizontal` |
+    | **LayoutJustifyContent** | `LayoutJustifyContent.SpaceBetween` |
+    | **Width** | `Parent.Width` |
 
-<pre>Power Fx 
-Color: RGBA(92, 37, 4, 1) 
-Height: Parent.Height 
-HoverColor: ColorFade(Self.Color, -30%) 
-HoverFill: RGBA(0,0,0,0) 
-Icon: Icon.AddDocument 
-LayoutMinHeight: Parent.Height 
-PaddingBottom: 15 
-PaddingLeft: 15 
-PaddingRight: 15 
-PaddingTop: 15 
-PressedBorderColor: RGBA(0,0,0,0) 
-PressedColor: ColorFade(Self.Color, -30%) 
-PressedFill: RGBA(0,0,0,0) 
-Width: 50 
-OnSelect: ClearCollect(colPurchaseOrders, nfcolPurchaseOrders) 
-</pre>
+> ![NOTE]
+> If the container is **not** inside the **galPurchaseOrders** gallery, drag and drop it into the gallery template in the **Tree view**.
 
-13. With **cntPurchaseOrders** selected, insert a Rectangle and rename it recDividerPurchaseOrders. 
+17. Inside **cntGalleryPOHorizontal**, insert a **Vertical container** and rename it to **cntGalleryPOVertical**. Adjust the properties to resemble the below:
 
-14. Set rectangle divider properties:
+    | Property | Formula |
+    | --- | --- |
+    | **DropShadow** | `DropShadow.None` |
+    | **FillPortions** | `1` |
+    | **Height** | `48` |
+    | **LayoutDirection** | `LayoutDirection.Vertical` |
+    | **LayoutMinHeight** | `Parent.Height` |
+    | **PaddingLeft** | `15` |
+    | **PaddingRight** | `10` |
 
-<pre>Power Fx 
-AlignInContainer: AlignInContainer.Stretch 
-BorderColor: RGBA(166,166,166,1) 
-BorderStyle: BorderStyle.None 
-DisabledFill: RGBA(166,166,166,1) 
-Fill: RGBA(245,245,245,1) 
-FocusedBorderColor: RGBA(0,120,212,1) 
-Height: 1 
-HoverFill: RGBA(0,120,212,1) 
-PressedFill: RGBA(0,120,212,1) </pre>
+18. With **cntGalleryPOVertical** selected, insert a **Label** and rename it to **lblPurchaseOrderNumber**. Then, insert another **Label** and rename it to **lblPOVendorInfo**.
 
-15. Insert a **Vertical Gallery** from **+ Insert**, search for gallery and select **Vertical gallery**, inside **cntPurchaseOrders**. Rename it **galPurchaseOrders** and set:
+19. Set the properties for **lblPurchaseOrderNumber** to resemble the below.
 
-<pre>Power Fx 
-BorderColor: RGBA(166,166,166,1) 
-FocusedBorderColor: RGBA(0,120,212,1) 
-FocusedBorderThickness: 2 
-Items: colPurchaseOrders 
-LayoutMinWidth: Parent.Width 
-TemplateSize: 55 
-Transition: Transition.Pop // optional: bubble selection to item container 
-OnSelect: Select(Parent) </pre>
+    | Property | Formula |
+    | --- | --- |
+    | **AutoHeight** | `true` |
+    | **Color** | `RGBA(0,0,0,1)` |
+    | **FillPortions** | `1` |
+    | **FontWeight** | `FontWeight.Semibold` |
+    | **Height** | `24` |
+    | **LayoutMinHeight** | `Parent.Height/2` |
+    | **TabIndex** | `-1` |
+    | **Text** | `ThisItem.poNumber` |
+    | **VerticalAlignment** | `VerticalAlign.Middle` |
+    | **Width** | `344` |
+    | **Wrap** | `false` |
+    | **X** | `22` |
 
-16. Inside **galPurchaseOrders**, insert a **Horizontal container** and rename it **cntGalleryPOHorizontal**. 
+20. Set the properties for **lblPOVendorInfo** to resemble the below.
 
-17. Set container properties for **cntGalleryPOHorizontal**:
+    | Property | Formula |
+    | --- | --- |
+    | **FillPortions** | `1` |
+    | **FontSize** | `9` |
+    | **FontWeight** | `FontWeight.Normal` |
+    | **Height** | `28` |
+    | **LayoutMinHeight** | `Parent.Height/2` |
+    | **TabIndex** | `-1` |
+    | **Text** | `ThisItem.vendorName & " \|\| " & ThisItem.vendorId` |
+    | **VerticalAlignment** | `VerticalAlign.Top` |
+    | **Width** | `355` |
+    | **X** | `5` |
+    | **Y** | `20` |
 
-<pre>Power Fx 
-DropShadow: DropShadow.None 
-Height: 48 
-LayoutDirection: LayoutDirection.Horizontal 
-LayoutJustifyContent: LayoutJustifyContent.SpaceBetween 
-Width: Parent.Width </pre>
+21. With the **cntGalleryPOHorizontal** container selected, insert an **Icon (Classic/Icon)**, rename it to **icnExpandPO**, and set the properties to resemble the below:
 
-18. Inside **cntGalleryPOHorizontal**, insert a Vertical container and rename it **cntGalleryPOVertical**. 
+    | Property | Formula |
+    | --- | --- |
+    | **AlignInContainer** | `AlignInContainer.Stretch` |
+    | **BorderColor** | `RGBA(0,0,0,0)` |
+    | **Color** | `RGBA(92, 37, 4, 1)` |
+    | **DisabledColor** | `RGBA(220,220,220,1)` |
+    | **DisabledFill** | `RGBA(0,0,0,0)` |
+    | **Height** | `Parent.Height` |
+    | **HoverBorderColor** | `RGBA(0,0,0,0)` |
+    | **HoverColor** | `ColorFade(Self.Color, -30%)` |
+    | **HoverFill** | `RGBA(0,0,0,0)` |
+    | **Icon** | `Icon.ExpandView` |
+    | **LayoutMinHeight** | `Parent.Height` |
+    | **PaddingBottom** | `15` |
+    | **PaddingLeft** | `15` |
+    | **PaddingRight** | `15` |
+    | **PaddingTop** | `15` |
+    | **PressedBorderColor** | `RGBA(0,0,0,0)` |
+    | **PressedColor** | `ColorFade(RGBA(0,120,212,1), -30%)` |
+    | **PressedFill** | `RGBA(0,0,0,0)` |
+    | **Width** | `50` |
 
-19. Set **cntGalleryPOVertical** containter properties:
-
-<pre>Power Fx 
-DropShadow: DropShadow.None 
-Height: 48 
-LayoutDirection: LayoutDirection.Vertical 
-LayoutMinHeight: Parent.Height 
-PaddingLeft: 15 
-PaddingRight: 10 
-Flexible Width: true </pre>
-
-20. Inside **cntGalleryPOVertical**, insert a **Label** and rename it **lblPurchaseOrderNumber**. Then insert another Label and rename it **lblPOVendorInfo**. 
-21. Set their properties:
-
-<pre>Power Fx  
-**lblPurchaseOrderNumber** 
-AutoHeight: true 
-Color: RGBA(0,0,0,1) 
-FillPortions: 1 
-FontWeight: FontWeight.Semibold 
-Height: 24 
-LayoutMinHeight: Parent.Height/2 
-TabIndex: -1 
-Text: ThisItem.poNumber 
-VerticalAlignment: VerticalAlign.Middle 
-Width: 344 
-Wrap: false 
-X: 22
-
-**lblPOVendorInfo**
- FillPortions: 1 
- FontSize: 9 
- FontWeight: FontWeight.Normal 
- Height: 28 
- LayoutMinHeight: Parent.Height/2 
- TabIndex: -1 
- Text: ThisItem.vendorName & " || " & ThisItem.vendorId 
- VerticalAlignment: VerticalAlign.Top 
- Width: 355 
- X: 5 
- Y: 20 
- </pre>
-
-22. Back in **cntGalleryPOHorizontal**, insert an Icon (Classic/Icon), rename it **icnExpandPO**, and set:
-
-<pre>Power Fx 
-AlignInContainer: AlignInContainer.Stretch 
-BorderColor: RGBA(0,0,0,0) 
-Color: RGBA(92, 37, 4, 1) 
-DisabledColor: RGBA(220,220,220,1) 
-DisabledFill: RGBA(0,0,0,0) 
-Height: Parent.Height 
-HoverBorderColor: RGBA(0,0,0,0) 
-HoverColor: ColorFade(Self.Color, -30%) 
-HoverFill: RGBA(0,0,0,0) 
-Icon: Icon.ExpandView
-LayoutMinHeight: Parent.Height 
-PaddingBottom: 15 
-PaddingLeft: 15 
-PaddingRight: 15 
-PaddingTop: 15 
-PressedBorderColor: RGBA(0,0,0,0) 
-PressedColor: ColorFade(RGBA(0,120,212,1), -30%) 
-PressedFill: RGBA(0,0,0,0) 
-Width: 50 </pre>
-
-23. Test it: Select **icnExpandPO** to load the sample data (or use your nfcolPurchaseOrders). You should see rows like:
+22. Test it: Select **icnExpandPO** to load the sample data (or use your nfcolPurchaseOrders). You should see rows like:
 
 PO-1001 — Vintners AB || V001
 
@@ -475,7 +455,7 @@ PO-1003 — Oak & Co || OK03
 
 <br>
 
-24. Add Purchase Order Screen to the custom page by copying the YAML code located [here](Assets/Lab2/PurchaseOrderScreen.yml) 
+24. Add a Purchase Order Screen to the custom page by copying the YAML code located [here](Assets/Lab2/PurchaseOrderScreen.yml) 
 
 25. With the **MainScreen** selected, paste the YAML code by selecting **CTRL + V** on your keyboard. A new screen called **PurchaseOrders** should render, resembling the below. 
 
