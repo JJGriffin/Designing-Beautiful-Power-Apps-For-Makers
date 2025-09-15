@@ -1,6 +1,6 @@
 # Lab 3: Integrate Custom Pages in a Model-Driven Power App
 
-In this lab, you will integrate the custom pages you built in Lab 2 into the Coho Winery Purchase Order Management model-driven app as both a full page and a side pane/dialog. You’ll pass the current record context to the custom page and render responsive UI with modern styling.
+In this lab, you will integrate the custom pages you built in **Lab 2** into the **Coho Winery Purchase Order Management** model-driven app as both a full page and a side pane. You’ll pass the current record context to the custom page and render responsive UI with modern styling.
 
 ## Lab Overview
 
@@ -12,22 +12,22 @@ Embed a custom page as full page and Side Pane in the model-driven app for Coho 
 Completed lab 1-3 
 
 ## Scenario
-
-TBC
+To be able to read the PDFs related to all purchase orders, the Coho Winery Purchase Order Management app must support viewing PDFs and provide end users with an option that makes the files easily assecible through the existing app. They also want to open the relevant record information. 
 
 ### ⌛ Length
 
-TBC
+45-60 minutes
 
 ### Assets You Will need
 
 Custom pages from Lab 2 (e.g., Landing page and Side Pane custom page)
 
-Purchase Order table (or your table of choice)
+Purchase Order table (from Lab 1)
 
-A model-driven app (from Lab 1)
+The model-driven app (from Lab 1)
 
-New JS web resource: pt_coho.custompage.js
+New JS web resource: **CohoWinerySidePane.js**
+
 
 ## Exercise 1: Embedding a Full page as part of the Model-driven Application
 We will begin by adding the **Coho Winery Landing page** to the MDA.
@@ -46,7 +46,7 @@ We will begin by adding the **Coho Winery Landing page** to the MDA.
 
 4. Select the **Coho Winery** model-driven app by clicking the **three dots** and **Edit**
 
-I NEED TO CHANGE IMG
+NEED TO CHANGE IMG
 
 ![alt text](image-45.png)
 
@@ -68,6 +68,7 @@ Result: Your custom page is now a full page in the sitemap. You can test the app
 8. Edit details in the navigation sitemap. Select the **three dots** next to the **New group** and expand the side pane to edit the **Title** to **Purchase Orders**
 
 ![Edit MDA details](image-49.png)
+
 
 ## Exercise 2: Create the JavaScript Resource 
 
@@ -138,22 +139,20 @@ To trigger the side pane with the custom page, you will have to configure a comm
 
 12. **Set the function name** to `openPOViewer`  
 
-!TIP you find the function name in the JavaScript File
+> [TIP] You find the function name in the JavaScript File
 
 13. **Verify the command bar settings** → you should see the following so far:
 
- <pre>
-    Label → `Purchase Order Info`
+    | Property | Formula |
+    | --- | --- |
+    | **Label** | `Purchase Order Info` |
+    | **Icon** | `Use Icon` → `PdfIconFile` |
+    | **Action** | `Run JavaScript` |
+    | **Library** | `coh_CohoWinerySidePane` |
+    | **Function** | `openPOViewer` |
 
-    Icon → `Use Icon` → `ActivateQuote`
+### Should resemble the below settings
 
-    Action → `Run JavaScript`
-
-    Library →  `coh_CohoWinerySidePane`
-
-    Function →  `openPOViewer`
- </pre>
-  
  ![Settings for command bar](image-25.png)
 
 14. **Save and publish** - Play your app to verify that the button is visible on the Purchase Order form
@@ -162,6 +161,11 @@ To trigger the side pane with the custom page, you will have to configure a comm
 17. Verify that the button is visible and clickable → The side pane should open on the right hand side with the message **Page not found**
 
 ![Test the button](image-14.png)
+
+> ### Working with commands
+> Sometimes the command bar ribbon misbehaves and the button might *disappear* from the Form. In that case, you should navigate to the editor of the commands and select the button, in our case the **Purchase Order Info** button and click on **Open formula bar** under **visability**. Set the formula to *true* - **Save and Publish**
+
+![issues](image-55.png)
 
 18. Close the browser window and get back to the configuration page for the command bar on the Purchase Order Form.
 
@@ -174,7 +178,33 @@ We are now setting the parameters for input to the JavaScript which will be pass
 
 ![Command bar button config](image-24.png)
 
-21. **Edit Parameter 1 value:** → Schema name of the page
+21. **Edit Parameter 1 value:** → Schema name of the page - should be this format **coh_purchaseordersidepane_c898a**
+
+### 💡 Find the page name 
+> Navigate to your solution for **Coho Winery** and locate the **Purchase Order Side Pane** page. The **page name** will be visible in under the column **Name** and have the format **coh_purchaseordersidepane_c898a**
+> 
+
+22. Click **+ Add parameter**  →  Should be of type `string`
+23. Set value of **Parameter 2** to the table column schema name for the **Purchase Order Number** in the **Purchase Order** table. Should be this format **coh_purchaseordernumber**. 
+
+![Command bar Parameters](image-56.png)
+
+> ### Working with parameters 
+> **Parameter 1** is the reference to the side pane custom page and **Parameter 2** fetches the **purchase order number** for the current record and shows it in the **Title**
+>
+> When creating and updating parameter values for commands, the order of the parameters matter. The order is decided by the order of input parameters in the JavaScript function
+> 
+> In our case, the JavaScript expect pageName (the schema name of the page) first, then the fieldName (Purchase Order Number table column) for the function **openPOViewer(pageName, fieldName)** to work 
+>
+
+### Test the command for side pane on the Form of a **Purchase order**
+24. **Save and publish** - Play your app to verify that the button is visible on the Purchase Order Form
+25. In the model-driven app, select the **Purchase Order** table from the navigation
+26. Click `+ New` to open a new Form or select an existing record. 
+27. Locate the `Purchase Order Info` command bar button on the ribbon and verify that the side pane opens
+
+![open side pane](image-57.png)
+
 
 ## 💡 Fetch Record Details in the Custom Page
 

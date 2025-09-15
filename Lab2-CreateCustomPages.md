@@ -655,127 +655,85 @@ For this exercise you will use to YAML provided under lab resources as the pre b
    | Property | Formula |
     | --- | --- |
     | **Padding top** | `5` |
-    | **PAdding bottom** | `5` |
+    | **Padding bottom** | `5` |
     | **Padding Left** | `5` |
-    | **PAdding Right** | `5` |
+    | **Padding Right** | `5` |
 
 19. Rename the control to **imgArrowIconSVG** 
 
-<!---
-### Optional: **Add HTML background instead of a Fill color**
 
-1. With **MainScreen** selected, insert HTMLtext control and right click to Reorder ->  **Send to Back**
+### Optional: **Add HTML blur to your page - Glass Morphism effect:**
+1. Select **MainScreen** in the **Tree view** 
+2. Select the container **cntMainVertical** 
 
-![Align to the back](image-4.png)
+![selecting cntmainvertical](image-58.png)
 
-2. Rename the HTML text to **htmlCohoBackground** and edit HTML text value to be:
+3. Click **+ Insert** on the ribbon and search for **Container** - Select *Container* from the layout section
+
+![container](image-59.png)
+
+4. Rename the added container to **cntHTMLBlur** and drag the **cntHTMLBlur** container under **cntMainVertical** - should be on the same level as **cntMainBody** and in between **cnMainHeader** and **cntMainBody**.
+
+![before](image-60.png) -> ![after](image-61.png)
+
+5. Expand the **cntHTMLBlur** by clicking the arrow facing down. 
+6. Click and hold the **cntMainBody** to drag it into the **cntHTMLBlur** container as shown below
+
+![Drag and drop](image-62.png)
+
+7. The **cntHTMLBlur** should now contain one element, the **cntMainBody**.
+
+8. With the **cntHTMLBlur** container selected, insert an **HTMLtext control**
+9. Selecting **+ Insert** on the ribbon, search for **HTML** and select the *HTML Text* control
+10. Rename the control to **htmlBlur** and reorder **Send to back** by clicking the **three dots**, selecting **Reorder** and **Send to back**
+![Reorder object](image-64.png)
+
+11. On the properties of the html control, select **HtmlText** and edit formula to the below value:
 
 ``` HTML 
 
 $"<div style='
-width: {Parent.Width}px;
-height: {Parent.Height}px;
-padding: 0px 0px;
-background: linear-gradient(135deg, #f4e6d7 0%, #e8d5c4 100%);
-box-sizing: border-box;
-overflow: hidden;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-position: relative;
-'>
+  background: rgba(255,255,255,0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 4px rgba(0,0,0,0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255,255,255,0.3);
 
-<div style='text-align: center; position: relative; z-index: 2;'>
-<h1 style='font-size: 2.5rem; color: rgba(44, 24, 16, 0.15); margin-bottom: 5px; font-family: Georgia, serif;'>Coho Winery</h1>
-<p style='color: rgba(139, 69, 19, 0.12); font-size: 1rem; font-style: italic; font-family: Georgia, serif; letter-spacing: 2px; font-weight: 300; margin-bottom: 15px;'>est. 2025</p>
-<p style='color: rgba(44, 24, 16, 0.13); font-size: 1.3rem; font-family: Georgia, serif; font-weight: 400; letter-spacing: 1px;'>Excellent Wine & Excellent Taste</p>
-</div>
-</div>"
+  /* Fill the HTMLText control exactly */
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  box-sizing: border-box;
 
-```
-
-**Note** 
-*When creating the HTML code for Power Apps, use ' instead of " in the string, or else it wont work*
-
-![alt text](image-5.png)
-
-3. Set **Width** and **Height** to adjust according to screen size:
-
-<pre> Power Fx 
-Width: Parent.Width
-Height: Parent.Height
-</pre>
-
-4. Set X and Y properties to control starting point of the control:
-
-<pre> Power Fx 
-X: 0
-Y: 0
-</pre>
-
-5. Set Padding to (this avoids gaps between the content and the control box):
-
-<pre> Power Fx 
-Top: 0
-Bottom: 0
-Left: 0
-Right:0
-</pre>
-
-6. Ensure that **Automatic Height** is **On** to avoid a scrollbar
-
-*💡 Use $ to avoid excessive use of & as well as "" in the text, this enables you to only use {} when referring to dynamic content*
-
-7. Set transparency of the Main Body Container **cntMainBody** to 100 by selecting **cntMainBody** in the **Tree View**, clicking on the *paint bucket on the right and chosing the transparent color option:
-
-![Set Container transparency](image-43.png)
-<br>
---->
-
-### Optional: **Add HTML blur to your page - Glass Morphism effect:**
-1. Select **MainScreen** in the **Tree view**, click **+ Insert** and search for **Container** - Select "Container"
-
-![Adding a container](image-44.png)
-
-2. Rename the added container to **cntHTMLBlur** and Reorder - **Send to back**
-3. With the **cntHTMLBlur** selected, insert an HTMLtext control by selecting **+ Insert**, search for "HTML" and click on **HTML Text**
-4. Edit text value to be:
-
-``` HTML 
-
-$" <div style='
-background: rgba(255, 255, 255, 0.2); /* Solid background */
-border-radius: 16px;
-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(5px);
--webkit-backdrop-filter: blur(5px);
-border: 1px solid rgba(255, 255, 255, 0.3);
-width: {Self.Width-2}px;
-height: {Self.Height-2}px;
-padding: 10px; /* Adds space inside the box */
-overflow: hidden; /* Prevents scrollbars */
-box-sizing: border-box; /* Ensures padding is included in width/height */
-position: absolute; /* Allows absolute positioning */
-top: 0; /* Aligns to the top */
-left: 0; /* Aligns to the left */
-color: white; /* Default text color for fallback */
-font-family: Poppins, sans-serif; /* Sets the font to Poppins */
+  padding: 10px;
+  overflow: hidden;
+  color: white;
+  font-family: Poppins, sans-serif;
 '>"
 
+
 ```
+
+![Edit htmlText Value](image-63.png)
+
+> ### Working with HTML
+> When creating the HTML code for Power Apps, use **'** instead of **"** in the string, or else it wont work
+>
+> 💡 Change the effect and looks of the blur on https://css.glass/
+>
+> 💡 Use $ to avoid excessive use of & as well as "" in the text, this enables you to only use {} when referring to dynamic content
 
 ![Blur effect](/Images/Lab2-CreateCustomPages/image-2.png)
 
-5. Set **Width** and **Height** to adjust according to screen size:
+12. Set **Width** and **Height** to adjust according to screen size:
 
 <pre> Power Fx 
 Width: Parent.Width
 Height: Parent.Height
 </pre>
 
-6. Ensure that Automatic Height is **On** to avoid a scroll bar
-7. Set Padding to (this avoids gaps between the content and the control box):
+13. Ensure that Automatic Height is **On** to avoid a scroll bar
+14. Set Padding to (this avoids gaps between the content and the control box):
 
 <pre> Power Fx 
 Top: 0
@@ -784,30 +742,30 @@ Left: 0
 Right:0
 </pre>
 
-*💡 Change the effect and looks of the blur on https://css.glass/*
 
-8. If you have the HTML **htmlCohoBackground** added to your MainScreen, add it to the **cntHTMLBlur** container by holding and dragging it into the container and Reorder **Send to back** to see the blur above the Text. 
+15. Set transparency of the Main Body Container **cntMainBody** to 100 by selecting **cntMainBody** in the **Tree View**
+16. Click on the *paint bucket* on the right and chosing the transparent color option:
 
-<!--- Another exercise
+![Set container transparency](image-65.png)
 
-### Optional: Working with SVGs
-1. Add an image control 
-2. Build the SVG code (for icons Bootstrap is a great source for generating SVG code)
-3. Alter the code to your needs with dynamic values using set variables
+17. To see the effect of the blur - select **MainScreen** in the **Tree view** and locate the **Background image** under Properties on the right
 
-<pre> SVG code
-"data:image/svg+xml," & EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='" & varHexValue & "' class='bi bi-plus-lg' viewBox='0 0 16 16'>
-  <path fill-rule='evenodd' d='M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2'/>
-</svg>")
-</pre>
+![background image](image-66.png)
 
-4. Use the correct encoding format for Power Apps:
+18. Select the first option **Stock images**.
+19. Scroll far down on the stock images gallery and select the **Confetti** image or another of your choosing (You're allowed to be creative)
+> You can also input the value **'07_readyconfetti_light'** as a formula on the BackgroungImage property of the **MainScreen**
 
-<pre> Power Fx
-"data:image/svg+xml," & EncodeUrl("
-</pre>
+20. Click on **Insert**
 
---->
+![confetti stock photo](image-67.png)
+
+21. You will now be able to see that the HTML blur effect is covering some of the background. Test it by clicking on **Play** in the right corner to preview the page. 
+
+22. On your keyboard, select **CTRL** + **SHIFT** + **P** or click on **Publish** to save and publish your page
+
+**You have successfully added a blur effect using HTML ✅**
+
 
 ### Extra: Use templates
 
