@@ -1,0 +1,273 @@
+Screens:
+  PDFViewer:
+    Properties:
+      Fill: =RGBA(255, 255, 255, 1)
+      LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+    Children:
+      - cntMainVertical:
+          Control: GroupContainer@1.3.0
+          Variant: AutoLayout
+          Properties:
+            DropShadow: =DropShadow.None
+            Fill: =RGBA(247, 247, 247, 1)
+            Height: =Parent.Height
+            LayoutAlignItems: =LayoutAlignItems.Stretch
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =8
+            PaddingBottom: =16
+            PaddingLeft: =8
+            PaddingRight: =8
+            PaddingTop: =16
+            Width: =Parent.Width
+          Children:
+            - cntMainHeaderHorizontal:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  DropShadow: =DropShadow.None
+                  FillPortions: =0
+                  Height: =75
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =2
+                  PaddingLeft: =10
+                  PaddingRight: =10
+                  RadiusBottomLeft: =8
+                  RadiusBottomRight: =8
+                  RadiusTopLeft: =8
+                  RadiusTopRight: =8
+                Children:
+                  - cntHeaderVertical:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        DropShadow: =DropShadow.None
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutMinHeight: =Parent.Height
+                      Children:
+                        - lblHeaderTitle:
+                            Control: FluentV8/Label@1.8.6
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Stretch
+                              Alignment: =Align.Justify
+                              Font: =Font.Lato
+                              FontSize: =24
+                              FontWeight: =FontWeight.Bold
+                              Height: =Parent.Height*0.6
+                              LayoutMinWidth: =150
+                              OnSelect: =Back()
+                              Text: ="Purchase Order Confirmations"
+                        - lblHeaderSubTitle:
+                            Control: FluentV8/Label@1.8.6
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Stretch
+                              AutoHeight: =true
+                              Font: =Font.Lato
+                              FontSize: =12
+                              FontWeight: =FontWeight.Normal
+                              Height: =Parent.Height*0.3
+                              Text: ="Open PDF in page or launch in browser"
+                  - cntHeaderHorizontal:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        DropShadow: =DropShadow.None
+                        FillPortions: =0
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutJustifyContent: =LayoutJustifyContent.End
+                        LayoutMinHeight: =Parent.Height
+                        PaddingLeft: =10
+                        PaddingRight: =10
+                      Children:
+                        - cntButtonHorizontal:
+                            Control: GroupContainer@1.3.0
+                            Variant: AutoLayout
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Center
+                              FillPortions: =0
+                              Height: =Parent.Height*0.5
+                              LayoutAlignItems: =LayoutAlignItems.Center
+                              LayoutDirection: =LayoutDirection.Horizontal
+                              LayoutMinHeight: =50
+                              Width: =230
+                            Children:
+                              - imgArrowIconSVG:
+                                  Control: Image@2.2.3
+                                  Properties:
+                                    BorderColor: =RGBA(0, 0, 0, 0)
+                                    BorderStyle: =BorderStyle.None
+                                    BorderThickness: =2
+                                    DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                                    DisabledFill: =RGBA(0, 0, 0, 0)
+                                    Height: =Parent.Height
+                                    HoverBorderColor: =RGBA(0, 0, 0, 0)
+                                    HoverFill: =RGBA(0, 0, 0, 0)
+                                    Image: |-
+                                      ="data:image/svg+xml," & EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-arrow-down-circle' viewBox='0 0 16 16'>
+                                        <path fill-rule='evenodd' d='M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z'/>
+                                      </svg>")
+                                    PaddingBottom: =5
+                                    PaddingLeft: =5
+                                    PaddingRight: =5
+                                    PaddingTop: =5
+                                    PressedBorderColor: =RGBA(0, 0, 0, 0)
+                                    PressedFill: =RGBA(0, 0, 0, 0)
+                                    Width: =50
+                              - lblPurchaseOrderButton:
+                                  Control: FluentV8/Label@1.8.6
+                                  Properties:
+                                    FillPortions: =1
+                                    FontSize: =12
+                                    FontWeight: =FontWeight.Bold
+                                    LayoutMinWidth: =90
+                                    Text: ="Get Purchase Orders"
+            - cntMainBodyVertical:
+                Control: GroupContainer@1.3.0
+                Variant: AutoLayout
+                Properties:
+                  Fill: =RGBA(255, 255, 255, 1)
+                  LayoutDirection: =LayoutDirection.Vertical
+                  RadiusBottomLeft: =8
+                  RadiusBottomRight: =8
+                  RadiusTopLeft: =8
+                  RadiusTopRight: =8
+                Children:
+                  - cntBodyHorizontal:
+                      Control: GroupContainer@1.3.0
+                      Variant: AutoLayout
+                      Properties:
+                        LayoutDirection: =LayoutDirection.Horizontal
+                      Children:
+                        - cntBodyVertical:
+                            Control: GroupContainer@1.3.0
+                            Variant: AutoLayout
+                            Properties:
+                              LayoutDirection: =LayoutDirection.Vertical
+                            Children:
+                              - cntBodyHeaderHorizontal:
+                                  Control: GroupContainer@1.3.0
+                                  Variant: AutoLayout
+                                  Properties:
+                                    DropShadow: =DropShadow.None
+                                    FillPortions: =0
+                                    Height: =50
+                                    LayoutDirection: =LayoutDirection.Horizontal
+                                    LayoutGap: =3
+                                    LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                                    PaddingLeft: =10
+                                    PaddingRight: =10
+                                  Children:
+                                    - lblBodyHeaderTitle:
+                                        Control: FluentV8/Label@1.8.6
+                                        Properties:
+                                          AlignInContainer: =AlignInContainer.Stretch
+                                          Alignment: =Align.Justify
+                                          FillPortions: =1
+                                          FontSize: =16
+                                          FontWeight: =FontWeight.Bold
+                                          Height: =Parent.Height
+                                          Text: ="Purchase Order PDFs"
+                                          TextRole: ='Label.TextRole'.Heading2
+                                          Wrap: =false
+                              - recDivider:
+                                  Control: Rectangle@2.3.0
+                                  Properties:
+                                    AlignInContainer: =AlignInContainer.Stretch
+                                    BorderColor: =RGBA(166, 166, 166, 1)
+                                    BorderStyle: =BorderStyle.None
+                                    DisabledFill: =RGBA(166, 166, 166, 1)
+                                    Fill: =RGBA(245, 245, 245, 1)
+                                    FocusedBorderColor: =RGBA(0, 120, 212, 1)
+                                    Height: =1
+                                    HoverFill: =RGBA(0, 120, 212, 1)
+                                    PressedFill: =RGBA(0, 120, 212, 1)
+                              - galPurchaseOrderPDFs:
+                                  Control: Gallery@2.15.0
+                                  Variant: VariableHeight
+                                  Properties:
+                                    BorderColor: =RGBA(166, 166, 166, 1)
+                                    FocusedBorderColor: =RGBA(0, 120, 212, 1)
+                                    FocusedBorderThickness: =2
+                                    Height: =400
+                                    Items: |-
+                                      =//Purchase Order is the Unique GUID
+                                      Filter('Purchase Orders','Purchase Order'=nfRecordItem.'Purchase Order')
+                                    TemplatePadding: =10
+                                    TemplateSize: =60
+                                  Children:
+                                    - cntPurchaseOrderGalleryVertical:
+                                        Control: GroupContainer@1.3.0
+                                        Variant: AutoLayout
+                                        Properties:
+                                          DropShadow: =DropShadow.None
+                                          Height: =60
+                                          LayoutDirection: =LayoutDirection.Vertical
+                                          Width: =1330
+                                        Children:
+                                          - cntPurchaseOrderGalleryHorizontal:
+                                              Control: GroupContainer@1.3.0
+                                              Variant: AutoLayout
+                                              Properties:
+                                                DropShadow: =DropShadow.None
+                                                Height: =55
+                                                LayoutAlignItems: =LayoutAlignItems.Stretch
+                                                LayoutDirection: =LayoutDirection.Horizontal
+                                                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                                                LayoutMinHeight: =Parent.Height
+                                                LayoutMinWidth: =Parent.Width
+                                                LayoutWrap: =true
+                                                PaddingLeft: =15
+                                                PaddingRight: =10
+                                                Width: =Parent.Width
+                                              Children:
+                                                - lblPurchaseOrderNumber:
+                                                    Control: FluentV8/Label@1.8.6
+                                                    Properties:
+                                                      Color: =Color.Black
+                                                      FillPortions: =1
+                                                      FontWeight: =FontWeight.Semibold
+                                                      Height: =48
+                                                      OnSelect: |-
+                                                        =Navigate(
+                                                            LookUp(
+                                                                'Purchase Orders',
+                                                                'Purchase Order' = ThisItem.'Purchase Order'
+                                                            )
+                                                        )
+                                                      TabIndex: =-1
+                                                      Text: =ThisItem.'Purchase Order Number'
+                                                      VerticalAlignment: =VerticalAlign.Middle
+                                                      Width: =306
+                                                      Wrap: =false
+                                                      X: =67
+                                                - icnLaunch:
+                                                    Control: Classic/Icon@2.5.0
+                                                    Properties:
+                                                      BorderColor: =RGBA(0, 0, 0, 0)
+                                                      Color: =RGBA(109, 49, 162, 1)
+                                                      DisabledColor: =RGBA(220, 220, 220, 1)
+                                                      DisabledFill: =RGBA(0, 0, 0, 0)
+                                                      Height: =48
+                                                      HoverBorderColor: =RGBA(0, 0, 0, 0)
+                                                      HoverColor: =ColorFade(Self.Color, -30%)
+                                                      HoverFill: =RGBA(0, 0, 0, 0)
+                                                      Icon: =Icon.OpenInNewWindow
+                                                      LayoutMinHeight: =Parent.LayoutMinHeight
+                                                      OnSelect: |-
+                                                        =Set(
+                                                            varPDFurl,
+                                                            ThisItem.URL
+                                                        );
+                                                        Launch(
+                                                            varPDFurl,
+                                                            {},
+                                                            "Replace"
+                                                        )
+                                                      PaddingBottom: =15
+                                                      PaddingLeft: =15
+                                                      PaddingRight: =15
+                                                      PaddingTop: =15
+                                                      PressedBorderColor: =RGBA(0, 0, 0, 0)
+                                                      PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+                                                      PressedFill: =RGBA(0, 0, 0, 0)
+                                                      Width: =48
+                                                      X: =369

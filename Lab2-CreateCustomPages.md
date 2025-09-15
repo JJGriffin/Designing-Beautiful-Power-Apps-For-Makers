@@ -483,7 +483,10 @@ PO-1003 — Oak & Co || OK03
 
 26. Navigate back to **MainScreen** and select the label **lblTitlePurchaseOrders** within **cntPOHeader**
 
-![TIP] Search in the Tree view to locate controls easier (if you have been naming elements wisely 🥰)
+
+> ### 💡 Search for controls
+> Search in the Tree view to locate controls easier (if you have been naming elements wisely 🥰)
+> 
 
 27. In the properties dropdown, locate **OnSelect** and use the **Navigate** formula to navigate to the new **PurchaseOrders** screen: 
 
@@ -491,7 +494,7 @@ PO-1003 — Oak & Co || OK03
 OnSelect: Navigate(PurchaseOrders)
 </pre>
 
-![Onselect navigate](image-31.png)
+![OnSelect Navigate](image-32.png)
 
 28. Test the functionality by holding down **ALT** on your keyboard, while selecting the **Purchase Orders** label.  
 
@@ -544,11 +547,21 @@ OnSelect: Navigate(PurchaseOrders)
 
 ## ✍️ Exercise 4: Styling 
 
+For this exercise you will use to YAML provided under lab resources as the pre build layout for the side pane. 
+
+> ### 💡 Design
+> Designing apps can be difficult and challenging. Keeping it simple will help you to build better user interfaces. 
+>
+> Keep controls modern by utilizing shadow effect, bolder fonts, a unified color palett and slightly rounded corners
+>
+> Add fun design objects that are gradient, moves and provides interactive options to engage the users. SVGs and HTML will be useful to understand.
+>
+> Add rounded corners to controls, containers and visuals for a modern look (between 5-10 border radius) and set a light drop shadow   
 
 
 ### Buttons with SVGs
-3. Open a new browser and navigate to https://icons.getbootstrap.com/ 
-4. Search for *Arrow* in the search bar and select the **arrow pointing down** (feel free to select any icon you would like)
+1. Open a new browser and navigate to https://icons.getbootstrap.com/ 
+2. Search for *Arrow* in the search bar and select the **arrow pointing down** (feel free to select any icon you would like)
 
 ![Bootstrap](image-27.png)
 
@@ -556,14 +569,78 @@ OnSelect: Navigate(PurchaseOrders)
 
 ![SVG bootstrap code](image-28.png)
 
-6. Back in your **Coho Winery Landing Page** 
+6. Navigate back to the maker studio and your page **Coho Winery Landing Page** in edit mode
+7. Select **Image1** in the button container and click on **Image** on the properties to the right. 
 
-**Ideas:** 
-- Add rounded corners to controls, containers and visuals for a modern look (between 5-10 border radius)
-- Set a light drop shadow 
+![SVG input image](image-33.png)
 
-![Box shadow](image-6.png)
-- Add effects that provides depth and custom design to your apps aligning with your brand
+
+> ### 💡 When working with SVGs in Power Apps
+> Make sure to always use the formula for encoding the URL, the SVG code won't work without the encoding.
+>
+> The code copied from any SVG source often has to be updated and compatible with Power Apps syntax, meaning that every " in the original code snippet has to be converted to ' 
+
+### Build the correct syntax and SVG reference by replacing " with ' 
+8. Edit the **Image formula** to reference the SVG-code you copied in step 5, staring with encoding the URL:
+
+<pre> Power Fx
+"data:image/svg+xml," & EncodeUrl()
+</pre>
+
+9. Set this formula on the **Image** property:
+
+<pre> Power Fx
+"data:image/svg+xml," & EncodeUrl("<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
+</svg>")
+</pre>
+
+10. You should see that there are syntax errors and nothing showing in the image
+
+![Syntax error](image-34.png)
+
+11. Click on the **Find and replace** option on the formula bar - the string to search for should be visible
+12. Click on the **arrow pointing down** to expand the **Find and replace** section
+13. The first input should be **"** and the replace value should be **'**
+
+![FInd and replace](image-35.png)
+
+14. After updating the **Find and replace** values, click on the small **replace all** icon on the right:
+
+![Click on the Find and replace](image-36.png)
+
+15. The result will still return errors and should resemble the below code:
+
+<pre>
+'data:image/svg+xml,' & EncodeUrl('<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-arrow-down-circle' viewBox='0 0 16 16'>
+  <path fill-rule='evenodd' d='M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z'/>
+</svg>')
+</pre>
+
+16. To fix the syntax error, replace four instances of **'** to **"** - these are not in the SVG code, but used to symbolise the text as a string value:
+
+<pre> Power Fx
+"data:image/svg+xml," & EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-arrow-down-circle' viewBox='0 0 16 16'>
+  <path fill-rule='evenodd' d='M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z'/>
+</svg>")
+</pre>
+
+![replace ' with "](image-38.png)
+
+17. Icon should now be visible ✅
+
+![visible icon](image-42.png)
+
+18. Update the padding properties of the **Image1** control
+
+   | Property | Formula |
+    | --- | --- |
+    | **Padding top** | `5` |
+    | **PAdding bottom** | `5` |
+    | **Padding Left** | `5` |
+    | **PAdding Right** | `5` |
+
+19. Rename the control to **imgArrowIconSVG** 
 
 <!---
 ### Optional: **Add HTML background instead of a Fill color**
