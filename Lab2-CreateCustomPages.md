@@ -544,10 +544,27 @@ OnSelect: Navigate(PurchaseOrders)
 
 -->
 ## ✍️ Exercise 4: Side Pane custom page
-For the side pane, we have a premade layout 
+For the side pane, we have a premade layout for you to adjust, update and improve:
 
+**Option 1:** Build a new page from scratch following the instrctions from exercise 1 and pasting in the YAML from this [Resource](https://github.com/JJGriffin/Designing-Beautiful-Power-Apps-For-Makers/blob/c5935b91121df04e1de02169a9ac3a52ab5bbcbd/Assets/Lab2/PurchaseOrderSidePane.yml)
 
-## ✍️ Exercise 4: Styling 
+**Option 2:** Download the [Purchase Order Side Pane.msapp](https://github.com/JJGriffin/Designing-Beautiful-Power-Apps-For-Makers/blob/c5935b91121df04e1de02169a9ac3a52ab5bbcbd/Assets/Lab2/Purchase%20Order%20Side%20Pane.msapp) file and import it in Power Apps.
+
+1. Add the side pane to the **Coho Winery Purchase Order** model-driven app. Click on **+ Add page** - **Custom page**
+2. Search for **Purchase** and select the custom page **Purchase Order Side Pane** - click **Add**
+
+![adding new page](image-52.png)
+
+> If the page is added to the navigation, but you don't want end users to be able to select it, then remove it. You can also avoid adding it to navigation when adding it by unselecting **Show in navigation**
+
+![unselect show in navigation](image-54.png)
+
+3. Click on the **three dots** to expand the dropdown
+4. CLick on **Remove from navigation** - the page should still be part of the application under **All other pages** 
+
+![removing page from navigation](image-53.png)
+
+## ✍️ Exercise 5: Styling 
 
 For this exercise you will use to YAML provided under lab resources as the pre build layout for the side pane. 
 
@@ -808,6 +825,7 @@ If you already have a new screen added, you could select **Templates** or **with
 1. Click **New screen** on the ribbon and select a layout of your choosing
 2. Have fun 
 
+<!---
 
 ## ✍️ Exercise 3: Fetch Record Information
 1. Add datasource (Dataverse, SharePoint etc.)
@@ -831,5 +849,6 @@ GUID(Substitute(Substitute(Param("recordId"), "{", ""), "}", ""))</pre>
 *Named Formulas needs to be closed using ;*
 
 *Param() function gets the record GUID parsed from the JavaScript, and GUID() formats the output as GUID, not a string. We are also checking if there are several records selected by splitting the string after ","*
+--->
 
 **Congratulations, you've finished Lab 2** 🥳
