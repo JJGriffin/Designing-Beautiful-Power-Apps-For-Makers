@@ -130,33 +130,50 @@ To trigger the side pane with the custom page, you will have to configure a comm
 
 ![Create command for JavaScript](image-23.png)
 
-9. **Provide a name** for the button → **Purchase Order Info** and choose an Icon → **ActivateQuote**
+9. **Provide a name** for the button → **Purchase Order Info** and choose an Icon → **PdfIconFile**
 10. **Ensure action is** `Run JavaScript`  
 11. Click **+ Add library**  → Search for *Coho* → Select **CohoWinerySidePane** → **Add**
 
 ![Add a library](image-50.png)
 
-12. **Set the function name** to `openSidePaneForRecord`  
+12. **Set the function name** to `openPOViewer`  
 
-!TIP you find the function name in the JavaScript File, it is the `function openSidePaneForRecord(recordId, pageName = "")`
+!TIP you find the function name in the JavaScript File
 
-13. **Verify the command bar paramenters** → you should see the following:
+13. **Verify the command bar settings** → you should see the following so far:
 
-    **Label** → `Purchase Order Info`
+ <pre>
+    Label → `Purchase Order Info`
 
-    **Icon** → `Use Icon` → `ActivateQuote`
+    Icon → `Use Icon` → `ActivateQuote`
 
-    **Action** → `Run JavaScript`
+    Action → `Run JavaScript`
 
-    **Library** →  `coh_CohoWinerySidePane`
-    
-    **Function** →  `openSidePaneForRecord`
+    Library →  `coh_CohoWinerySidePane`
 
-    ![Settings for command bar](image-51.png)
+    Function →  `openPOViewer`
+ </pre>
+  
+ ![Settings for command bar](image-25.png)
+
+14. **Save and publish** - Play your app to verify that the button is visible on the Purchase Order form
+15. In the model-driven app, select the **Purchase Order** table from the navigation
+16. Click `+ New` to open a Form and locate the `Purchase Order Info` command bar button on the ribbon.
+17. Verify that the button is visible and clickable → The side pane should open on the right hand side with the message **Page not found**
+
+![Test the button](image-14.png)
+
+18. Close the browser window and get back to the configuration page for the command bar on the Purchase Order Form.
+
 
 ### Set parameters for passing information to the custom page
+We are now setting the parameters for input to the JavaScript which will be passed on to the custom page
 
-14. **Save and publish** – then **Play** the app to test
+19. In the command bar editor, make sure that the `Purchase Order Info` command bar button is select in the ribbon.
+20. Click on `+ Add parameter` → You should be able to see **Parameter 1** with a dropdown field showing **String** as the default value
+
+![Command bar button config](image-24.png)
+
 
 ## 💡 Fetch Record Details in the Custom Page
 
