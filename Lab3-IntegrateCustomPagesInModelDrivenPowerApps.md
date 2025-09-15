@@ -5,14 +5,16 @@ In this lab, you will integrate the custom pages you built in **Lab 2** into the
 ## Lab Overview
 
 ### 🎯 Goal
-Embed a custom page as full page and Side Pane in the model-driven app for Coho Winery Purchase Order Application
+
+Embed a custom page as both a full page and a side pane in the Coho Winery Purchase Orders model-driven app. The page will read context with Param("recordId") and display the correct PO PDF alongside key record details.
 
 ### ✅ Prerequisites
 
-Completed lab 1-3 
+**Labs 1–3 completed** (solution setup, tables/data, custom pages and model-driven app).
 
-## Scenario
-To be able to read the PDFs related to all purchase orders, the Coho Winery Purchase Order Management app must support viewing PDFs and provide end users with an option that makes the files easily assecible through the existing app. They also want to open the relevant record information. 
+### 📖 Scenario
+
+Finance and auditors need to **open PO PDFs** directly in the app and see the related Purchase Order record in context. In this lab you’ll add a **responsive custom page** that operates as the landing page in **full page** mode, and a **Purchase Order Side Pane** custom page a side pane from a selected PO Main Form, and passing the current record’s ID so the correct Purchase order details loads in the side pane when it opens.
 
 ### ⌛ Length
 
@@ -20,13 +22,13 @@ To be able to read the PDFs related to all purchase orders, the Coho Winery Purc
 
 ### Assets You Will need
 
-Custom pages from Lab 2 (e.g., Landing page and Side Pane custom page)
+- Custom pages from Lab 2 (e.g., Landing page and Side Pane custom page)
 
-Purchase Order table (from Lab 1)
+- Purchase Order table (from Lab 1)
 
-The model-driven app (from Lab 1)
+- The model-driven app (from Lab 1)
 
-New JS web resource: **CohoWinerySidePane.js**
+- New JS web resource: **CohoWinerySidePane.js** found in the [Assets - Lab 3 folder.](https://github.com/JJGriffin/Designing-Beautiful-Power-Apps-For-Makers/blob/8589cd47e5c755c7cebb951aaf28aba61597a3d6/Assets/Lab3/CohoWinerySidePane.js)
 
 
 ## Exercise 1: Embedding a Full page as part of the Model-driven Application
@@ -46,11 +48,9 @@ We will begin by adding the **Coho Winery Landing page** to the MDA.
 
 4. Select the **Coho Winery** model-driven app by clicking the **three dots** and **Edit**
 
-NEED TO CHANGE IMG
+![Edit mda](image-69.png)
 
-![alt text](image-45.png)
-
-5. In the App Designer, select **+Add page** → **Custom page**.
+5. In the App Designer, select **+ Add page** → **Custom page**.
 
 ![Select the Add page](image-46.png)
 
@@ -59,15 +59,11 @@ NEED TO CHANGE IMG
 ![Selecting the page for the navigation](image-47.png)
 
 
-7. Save and Publish.
+7. **Save and Publish**.
 
-![Save and publish app](image-48.png)
+![Save and publish](image-70.png)
 
-Result: Your custom page is now a full page in the sitemap. You can test the app by clicking **Play**.
-
-8. Edit details in the navigation sitemap. Select the **three dots** next to the **New group** and expand the side pane to edit the **Title** to **Purchase Orders**
-
-![Edit MDA details](image-49.png)
+> *Result after step 7*: Your custom page is now a full page in the sitemap. You can test the app by clicking **Play**.
 
 
 ## Exercise 2: Create the JavaScript Resource 
@@ -117,7 +113,8 @@ To trigger the side pane with the custom page, you will have to configure a comm
 ![Opening the model-driven app](image-18.png)
  
 3. **Locate the Purchase Order table** and the three dots on the right - **Select** `Edit Command bar`  
- ![Locate command bar button](image-20.png)
+
+![Locate command bar button](image-20.png)
 
 4. **Choose** to edit the command bar on the  `Main Form ` and click  `Edit `
 
@@ -127,7 +124,7 @@ To trigger the side pane with the custom page, you will have to configure a comm
 
 ![Create a new button](image-22.png)
 
-6. Create a type of command for  `JavaScript ` and click  `Continue`
+6. Create a type of command for  `JavaScript` and click  `Continue`
 
 ![Create command for JavaScript](image-23.png)
 
@@ -173,7 +170,7 @@ To trigger the side pane with the custom page, you will have to configure a comm
 ### Set parameters for passing information to the custom page
 We are now setting the parameters for input to the JavaScript which will be passed on to the custom page
 
-19. In the command bar editor, make sure that the `Purchase Order Info` command bar button is select in the ribbon.
+19. In the command bar editor, make sure that the `Purchase Order Info` command bar button is selected
 20. Click on `+ Add parameter` → You should be able to see **Parameter 1** with a dropdown field showing **String** as the default value
 
 ![Command bar button config](image-24.png)
