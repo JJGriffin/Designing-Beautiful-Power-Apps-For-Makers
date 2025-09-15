@@ -723,7 +723,8 @@ $"<div style='
 >
 > 💡 Use $ to avoid excessive use of & as well as "" in the text, this enables you to only use {} when referring to dynamic content
 
-![Blur effect](/Images/Lab2-CreateCustomPages/image-2.png)
+
+![Blur effect](image-68.png)
 
 12. Set **Width** and **Height** to adjust according to screen size:
 
