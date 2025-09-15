@@ -207,9 +207,7 @@ $"<div style='font-size: 28px; font-family: Inter, Open Sans; font-weight: bold;
 
 18. Select the **cntMainHeader** in the **Tree view**, click on **+ Insert** on the ribbon and serach for **image**. Click on the **Image** control under **Media**. Proceed to then add the **Coho-Winery** logo by uploading it into the designer and setting the **Image** property to the name of the image, in this case **Coho-Winery**.
 
-![Images/Lab2-CreateCustomPages/E2_12.png](Images/Lab2-CreateCustomPages/E2_12.png)
-
-![Images/Lab2-CreateCustomPages/E2_13.png](Images/Lab2-CreateCustomPages/E2_13.png)
+![Images/Lab2-CreateCustomPages/E2_12.png](Images/Lab2-CreateCustomPages/E2_12.png) ![Images/Lab2-CreateCustomPages/E2_13.png](Images/Lab2-CreateCustomPages/E2_13.png)
 
 19. You should now be able to see the image control next to the HTML text control, on the right side of the container.
 20. Select the image control, rename to **imgCohoLogo** and set the Height property to `Parent.Height`. This will ensure that the image height is always the same as the parent container height.
@@ -220,11 +218,17 @@ $"<div style='font-size: 28px; font-family: Inter, Open Sans; font-weight: bold;
 
 ![Images/Lab2-CreateCustomPages/E2_15.png](Images/Lab2-CreateCustomPages/E2_15.png)
 
-22. Add Purchase Order Screen to the custom page by copying the YAML code located [here](Assets/Lab2/PurchaseOrderScreen.yml) 
+22. On the properties of **MainScreen** on the right side, click on the *paint bucket* for the background Fill 
 
-23. With the **MainScreen** selected, paste the YAML code by selecting **CTRL + V** on your keyboard. A new screen called **Purchase Orders** should render, resembling the below. It's going to be used later, so disregard any errors for now.
+![alt text](image-12.png)
 
-![Images/Lab2-CreateCustomPages/E2_16.png](Images/Lab2-CreateCustomPages/E2_16.png)
+23. Click on **Custom** and update HEX value to **f4e6d7** OR click on **Fill** and set the formula to:
+
+<Pre> Power Fx
+Fill: ColorValue(nfBackgroundColor)
+</pre>
+
+![alt text](image-13.png)
 
 24. Click on **Save** and then **Publish** to save your progress.
 25. Leave the designer open if you plan to continue to the next Exercise.
@@ -276,7 +280,7 @@ LayoutMinWidth: 260 // lets them wrap on narrow screens </pre>
 
 7. In the **Formulas**, create a *Named Formula* for the collection **nfcolPurchaseOrders** by setting the formula from this resource: 
 
-[Collection for dummy data](https://github.com/JJGriffin/Designing-Beautiful-Power-Apps-For-Makers/blob/b85fe2cc961a8f1c027e5637897a2a20b70668b8/Assets/Lab2/PurchaseOrderCollection.md)
+[Purhcase Order Collection data](https://github.com/JJGriffin/Designing-Beautiful-Power-Apps-For-Makers/blob/8803955ae8152223241d49b14d9a293573556113/Assets/Lab2/PurchaseOrderCollection.md)
 
 **App - Formulas** should resemble the below:
 
@@ -352,11 +356,8 @@ PressedBorderColor: RGBA(0,0,0,0)
 PressedColor: ColorFade(Self.Color, -30%) 
 PressedFill: RGBA(0,0,0,0) 
 Width: 50 
-// Use either A or B below for OnSelect // 
-A) If you have a Named Formula nfcolPurchaseOrders: 
 OnSelect: ClearCollect(colPurchaseOrders, nfcolPurchaseOrders) 
-// B) If not, seed dummy data quickly: 
-OnSelect: ClearCollect( colPurchaseOrders, Table( { poNumber:"PO-1001", vendorName:"Vintners AB", vendorId:"V001", LastModified: Now()-Time(1,0,0) }, { poNumber:"PO-1002", vendorName:"GrapeWorks", vendorId:"GW02", LastModified: Now()-Time(0,45,0) }, { poNumber:"PO-1003", vendorName:"Oak & Co", vendorId:"OK03", LastModified: Now()-Time(0,12,0) } ) ) </pre>
+</pre>
 
 13. With **cntPurchaseOrders** selected, insert a Rectangle and rename it recDividerPurchaseOrders. 
 
@@ -474,6 +475,28 @@ PO-1003 — Oak & Co || OK03
 
 <br>
 
+24. Add Purchase Order Screen to the custom page by copying the YAML code located [here](Assets/Lab2/PurchaseOrderScreen.yml) 
+
+25. With the **MainScreen** selected, paste the YAML code by selecting **CTRL + V** on your keyboard. A new screen called **PurchaseOrders** should render, resembling the below. 
+
+![Images/Lab2-CreateCustomPages/E2_16.png](Images/Lab2-CreateCustomPages/E2_16.png)
+
+26. Navigate back to **MainScreen** and select the label **lblTitlePurchaseOrders** within **cntPOHeader**
+
+![TIP] Search in the Tree view to locate controls easier (if you have been naming elements wisely 🥰)
+
+27. In the properties dropdown, locate **OnSelect** and use the **Navigate** formula to navigate to the new **PurchaseOrders** screen: 
+
+<pre> Power Fx
+OnSelect: Navigate(PurchaseOrders)
+</pre>
+
+![Onselect navigate](image-31.png)
+
+28. Test the functionality by holding down **ALT** on your keyboard, while selecting the **Purchase Orders** label.  
+
+<video controls src="20250915-1041-20.6049692.mp4" title="Hold ALT - test"></video>
+
 > ### 💡 CONTAINER PROPERTIES
 > The difficult part when working with responsive layouts are the different properties and making sure you have selected the correct nested container.  
 > 
@@ -521,19 +544,19 @@ PO-1003 — Oak & Co || OK03
 
 ## ✍️ Exercise 4: Styling 
 
-1. On the properties of **MainScreen** on the right side, click on the *paint bucket* for the background Fill 
-
-![alt text](image-12.png)
-
-2. Click on **Custom** and update HEX value to **f4e6d7** OR click on **Fill** and set the formula to:
-
-<Pre> Power Fx
-Fill: ColorValue(nfBackgroundColor)
-</pre>
 
 
-![alt text](image-13.png)
+### Buttons with SVGs
+3. Open a new browser and navigate to https://icons.getbootstrap.com/ 
+4. Search for *Arrow* in the search bar and select the **arrow pointing down** (feel free to select any icon you would like)
 
+![Bootstrap](image-27.png)
+
+5. Copy the **SVG code** by clicking the *copy to clipboard* option under **Copy HTML**
+
+![SVG bootstrap code](image-28.png)
+
+6. Back in your **Coho Winery Landing Page** 
 
 **Ideas:** 
 - Add rounded corners to controls, containers and visuals for a modern look (between 5-10 border radius)
@@ -542,7 +565,7 @@ Fill: ColorValue(nfBackgroundColor)
 ![Box shadow](image-6.png)
 - Add effects that provides depth and custom design to your apps aligning with your brand
 
-
+<!---
 ### Optional: **Add HTML background instead of a Fill color**
 
 1. With **MainScreen** selected, insert HTMLtext control and right click to Reorder ->  **Send to Back**
@@ -612,6 +635,7 @@ Right:0
 
 ![Set Container transparency](image-43.png)
 <br>
+--->
 
 ### Optional: **Add HTML blur to your page - Glass Morphism effect:**
 1. Select **MainScreen** in the **Tree view**, click **+ Insert** and search for **Container** - Select "Container"
