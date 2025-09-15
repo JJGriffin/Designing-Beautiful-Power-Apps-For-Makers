@@ -1,8 +1,10 @@
-Collection for the Purchase orders
 
-## Copy Named Formula references below
+## Collection for the Purchase orders 
 
-nfcolMorePurchaseOrder = 
+### Copy Named Formula references below
+
+
+    nfcolMorePurchaseOrder = 
 
     Table(
         {
@@ -126,10 +128,9 @@ nfcolMorePurchaseOrder =
             deliveryMethod: "Email",
             linesCount: 4
         }
-    );
-
-
-nfcolPurchaseOrders =
+    ); 
+    
+    nfcolPurchaseOrders =
 
     Table(
         {

@@ -280,10 +280,27 @@ LayoutMinWidth: 260 // lets them wrap on narrow screens </pre>
 
 7. In the **Formulas**, create a *Named Formula* for the collection **nfcolPurchaseOrders** by setting the formula from this resource: 
 
-https://github.com/JJGriffin/Designing-Beautiful-Power-Apps-For-Makers/blob/360eaeb81cf6d0724fba7acf2c88f20cbef888fd/Assets/Lab2/PurchaseOrderCollection.md
+[Collection for dummy data](https://github.com/JJGriffin/Designing-Beautiful-Power-Apps-For-Makers/blob/b85fe2cc961a8f1c027e5637897a2a20b70668b8/Assets/Lab2/PurchaseOrderCollection.md)
+
+**App - Formulas** should resemble the below:
 
 <pre> Power Fx 
-nfcol
+nfcolMorePurchaseOrder =
+
+Table(
+    {
+        vendorId: "Vendor001",
+        vendorName: "Acme Corp",
+        manuallyProcessedInApp: false,
+        poNumber: "PO12345",
+        warehouseId: "WH001",
+        result: "Success",
+        LastModified: DateAdd(Today(), -5, TimeUnit.Days),
+        Datasource: "Dataverse",
+        deliveryMethod: "Courier",
+        linesCount: 10
+    }
+</pre>
 
 8. In **Tree view**, select **cntPurchaseOrders**. Go to **Insert** → **Layout** → **Horizontal** container and rename it **cntPOHeader**.
 9. With **cntPOHeader** selected, set these properties:
