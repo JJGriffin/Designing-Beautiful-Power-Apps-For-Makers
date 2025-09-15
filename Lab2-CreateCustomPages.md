@@ -218,17 +218,17 @@ $"<div style='font-size: 28px; font-family: Inter, Open Sans; font-weight: bold;
 
 ![Images/Lab2-CreateCustomPages/E2_15.png](Images/Lab2-CreateCustomPages/E2_15.png)
 
-22. On the properties of **MainScreen** on the right side, click on the *paint bucket* for the background Fill 
+22. On the **Properties** of the **MainScreen** on the right side, click on the *paint bucket* to adjust the background fill.
 
-![alt text](image-12.png)
+![Images/Lab2-CreateCustomPages/E2_16.png](Images/Lab2-CreateCustomPages/E2_16.png)
 
-23. Click on **Custom** and update HEX value to **f4e6d7** OR click on **Fill** and set the formula to:
+23. Click on **Custom** and update the HEX value to `f4e6d7`. Alternatively, click on **Fill** and set the formula to:
 
-<Pre> Power Fx
-Fill: ColorValue(nfBackgroundColor)
-</pre>
+```
+ColorValue(nfBackgroundColor)
+```
 
-![alt text](image-13.png)
+![Images/Lab2-CreateCustomPages/E2_17.png](Images/Lab2-CreateCustomPages/E2_17.png)
 
 24. Click on **Save** and then **Publish** to save your progress.
 25. Leave the designer open if you plan to continue to the next Exercise.
@@ -479,7 +479,7 @@ PO-1003 — Oak & Co || OK03
 
 25. With the **MainScreen** selected, paste the YAML code by selecting **CTRL + V** on your keyboard. A new screen called **PurchaseOrders** should render, resembling the below. 
 
-![Images/Lab2-CreateCustomPages/E2_16.png](Images/Lab2-CreateCustomPages/E2_16.png)
+![Images/Lab2-CreateCustomPages/E3_16.png](Images/Lab2-CreateCustomPages/E3_16.png)
 
 26. Navigate back to **MainScreen** and select the label **lblTitlePurchaseOrders** within **cntPOHeader**
 
