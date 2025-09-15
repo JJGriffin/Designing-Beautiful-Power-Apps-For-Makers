@@ -233,7 +233,7 @@ $"<div style='font-size: 28px; font-family: Inter, Open Sans; font-weight: bold;
 
 1. With **cntMainBody** selected, insert a **Horizontal container**. Rename it **cntBodyGalleries**
 
-2. Configure **cntBodyGalleries** to behave like a responsive 3-column row:
+2. Configure **cntBodyGalleries** to behave like a responsive 2-column row:
 
 <pre>Power Fx 
 LayoutDirection: LayoutDirection.Horizontal 
@@ -246,18 +246,16 @@ FillPortions: 1 // Responsive behavior
 LayoutWrap: true // allows columns to wrap on narrow widths 
 </pre>
 
-3. Insert three *Vertical containers* inside **cntBodyGalleries** and rename them:
+3. Insert two *Vertical containers* inside **cntBodyGalleries** and rename them:
 
 <Pre>
 cntPurchaseOrders
 
 cntMyPurchaseOrders
-
-cntPurchaseOrderDueDate
 </pre>
 
-4. Set the same properties on each of the three column containers so they share space evenly and stretch:
-// Apply to: cntPurchaseOrders, cntMyPurchaseOrders, cntPurchaseOrderDueDate 
+4. Set the same properties on each of the two column containers so they share space evenly and stretch:
+// Apply to: cntPurchaseOrders & cntMyPurchaseOrders
 
 <pre> Power Fx 
 
@@ -272,9 +270,7 @@ AlignInContainer: AlignInContainer.Stretch
 LayoutAlignItems: LayoutAlignItems.Stretch 
 LayoutMinWidth: 260 // lets them wrap on narrow screens </pre>
 
-5. Verify that your **Tree view** look like this:
-
-![Container Setup](image-39.png)
+5. Verify that your **Tree view** now also has two containers below cntBodyGalleries - **cntPurchaseOrders** & **cntMyPurchaseOrders**
 
 6. In the **Tree view**, select **App** and **Formulas** from the App properties dropdown. 
 
