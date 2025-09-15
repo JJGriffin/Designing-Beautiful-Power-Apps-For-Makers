@@ -174,6 +174,7 @@ We are now setting the parameters for input to the JavaScript which will be pass
 
 ![Command bar button config](image-24.png)
 
+21. **Edit Parameter 1 value:** → Schema name of the page
 
 ## 💡 Fetch Record Details in the Custom Page
 
