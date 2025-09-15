@@ -178,10 +178,21 @@ nfBackgroundColor = "#f4e6d7";
 17. Set the **HTML text value** located on the properties to the following code. This will create a welcome message with a gradient effect on the user's first name.
 
 ``` HTML
-$"<div style='font-size: 28px; font-family: Inter, Open Sans; font-weight: bold; color: black;'> 
+$"<div style=' 
+    position:absolute; 
+    inset:0;               
+    display:flex; 
+    align-items:center;         
+    justify-content:flex-start;             
+    box-sizing:border-box; 
+    padding:0 8px;
+    font-size:28px; 
+    font-family: Inter, Open Sans, sans-serif;
+    font-weight:bold; 
+    color:#000;
+    line-height:1.1;'> 
   <!-- Welcome text stays black -->
-  Welcome 
-  
+  <span>Welcome&nbsp;</span>
   <a style='font-size: 28px; font-family: Inter, Open Sans; font-weight: bold; 
             /* Grape gradient for name */
             background: linear-gradient(90deg, 
@@ -191,7 +202,7 @@ $"<div style='font-size: 28px; font-family: Inter, Open Sans; font-weight: bold;
             ); 
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent;'> 
-    {  First(Split(User().FullName," ")).Value }! 
+    {First( Split(User().FullName," ")).Value}! 
   </a> 
 </div>"
 ```
@@ -470,9 +481,10 @@ PO-1003 — Oak & Co || OK03
 
 27. In the properties dropdown, locate **OnSelect** and use the **Navigate** formula to navigate to the new **PurchaseOrders** screen: 
 
-<pre> Power Fx
-OnSelect: Navigate(PurchaseOrders)
-</pre>
+| Property    | Formula                    |
+|-------------|----------------------------|
+| **OnSelect**| `Navigate(PurchaseOrders)` |
+
 
 ![OnSelect Navigate](image-32.png)
 
@@ -524,13 +536,71 @@ OnSelect: Navigate(PurchaseOrders)
 
 -->
 ## ✍️ Exercise 4: Side Pane custom page
-For the side pane, we have a premade layout for you to adjust, update and improve:
+Add a **custom page** that opens as a **side pane** from a Purchase Order and shows the related **PDF** in context.
 
-**Option 1:** Build a new page from scratch following the instrctions from exercise 1 and pasting in the YAML from this [Resource](https://github.com/JJGriffin/Designing-Beautiful-Power-Apps-For-Makers/blob/c5935b91121df04e1de02169a9ac3a52ab5bbcbd/Assets/Lab2/PurchaseOrderSidePane.yml)
+---
 
-**Option 2:** Download the [Purchase Order Side Pane.msapp](https://github.com/JJGriffin/Designing-Beautiful-Power-Apps-For-Makers/blob/c5935b91121df04e1de02169a9ac3a52ab5bbcbd/Assets/Lab2/Purchase%20Order%20Side%20Pane.msapp) file and import it in Power Apps.
+### Option 1 — Build from scratch (paste YAML)
+Build a new page from scratch following the instrctions from exercise 1 and pasting in the YAML from this [Resource](https://github.com/JJGriffin/Designing-Beautiful-Power-Apps-For-Makers/blob/c5935b91121df04e1de02169a9ac3a52ab5bbcbd/Assets/Lab2/PurchaseOrderSidePane.yml)
 
-1. Add the side pane to the **Coho Winery Purchase Order** model-driven app. Click on **+ Add page** - **Custom page**
+1. **Create the page**  
+   - In the **Coho Winery** solution: **+ New → App → Page**  (Follow the steps from exercise 1)
+   - Name: **Purchase Order Side Pane**
+
+2. **Apply the layout (YAML)**  
+   - Copy the YAML code from  **[PurchaseOrderSidePane.yml](https://github.com/JJGriffin/Designing-Beautiful-Power-Apps-For-Makers/blob/c5935b91121df04e1de02169a9ac3a52ab5bbcbd/Assets/Lab2/PurchaseOrderSidePane.yml)**  
+
+3. Select **Screen1** in the **Tree view** of the page and press **CTRL+V** on your keyboard or right click on the canvas and select **Paste** 
+
+4. **Save** → **Publish** the page.
+
+5. **Add context formulas** by setting *Named Formulas* that will fetch the passed record ID from the Purchase Order
+6.  Select **App** in the **Tree view**, and click on **Formulas** in the dropdown porperty list
+
+   ```powerfx
+   // Record ID passed from command bar (strip braces)
+   nfRecordId =
+       GUID(Substitute(Substitute(Param("recordId"), "{", ""), "}", ""));
+
+   // Current PO (rename table/column to match your schema)
+   nfPO = LookUp('Purchase Orders', 'Purchase Order' = nfRecordId); ```
+
+7. Remove **Screen1** by right clicking and **Delete**
+
+
+## Option 2 — Import the prebuilt page (.msapp)
+
+1. **Download** the prebuilt file:  
+   [Purchase Order Side Pane.msapp](https://github.com/JJGriffin/Designing-Beautiful-Power-Apps-For-Makers/blob/c5935b91121df04e1de02169a9ac3a52ab5bbcbd/Assets/Lab2/Purchase%20Order%20Side%20Pane.msapp)
+
+2. In the **Coho Winery** solution, go to **+ New → App → Page** (Follow the exercise 1 instructions)
+
+3. In the page studio, choose **File → Open → Browse** and select the `.msapp` from your downloads.
+
+4. **Save** and **Publish** the page - name it **Purchase Order Side Pane** if the option pops up
+
+5. **Add context formulas** by setting *Named Formulas* that will fetch the passed record ID from the Purchase Order
+
+6.  Select **App** in the **Tree view** → from the properties, select **Formulas**
+
+   ```powerfx
+   // Record ID passed from command bar (strip braces)
+   nfRecordId =
+       GUID(Substitute(Substitute(Param("recordId"), "{", ""), "}", ""));
+
+   // Current PO (rename table/column to match your schema)
+   nfPO = LookUp('Purchase Orders', 'Purchase Order' = nfRecordId);```
+
+7. Remove **Screen1** by right clicking and **Delete**
+
+---
+
+
+## Add the custom page to the model-driven app
+The page must exist within the MDA to work properly. Make sure the custom page is present under **All other pages** in the MDA editor. When successfully added to the model-driven app, you will be able to trigger it as part of the command bar from a Form. 
+
+1. **Open the editor of the model-driven app.** 
+    - Add the side pane to the **Coho Winery Purchase Order** model-driven app. Click on **+ Add page** - **Custom page**
 2. Search for **Purchase** and select the custom page **Purchase Order Side Pane** - click **Add**
 
 ![adding new page](image-52.png)
@@ -568,7 +638,7 @@ For this exercise you will use to YAML provided under lab resources as the pre b
 
 ![SVG bootstrap code](image-28.png)
 
-6. Navigate back to the maker studio and your page **Coho Winery Landing Page** in edit mode
+6. Navigate back to the maker studio and your page **Purchase Order Side Pane** in edit mode
 7. Select **Image1** in the button container and click on **Image** on the properties to the right. 
 
 ![SVG input image](image-33.png)
@@ -588,11 +658,12 @@ For this exercise you will use to YAML provided under lab resources as the pre b
 
 9. Set this formula on the **Image** property:
 
-<pre> Power Fx
+```  
 "data:image/svg+xml," & EncodeUrl("<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
-</svg>")
-</pre>
+</svg>") 
+
+```
 
 10. You should see that there are syntax errors and nothing showing in the image
 
@@ -602,7 +673,7 @@ For this exercise you will use to YAML provided under lab resources as the pre b
 12. Click on the **arrow pointing down** to expand the **Find and replace** section
 13. The first input should be **"** and the replace value should be **'**
 
-![FInd and replace](image-35.png)
+![Find and replace](image-35.png)
 
 14. After updating the **Find and replace** values, click on the small **replace all** icon on the right:
 
@@ -610,19 +681,21 @@ For this exercise you will use to YAML provided under lab resources as the pre b
 
 15. The result will still return errors and should resemble the below code:
 
-<pre>
+```  
 'data:image/svg+xml,' & EncodeUrl('<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-arrow-down-circle' viewBox='0 0 16 16'>
   <path fill-rule='evenodd' d='M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z'/>
 </svg>')
-</pre>
+
+```  
 
 16. To fix the syntax error, replace four instances of **'** to **"** - these are not in the SVG code, but used to symbolise the text as a string value:
 
-<pre> Power Fx
+```  
 "data:image/svg+xml," & EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-arrow-down-circle' viewBox='0 0 16 16'>
   <path fill-rule='evenodd' d='M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z'/>
 </svg>")
-</pre>
+
+```  
 
 ![replace ' with "](image-38.png)
 
@@ -708,20 +781,22 @@ $"<div style='
 
 12. Set **Width** and **Height** to adjust according to screen size:
 
-<pre> Power Fx 
-Width: Parent.Width
-Height: Parent.Height
-</pre>
+| Property   | Formula                          |
+|------------|----------------------------------|               
+| **Width**  | `Parent.Width`                   |
+| **Height** | `Parent.Height`                  |
+
 
 13. Ensure that Automatic Height is **On** to avoid a scroll bar
 14. Set Padding to (this avoids gaps between the content and the control box):
 
-<pre> Power Fx 
-Top: 0
-Bottom: 0
-Left: 0
-Right:0
-</pre>
+| Property | Formula |
+|---|---|
+| **Top** | `0` |
+| **Bottom** | `0` |
+| **Left** | `0` |
+| **Right** | `0` |
+
 
 
 15. Set transparency of the Main Body Container **cntMainBody** to 100 by selecting **cntMainBody** in the **Tree View**
