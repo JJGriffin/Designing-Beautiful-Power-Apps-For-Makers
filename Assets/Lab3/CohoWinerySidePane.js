@@ -1,69 +1,91 @@
-
-// Store the pane instance globally to reference it later for closing
-var sidePaneInstance = null;
+// Keep a single pane instance around so we can close/reuse it
+let sidePaneInstance = null;
 
 /**
- * Opens a side pane to view Purchase Order PDF
- * @param {string} pageName - The name of the custom page to navigate to
- * @param {string} recordId - The GUID of the Purchase Order record
- * @param {string} purchaseOrderNumber - The PO number for dynamic title (optional)
+ * Example:
+ *   Function Name: openPOViewer
+ *   Parameters:
+ *     - PrimaryControl (CRM Parameter)
+ *     - pageName (String) -> e.g., "pt_PurchaseOrderViewer"
+ *     - fieldLogicalName (String) -> e.g., "msdyn_name"
  */
-function openPurchaseOrderPDFViewer(pageName, recordId, purchaseOrderNumber) {
-    // If a pane is already open, close it before opening a new one
-    if (sidePaneInstance) {
-        sidePaneInstance.close();
-        sidePaneInstance = null;
-    }
+function openPOViewer(primaryControl, pageName, fieldLogicalName) {
+  try {
+    const formContext = getFormContext(primaryControl);
+    if (!formContext) throw new Error("Form context not found.");
 
-    // Create dynamic title - use PO number if provided, otherwise generic title
-    var paneTitle = purchaseOrderNumber 
-        ? `Purchase Order ${purchaseOrderNumber} - PDF Viewer`
-        : "Purchase Order - PDF Viewer";
+    const recordIdRaw = formContext.data.entity.getId();
+    const recordId = (recordIdRaw || "").replace(/[{}]/g, "");
+    if (!recordId) throw new Error("Record Id is empty.");
 
-    Xrm.App.sidePanes.createPane({
-        title: paneTitle,
-        imageSrc: "WebResources/mspp_content_snippets.svg", // Consider using a PDF or PO specific icon
-        hideHeader: false, // Set to false to show the dynamic title
-        canClose: true,
-        width: 600
-    }).then((pane) => {
-        // Save the pane instance to use it for future actions (like closing)
-        sidePaneInstance = pane;
-        
-        // Console log success with record ID
-        console.log(`Successfully opened Purchase Order PDF viewer for record ID: ${recordId}`);
-        
-        // Navigate to the desired page in the pane with recordId
-        pane.navigate({
-            pageType: "custom",  
-            name: pageName,
-            recordId: recordId
-        });
-    }).catch((error) => {
-        console.error("Error opening Purchase Order PDF viewer:", error);
-        // Optional: Show user-friendly error message
-        Xrm.Navigation.openAlertDialog({
-            text: "Unable to open PDF viewer. Please try again.",
-            title: "Error"
-        });
+    const titleValue = tryGetAttributeValue(formContext, fieldLogicalName);
+    openPurchaseOrderPDFViewer(pageName, recordId, titleValue);
+  } catch (e) {
+    console.error(e);
+    Xrm.Navigation.openAlertDialog({
+      title: "Error",
+      text: e.message || "Unable to open the PDF viewer."
     });
+  }
 }
 
 /**
- * Context-based function that gets record data dynamically
- * @param {string} pageName - The name of the custom page to navigate to
- * @param {string} fieldName - The field name to use for the dynamic title (e.g., "msdyn_name")
+ * Opens/creates the side pane and navigates to your Custom Page with record context.
  */
-// the called function from the command bar
-function openPOViewer(pageName, fieldName) {
-    // Get the current record context
-    var formContext = Xrm.Page; // or pass as parameter if using modern approach
-    var recordId = formContext.data.entity.getId();
-    
-    // Get the record name for dynamic title using the provided field name
-    var recordNameAttribute = formContext.getAttribute(fieldName);
-    var recordName = recordNameAttribute ? recordNameAttribute.getValue() : null;
-    
-    // Call the main function
-    openPurchaseOrderPDFViewer(pageName, recordId, recordName);
+function openPurchaseOrderPDFViewer(pageName, recordId, purchaseOrderNumber) {
+  if (sidePaneInstance) {
+    try { sidePaneInstance.close(); } catch (_) {}
+    sidePaneInstance = null;
+  }
+
+  const paneTitle = purchaseOrderNumber
+    ? `Purchase Order ${purchaseOrderNumber} – PDF Viewer`
+    : "Purchase Order – PDF Viewer";
+
+  Xrm.App.sidePanes.createPane({
+    title: paneTitle,
+    imageSrc: "WebResources/mspp_content_snippets.svg",
+    hideHeader: false,
+    canClose: true,
+    width: 600
+  }).then((pane) => {
+    sidePaneInstance = pane;
+
+    pane.navigate({
+      pageType: "custom",
+      name: pageName,
+      recordId: recordId
+    });
+
+    console.log(`PO PDF viewer opened for record ${recordId}`);
+  }).catch((error) => {
+    console.error("Error opening side pane:", error);
+    Xrm.Navigation.openAlertDialog({
+      title: "Error",
+      text: "Unable to open the PDF viewer. Please try again."
+    });
+  });
+}
+
+/* ----------------------- helpers ----------------------- */
+
+function getFormContext(primaryControl) {
+  // Ribbon passes PrimaryControl as formContext
+  if (primaryControl && typeof primaryControl.getAttribute === "function") {
+    return primaryControl;
+  }
+  // Execution context style (just in case)
+  if (primaryControl && typeof primaryControl.getFormContext === "function") {
+    return primaryControl.getFormContext();
+  }
+  return null;
+}
+
+function tryGetAttributeValue(formContext, logicalName) {
+  if (!logicalName) return null;
+  const attr = formContext.getAttribute(logicalName);
+  if (!attr) return null;
+  const val = attr.getValue();
+  if (Array.isArray(val) && val.length && val[0].name) return val[0].name; // lookup
+  return val ?? null;
 }

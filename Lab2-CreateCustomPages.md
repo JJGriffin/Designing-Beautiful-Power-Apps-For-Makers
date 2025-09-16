@@ -130,6 +130,10 @@ Our goal is to ensure that our new **Coho Winery Landing Page** looks great, reg
     | **RadiusTopLeft** | `4` |
     | **DropShadow** | `None` |
 
+> ### Container Properties
+> You are free to adjust the design of your own containers, so if you would like to have DropShadow set and have the container showing visually, then you can choose **Light**, **Semi-Light** or any of the other options as well as adjusting the border radius to your liking. This will help you familiarise yourself with the properties. 
+>
+
 ![Images/Lab2-CreateCustomPages/E2_4.png](Images/Lab2-CreateCustomPages/E2_4.png)
 
 ![Images/Lab2-CreateCustomPages/E2_5.png](Images/Lab2-CreateCustomPages/E2_5.png)
@@ -433,7 +437,7 @@ ColorValue(nfBackgroundColor)
     | **X** | `5` |
     | **Y** | `20` |
 
-21. With the **cntGalleryPOHorizontal** container selected, insert an **Icon (Classic/Icon)**, rename it to **icnExpandPO**, and set the properties to resemble the below:
+21. With the **cntGalleryPOHorizontal** container selected, insert an **Icon (Classic/Icon)**, rename it to **icnExpandPO**, and set the properties to resemble the below (some are already correct, so you just need to verify):
 
     | Property | Formula |
     | --- | --- |
