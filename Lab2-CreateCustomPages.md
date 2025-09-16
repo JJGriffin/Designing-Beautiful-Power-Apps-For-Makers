@@ -387,9 +387,10 @@ For this exercise we will start with adding a collection of data which will be u
     | **Height** | `1` |
     | **HoverFill** | `RGBA(0,120,212,1)` |
     | **PressedFill** | `RGBA(0,120,212,1)` |
+
 <br>
 
-15. With **cntPurchaseOrders** selected, insert a **Blank vertical gallery** from **+ Insert**, search for `gallery` and select **Vertical gallery**. Rename it to **galPurchaseOrders** and adjust the properties to resemble the below:
+15. With **cntPurchaseOrders** selected, insert a **Blank vertical gallery** from **+ Insert**, search for `gallery` and select **Blank vertical gallery**. Rename it to **galPurchaseOrders** and adjust the properties to resemble the below:
 
     | Property | Formula |
     | --- | --- |
@@ -504,7 +505,7 @@ For this exercise we will start with adding a collection of data which will be u
     | **PressedFill** | `RGBA(0,0,0,0)` |
     | **Width** | `50` |
 
-22. Test it: Select **icnExpandPO** to load the sample data (or use your nfcolPurchaseOrders). You should see rows like:
+22. Test it: Run app in **Play Mode**, select **icnAddDocument** to load the sample data (or use your nfcolPurchaseOrders). You should see rows like:
 
 PO-1001 — Vintners AB || V001
 
