@@ -349,7 +349,7 @@ For this exercise we will start with adding a collection of data which will be u
     | **Fill** | `RGBA(245,245,245,1)` |
     | **Height** | `1` |
 
-15. With **cntPurchaseOrders** selected, insert a **Blank vertical gallery** from **+ Insert**, search for `gallery` and select **Vertical gallery**. Rename it to **galPurchaseOrders** and adjust the properties to resemble the below:
+15. With **cntPurchaseOrders** selected, insert a **Blank vertical gallery** from **+ Insert**, search for `gallery` and select **Blank vertical gallery**. Rename it to **galPurchaseOrders** and adjust the properties to resemble the below:
 
     | Property | Formula |
     | --- | --- |
