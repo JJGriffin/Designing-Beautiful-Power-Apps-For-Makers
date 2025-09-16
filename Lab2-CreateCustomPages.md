@@ -288,7 +288,7 @@ For this exercise we will start with adding a collection of data which will be u
 
 ![Images/Lab2-CreateCustomPages/E3_1.png](Images/Lab2-CreateCustomPages/E3_1.png)
 
-6. Adjust the following properties on each of the two new containers (**cntPurchaseOrders** and **cntMyPurchaseOrders**) so they share space evenly and stretch:
+6. Adjust the following properties on each of the **two new** containers (**cntPurchaseOrders** and **cntMyPurchaseOrders**) so they share space evenly and stretch:
 
     | Property | Formula |
     | --- | --- |
