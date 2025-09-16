@@ -251,14 +251,14 @@ ColorValue(nfBackgroundColor)
 
     | Property | Formula |
     | --- | --- |
+    | **FillPortions** | `1 // Responsive behavior` |
     | **LayoutDirection** | `LayoutDirection.Horizontal` |
     | **LayoutGap** | `12` |
+    | **LayoutWrap** | `true // allows columns to wrap on narrow widths` |
+    | **PaddingBottom** | `4 // Let the row take all remaining height` |
     | **PaddingLeft** | `8` |
     | **PaddingRight** | `8` |
     | **PaddingTop** | `4` |
-    | **PaddingBottom** | `4 // Let the row take all remaining height` |
-    | **FillPortions** | `1 // Responsive behavior` |
-    | **LayoutWrap** | `true // allows columns to wrap on narrow widths` |
 
 3. Insert two *Vertical containers* inside **cntBodyGalleries** and rename them to **cntPurchaseOrders** and **cntMyPurchaseOrders** respectively. Your **Tree view** should now resemble the below:
 
@@ -269,15 +269,14 @@ ColorValue(nfBackgroundColor)
     | Property | Formula |
     | --- | --- |
     | **FillPortions** | `1 // equal width columns` |
+    | **LayoutAlignItems** | `LayoutAlignItems.Stretch` |
     | **LayoutDirection** | `LayoutDirection.Vertical` |
     | **LayoutGap** | `8` |
+    | **LayoutMinWidth** | `260 // lets them wrap on narrow screens` |
+    | **PaddingBottom** | `8` |
     | **PaddingLeft** | `10` |
     | **PaddingRight** | `10` |
     | **PaddingTop** | `8` |
-    | **PaddingBottom** | `8` |
-    | **AlignInContainer** | `AlignInContainer.Stretch` |
-    | **LayoutAlignItems** | `LayoutAlignItems.Stretch` |
-    | **LayoutMinWidth** | `260 // lets them wrap on narrow screens` |
 
 5. In the **Tree view**, select **App** and then **Formulas** from the App properties dropdown. 
 
@@ -311,7 +310,6 @@ ColorValue(nfBackgroundColor)
     | **FillPortions** | `1` |
     | **FontSize** | `16` |
     | **FontWeight** | `FontWeight.Bold` |
-    | **Height** | `50` |
     | **LayoutMinWidth** | `100` |
     | **Text** | `"Purchase Orders"` |
     | **TextRole** | `'Label.TextRole'.Heading2` |
@@ -372,7 +370,10 @@ ColorValue(nfBackgroundColor)
     | **Transition** | `Transition.Pop // optional: bubble selection to item container` |
     | **Width** | `Parent.Width` |
 
-16. With **galPurchaseOrders** selected, insert a **Horizontal container** and rename it **cntGalleryPOHorizontal**. Adjust the properties to resemble the below:
+16. Click on **Layout** in the ribbon and select **Title** to add a title layout to the gallery. This is necessary so we can then proceed to add additional components into the gallery.
+
+
+16. With **galPurchaseOrders** selected, insert a **Horizontal container** and rename it **cntGalleryPOHorizontal**. The container will be added **outside** the gallery, so drag and drop it within the **galPurchaseOrders** Adjust the properties to resemble the below:
 
     | Property | Formula |
     | --- | --- |
@@ -382,8 +383,8 @@ ColorValue(nfBackgroundColor)
     | **LayoutJustifyContent** | `LayoutJustifyContent.SpaceBetween` |
     | **Width** | `Parent.Width` |
 
-> ![NOTE]
-> If the container is **not** inside the **galPurchaseOrders** gallery, drag and drop it into the gallery template in the **Tree view**.
+> ![IMPORTANT]
+> The other Label and Rectangle controls within the gallery can be deleted, as these are not required.
 
 17. Inside **cntGalleryPOHorizontal**, insert a **Vertical container** and rename it to **cntGalleryPOVertical**. Adjust the properties to resemble the below:
 
