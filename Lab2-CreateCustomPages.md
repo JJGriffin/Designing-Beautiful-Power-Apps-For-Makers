@@ -372,7 +372,6 @@ ColorValue(nfBackgroundColor)
 
 16. Click on **Layout** in the ribbon and select **Title** to add a title layout to the gallery. This is necessary so we can then proceed to add additional components into the gallery.
 
-
 16. With **galPurchaseOrders** selected, insert a **Horizontal container** and rename it **cntGalleryPOHorizontal**. The container will be added **outside** the gallery, so drag and drop it within the **galPurchaseOrders** Adjust the properties to resemble the below:
 
     | Property | Formula |
@@ -391,12 +390,12 @@ ColorValue(nfBackgroundColor)
     | Property | Formula |
     | --- | --- |
     | **DropShadow** | `DropShadow.None` |
-    | **FillPortions** | `1` |
     | **Height** | `48` |
     | **LayoutDirection** | `LayoutDirection.Vertical` |
     | **LayoutMinHeight** | `Parent.Height` |
     | **PaddingLeft** | `15` |
     | **PaddingRight** | `10` |
+    | **Width** | `422` |
 
 18. With **cntGalleryPOVertical** selected, insert a **Label** and rename it to **lblPurchaseOrderNumber**. Then, insert another **Label** and rename it to **lblPOVendorInfo**.
 
