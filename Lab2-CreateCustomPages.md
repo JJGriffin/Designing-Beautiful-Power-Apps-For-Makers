@@ -130,6 +130,10 @@ Our goal is to ensure that our new **Coho Winery Landing Page** looks great, reg
     | **RadiusTopLeft** | `4` |
     | **DropShadow** | `None` |
 
+> ### Container Properties
+> You are free to adjust the design of your own containers, so if you would like to have DropShadow set and have the container showing visually, then you can choose **Light**, **Semi-Light** or any of the other options as well as adjusting the border radius to your liking. This will help you familiarise yourself with the properties. 
+>
+
 ![Images/Lab2-CreateCustomPages/E2_4.png](Images/Lab2-CreateCustomPages/E2_4.png)
 
 ![Images/Lab2-CreateCustomPages/E2_5.png](Images/Lab2-CreateCustomPages/E2_5.png)
@@ -225,13 +229,19 @@ $"<div style='
 
 ![Images/Lab2-CreateCustomPages/E2_14.png](Images/Lab2-CreateCustomPages/E2_14.png)
 
+ <br>
+
 21. Your **MainScreen** should now resemble the below screenshot.
 
 ![Images/Lab2-CreateCustomPages/E2_15.png](Images/Lab2-CreateCustomPages/E2_15.png)
 
+ <br>
+
 22. On the **Properties** of the **MainScreen** on the right side, click on the *paint bucket* to adjust the background fill.
 
 ![Images/Lab2-CreateCustomPages/E2_16.png](Images/Lab2-CreateCustomPages/E2_16.png)
+
+ <br>
 
 23. Click on **Custom** and update the HEX value to `f4e6d7`. Alternatively, click on **Fill** and set the formula to:
 
@@ -245,9 +255,18 @@ ColorValue(nfBackgroundColor)
 25. Leave the designer open if you plan to continue to the next Exercise.
 
 ## ✍️ Exercise 3: Build Responsive Galleries
+For this exercise we will start with adding a collection of data which will be used later to show in the galleries before building the actual layout.
 
-1. With **cntMainBody** selected, insert a **Horizontal container**. Rename it to **cntBodyGalleries**
-2. Adjust the following properties on the **cntBodyGalleries** control to resemble the below. The changes will ensure that the container behaves like a responsive 2-column row.
+1. In the **Tree view**, select **App** and then **Formulas** from the App properties dropdown. 
+
+2. In the **Formulas**, create a *Named Formula* for the collection **nfcolPurchaseOrders** by setting the formula from [this resource](/Assets/Lab2/PurchaseOrderCollection.md). **Do not overwrite the existing formulas**.
+
+![Images/Lab2-CreateCustomPages/E3_2.png](Images/Lab2-CreateCustomPages/E3_2.png)
+
+<br>
+
+3. With **cntMainBody** selected in the **Tree View**, insert a **Horizontal container**. Rename it to **cntBodyGalleries**
+4. Adjust the following properties on the **cntBodyGalleries** control to resemble the below. The changes will ensure that the container behaves like a responsive 2-column row.
 
     | Property | Formula |
     | --- | --- |
@@ -259,12 +278,17 @@ ColorValue(nfBackgroundColor)
     | **PaddingLeft** | `8` |
     | **PaddingRight** | `8` |
     | **PaddingTop** | `4` |
+    | **FlexibleHeight** | `true` |
+    | **AlignInContainer** | `AlignInContainer.Stretch` |
 
-3. Insert two *Vertical containers* inside **cntBodyGalleries** and rename them to **cntPurchaseOrders** and **cntMyPurchaseOrders** respectively. Your **Tree view** should now resemble the below:
+
+ <br>
+
+5. Insert two *Vertical containers* inside **cntBodyGalleries** and rename them to **cntPurchaseOrders** and **cntMyPurchaseOrders** respectively. Your **Tree view** should now resemble the below:
 
 ![Images/Lab2-CreateCustomPages/E3_1.png](Images/Lab2-CreateCustomPages/E3_1.png)
 
-4. Adjust the following properties on each of the two new containers (**cntPurchaseOrders** and **cntMyPurchaseOrders**) so they share space evenly and stretch:
+6. Adjust the following properties on each of the **two new** containers (**cntPurchaseOrders** and **cntMyPurchaseOrders**) so they share space evenly and stretch:
 
     | Property | Formula |
     | --- | --- |
@@ -277,12 +301,10 @@ ColorValue(nfBackgroundColor)
     | **PaddingLeft** | `10` |
     | **PaddingRight** | `10` |
     | **PaddingTop** | `8` |
+    | **LayoutMinHeight** |  `Parent.Height` | 
 
-5. In the **Tree view**, select **App** and then **Formulas** from the App properties dropdown. 
+ <br>
 
-6. In the **Formulas**, create a *Named Formula* for the collection **nfcolPurchaseOrders** by setting the formula from [this resource](/Assets/Lab2/PurchaseOrderCollection.md). **Do not overwrite the existing formulas**.
-
-![Images/Lab2-CreateCustomPages/E3_2.png](Images/Lab2-CreateCustomPages/E3_2.png)
 
 7. In **Tree view**, select **cntPurchaseOrders**. Go to **Insert** → **Layout** → **Horizontal container** and rename it **cntPOHeader**.
 8. With **cntPOHeader** selected, adjust the following properties:
@@ -291,13 +313,15 @@ ColorValue(nfBackgroundColor)
     | --- | --- |
     | **DropShadow** | `DropShadow.None` |
     | **FillPortions** | `0` |
-    | **Height** | `Parent.Height` |
+    | **Height** | `50` |
     | **LayoutDirection** | `LayoutDirection.Horizontal` |
     | **LayoutGap** | `3` |
     | **LayoutJustifyContent** | `LayoutJustifyContent.SpaceBetween` |
     | **LayoutMinHeight** | `30` |
     | **PaddingLeft** | `10` |
     | **PaddingRight** | `10` |
+
+    <br>
 
 9. Inside the **cntPOHeader** container, insert a Label by selecting **+ Insert**, searching for "label" and selecting **Label**. Rename it to **lblTitlePurchaseOrders** and adjust the following properties:
 
@@ -315,11 +339,17 @@ ColorValue(nfBackgroundColor)
     | **TextRole** | `'Label.TextRole'.Heading2` |
     | **Wrap** | `false` |
 
+    <br>
+
 ![Images/Lab2-CreateCustomPages/E3_3.png](Images/Lab2-CreateCustomPages/E3_3.png)
+
+<br>
 
 11. With **cntPOHeader** still selected, insert an **Icon (Classic/Icon)** -> **Add Document**. Rename it to **icnAddDocument**.
 
 ![Images/Lab2-CreateCustomPages/E3_4.png](Images/Lab2-CreateCustomPages/E3_4.png)
+
+<br>
 
 12. Adjust the properties of the newly added **icnAddDocument** icon to resemble the below:
 
@@ -341,6 +371,8 @@ ColorValue(nfBackgroundColor)
     | **PressedFill** | `RGBA(0,0,0,0)` |
     | **Width** | `50` |
 
+ <br> 
+
 13. With **cntPurchaseOrders** selected, insert a **Rectangle** and rename it to **recDividerPurchaseOrders**.
 14. Adjust the properties of the newly added **recDividerPurchaseOrders** rectangle to resemble the below:
 
@@ -355,6 +387,7 @@ ColorValue(nfBackgroundColor)
     | **Height** | `1` |
     | **HoverFill** | `RGBA(0,120,212,1)` |
     | **PressedFill** | `RGBA(0,120,212,1)` |
+<br>
 
 15. With **cntPurchaseOrders** selected, insert a **Blank vertical gallery** from **+ Insert**, search for `gallery` and select **Vertical gallery**. Rename it to **galPurchaseOrders** and adjust the properties to resemble the below:
 
@@ -363,27 +396,37 @@ ColorValue(nfBackgroundColor)
     | **BorderColor** | `RGBA(166,166,166,1)` |
     | **FocusedBorderColor** | `RGBA(0,120,212,1)` |
     | **FocusedBorderThickness** | `2` |
-    | **Height** | `Parent.Height` |
+    | **FlexibleHeight** | `true` |
     | **Items** | `colPurchaseOrders` |
     | **LayoutMinWidth** | `Parent.Width` |
     | **TemplateSize** | `55` |
     | **Transition** | `Transition.Pop // optional: bubble selection to item container` |
     | **Width** | `Parent.Width` |
+<br>
 
-16. Click on **Layout** in the ribbon and select **Title** to add a title layout to the gallery. This is necessary so we can then proceed to add additional components into the gallery.
+<!---16. Click on **Layout** in the ribbon and select **Title** to add a title layout to the gallery. This is necessary so we can then proceed to add additional components into the gallery.--->
 
-16. With **galPurchaseOrders** selected, insert a **Horizontal container** and rename it **cntGalleryPOHorizontal**. The container will be added **outside** the gallery, so drag and drop it within the **galPurchaseOrders** Adjust the properties to resemble the below:
+16. With **galPurchaseOrders** selected, insert a **Horizontal container** and rename it **cntGalleryPOHorizontal**. 
+
+    > OBS!
+    > If you experience that the container is added on the **outside** of the gallery, you should first select **galPurchaseOrders** then the **Edit pen** on the screen as shown below before adding the horizontal container. This is becuase Power Apps expect you to "Select the first row" to edit the content of the gallery.
+    >
+
+    ![How to select the gallery](image-12.png)
+ 
+    Adjust the properties of **cntGalleryPOHorizontal** to resemble the below:
 
     | Property | Formula |
     | --- | --- |
     | **DropShadow** | `DropShadow.None` |
-    | **Height** | `48` |
+    | **Height** | `Parent.TemplateHeight` |
     | **LayoutDirection** | `LayoutDirection.Horizontal` |
     | **LayoutJustifyContent** | `LayoutJustifyContent.SpaceBetween` |
-    | **Width** | `Parent.Width` |
+    | **X** | `0` |
+    | **Y** | `0` |
+    | **Width** | `Parent.TemplateWidth`|
 
-> ![IMPORTANT]
-> The other Label and Rectangle controls within the gallery can be deleted, as these are not required.
+<br>
 
 17. Inside **cntGalleryPOHorizontal**, insert a **Vertical container** and rename it to **cntGalleryPOVertical**. Adjust the properties to resemble the below:
 
@@ -395,7 +438,8 @@ ColorValue(nfBackgroundColor)
     | **LayoutMinHeight** | `Parent.Height` |
     | **PaddingLeft** | `15` |
     | **PaddingRight** | `10` |
-    | **Width** | `422` |
+
+    <br>
 
 18. With **cntGalleryPOVertical** selected, insert a **Label** and rename it to **lblPurchaseOrderNumber**. Then, insert another **Label** and rename it to **lblPOVendorInfo**.
 
@@ -416,6 +460,8 @@ ColorValue(nfBackgroundColor)
     | **Wrap** | `false` |
     | **X** | `22` |
 
+<br>
+
 20. Set the properties for **lblPOVendorInfo** to resemble the below.
 
     | Property | Formula |
@@ -432,7 +478,9 @@ ColorValue(nfBackgroundColor)
     | **X** | `5` |
     | **Y** | `20` |
 
-21. With the **cntGalleryPOHorizontal** container selected, insert an **Icon (Classic/Icon)**, rename it to **icnExpandPO**, and set the properties to resemble the below:
+<br>
+
+21. With the **cntGalleryPOHorizontal** container selected, insert an **Icon (Classic/Icon)**, rename it to **icnExpandPO**, and set the properties to resemble the below (some are already correct, so you just need to verify):
 
     | Property | Formula |
     | --- | --- |
