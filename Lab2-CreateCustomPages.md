@@ -229,19 +229,13 @@ $"<div style='
 
 ![Images/Lab2-CreateCustomPages/E2_14.png](Images/Lab2-CreateCustomPages/E2_14.png)
 
- <br>
-
 21. Your **MainScreen** should now resemble the below screenshot.
 
 ![Images/Lab2-CreateCustomPages/E2_15.png](Images/Lab2-CreateCustomPages/E2_15.png)
 
- <br>
-
 22. On the **Properties** of the **MainScreen** on the right side, click on the *paint bucket* to adjust the background fill.
 
 ![Images/Lab2-CreateCustomPages/E2_16.png](Images/Lab2-CreateCustomPages/E2_16.png)
-
- <br>
 
 23. Click on **Custom** and update the HEX value to `f4e6d7`. Alternatively, click on **Fill** and set the formula to:
 
@@ -263,26 +257,18 @@ For this exercise we will start with adding a collection of data which will be u
 
 ![Images/Lab2-CreateCustomPages/E3_2.png](Images/Lab2-CreateCustomPages/E3_2.png)
 
-<br>
-
 3. With **cntMainBody** selected in the **Tree View**, insert a **Horizontal container**. Rename it to **cntBodyGalleries**
 4. Adjust the following properties on the **cntBodyGalleries** control to resemble the below. The changes will ensure that the container behaves like a responsive 2-column row.
 
     | Property | Formula |
     | --- | --- |
     | **FillPortions** | `1 // Responsive behavior` |
-    | **LayoutDirection** | `LayoutDirection.Horizontal` |
     | **LayoutGap** | `12` |
     | **LayoutWrap** | `true // allows columns to wrap on narrow widths` |
     | **PaddingBottom** | `4 // Let the row take all remaining height` |
     | **PaddingLeft** | `8` |
     | **PaddingRight** | `8` |
     | **PaddingTop** | `4` |
-    | **FlexibleHeight** | `true` |
-    | **AlignInContainer** | `AlignInContainer.Stretch` |
-
-
- <br>
 
 5. Insert two *Vertical containers* inside **cntBodyGalleries** and rename them to **cntPurchaseOrders** and **cntMyPurchaseOrders** respectively. Your **Tree view** should now resemble the below:
 
@@ -292,19 +278,14 @@ For this exercise we will start with adding a collection of data which will be u
 
     | Property | Formula |
     | --- | --- |
-    | **FillPortions** | `1 // equal width columns` |
     | **LayoutAlignItems** | `LayoutAlignItems.Stretch` |
-    | **LayoutDirection** | `LayoutDirection.Vertical` |
     | **LayoutGap** | `8` |
+    | **LayoutMinHeight** |  `Parent.Height` | 
     | **LayoutMinWidth** | `260 // lets them wrap on narrow screens` |
     | **PaddingBottom** | `8` |
     | **PaddingLeft** | `10` |
     | **PaddingRight** | `10` |
     | **PaddingTop** | `8` |
-    | **LayoutMinHeight** |  `Parent.Height` | 
-
- <br>
-
 
 7. In **Tree view**, select **cntPurchaseOrders**. Go to **Insert** → **Layout** → **Horizontal container** and rename it **cntPOHeader**.
 8. With **cntPOHeader** selected, adjust the following properties:
@@ -320,8 +301,6 @@ For this exercise we will start with adding a collection of data which will be u
     | **LayoutMinHeight** | `30` |
     | **PaddingLeft** | `10` |
     | **PaddingRight** | `10` |
-
-    <br>
 
 9. Inside the **cntPOHeader** container, insert a Label by selecting **+ Insert**, searching for "label" and selecting **Label**. Rename it to **lblTitlePurchaseOrders** and adjust the following properties:
 
@@ -339,17 +318,11 @@ For this exercise we will start with adding a collection of data which will be u
     | **TextRole** | `'Label.TextRole'.Heading2` |
     | **Wrap** | `false` |
 
-    <br>
-
 ![Images/Lab2-CreateCustomPages/E3_3.png](Images/Lab2-CreateCustomPages/E3_3.png)
-
-<br>
 
 11. With **cntPOHeader** still selected, insert an **Icon (Classic/Icon)** -> **Add Document**. Rename it to **icnAddDocument**.
 
 ![Images/Lab2-CreateCustomPages/E3_4.png](Images/Lab2-CreateCustomPages/E3_4.png)
-
-<br>
 
 12. Adjust the properties of the newly added **icnAddDocument** icon to resemble the below:
 
@@ -358,20 +331,14 @@ For this exercise we will start with adding a collection of data which will be u
     | **Color** | `RGBA(92, 37, 4, 1)` |
     | **Height** | `Parent.Height` |
     | **HoverColor** | `ColorFade(Self.Color, -30%)` |
-    | **HoverFill** | `RGBA(0,0,0,0)` |
-    | **Icon** | `Icon.AddDocument` |
     | **LayoutMinHeight** | `Parent.Height` |
     | **OnSelect** | `ClearCollect(colPurchaseOrders, nfcolPurchaseOrders)` |
     | **PaddingBottom** | `15` |
     | **PaddingLeft** | `15` |
     | **PaddingRight** | `15` |
     | **PaddingTop** | `15` |
-    | **PressedBorderColor** | `RGBA(0,0,0,0)` |
     | **PressedColor** | `ColorFade(Self.Color, -30%)` |
-    | **PressedFill** | `RGBA(0,0,0,0)` |
     | **Width** | `50` |
-
- <br> 
 
 13. With **cntPurchaseOrders** selected, insert a **Rectangle** and rename it to **recDividerPurchaseOrders**.
 14. Adjust the properties of the newly added **recDividerPurchaseOrders** rectangle to resemble the below:
@@ -379,54 +346,36 @@ For this exercise we will start with adding a collection of data which will be u
     | Property | Formula |
     | --- | --- |
     | **AlignInContainer** | `AlignInContainer.Stretch` |
-    | **BorderColor** | `RGBA(166,166,166,1)` |
-    | **BorderStyle** | `BorderStyle.None` |
-    | **DisabledFill** | `RGBA(166,166,166,1)` |
     | **Fill** | `RGBA(245,245,245,1)` |
-    | **FocusedBorderColor** | `RGBA(0,120,212,1)` |
     | **Height** | `1` |
-    | **HoverFill** | `RGBA(0,120,212,1)` |
-    | **PressedFill** | `RGBA(0,120,212,1)` |
-<br>
 
 15. With **cntPurchaseOrders** selected, insert a **Blank vertical gallery** from **+ Insert**, search for `gallery` and select **Vertical gallery**. Rename it to **galPurchaseOrders** and adjust the properties to resemble the below:
 
     | Property | Formula |
     | --- | --- |
-    | **BorderColor** | `RGBA(166,166,166,1)` |
-    | **FocusedBorderColor** | `RGBA(0,120,212,1)` |
-    | **FocusedBorderThickness** | `2` |
-    | **FlexibleHeight** | `true` |
     | **Items** | `colPurchaseOrders` |
     | **LayoutMinWidth** | `Parent.Width` |
     | **TemplateSize** | `55` |
     | **Transition** | `Transition.Pop // optional: bubble selection to item container` |
     | **Width** | `Parent.Width` |
-<br>
 
-<!---16. Click on **Layout** in the ribbon and select **Title** to add a title layout to the gallery. This is necessary so we can then proceed to add additional components into the gallery.--->
+16. With **galPurchaseOrders** selected, insert a **Horizontal container** and rename it **cntGalleryPOHorizontal**.
 
-16. With **galPurchaseOrders** selected, insert a **Horizontal container** and rename it **cntGalleryPOHorizontal**. 
+>[!IMPORTANT]
+> If the container is added **outside** of the gallery, you should first select **galPurchaseOrders** then the **Edit pen** on the screen as shown below before adding the horizontal container. This is because Power Apps expects you to "Select the first row" to edit the content of the gallery.
 
-    > OBS!
-    > If you experience that the container is added on the **outside** of the gallery, you should first select **galPurchaseOrders** then the **Edit pen** on the screen as shown below before adding the horizontal container. This is becuase Power Apps expect you to "Select the first row" to edit the content of the gallery.
-    >
-
-    ![How to select the gallery](image-12.png)
+![Images/Lab2-CreateCustomPages/E3_5.png](Images/Lab2-CreateCustomPages/E3_5.png)
  
-    Adjust the properties of **cntGalleryPOHorizontal** to resemble the below:
+17. Adjust the properties of **cntGalleryPOHorizontal** to resemble the below:
 
     | Property | Formula |
     | --- | --- |
     | **DropShadow** | `DropShadow.None` |
     | **Height** | `Parent.TemplateHeight` |
-    | **LayoutDirection** | `LayoutDirection.Horizontal` |
     | **LayoutJustifyContent** | `LayoutJustifyContent.SpaceBetween` |
+    | **Width** | `Parent.TemplateWidth`|
     | **X** | `0` |
     | **Y** | `0` |
-    | **Width** | `Parent.TemplateWidth`|
-
-<br>
 
 17. Inside **cntGalleryPOHorizontal**, insert a **Vertical container** and rename it to **cntGalleryPOVertical**. Adjust the properties to resemble the below:
 
@@ -434,12 +383,9 @@ For this exercise we will start with adding a collection of data which will be u
     | --- | --- |
     | **DropShadow** | `DropShadow.None` |
     | **Height** | `48` |
-    | **LayoutDirection** | `LayoutDirection.Vertical` |
     | **LayoutMinHeight** | `Parent.Height` |
     | **PaddingLeft** | `15` |
     | **PaddingRight** | `10` |
-
-    <br>
 
 18. With **cntGalleryPOVertical** selected, insert a **Label** and rename it to **lblPurchaseOrderNumber**. Then, insert another **Label** and rename it to **lblPOVendorInfo**.
 
@@ -460,8 +406,6 @@ For this exercise we will start with adding a collection of data which will be u
     | **Wrap** | `false` |
     | **X** | `22` |
 
-<br>
-
 20. Set the properties for **lblPOVendorInfo** to resemble the below.
 
     | Property | Formula |
@@ -478,111 +422,58 @@ For this exercise we will start with adding a collection of data which will be u
     | **X** | `5` |
     | **Y** | `20` |
 
-<br>
-
-21. With the **cntGalleryPOHorizontal** container selected, insert an **Icon (Classic/Icon)**, rename it to **icnExpandPO**, and set the properties to resemble the below (some are already correct, so you just need to verify):
+21. With the **cntGalleryPOHorizontal** container selected, insert an **Expand View** icon, rename it to **icnExpandPO**, and set the properties to resemble the below:
 
     | Property | Formula |
     | --- | --- |
     | **AlignInContainer** | `AlignInContainer.Stretch` |
-    | **BorderColor** | `RGBA(0,0,0,0)` |
     | **Color** | `RGBA(92, 37, 4, 1)` |
-    | **DisabledColor** | `RGBA(220,220,220,1)` |
-    | **DisabledFill** | `RGBA(0,0,0,0)` |
     | **Height** | `Parent.Height` |
-    | **HoverBorderColor** | `RGBA(0,0,0,0)` |
     | **HoverColor** | `ColorFade(Self.Color, -30%)` |
-    | **HoverFill** | `RGBA(0,0,0,0)` |
-    | **Icon** | `Icon.ExpandView` |
     | **LayoutMinHeight** | `Parent.Height` |
     | **PaddingBottom** | `15` |
     | **PaddingLeft** | `15` |
     | **PaddingRight** | `15` |
     | **PaddingTop** | `15` |
-    | **PressedBorderColor** | `RGBA(0,0,0,0)` |
     | **PressedColor** | `ColorFade(RGBA(0,120,212,1), -30%)` |
-    | **PressedFill** | `RGBA(0,0,0,0)` |
     | **Width** | `50` |
 
-22. Test it: Select **icnExpandPO** to load the sample data (or use your nfcolPurchaseOrders). You should see rows like:
+22. Let's test the work we've done so far. With the **ALT** key pressed on your keyboard, select the **icnAddDocument** icon. This will load the sample data into the collection **colPurchaseOrders**, which will populate the gallery accordingly.
 
-PO-1001 — Vintners AB || V001
+![Images/Lab2-CreateCustomPages/E3_6.png](Images/Lab2-CreateCustomPages/E3_6.png)
 
-PO-1002 — GrapeWorks || GW02
+23. Add a **Purchase Order Screen** to the custom page by copying the YAML code located [here](Assets/Lab2/PurchaseOrderScreen.yml) 
 
-PO-1003 — Oak & Co || OK03
+25. With the **MainScreen** selected, paste the YAML code by selecting **CTRL + V** on your keyboard. A new screen called **PurchaseOrders** should render, resembling the below. The paste operation may take a few moments to complete.
 
-<br>
+![Images/Lab2-CreateCustomPages/E3_7.png](Images/Lab2-CreateCustomPages/E3_7.png)
 
-24. Add a Purchase Order Screen to the custom page by copying the YAML code located [here](Assets/Lab2/PurchaseOrderScreen.yml) 
+26. Navigate back to the **MainScreen** and select the label **lblTitlePurchaseOrders** within **cntPOHeader**
 
-25. With the **MainScreen** selected, paste the YAML code by selecting **CTRL + V** on your keyboard. A new screen called **PurchaseOrders** should render, resembling the below. 
+>[!TIP]
+> You can search in the Tree view to locate controls faster (if you have been naming elements wisely 🥰)
 
-![Images/Lab2-CreateCustomPages/E3_16.png](Images/Lab2-CreateCustomPages/E3_16.png)
-
-26. Navigate back to **MainScreen** and select the label **lblTitlePurchaseOrders** within **cntPOHeader**
-
-
-> ### 💡 Search for controls
-> Search in the Tree view to locate controls easier (if you have been naming elements wisely 🥰)
-> 
-
-27. In the properties dropdown, locate **OnSelect** and use the **Navigate** formula to navigate to the new **PurchaseOrders** screen: 
+27. In the properties dropdown, locate the **OnSelect** property and use the **Navigate** formula to allow users to traverse to the new **PurchaseOrders** screen: 
 
 | Property    | Formula                    |
 |-------------|----------------------------|
 | **OnSelect**| `Navigate(PurchaseOrders)` |
 
+![Images/Lab2-CreateCustomPages/E3_8.png](Images/Lab2-CreateCustomPages/E3_8.png)
 
-![OnSelect Navigate](image-32.png)
+28. Test the functionality by holding down **ALT** on your keyboard, while selecting the **Purchase Orders** label. 
 
-28. Test the functionality by holding down **ALT** on your keyboard, while selecting the **Purchase Orders** label.  
+<video src="Images/Lab2-CreateCustomPages/E3_9.mp4" width="600" controls></video>
 
-<video controls src="20250915-1041-20.6049692.mp4" title="Hold ALT - test"></video>
-
-> ### 💡 CONTAINER PROPERTIES
-> The difficult part when working with responsive layouts are the different properties and making sure you have selected the correct nested container.  
-> 
+> [!NOTE] 
+> The difficult part when working with responsive layouts are the different properties and making sure you have selected the correct nested container.
 > You can always adjust the direction of the container after adding it to a screen. The other main properties you will be looking at are **X**, **Y**, **Width** and **Height**. These decide the placement, alignment and the size which makes them resize according to the user screen.
->
 
-![Container properties](image-30.png)
+![Images/Lab2-CreateCustomPages/E3_10.png](Images/Lab2-CreateCustomPages/E3_10.png)
 
+29. Click on **Save** and then **Publish** to save your progress.
+30. Leave the designer open if you plan to continue to the next Exercise.
 
-
-<!-- This is hidden in the rendered page, but anyone can view the source 
-
-// 5. Name it cntHeaderHorizontal and adjust the Width to:
-![Images/Lab2-CreateCustomPages/E2_2.png](Images/Lab2-CreateCustomPages/E2_2.png)
-
-5. With the **cntMainVertical** container selected, set the following Power Fx formulas in the **Properties** dropdown to center it on the screen. The formulas will also ensure the main container remains aligned whenever the screen size is adjusted:
-- **X**: `(Parent.Width - Self.Width) / 2`
-- **Y**: `(Parent.Height - Self.Height) / 2`
-
-![Images/Lab2-CreateCustomPages/E2_3.png](Images/Lab2-CreateCustomPages/E2_3.png)
-
-![Images/Lab2-CreateCustomPages/E2_4.png](Images/Lab2-CreateCustomPages/E2_4.png)
-
-![Images/Lab2-CreateCustomPages/E2_5.png](Images/Lab2-CreateCustomPages/E2_5.png)
-
-6. With the **cntMainVertical** container still selected, insert a new **Horizontal container** inside it by clicking the **+** icon in the container, expanding **Layout** and then selecting **Horizontal container**.
-
-![Images/Lab2-CreateCustomPages/E2_6.png](Images/Lab2-CreateCustomPages/E2_6.png)
-
-7. Rename the new horizontal container to **cntHeaderHorizontal** in the **Tree view** pane.
-
-![Images/Lab2-CreateCustomPages/E2_7.png](Images/Lab2-CreateCustomPages/E2_7.png)
-
-8. With the **cntHeaderHorizontal** container selected, set the following Power Fx formula in the **Properties** dropdown to ensure the width of the second container always reflects the size of the Parent **cntMainVertical** container's width:
-- **Width**: `Parent.Width`
-
-![Images/Lab2-CreateCustomPages/E2_8.png](Images/Lab2-CreateCustomPages/E2_8.png)
-
-9. In the cntHeaderHorizontal container, insert another
-10. Nest horizontal containers within the main container
-11. Create the navigation bar
-
--->
 ## ✍️ Exercise 4: Side Pane custom page
 Add a **custom page** that opens as a **side pane** from a Purchase Order and shows the related **PDF** in context.
 
