@@ -497,12 +497,14 @@ Build a new page from scratch following the instrctions from exercise 1 and past
 6.  Select **App** in the **Tree view**, and click on **Formulas** in the dropdown porperty list
 
    ```powerfx
-   // Record ID passed from command bar (strip braces)
-   nfRecordId =
-       GUID(Substitute(Substitute(Param("recordId"), "{", ""), "}", ""));
+   // Record ID passed from command bar and JavaScript
+   nfRecordId =Param("recordId")
 
    // Current PO (rename table/column to match your schema)
    nfPO = LookUp('Purchase Orders', 'Purchase Order' = nfRecordId); ```
+
+### Passing record details from MDA to a page
+> As part of working with **side panes** in model-driven apps, we want to pass the **recordId** from the current record that is open. Therefore, 
 
 7. Remove **Screen1** by right clicking and **Delete**
 
@@ -522,24 +524,25 @@ Build a new page from scratch following the instrctions from exercise 1 and past
 
 6.  Select **App** in the **Tree view** → from the properties, select **Formulas**
 
-   ```powerfx
-   // Record ID passed from command bar (strip braces)
-   nfRecordId =
-       GUID(Substitute(Substitute(Param("recordId"), "{", ""), "}", ""));
+```powerfx
+   // Record ID passed from command bar and JavaScript
+   nfRecordId =Param("recordId")
 
    // Current PO (rename table/column to match your schema)
-   nfPO = LookUp('Purchase Orders', 'Purchase Order' = nfRecordId);```
+   nfPO = LookUp('Purchase Orders', 'Purchase Order' = nfRecordId); 
+   ```
+
 
 7. Remove **Screen1** by right clicking and **Delete**
 
 ---
 
-
 ## Add the custom page to the model-driven app
 The page must exist within the MDA to work properly. Make sure the custom page is present under **All other pages** in the MDA editor. When successfully added to the model-driven app, you will be able to trigger it as part of the command bar from a Form. 
 
-1. **Open the editor of the model-driven app.** 
-    - Add the side pane to the **Coho Winery Purchase Order** model-driven app. Click on **+ Add page** - **Custom page**
+1. **Open the editor of the model-driven app.**: 
+    - Add the side pane to the **Coho Winery Purchase Order** model-driven app. 
+    - Click on **+ Add page** - **Custom page**
 2. Search for **Purchase** and select the custom page **Purchase Order Side Pane** - click **Add**
 
 ![adding new page](image-52.png)
@@ -549,13 +552,17 @@ The page must exist within the MDA to work properly. Make sure the custom page i
 ![unselect show in navigation](image-54.png)
 
 3. Click on the **three dots** to expand the dropdown
-4. CLick on **Remove from navigation** - the page should still be part of the application under **All other pages** 
+4. Click on **Remove from navigation** - the page should still be part of the application under **All other pages** 
 
 ![removing page from navigation](image-53.png)
 
+> [NOTE]
+> You are now ready to reference this custom page in Lab 3 for triggering the side pane on a **Purchase Order**
+
+
 ## ✍️ Exercise 5: Styling 
 
-For this exercise you will use to YAML provided under lab resources as the pre build layout for the side pane. 
+<!--- For this exercise you will use to YAML provided under lab resources as the pre build layout for the side pane. --->
 
 > ### 💡 Design
 > Designing apps can be difficult and challenging. Keeping it simple will help you to build better user interfaces. 
@@ -566,92 +573,6 @@ For this exercise you will use to YAML provided under lab resources as the pre b
 >
 > Add rounded corners to controls, containers and visuals for a modern look (between 5-10 border radius) and set a light drop shadow   
 
-
-### Buttons with SVGs
-1. Open a new browser and navigate to https://icons.getbootstrap.com/ 
-2. Search for *Arrow* in the search bar and select the **arrow pointing down** (feel free to select any icon you would like)
-
-![Bootstrap](image-27.png)
-
-5. Copy the **SVG code** by clicking the *copy to clipboard* option under **Copy HTML**
-
-![SVG bootstrap code](image-28.png)
-
-6. Navigate back to the maker studio and your page **Purchase Order Side Pane** in edit mode
-7. Select **Image1** in the button container and click on **Image** on the properties to the right. 
-
-![SVG input image](image-33.png)
-
-
-> ### 💡 When working with SVGs in Power Apps
-> Make sure to always use the formula for encoding the URL, the SVG code won't work without the encoding.
->
-> The code copied from any SVG source often has to be updated and compatible with Power Apps syntax, meaning that every " in the original code snippet has to be converted to ' 
-
-### Build the correct syntax and SVG reference by replacing " with ' 
-8. Edit the **Image formula** to reference the SVG-code you copied in step 5, staring with encoding the URL:
-
-<pre> Power Fx
-"data:image/svg+xml," & EncodeUrl()
-</pre>
-
-9. Set this formula on the **Image** property:
-
-```  
-"data:image/svg+xml," & EncodeUrl("<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
-</svg>") 
-
-```
-
-10. You should see that there are syntax errors and nothing showing in the image
-
-![Syntax error](image-34.png)
-
-11. Click on the **Find and replace** option on the formula bar - the string to search for should be visible
-12. Click on the **arrow pointing down** to expand the **Find and replace** section
-13. The first input should be **"** and the replace value should be **'**
-
-![Find and replace](image-35.png)
-
-14. After updating the **Find and replace** values, click on the small **replace all** icon on the right:
-
-![Click on the Find and replace](image-36.png)
-
-15. The result will still return errors and should resemble the below code:
-
-```  
-'data:image/svg+xml,' & EncodeUrl('<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-arrow-down-circle' viewBox='0 0 16 16'>
-  <path fill-rule='evenodd' d='M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z'/>
-</svg>')
-
-```  
-
-16. To fix the syntax error, replace four instances of **'** to **"** - these are not in the SVG code, but used to symbolise the text as a string value:
-
-```  
-"data:image/svg+xml," & EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-arrow-down-circle' viewBox='0 0 16 16'>
-  <path fill-rule='evenodd' d='M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z'/>
-</svg>")
-
-```  
-
-![replace ' with "](image-38.png)
-
-17. Icon should now be visible ✅
-
-![visible icon](image-42.png)
-
-18. Update the padding properties of the **Image1** control
-
-   | Property | Formula |
-    | --- | --- |
-    | **Padding top** | `5` |
-    | **Padding bottom** | `5` |
-    | **Padding Left** | `5` |
-    | **Padding Right** | `5` |
-
-19. Rename the control to **imgArrowIconSVG** 
 
 
 ### Optional: **Add HTML blur to your page - Glass Morphism effect:**
@@ -761,6 +682,91 @@ $"<div style='
 
 **You have successfully added a blur effect using HTML ✅**
 
+### Buttons with SVGs
+1. Open a new browser and navigate to https://icons.getbootstrap.com/ 
+2. Search for *Arrow* in the search bar and select the **arrow pointing down** (feel free to select any icon you would like)
+
+![Bootstrap](image-27.png)
+
+5. Copy the **SVG code** by clicking the *copy to clipboard* option under **Copy HTML**
+
+![SVG bootstrap code](image-28.png)
+
+6. Navigate back to the maker studio and your page **Purchase Order Side Pane** in edit mode
+7. Select **Image1** in the button container and click on **Image** on the properties to the right. 
+
+![SVG input image](image-33.png)
+
+
+> ### 💡 When working with SVGs in Power Apps
+> Make sure to always use the formula for encoding the URL, the SVG code won't work without the encoding.
+>
+> The code copied from any SVG source often has to be updated and compatible with Power Apps syntax, meaning that every " in the original code snippet has to be converted to ' 
+
+### Build the correct syntax and SVG reference by replacing " with ' 
+8. Edit the **Image formula** to reference the SVG-code you copied in step 5, staring with encoding the URL:
+
+<pre> Power Fx
+"data:image/svg+xml," & EncodeUrl()
+</pre>
+
+9. Set this formula on the **Image** property:
+
+```  
+"data:image/svg+xml," & EncodeUrl("<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
+</svg>") 
+
+```
+
+10. You should see that there are syntax errors and nothing showing in the image
+
+![Syntax error](image-34.png)
+
+11. Click on the **Find and replace** option on the formula bar - the string to search for should be visible
+12. Click on the **arrow pointing down** to expand the **Find and replace** section
+13. The first input should be **"** and the replace value should be **'**
+
+![Find and replace](image-35.png)
+
+14. After updating the **Find and replace** values, click on the small **replace all** icon on the right:
+
+![Click on the Find and replace](image-36.png)
+
+15. The result will still return errors and should resemble the below code:
+
+```  
+'data:image/svg+xml,' & EncodeUrl('<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-arrow-down-circle' viewBox='0 0 16 16'>
+  <path fill-rule='evenodd' d='M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z'/>
+</svg>')
+
+```  
+
+16. To fix the syntax error, replace four instances of **'** to **"** - these are not in the SVG code, but used to symbolise the text as a string value:
+
+```  
+"data:image/svg+xml," & EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-arrow-down-circle' viewBox='0 0 16 16'>
+  <path fill-rule='evenodd' d='M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z'/>
+</svg>")
+
+```  
+
+![replace ' with "](image-38.png)
+
+17. Icon should now be visible ✅
+
+![visible icon](image-42.png)
+
+18. Update the padding properties of the **Image1** control
+
+   | Property | Formula |
+    | --- | --- |
+    | **Padding top** | `5` |
+    | **Padding bottom** | `5` |
+    | **Padding Left** | `5` |
+    | **Padding Right** | `5` |
+
+19. Rename the control to **imgArrowIconSVG** 
 
 ### Extra: Use templates
 
