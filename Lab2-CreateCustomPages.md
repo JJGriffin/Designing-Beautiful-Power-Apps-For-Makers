@@ -713,7 +713,7 @@ $"<div style='
 18. Select the first option **Stock images**.
 19. Scroll far down on the stock images gallery and select the **Confetti** image or another of your choosing (You're allowed to be creative)!
 
-[\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_12.png](Images/Lab2-CreateCustomPages/E5_12.png)
+![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_12.png](Images/Lab2-CreateCustomPages/E5_12.png)
 
 > You can also input the value **'07_readyconfetti_light'** as a formula on the BackgroungImage property of the **MainScreen**
 
