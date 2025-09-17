@@ -578,25 +578,43 @@ In this exercise, we will add some of these design elements to our existing cust
 
 ![Images/Lab2-CreateCustomPages/E5_2.png](Images/Lab2-CreateCustomPages/E5_2.png)
 
-5. Rename the newly added container to **cntHTMLBlur** and drag the **cntHTMLBlur** container under **cntMainVertical**. It should be on the same level as **cntMainBody** and in between **cnMainHeader** and **cntMainBody**. Use the before/after images below as a guide.
+5. Rename the newly added container to **cntHTMLBlur** and drag the **cntHTMLBlur** container under **cntMainVertical**. It should be on the same level as **cntMainBody** and in between **cntMainHeader** and **cntMainBody**. Use the before/after images below as a guide.
 
 ![Images/Lab2-CreateCustomPages/E5_3.png](Images/Lab2-CreateCustomPages/E5_3.png)
 
 ![Images/Lab2-CreateCustomPages/E5_4.png](Images/Lab2-CreateCustomPages/E5_4.png)
 
-7. To rearrange the components correctly, we first need to add a "dummy" component to the **cntHTMLBlur** container. With the **cntHTMLBlur** component selected, click on the **+** icon in the designer and add a **Label**.
+6. Select the container **cntHTMLBlur** and verify the properties:
+
+| Property    | Formula                    |
+|-------------|----------------------------|
+| **X**| `0` |
+| **Y**| `0` |
+| **FlexibleHeight**| `true` |
+| **AlignInContainer**| `AlignInContainer.Stretch` |
+| **DropShadow**| `Light` |
+| **FlexibleHeight**| `true` |
+
+
+7. With the **cntHTMLBlur** component selected, click on the **+** icon in the designer 
+    - Search for **html** and add the control **HTML text**
 
 ![Images/Lab2-CreateCustomPages/E5_5.png](Images/Lab2-CreateCustomPages/E5_5.png)
 
-8. It should now be possible to expand the **cntHTMLBlur** by clicking the arrow facing down. Click and hold the **cntMainBody** to drag it into the **cntHTMLBlur** container as shown below.
+
+![alt text](image-53.png)
+
+8. Rename the control to **htmlBlur** and reorder by clicking the **three dots**, selecting **Reorder** and **Send to back**.
+
+
+![Images/Lab2-CreateCustomPages/E5_7.png](Images/Lab2-CreateCustomPages/E5_7.png)
+
+9. Click and hold the **cntMainBody** to drag it into the **cntHTMLBlur** container as shown below.
 
 ![Images/Lab2-CreateCustomPages/E5_6.png](Images/Lab2-CreateCustomPages/E5_6.png)
 
-7. Delete the **Label** component you added in step 7. The **cntHTMLBlur** should now contain one element, the **cntMainBody**.
-8. With the **cntHTMLBlur** container selected, insert a **HTML text** control.
-9. Rename the control to **htmlBlur** and reorder **Send to back** by clicking the **three dots**, selecting **Reorder** and **Send to back**.
+The **cntHTMLBlur** should now contain two elements, the **cntMainBody** and **htmlBlur**.
 
-![Images/Lab2-CreateCustomPages/E5_7.png](Images/Lab2-CreateCustomPages/E5_7.png)
 
 10. On the properties dropdown of the **HTML text** control, select the **HtmlText** property and edit formula to the below value:
 
