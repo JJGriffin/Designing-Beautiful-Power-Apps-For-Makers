@@ -39,13 +39,13 @@ function openPurchaseOrderPDFViewer(pageName, recordId, purchaseOrderNumber) {
   }
 
   const paneTitle = purchaseOrderNumber
-    ? `Purchase Order ${purchaseOrderNumber} – PDF Viewer`
+    ? `Purchase Order: ${purchaseOrderNumber}`
     : "Purchase Order – PDF Viewer";
 
   Xrm.App.sidePanes.createPane({
     title: paneTitle,
     imageSrc: "WebResources/mspp_content_snippets.svg",
-    hideHeader: false,
+    hideHeader: true,
     canClose: true,
     width: 600
   }).then((pane) => {
