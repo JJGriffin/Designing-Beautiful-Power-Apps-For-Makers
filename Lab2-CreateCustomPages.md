@@ -502,20 +502,8 @@ Here, we will create a new page from scratch following the instructions from **E
 ![Images/Lab2-CreateCustomPages/E4_2.png](Images/Lab2-CreateCustomPages/E4_2.png)
 
 6. Remove **Screen1** by right clicking and selecting **Delete**
-7. We will now **add context formulas** by setting **Named Formulas** that will fetch the passed record ID from the Purchase Order. Select **App** in the **Tree view**, and click on **Formulas** in the dropdown porperty list. Copy and paste the following code into the formula bar. Ignore any errors that appear for now.
-
-```powerfx
-// Record ID passed from command bar and JavaScript
-nfRecordId =Param("recordId");
-// Current PO (rename table/column to match your schema)
-nfPO = LookUp('Purchase Orders', 'Purchase Order' = GUID(nfRecordId)); 
-```
-
->[!NOTE]
-> As part of working with **side panes** in model-driven apps, we want to pass the **recordId** from the current record that is open. Therefore, we create a named formula called **nfRecordId** that fetches the record ID from the URL parameter called `recordId`. This is a standard parameter that is passed when opening a custom page from a command bar or JavaScript.
-
-8. Click on **Save** and then **Publish** to save your progress.
-9. Scroll down and continue from the the section **Finalise side pane page configuration** below.
+7. Click on **Save** and then **Publish** to save your progress.
+8. Scroll down and continue from the the section **Finalise side pane page configuration** below.
 
 ### Option 2 — Import the prebuilt page (.msapp)
 
@@ -534,23 +522,34 @@ nfPO = LookUp('Purchase Orders', 'Purchase Order' = GUID(nfRecordId));
 
 6.  Select **App** in the **Tree view** → from the properties, select **Formulas**
 
-```powerfx
-   // Record ID passed from command bar and JavaScript
-   nfRecordId =Param("recordId")
-
-   // Current PO (rename table/column to match your schema)
-   nfPO = LookUp('Purchase Orders', 'Purchase Order' = nfRecordId); 
-   ```
-
->[!NOTE]
-> As part of working with **side panes** in model-driven apps, we want to pass the **recordId** from the current record that is open. Therefore, we create a named formula called **nfRecordId** that fetches the record ID from the URL parameter called `recordId`. This is a standard parameter that is passed when opening a custom page from a command bar or JavaScript.
 
 7. Remove **Screen1** by right clicking and **Delete**
-
----
+8. Click on **Save** and then **Publish** to save your progress.
+9. Continue onwards from the next section - **Finalise side pane page configuration**.
 
 ### Finalise side pane page configuration
 
+Regardless of the option you chose to create the side pane page, there are a few final steps to complete the configuration.
+
+1. In the page designer, click on **Data** and then **Add data**.
+
+![Images/Lab2-CreateCustomPages/E4_3.png](Images/Lab2-CreateCustomPages/E4_3.png)
+
+2. In the list of **Tables**, select **Purchase Orders** and then click on **Add**. You may need to search for the table if it doesn't appear.
+
+![Images/Lab2-CreateCustomPages/E4_4.png](Images/Lab2-CreateCustomPages/E4_4.png)
+
+7. We will now **add context formulas** by setting **Named Formulas** that will fetch the passed record ID from the Purchase Order. Select **App** in the **Tree view**, and click on **Formulas** in the dropdown porperty list. Copy and paste the following code into the formula bar. Ignore any errors that appear; we will fix these shortly.
+
+```powerfx
+// Record ID passed from command bar and JavaScript
+nfRecordId =Param("recordId");
+// Current PO (rename table/column to match your schema)
+nfPO = LookUp('Purchase Orders', 'Purchase Order' = GUID(nfRecordId)); 
+```
+
+>[!NOTE]
+> As part of working with **side panes** in model-driven apps, we want to pass the **recordId** from the current record that is open. Therefore, we create a named formula called **nfRecordId** that fetches the record ID from the URL parameter called `recordId`. This is a standard parameter that is passed when opening a custom page from a command bar or JavaScript.
 
 
 ### Add the custom page to the model-driven app
