@@ -479,11 +479,7 @@ For this exercise, we will start by adding a collection of data which will be us
 
 ## ✍️ Exercise 4: Side Pane custom page
 
-With the basic structure of our app in place, we will now create the second custom page that will be used as a **side pane** to show the PDF version of a Purchase Order. There are two options available to create the page - **build from scratch** or **import a prebuilt page**.
-
-### Option 1 — Build from scratch
-
-Here, we will create a new page from scratch following the instructions from **Exercise 1** and paste in the YAML from this [Resource](/Assets/Lab2/PurchaseOrderSidePane.yml)
+With the basic structure of our app in place, we will now create the second custom page that will be used as a **side pane** to show the PDF version of a Purchase Order. To assist us, we have created a prebuilt version of the page that you can paste into your page.
 
 1. If you are still in the designer for the **Coho Winery Landing Page**, click on **Back** to return to the **Coho Winery PP Solution** solution. If not, navigate back to here.
 2. In the solution, select **New** -> **App** -> **Page** from the command bar.
@@ -501,45 +497,20 @@ Here, we will create a new page from scratch following the instructions from **E
 
 ![Images/Lab2-CreateCustomPages/E4_2.png](Images/Lab2-CreateCustomPages/E4_2.png)
 
-6. Remove **Screen1** by right clicking and selecting **Delete**
-7. Click on **Save** and then **Publish** to save your progress.
-8. Scroll down and continue from the the section **Finalise side pane page configuration** below.
-
-### Option 2 — Import the prebuilt page (.msapp)
-
-1. **Download** the prebuilt file to your local machine:  
-   [Purchase Order Side Pane.msapp](Assets/Lab2/Purchase%20Order%20Side%20Pane.msapp)
-
-2. If you are still in the designer for the **Coho Winery Landing Page**, click on **Back** to return to the **Coho Winery PP Solution** solution. If not, navigate back to here.
-
-3. In the **Coho Winery** solution, go to **+ New → App → Page** (Follow the exercise 1 instructions)
-
-4. In the page studio, choose **File → Open → Browse** and select the `.msapp` from your downloads.
-
-4. **Save** and **Publish** the page - name it **Purchase Order Side Pane** if the option pops up
-
-5. **Add context formulas** by setting *Named Formulas* that will fetch the passed record ID from the Purchase Order
-
-6.  Select **App** in the **Tree view** → from the properties, select **Formulas**
-
-
-7. Remove **Screen1** by right clicking and **Delete**
-8. Click on **Save** and then **Publish** to save your progress.
-9. Continue onwards from the next section - **Finalise side pane page configuration**.
-
-### Finalise side pane page configuration
-
-Regardless of the option you chose to create the side pane page, there are a few final steps to complete the configuration.
-
-1. In the page designer, click on **Data** and then **Add data**.
+7. Remove **Screen1** by right clicking and selecting **Delete**
+8. In the page designer, click on **Data** and then **Add data**.
 
 ![Images/Lab2-CreateCustomPages/E4_3.png](Images/Lab2-CreateCustomPages/E4_3.png)
 
-2. In the list of **Tables**, select **Purchase Orders** and then click on **Add**. You may need to search for the table if it doesn't appear.
+9. In the list of **Tables**, select **Purchase Orders** and then click on **Add**. You may need to search for the table if it doesn't appear.
 
 ![Images/Lab2-CreateCustomPages/E4_4.png](Images/Lab2-CreateCustomPages/E4_4.png)
 
-7. We will now **add context formulas** by setting **Named Formulas** that will fetch the passed record ID from the Purchase Order. Select **App** in the **Tree view**, and click on **Formulas** in the dropdown porperty list. Copy and paste the following code into the formula bar. Ignore any errors that appear; we will fix these shortly.
+10. Verify that the **Purchase Orders** table is now listed under **Data** in the right pane.
+
+![Images/Lab2-CreateCustomPages/E4_5.png](Images/Lab2-CreateCustomPages/E4_5.png)
+
+11. We will now **add context formulas** by setting **Named Formulas** that will fetch the passed record ID from the Purchase Order. Select **App** in the **Tree view**, and click on **Formulas** in the dropdown property list. Copy and paste the following code into the formula bar. Verify that none of the formulas error.
 
 ```powerfx
 // Record ID passed from command bar and JavaScript
@@ -551,29 +522,31 @@ nfPO = LookUp('Purchase Orders', 'Purchase Order' = GUID(nfRecordId));
 >[!NOTE]
 > As part of working with **side panes** in model-driven apps, we want to pass the **recordId** from the current record that is open. Therefore, we create a named formula called **nfRecordId** that fetches the record ID from the URL parameter called `recordId`. This is a standard parameter that is passed when opening a custom page from a command bar or JavaScript.
 
+12. The **PDFViewer** page should now have just a single error on the screen, on the **icnLaunch** component. We will fix this error later on, so for now, you can ignore it.
 
-### Add the custom page to the model-driven app
-The page must exist within the MDA to work properly. Make sure the custom page is present under **All other pages** in the MDA editor. When successfully added to the model-driven app, you will be able to trigger it as part of the command bar from a Form. 
+![Images/Lab2-CreateCustomPages/E4_6.png](Images/Lab2-CreateCustomPages/E4_6.png)
 
-1. **Open the editor of the model-driven app.**: 
-    - Add the side pane to the **Coho Winery Purchase Order** model-driven app. 
-    - Click on **+ Add page** - **Custom page**
-2. Search for **Purchase** and select the custom page **Purchase Order Side Pane** - click **Add**
+13. Click on **Save** and then **Publish** to save your progress.
+14. With an initial version of our pages ready, we will now add the custom page to our model-driven app. Click on **Back** to return to the solution. Press **Leave** to confirm, if prompted.
+15. Click on the **Coho Winery Purchase Order Management** model-driven app to open the editor.
+16. You should now be in the editor for the model-driven app. Click on **+ Add page** -> **Custom page**.
 
-![adding new page](image-52.png)
+![Images/Lab2-CreateCustomPages/E4_7.png](Images/Lab2-CreateCustomPages/E4_7.png)
 
-> If the page is added to the navigation, but you don't want end users to be able to select it, then remove it. You can also avoid adding it to navigation when adding it by unselecting **Show in navigation**
+17. Search for the **Purchase Order Side Pane** custom page, select it and click on **Add**.
 
-![unselect show in navigation](image-54.png)
+![Images/Lab2-CreateCustomPages/E4_8.png](Images/Lab2-CreateCustomPages/E4_8.png)
 
-3. Click on the **three dots** to expand the dropdown
-4. Click on **Remove from navigation** - the page should still be part of the application under **All other pages** 
+>[!TIP]
+> If the page is added to the navigation, but you don't want end users to be able to select it, then remove it. Do this by selecting the **three dots** next to the page and clicking on **Remove from navigation**. You can also avoid adding it to navigation when adding it by unselecting **Show in navigation**.
 
-![removing page from navigation](image-53.png)
+![Images/Lab2-CreateCustomPages/E4_9.png](Images/Lab2-CreateCustomPages/E4_9.png)
 
-> [NOTE]
-> You are now ready to reference this custom page in Lab 3 for triggering the side pane on a **Purchase Order**
+![Images/Lab2-CreateCustomPages/E4_10.png](Images/Lab2-CreateCustomPages/E4_10.png)
 
+18. You are now ready to reference this custom page in Lab 3 for triggering the side pane on a **Purchase Order**. For now, click on **Save** and then **Publish** to save your progress. This may take a few moments to complete.
+19. Click on **Back** to return to the solution.
+20. Leave the solution open if you plan to continue to the next Exercise.
 
 ## ✍️ Exercise 5: Styling 
 

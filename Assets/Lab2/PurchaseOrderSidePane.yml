@@ -190,7 +190,7 @@ Screens:
                                     Height: =400
                                     Items: |-
                                       =//Purchase Order is the Unique GUID
-                                      Filter('Purchase Orders','Purchase Order'=nfRecordItem.'Purchase Order')
+                                      Filter('Purchase Orders','Purchase Order'=GUID(nfRecordId))
                                     TemplatePadding: =10
                                     TemplateSize: =60
                                   Children:
