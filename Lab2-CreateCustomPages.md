@@ -280,6 +280,11 @@ You should still be in the **Coho Winery Landing Page** from [✍️ Exercise 2]
 
 ![Images/Lab2-CreateCustomPages/E3_2.png](Images/Lab2-CreateCustomPages/E3_2.png)
 
+> **Named Formulas** 
+>
+> Storing functionality as formulas and then referencing these to make the performance and readability of the code simpler. Very handy to use in Power Apps when you want to do calculations or filtering once instead of setting variables and duplicating code. This is the **better option** to using the **OnStart** property
+>
+
 3. With **cntMainBody** selected in the **Tree View**, insert a **Horizontal container**. Rename it to **cntBodyGalleries**
 
 ![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E3_11.png](Images/Lab2-CreateCustomPages/E3_11.png)
@@ -352,11 +357,11 @@ Your **Tree view** should now resemble the below:
 
 ![Images/Lab2-CreateCustomPages/E3_3.png](Images/Lab2-CreateCustomPages/E3_3.png)
 
-11. With **cntPOHeader** still selected, insert an **Icon (Classic/Icon)** -> **Add Document**. Rename it to **icnAddDocument**.
+10. With **cntPOHeader** still selected, insert an **Icon (Classic/Icon)** -> **Add Document**. Rename it to **icnAddDocument**.
 
 ![Images/Lab2-CreateCustomPages/E3_4.png](Images/Lab2-CreateCustomPages/E3_4.png)
 
-12. Adjust the properties of the newly added **icnAddDocument** icon to resemble the below:
+11. Adjust the properties of the newly added **icnAddDocument** icon to resemble the below:
 
     | Property | Formula |
     | --- | --- |
@@ -372,7 +377,7 @@ Your **Tree view** should now resemble the below:
     | **PressedColor** | `ColorFade(Self.Color, -30%)` |
     | **Width** | `50` |
 
-13. With **cntPurchaseOrders** selected, insert a **Rectangle** and rename it to **recDividerPurchaseOrders**.
+12. With **cntPurchaseOrders** selected, insert a **Rectangle** and rename it to **recDividerPurchaseOrders**.
 14. Adjust the properties of the newly added **recDividerPurchaseOrders** rectangle to resemble the below:
 
     | Property | Formula |
@@ -381,7 +386,7 @@ Your **Tree view** should now resemble the below:
     | **Fill** | `RGBA(245,245,245,1)` |
     | **Height** | `1` |
 
-15. With **cntPurchaseOrders** selected, insert a **Blank vertical gallery** from **+ Insert**, search for `gallery` and select **Blank vertical gallery**. Rename it to **galPurchaseOrders** and adjust the properties to resemble the below:
+13. With **cntPurchaseOrders** selected, insert a **Blank vertical gallery** from **+ Insert**, search for `gallery` and select **Blank vertical gallery**. Rename it to **galPurchaseOrders** and adjust the properties to resemble the below:
 
     | Property | Formula |
     | --- | --- |
@@ -391,14 +396,14 @@ Your **Tree view** should now resemble the below:
     | **Transition** | `Transition.Pop // optional: bubble selection to item container` |
     | **Width** | `Parent.Width` |
 
-16. With **galPurchaseOrders** selected, insert a **Horizontal container** and rename it **cntGalleryPOHorizontal**.
+14. With **galPurchaseOrders** selected, insert a **Horizontal container** and rename it **cntGalleryPOHorizontal**.
 
 >[!IMPORTANT]
 > If the container is added **outside** of the gallery, you should first select **galPurchaseOrders** then the **Edit pen** on the screen as shown below before adding the horizontal container. This is because Power Apps expects you to "Select the first row" to edit the content of the gallery.
 
 ![Images/Lab2-CreateCustomPages/E3_5.png](Images/Lab2-CreateCustomPages/E3_5.png)
  
-17. Adjust the properties of **cntGalleryPOHorizontal** to resemble the below:
+15. Adjust the properties of **cntGalleryPOHorizontal** to resemble the below:
 
     | Property | Formula |
     | --- | --- |
@@ -409,7 +414,7 @@ Your **Tree view** should now resemble the below:
     | **X** | `0` |
     | **Y** | `0` |
 
-17. Inside **cntGalleryPOHorizontal**, insert a **Vertical container** and rename it to **cntGalleryPOVertical**. Adjust the properties to resemble the below:
+16. Inside **cntGalleryPOHorizontal**, insert a **Vertical container** and rename it to **cntGalleryPOVertical**. Adjust the properties to resemble the below:
 
     | Property | Formula |
     | --- | --- |
@@ -419,9 +424,9 @@ Your **Tree view** should now resemble the below:
     | **PaddingLeft** | `15` |
     | **PaddingRight** | `10` |
 
-18. With **cntGalleryPOVertical** selected, insert a **Label** and rename it to **lblPurchaseOrderNumber**. Then, insert another **Label** and rename it to **lblPOVendorInfo**.
+17. With **cntGalleryPOVertical** selected, insert a **Label** and rename it to **lblPurchaseOrderNumber**. Then, insert another **Label** and rename it to **lblPOVendorInfo**.
 
-19. Set the properties for **lblPurchaseOrderNumber** to resemble the below.
+18. Set the properties for **lblPurchaseOrderNumber** to resemble the below.
 
     | Property | Formula |
     | --- | --- |
@@ -438,7 +443,7 @@ Your **Tree view** should now resemble the below:
     | **Wrap** | `false` |
     | **X** | `22` |
 
-20. Set the properties for **lblPOVendorInfo** to resemble the below.
+19. Set the properties for **lblPOVendorInfo** to resemble the below.
 
     | Property | Formula |
     | --- | --- |
@@ -454,7 +459,7 @@ Your **Tree view** should now resemble the below:
     | **X** | `5` |
     | **Y** | `20` |
 
-21. With the **cntGalleryPOHorizontal** container selected, insert an **Expand View** icon, rename it to **icnExpandPO**, and set the properties to resemble the below:
+20. With the **cntGalleryPOHorizontal** container selected, insert an **Expand View** icon, rename it to **icnExpandPO**, and set the properties to resemble the below:
 
     | Property | Formula |
     | --- | --- |
@@ -470,24 +475,24 @@ Your **Tree view** should now resemble the below:
     | **PressedColor** | `ColorFade(RGBA(0,120,212,1), -30%)` |
     | **Width** | `50` |
 
-22. Let's test the work we've done so far. With the **ALT** key pressed on your keyboard, select the **icnAddDocument** icon. This will load the sample data into the collection **colPurchaseOrders**, which will populate the gallery accordingly.
+21. Let's test the work we've done so far. With the **ALT** key pressed on your keyboard, select the **icnAddDocument** icon. This will load the sample data into the collection **colPurchaseOrders**, which will populate the gallery accordingly.
 
 ![Images/Lab2-CreateCustomPages/E3_6.png](Images/Lab2-CreateCustomPages/E3_6.png)
 
-23. Add a **Purchase Order Screen** to the custom page by copying the YAML code located [here](Assets/Lab2/PurchaseOrderScreen.yml) 
+22. Add a **Purchase Order Screen** to the custom page by copying the YAML code located [here](Assets/Lab2/PurchaseOrderScreen.yml) 
 
-25. With the **MainScreen** selected, paste the YAML code by selecting **CTRL + V** on your keyboard. A new screen called **PurchaseOrders** should render, resembling the below. The paste operation may take a few moments to complete.
+23. With the **MainScreen** selected, paste the YAML code by selecting **CTRL + V** on your keyboard. A new screen called **PurchaseOrders** should render, resembling the below. The paste operation may take a few moments to complete.
 
 ![Images/Lab2-CreateCustomPages/E3_7.png](Images/Lab2-CreateCustomPages/E3_7.png)
 
-26. Navigate back to the **MainScreen** and select the label **lblTitlePurchaseOrders** within **cntPOHeader**
+24. Navigate back to the **MainScreen** and select the label **lblTitlePurchaseOrders** within **cntPOHeader**
 
-!
+![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E3_13.png](Images/Lab2-CreateCustomPages/E3_13.png)
 
 >[!TIP]
 > You can search in the Tree view to locate controls faster (if you have been naming elements wisely 🥰)
 
-27. In the properties dropdown, locate the **OnSelect** property and use the **Navigate** formula to allow users to traverse to the new **PurchaseOrders** screen: 
+25. In the properties dropdown, locate the **OnSelect** property and use the **Navigate** formula to allow users to traverse to the new **PurchaseOrders** screen: 
 
 | Property    | Formula                    |
 |-------------|----------------------------|
@@ -495,18 +500,20 @@ Your **Tree view** should now resemble the below:
 
 ![Images/Lab2-CreateCustomPages/E3_8.png](Images/Lab2-CreateCustomPages/E3_8.png)
 
-28. Test the functionality by holding down **ALT** on your keyboard, while selecting the **Purchase Orders** label. 
+26. Test the functionality by holding down **ALT** on your keyboard, while selecting the **Purchase Orders** label. 
 
 <video src="Images/Lab2-CreateCustomPages/E3_9.mp4" width="600" controls></video>
 
 > [!NOTE] 
 > The difficult part when working with responsive layouts are the different properties and making sure you have selected the correct nested container.
-> You can always adjust the direction of the container after adding it to a screen. The other main properties you will be looking at are **X**, **Y**, **Width** and **Height**. These decide the placement, alignment and the size which makes them resize according to the user screen.
+> You can always adjust the direction of the container after adding it to a screen. The other main properties you will be looking at are **X**, **Y**, **Width** and **Height**. These decide the placement, alignment and the size which makes them resize according to the user screen. 
+> 
+> **DO NOT** RESIZE MANUALLY IF YOU HAVE SET DYNAMIC VALUES
 
 ![Images/Lab2-CreateCustomPages/E3_10.png](Images/Lab2-CreateCustomPages/E3_10.png)
 
-29. Click on **Save** and then **Publish** to save your progress.
-30. Leave the designer open if you plan to continue to the next Exercise.
+27. Click on **Save** and then **Publish** to save your progress.
+38. Leave the designer open if you plan to continue to the next Exercise.
 
 ## ✍️ Exercise 4: Side Pane custom page
 
@@ -546,7 +553,7 @@ With the basic structure of our app in place, we will now create the second cust
 ```powerfx
 // Record ID passed from command bar and JavaScript
 nfRecordId =Param("recordId");
-// Current PO (rename table/column to match your schema)
+
 nfPO = LookUp('Purchase Orders', 'Purchase Order' = GUID(nfRecordId)); 
 ```
 
@@ -635,7 +642,7 @@ In this exercise, we will add some of these design elements to our existing **Co
 
 ![Images/Lab2-CreateCustomPages/E5_6.png](Images/Lab2-CreateCustomPages/E5_6.png)
 
-The **cntHTMLBlur** should now contain two elements, the `cntMainBody` and **htmlBlur**.
+The **cntHTMLBlur** should now contain two elements, the `cntMainBody` and `htmlBlur`.
 
 
 10. On the properties dropdown of the **HTML text** control, select the **HtmlText** property and edit formula to the below value:
@@ -665,12 +672,16 @@ $"<div style='
 
 > [!TIP]
 > When creating HTML code for Power Apps, use **'** instead of **"** in the string, or else it wont work. Also, keep in mind the following:
+>
 > 💡 We can change the effect and looks of the blur by using https://css.glass/.
-> 💡 Use $ to avoid excessive use of & as well as "" in the text, this enables you to only use {} when referring to dynamic content.
+>
+> 💡 Use $ to avoid excessive use of **&** as well as **""** in the text, this enables you to only use **{ }** when referring to dynamic content. For example when using variables for color values.
 
-![Blur effect](image-68.png)
+> Your page should look something like this - but soon it will look very different
 
-12. Set **Width** and **Height** to adjust according to screen size:
+![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_9.png](Images/Lab2-CreateCustomPages/E5_9.png)
+
+11. Select the **htmlBlur** control and set **Width** and **Height** to adjust according to screen size:
 
 | Property   | Formula                          |
 |------------|----------------------------------|               
@@ -679,7 +690,7 @@ $"<div style='
 
 
 13. Ensure that Automatic Height is **On** to avoid a scroll bar
-14. Set Padding to (this avoids gaps between the content and the control box):
+14. Set **Padding** to (this avoids gaps between the content and the control box):
 
 | Property | Formula |
 |---|---|
@@ -693,19 +704,21 @@ $"<div style='
 15. Set transparency of the Main Body Container **cntMainBody** to 100 by selecting **cntMainBody** in the **Tree View**
 16. Click on the *paint bucket* on the right and chosing the transparent color option:
 
-![Set container transparency](image-65.png)
+![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_10.png](Images/Lab2-CreateCustomPages/E5_10.png)
 
 17. To see the effect of the blur - select **MainScreen** in the **Tree view** and locate the **Background image** under Properties on the right
 
-![background image](image-66.png)
+![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_11.png](Images/Lab2-CreateCustomPages/E5_11.png)
 
 18. Select the first option **Stock images**.
-19. Scroll far down on the stock images gallery and select the **Confetti** image or another of your choosing (You're allowed to be creative)
+19. Scroll far down on the stock images gallery and select the **Confetti** image or another of your choosing (You're allowed to be creative)!
+
+[\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_12.png](Images/Lab2-CreateCustomPages/E5_12.png)
+
 > You can also input the value **'07_readyconfetti_light'** as a formula on the BackgroungImage property of the **MainScreen**
 
 20. Click on **Insert**
 
-![confetti stock photo](image-67.png)
 
 21. You will now be able to see that the HTML blur effect is covering some of the background. Test it by clicking on **Play** in the right corner to preview the page. 
 
@@ -717,7 +730,7 @@ $"<div style='
 1. Open a new browser and navigate to https://icons.getbootstrap.com/ 
 2. Search for *Arrow* in the search bar and select the **arrow pointing down** (feel free to select any icon you would like)
 
-![Bootstrap](image-27.png)
+![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_13.png](Images/Lab2-CreateCustomPages/E5_13.png)
 
 5. Copy the **SVG code** by clicking the *copy to clipboard* option under **Copy HTML**
 
