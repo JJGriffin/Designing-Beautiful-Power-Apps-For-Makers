@@ -318,6 +318,7 @@ Your **Tree view** should now resemble the below:
 
 7. In **Tree view**, select **cntPurchaseOrders**. Go to **Insert** → **Layout** → **Horizontal container** and rename it **cntPOHeader**.
 
+![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E3_12.png](Images/Lab2-CreateCustomPages/E3_12.png)
 
 8. With **cntPOHeader** selected, adjust the following properties:
 
@@ -333,7 +334,7 @@ Your **Tree view** should now resemble the below:
     | **PaddingLeft** | `10` |
     | **PaddingRight** | `10` |
 
-9. Inside the **cntPOHeader** container, insert a Label by selecting **+ Insert**, searching for "label" and selecting **Label**. Rename it to **lblTitlePurchaseOrders** and adjust the following properties:
+9. Inside the **cntPOHeader** container, insert a **Label** by selecting **+ Insert**, searching for "label" and selecting **Label**. Rename it to **lblTitlePurchaseOrders** and adjust the following properties:
 
     | Property | Formula |
     | --- | --- |
@@ -480,6 +481,8 @@ Your **Tree view** should now resemble the below:
 ![Images/Lab2-CreateCustomPages/E3_7.png](Images/Lab2-CreateCustomPages/E3_7.png)
 
 26. Navigate back to the **MainScreen** and select the label **lblTitlePurchaseOrders** within **cntPOHeader**
+
+!
 
 >[!TIP]
 > You can search in the Tree view to locate controls faster (if you have been naming elements wisely 🥰)
