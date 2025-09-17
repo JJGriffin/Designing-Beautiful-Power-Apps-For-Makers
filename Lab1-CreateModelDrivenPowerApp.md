@@ -19,14 +19,13 @@ In this lab, you will create the Model-Driven App used to display and edit purch
 
 ### Scenario
 
-Now that you have prepared your Power Platform development environment, you have been given your first work package. Coho Winery are wanting to improve their internal processes for handling PO's. Currently, all PO's are raised within the company's ERP system. Users need to manually fill out and send a Word document to the finance team every time a new PO is required. Once a PO is raised within the ERP system, the information then needs to be sent via a screenshot to the relevant individuals in the organisation and, on some occasions, directly to the end customer. Only users who have been configured in the ERP system can raise a PO and also view the remaining monetary value. In addition, there are often long delays in the process, due to the manual effort required and the availability of colleagues in the finance team, particularly during busy periods of the month. To assist with year end audits, physical document records of all PO requests must be retained and stored within the organisations document library. Auditors require the ability to search for documents based on their underlying contents.
+Now that you have prepared your Power Platform development environment, you have been given your first work package. Coho Winery are wanting to improve their internal processes for handling PO's. Currently, all PO's are raised within the company's ERP system. Users need to manually fill out and send a Word document to the finance team every time a new PO is required. Once a PO is raised within the ERP system, the information then needs to be sent via a screenshot to the relevant individuals in the organisation and, on some occasions, directly to the end customer. Only users who have been configured in the ERP system can raise a PO and also view the remaining monetary value. In addition, there are often long delays in the process, due to the manual effort required and the availability of colleagues in the finance team, particularly during busy periods of the month. To assist with year end audits, physical document records of all PO requests must be retained and stored within the organisations document library.
 
 The aim of the work package is to build an application within the Power Platform that addresses the following key requirements:
 
-- Provide a landing screen for users to easily navigate to internal and external links, and display current data from the ERP system.
+- Provide a landing screen for users that displays current data from the ERP system and to navigate to a specific Dataverse record. This will include the ability to retrieve and display on-demand the remaining value on a PO, from the ERP system API.
 - Capture and store all PO request details.
 - Allow the finance team to approve or reject PO requests.
-- Retrieve and display on-demand the remaining value on a PO, from the ERP system API.
 - Automatically generate and store physical PO request documents within the organisations document library. This will be derived from the template you uploaded as part of **Lab 0**.
 - Give auditors streamlined access to quickly view and access PO request documents, without having to navigate to different locations.
 
@@ -40,7 +39,6 @@ After analysing the requirements in detail, you identify the following platform 
 - A [model-driven Power App](https://learn.microsoft.com/en-us/power-apps/maker/model-driven-apps/model-driven-app-overview) to present the data stored in Dataverse
 - To handle the landing page and document display requirements, [custom pages](https://learn.microsoft.com/en-us/power-apps/maker/model-driven-apps/model-app-page-overview).
 - [Power Automate cloud flows](https://learn.microsoft.com/en-us/power-automate/overview-cloud), to handle the approval process using the [modern flow approvals engine](https://learn.microsoft.com/en-us/power-automate/get-started-approvals) and any other automation requirements.
-- A [custom prompt in AI Builder](https://learn.microsoft.com/en-us/ai-builder/prompts-overview) to assist with document contents search.
 - A [custom connector](https://learn.microsoft.com/en-us/connectors/custom-connectors/) to connect to the ERP API easily from a cloud flow and the custom page.
 
 You begin your work by planning out the data model you will use and all necessary Dataverse customisations to support the solution. You identify that new table, called **Purchase Order**, will be required, alongside the existing **Account** and **Contact** tables. You will complete all necessary steps to build the model-driven Power App, including all required form and view customisations, before then creating some test records. Finally, you will initiate and test the integration with the ERP by connecting to it's API and create the automation to generate the physical request documents.

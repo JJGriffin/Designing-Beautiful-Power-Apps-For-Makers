@@ -6,11 +6,12 @@ In this lab, you will learn how to **build** custom pages with a focus on **resp
 
 ### 🎯 Goal
 
-- Build a Custom Page to use as a full page and a side pane within a Model-Driven App.
-- Connect to your data sources and fetch record details with the Param() function in the Custom Page.
-- Master responsive layouts so your page looks good everywhere.
-- Add modern styling elements like shadows, rounded corners, blur effects, and SVGs to make apps pop
-- Optimised Power Fx syntax for reusability, performance and maintainable applications
+- Build a custom page to use as our landing page for the Coho Winery Purchase Order application.
+- Extend the newly created custom page, to show a list of Purchase Orders in a responsive gallery layout, using HTML, containers and Power Fx.
+- Add responsive galleries to the custom page, to display Purchase Order data from a temporary collection; this will be replaced with real data in a later exercise.
+- Build a new custom page that will act as our side pane to display PDF documents related to a Purchase Order, using the Param() function to fetch record details.
+- Add modern styling elements to both custom pages like shadows, rounded corners, blur effects, and SVGs to make the experiences pop. 💥
+- Replace the temporary collection with real data from the ERP API, using the custom connector created in Lab 1.
 
 ### ✅ Prerequisites
 
@@ -23,7 +24,7 @@ Coho Winery are rolling out a new Purchase Order app to replace their manual Wor
 - **Landing Page** – a modern entry point where users can quickly navigate to key links, view PO data from the ERP system, and access important actions.
 - **PO Document Side Pane** – a page that displays stored PDF versions of PO requests, giving finance and auditors instant access without leaving the app.
 
-Together, these pages will provide both an attractive front door to the application and a practical way to view and manage PO request documents. 
+Together, these pages will provide both an attractive front door to the application and a practical way to view and manage PO request documents. As you build the custom page, you will be using Power Fx throughout for reusability, performance and to create a truly maintainable applications. Named Formulas and Collections will be some of the key functionality areas.
 
 ### ⌛ Length
 

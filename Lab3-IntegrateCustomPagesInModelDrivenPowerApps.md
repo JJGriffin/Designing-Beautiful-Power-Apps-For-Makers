@@ -6,7 +6,11 @@ In this lab, you will integrate the custom pages you built in **Lab 2** into the
 
 ### 🎯 Goal
 
-Embed a custom page as both a full page and a side pane in the Coho Winery Purchase Orders model-driven app. The page will read context with Param("recordId") and display the correct PO PDF alongside key record details.
+- Embed the custom pages you built in Lab 2 into the model-driven app.
+- Preparing the JavaScript web resource that will open the side pane from a command bar button on the Purchase Order form.
+- Configure the command bar button to the Purchase Order form to open the side pane and pass the current record’s ID.
+- Create an approval flow that triggers when a PO is approved or rejected from within the side pane.
+- (Optional) Add JavaScript to the OnLoad event of the Purchase Order form to automatically open the side pane when the form loads.
 
 ### ✅ Prerequisites
 
