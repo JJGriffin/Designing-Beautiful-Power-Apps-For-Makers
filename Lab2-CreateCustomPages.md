@@ -133,7 +133,6 @@ Our goal is to ensure that our new **Coho Winery Landing Page** looks great, reg
 
 > ### Container Properties
 > You are free to adjust the design of your own containers, so if you would like to have DropShadow set and have the container showing visually, then you can choose **Light**, **Semi-Light** or any of the other options as well as adjusting the border radius to your liking. This will help you familiarise yourself with the properties. 
->
 
 ![Images/Lab2-CreateCustomPages/E2_4.png](Images/Lab2-CreateCustomPages/E2_4.png)
 
@@ -142,6 +141,15 @@ Our goal is to ensure that our new **Coho Winery Landing Page** looks great, reg
 7. Insert a Horizontal container within *cntMainVertical* by clicking on *cntMainVertical*, selecting the **Insert** tab in the ribbon, expand **Layout** and then select **Horizontal container**. Rename it to **cntMainHeader**
 8. Insert a Vertical container within *cntMainHeader*. Rename it to *cntHeaderVertical*.
 9. Insert a Vertical container within *cntMainVertical*. Rename it to **cntMainBody**.
+10. Adjust the properties of the **cntMainBody** control as listed below. No changes are required if the properties already match the values below:
+
+    | Property | Formula |
+    | --- | --- |
+    | **Height** | `Parent.Height` |
+    | **Width** | `Parent.Width` |
+    | **X** | `0` |
+    | **Y** | `0` |
+
 10. Your Tree view should now resemble the below:
 
 ![Images/Lab2-CreateCustomPages/E2_6.png](Images/Lab2-CreateCustomPages/E2_6.png)
