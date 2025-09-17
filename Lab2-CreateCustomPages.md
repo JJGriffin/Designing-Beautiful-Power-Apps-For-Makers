@@ -120,7 +120,7 @@ Our goal is to ensure that our new **Coho Winery Landing Page** looks great, reg
 
 ![Images/Lab2-CreateCustomPages/E2_3.png](Images/Lab2-CreateCustomPages/E2_3.png)
 
-6. Select the container **cntMainVertical** and update the properties to the dynamic values listed below. The settings can either be updated from the formula dropdown bar or from the properties pane on the right side. Keep in mind, that the labels in the properties pane differ from the formula bar, but they represent the same property.
+6. Select the container **cntMainVertical** and update the **X**, **Y**, **Width** and **Height** properties to the dynamic values listed below. The settings can either be updated from the formula dropdown bar or from the properties pane on the right side. Keep in mind, that the labels in the properties pane differ from the formula bar, but they represent the same property.
 
     | Property | Formula |
     | --- | --- |
@@ -139,8 +139,8 @@ Our goal is to ensure that our new **Coho Winery Landing Page** looks great, reg
 ![Images/Lab2-CreateCustomPages/E2_5.png](Images/Lab2-CreateCustomPages/E2_5.png)
 
 7. Insert a Horizontal container within *cntMainVertical* by clicking on *cntMainVertical*, selecting the **Insert** tab in the ribbon, expand **Layout** and then select **Horizontal container**. Rename it to **cntMainHeader**
-8. Insert a Vertical container within **cntMainHeader**. Rename it to **cntHeaderVertical**.
-9. Insert a Vertical container within **cntMainVertical**. Rename it to **cntMainBody**.
+8. Insert a Vertical container within *cntMainHeader*. Rename it to *cntHeaderVertical*.
+9. Insert a Vertical container within *cntMainVertical*. Rename it to **cntMainBody**.
 10. Adjust the properties of the **cntMainBody** control as listed below. No changes are required if the properties already match the values below:
 
     | Property | Formula |
@@ -150,12 +150,12 @@ Our goal is to ensure that our new **Coho Winery Landing Page** looks great, reg
     | **X** | `0` |
     | **Y** | `0` |
 
-11. Your Tree view should now resemble the below:
+10. Your Tree view should now resemble the below:
 
 ![Images/Lab2-CreateCustomPages/E2_6.png](Images/Lab2-CreateCustomPages/E2_6.png)
 
-12. We will now build out the header, by first adding a welcome message to the user. We'll also add the Coho Winery Logo to the page. To do this, we will work with [named formulas](https://learn.microsoft.com/en-us/power-platform/power-fx/reference/object-app#formulas-property). To begin, select **App** in the **Tree View** and then select **Formulas** from the dropdown.
-13. Copy and paste the following code within the formula bar to create two named formulas: one to capture the font used for the title and one for the background color.
+11. We will now build out the header, by first adding a welcome message to the user. We'll also add the Coho Winery Logo to the page. To do this, we will work with [named formulas](https://learn.microsoft.com/en-us/power-platform/power-fx/reference/object-app#formulas-property). To begin, select **App** in the **Tree View** and then select **Formulas** from the dropdown.
+12. Copy and paste the following code within the formula bar to create two named formulas: one to capture the font used for the title and one for the background color.
 
 ```
 nfFont = "Inter, Open Sans";
@@ -167,12 +167,11 @@ nfBackgroundColor = "#f4e6d7";
 > [!TIP]
 > When working with Named Formulas, remember to always end each formula with semicolon ;
 
-14. Select the **cntMainHeader** container underneath **cntMainVertical**.
-15. Adjust the properties of the control as listed below. No changes are required if the properties already match the values below:
+13. Select the **cntMainHeader** container underneath **cntMainVertical**.
+14. Adjust the properties of the control as listed below. No changes are required if the properties already match the values below:
 
     | Property | Formula |
     | --- | --- |
-    | **DropShadow** | `DropShadow.None` |
     | **Height** | `100` |
     | **LayoutJustifyContent** | `LayoutJustifyContent.Start` |
     | **LayoutAlignItems** | `LayoutAlignItems.Start` |
@@ -180,16 +179,16 @@ nfBackgroundColor = "#f4e6d7";
 
 ![Images/Lab2-CreateCustomPages/E2_8.png](Images/Lab2-CreateCustomPages/E2_8.png)
 
-16. Insert an HTML Text control within the **cntMainHeader** container by selecting **+ Insert**, searching for **html** and clicking on **HTML text**.
+14. Insert an HTML Text control within the **cntMainHeader** container by selecting **+ Insert**, searching for **html** and clicking on **HTML text**.
 
 ![Images/Lab2-CreateCustomPages/E2_9.png](Images/Lab2-CreateCustomPages/E2_9.png)
 
-17. Rename the HTML Text control to **htmlHeaderTitle**. 
-18. Select **Font** on the properties of the **htmlHeaderTitle** and set the formula value to the **nfFont** Named Formula created earlier.
+15. Rename the HTML Text control to **htmlHeaderTitle**. 
+16. Select **Font** on the properties of the **htmlHeaderTitle** and set the formula value to the **nfFont** Named Formula created earlier.
 
 ![Images/Lab2-CreateCustomPages/E2_10.png](Images/Lab2-CreateCustomPages/E2_10.png)
 
-19. Set the **HTML text value** located on the properties to the following code. This will create a welcome message with a gradient effect on the user's first name.
+17. Set the **HTML text value** located on the properties to the following code. This will create a welcome message with a gradient effect on the user's first name.
 
 ``` HTML
 $"<div style=' 
@@ -223,31 +222,42 @@ $"<div style='
 
 ![Images/Lab2-CreateCustomPages/E2_11.png](Images/Lab2-CreateCustomPages/E2_11.png)
 
-20. Adjust the following additional properties of the **htmlHeaderTitle** control to resemble the below:
+18. Adjust the following additional properties of the **htmlHeaderTitle** control to resemble the below:
 
     | Property | Formula |
     | --- | --- |
     | **Height** | `Parent.Height` |
     | **Width** | `Parent.Width` |
 
-21. Select the **cntMainHeader** in the **Tree view**, click on **+ Insert** on the ribbon and serach for **image**. Click on the **Image** control under **Media**. Proceed to then add the **Coho-Winery** logo by uploading it into the designer and setting the **Image** property to the name of the image, in this case **Coho-Winery**.
+19. Select the **cntMainHeader** in the **Tree view**, click on **+ Insert** on the ribbon and search for **image**. Click on the **Image** control under **Media**.
 
-![Images/Lab2-CreateCustomPages/E2_12.png](Images/Lab2-CreateCustomPages/E2_12.png) ![Images/Lab2-CreateCustomPages/E2_13.png](Images/Lab2-CreateCustomPages/E2_13.png)
+![Images/Lab2-CreateCustomPages/E2_12.png](Images/Lab2-CreateCustomPages/E2_12.png) 
 
-22. You should now be able to see the image control next to the HTML text control, on the right side of the container.
-23. Select the image control, rename to **imgCohoLogo** and set the Height property to `Parent.Height`. This will ensure that the image height is always the same as the parent container height.
+ 20. Proceed to then add the **Coho-Winery** [logo](https://github.com/JJGriffin/Designing-Beautiful-Power-Apps-For-Makers/blob/5f8012895efa8ef1a129a35a45e09a8efd8ae1f3/Assets/Lab2/Coho-Winery.png) by uploading it into the designer and setting the **Image** property to the name of the image, in this case **Coho-Winery**.
+
+![Images/Lab2-CreateCustomPages/E2_13.png](Images/Lab2-CreateCustomPages/E2_13.png)
+
+20. You should now be able to see the **logo** next to the **HTML text of your name**, on the right side of the container.
+21. Select the image control **image1**, rename to **imgCohoLogo** and set the **Height** property to `Parent.Height`. This will ensure that the image height is always the same as the parent container height.
 
 ![Images/Lab2-CreateCustomPages/E2_14.png](Images/Lab2-CreateCustomPages/E2_14.png)
 
-24. Your **MainScreen** should now resemble the below screenshot.
+ >![TIP] **Dynamic values**
+ > 
+ > If it looks like the containers, placement and looks of the layout is *off* in a way, usually the issue is related to the properties **X** and **Y** not being set to **0** (starting point within the parent object), and the **Width** and **Height** not being set to **Parent.Width** or **Parent.Height**
+ >
+ > Usually helps to check these out
+
+
+21. Your **MainScreen** should now resemble the below screenshot.
 
 ![Images/Lab2-CreateCustomPages/E2_15.png](Images/Lab2-CreateCustomPages/E2_15.png)
 
-25. On the **Properties** of the **MainScreen** on the right side, click on the *paint bucket* to adjust the background fill.
+22. On the **Properties** of the **MainScreen** on the right side, click on the *paint bucket* to adjust the background fill.
 
 ![Images/Lab2-CreateCustomPages/E2_16.png](Images/Lab2-CreateCustomPages/E2_16.png)
 
-26. Click on **Custom** and update the HEX value to `f4e6d7`. Alternatively, click on **Fill** and set the formula to:
+23. Click on **Custom** and update the HEX value to `f4e6d7`. Alternatively, click on **Fill** and set the formula to:
 
 ```
 ColorValue(nfBackgroundColor)
@@ -255,14 +265,14 @@ ColorValue(nfBackgroundColor)
 
 ![Images/Lab2-CreateCustomPages/E2_17.png](Images/Lab2-CreateCustomPages/E2_17.png)
 
-27. Click on **Save** and then **Publish** to save your progress.
-28. Leave the designer open if you plan to continue to the next Exercise.
+24. Click on **Save** and then **Publish** to save your progress.
+25. Leave the designer open if you plan to continue to the next Exercise.
 
 ## ✍️ Exercise 3: Build Responsive Galleries
 
-For this exercise, we will start by adding a collection of data which will be used later to show in the galleries before building the actual layout. This collection will surface some "test" data for now, which will be replaced with real data from the ERP system in a later exercise.
+For this exercise, we will start by adding a collection of data which will be used later to show *dummy data* in the galleries before building the actual layout. This collection will surface some "test" data for now, which will be replaced with real data from the ERP system in a later exercise.
 
-1. You should still be in the **Coho Winery Landing Page** from Exercise 2; if not, navigate back to it.
+1. You should still be in the **Coho Winery Landing Page** from [✍️ Exercise 2](https://github.com/JJGriffin/Designing-Beautiful-Power-Apps-For-Makers/blob/5f8012895efa8ef1a129a35a45e09a8efd8ae1f3/Lab2-CreateCustomPages.md#L102); if not, navigate back to it.
 2. In the **Tree view**, select **App** and then **Formulas** from the App properties dropdown.
 
 2. In the **Formulas**, create a *Named Formula* for the collection **nfcolPurchaseOrders** by setting the formula from [this resource](/Assets/Lab2/PurchaseOrderCollection.md). **Do not overwrite the existing formulas**.
@@ -270,6 +280,8 @@ For this exercise, we will start by adding a collection of data which will be us
 ![Images/Lab2-CreateCustomPages/E3_2.png](Images/Lab2-CreateCustomPages/E3_2.png)
 
 3. With **cntMainBody** selected in the **Tree View**, insert a **Horizontal container**. Rename it to **cntBodyGalleries**
+
+
 4. Adjust the following properties on the **cntBodyGalleries** control to resemble the below. The changes will ensure that the container behaves like a responsive 2-column row.
 
     | Property | Formula |
@@ -565,7 +577,7 @@ Designing apps can be difficult and challenging. Keeping it simple will help you
 - Add fun design objects that are gradient, moves and provides interactive options to engage the users. SVGs and HTML will be useful to understand.
 - Add rounded corners to controls, containers and visuals for a modern look (between 5-10 border radius) and set a light drop shadow
 
-In this exercise, we will add some of these design elements to our existing custom pages.
+In this exercise, we will add some of these design elements to our existing **Coho Winery Landing Page**.
 
 ### Add Glass Morphism effect using HTML
 
@@ -613,7 +625,7 @@ In this exercise, we will add some of these design elements to our existing cust
 
 ![Images/Lab2-CreateCustomPages/E5_6.png](Images/Lab2-CreateCustomPages/E5_6.png)
 
-The **cntHTMLBlur** should now contain two elements, the `cntMainBody` and `htmlBlur`.
+The **cntHTMLBlur** should now contain two elements, the `cntMainBody` and **htmlBlur**.
 
 
 10. On the properties dropdown of the **HTML text** control, select the **HtmlText** property and edit formula to the below value:
@@ -646,151 +658,177 @@ $"<div style='
 > 💡 We can change the effect and looks of the blur by using https://css.glass/.
 > 💡 Use $ to avoid excessive use of & as well as "" in the text, this enables you to only use {} when referring to dynamic content.
 
-11. Adjust the following properties of the **htmlBlur** control to resemble the below:
+![Blur effect](image-68.png)
 
-    | Property | Formula |
-    | --- | --- |
-    | **AutoHeight** | `true` |
-    | **Height** | `Parent.Height` |
-    | **PaddingBottom** | `0` |
-    | **PaddingLeft** | `0` |
-    | **PaddingRight** | `0` |
-    | **PaddingTop** | `0` |
-    | **Width** | `Parent.Width` |
-    | **X** | `0` |
-    | **Y** | `0` |
+12. Set **Width** and **Height** to adjust according to screen size:
 
-12. Your page should now resemble the below:
+| Property   | Formula                          |
+|------------|----------------------------------|               
+| **Width**  | `Parent.Width`                   |
+| **Height** | `Parent.Height`                  |
 
-![Images/Lab2-CreateCustomPages/E5_9.png](Images/Lab2-CreateCustomPages/E5_9.png)
 
-13. Set transparency of the Main Body Container **cntMainBody** to 100 by selecting **cntMainBody** in the **Tree View**
-14. Click on the *paint bucket* on the right and choose the transparent color option:
+13. Ensure that Automatic Height is **On** to avoid a scroll bar
+14. Set Padding to (this avoids gaps between the content and the control box):
 
-![Images/Lab2-CreateCustomPages/E5_10.png](Images/Lab2-CreateCustomPages/E5_10.png)
+| Property | Formula |
+|---|---|
+| **Top** | `0` |
+| **Bottom** | `0` |
+| **Left** | `0` |
+| **Right** | `0` |
 
-15. To see the effect of the blur, select the **MainScreen** in the **Tree view** and locate the **Background image** under **Properties** on the right
 
-![Images/Lab2-CreateCustomPages/E5_11.png](Images/Lab2-CreateCustomPages/E5_11.png)
 
-16. Select the first option **Stock images**.
-17. Scroll far down on the stock images gallery and select the **Confetti** image or another of your choosing (You're allowed to be creative 😉)
+15. Set transparency of the Main Body Container **cntMainBody** to 100 by selecting **cntMainBody** in the **Tree View**
+16. Click on the *paint bucket* on the right and chosing the transparent color option:
 
->[!TIP]
+![Set container transparency](image-65.png)
+
+17. To see the effect of the blur - select **MainScreen** in the **Tree view** and locate the **Background image** under Properties on the right
+
+![background image](image-66.png)
+
+18. Select the first option **Stock images**.
+19. Scroll far down on the stock images gallery and select the **Confetti** image or another of your choosing (You're allowed to be creative)
 > You can also input the value **'07_readyconfetti_light'** as a formula on the BackgroungImage property of the **MainScreen**
 
-18. Click on **Insert**
+20. Click on **Insert**
 
-![Images/Lab2-CreateCustomPages/E5_12.png](Images/Lab2-CreateCustomPages/E5_12.png)
+![confetti stock photo](image-67.png)
 
-19. You will now be able to see that the HTML blur effect is covering some of the background. Test it by clicking on **Play** in the right corner to preview the page. 
-20. On your keyboard, select **CTRL** + **SHIFT** + **P** or click on **Publish** to save and publish your page.
-29. Click on **Back** to return to the solution.
-30. Leave the solution open if you plan to continue to the next task.
+21. You will now be able to see that the HTML blur effect is covering some of the background. Test it by clicking on **Play** in the right corner to preview the page. 
+
+22. On your keyboard, select **CTRL** + **SHIFT** + **P** or click on **Publish** to save and publish your page
 
 **You have successfully added a blur effect using HTML ✅**
 
 ### Buttons with SVGs
+1. Open a new browser and navigate to https://icons.getbootstrap.com/ 
+2. Search for *Arrow* in the search bar and select the **arrow pointing down** (feel free to select any icon you would like)
 
-1. You should still be in the **Coho Winery PP Solution** from the previous task; if not, navigate back to it.
-2. Open a new browser and navigate to https://icons.getbootstrap.com/
-3. Search for *Arrow* in the search bar and select the **arrow pointing down** (feel free to select any icon you would like).
+![Bootstrap](image-27.png)
 
-![Images/Lab2-CreateCustomPages/E5_13.png](Images/Lab2-CreateCustomPages/E5_13.png)
+5. Copy the **SVG code** by clicking the *copy to clipboard* option under **Copy HTML**
 
-4. Copy the **SVG code** by clicking the *copy to clipboard* option under **Copy HTML**.
+![SVG bootstrap code](image-28.png)
 
-![Images/Lab2-CreateCustomPages/E5_14.png](Images/Lab2-CreateCustomPages/E5_14.png)
+6. Navigate back to the maker studio and your page **Purchase Order Side Pane** in edit mode
+7. Select **Image1** in the button container and click on **Image** on the properties to the right. 
 
-5. Navigate back to the **Coho Winery PP Solution** and your page **Purchase Order Side Pane** in edit mode
-6. Select **imgArrowIconSVG** in the button container and click on **Image** on the properties to the right.
+![SVG input image](image-33.png)
 
-![Images/Lab2-CreateCustomPages/E5_15.png](Images/Lab2-CreateCustomPages/E5_15.png)
 
-> [!TIP]
-> When working with SVGs in Power Apps, make sure to always use the formula for encoding the URL, asthe SVG code won't work without the encoding. The code copied from any SVG source often has to be updated and compatible with Power Apps syntax, meaning that every " in the original code snippet has to be converted to '. In the steps that follow, we will simulate this issue and show you how to fix it.
+> ### 💡 When working with SVGs in Power Apps
+> Make sure to always use the formula for encoding the URL, the SVG code won't work without the encoding.
+>
+> The code copied from any SVG source often has to be updated and compatible with Power Apps syntax, meaning that every " in the original code snippet has to be converted to ' 
 
-7. Edit the **Image formula** to reference the SVG-code you copied in step 5, staring with encoding the URL:
+### Build the correct syntax and SVG reference by replacing " with ' 
+8. Edit the **Image formula** to reference the SVG-code you copied in step 5, staring with encoding the URL:
 
-```
+<pre> Power Fx
 "data:image/svg+xml," & EncodeUrl()
-```
+</pre>
 
-8. Paste the SVG code inside the **EncodeUrl()** function, so it resembles the below (your exact code may differ, depending on the SVG you selected):
+9. Set this formula on the **Image** property:
 
 ```  
 "data:image/svg+xml," & EncodeUrl("<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
 </svg>") 
+
 ```
 
-9. You should see that there are syntax errors and nothing showing in the image.
+10. You should see that there are syntax errors and nothing showing in the image
 
-![Image/Lab2-CreateCustomPages/E5_16.png](Images/Lab2-CreateCustomPages/E5_16.png)
+![Syntax error](image-34.png)
 
-10. Click on the **Find and replace** option on the formula bar - the string to search for should be visible
-11. Click on the **arrow pointing down** to expand the **Find and replace** section
-12. The first input should be **"** and the replace value should be **'**
+11. Click on the **Find and replace** option on the formula bar - the string to search for should be visible
+12. Click on the **arrow pointing down** to expand the **Find and replace** section
+13. The first input should be **"** and the replace value should be **'**
 
-![Images/Lab2-CreateCustomPages/E5_17.png](Images/Lab2-CreateCustomPages/E5_17.png)
+![Find and replace](image-35.png)
 
-13. After updating the **Find and replace** values, click on the small **replace all** icon on the right:
+14. After updating the **Find and replace** values, click on the small **replace all** icon on the right:
 
-![Images/Lab2-CreateCustomPages/E5_18.png](Images/Lab2-CreateCustomPages/E5_18.png)
+![Click on the Find and replace](image-36.png)
 
-14. The result will still return errors and should resemble the below code:
+15. The result will still return errors and should resemble the below code:
 
 ```  
 'data:image/svg+xml,' & EncodeUrl('<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-arrow-down-circle' viewBox='0 0 16 16'>
   <path fill-rule='evenodd' d='M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z'/>
 </svg>')
+
 ```  
 
-15. To fix the syntax error, replace four instances of **'** to **"** as shown in the screenshot below - these are not in the SVG code, but used to symbolise the text as a string value:
+16. To fix the syntax error, replace four instances of **'** to **"** - these are not in the SVG code, but used to symbolise the text as a string value:
 
 ```  
 "data:image/svg+xml," & EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-arrow-down-circle' viewBox='0 0 16 16'>
   <path fill-rule='evenodd' d='M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z'/>
 </svg>")
-```
 
-![Images/Lab2-CreateCustomPages/E5_19.png](Images/Lab2-CreateCustomPages/E5_19.png)
+```  
 
-17. The icon should now be visible ✅
+![replace ' with "](image-38.png)
 
-![Images/Lab2-CreateCustomPages/E5_20.png](Images/Lab2-CreateCustomPages/E5_20.png)
+17. Icon should now be visible ✅
 
-18. Update the padding properties of the **imgArrowIconSVG** control
+![visible icon](image-42.png)
 
-    | Property | Formula |
+18. Update the padding properties of the **Image1** control
+
+   | Property | Formula |
     | --- | --- |
-    | **PaddingBottom** | `5` |
-    | **PaddingLeft** | `5` |
-    | **PaddingRight** | `5` |
-    | **PaddingTop** | `5` |
+    | **Padding top** | `5` |
+    | **Padding bottom** | `5` |
+    | **Padding Left** | `5` |
+    | **Padding Right** | `5` |
 
-19. Save and publish your changes by selecting **CTRL** + **SHIFT** + **P** or clicking on **Publish** in the top right corner.
-20. Click on **Back** to return to the solution.
-21. Leave the solution open if you plan to continue to the next exercise.
+19. Rename the control to **imgArrowIconSVG** 
 
-### Extra: Using templates
+### Extra: Use templates
 
-💡 You can start from a template when working with responsive layouts. 
+💡 You can start from a template when working with responsive layouts
 
 **✅ Prerequisites** 
 - Multiple screens in settings under the Display tab must be enabled to add several screens to your Coho Winery page
 
-![Images/Lab2-CreateCustomPages/E5_21.png](Images/Lab2-CreateCustomPages/E5_21.png)
+![Screen with containers from template](image-10.png)
 
 If you already have a new screen added, you could select **Templates** or **with Layout** to start with a responsive page
 
-![Images/Lab2-CreateCustomPages/E5_22.png](Images/Lab2-CreateCustomPages/E5_22.png)
+![New screen with templates // layout](image-26.png)
 
 1. Click **New screen** on the ribbon and select a layout of your choosing
-2. Have fun 🥳
+2. Have fun 
 
-## Exercise 6: Connect the ERP API
+<!---
 
-TBC
+## ✍️ Exercise 3: Fetch Record Information
+1. Add datasource (Dataverse, SharePoint etc.)
+2. Select **App** in the left corner and click **Formulas**
+3. Create a formula for referencing the record GUID and use the function GUID() to ensure correct type
+
+<pre> Power Fx 
+nfRecordItem =
+    If(
+        "," in Text(Param("recordId")),
+        LookUp(Table, 'Unique GUID field' = GUID(Last(Split(Param("recordId"), ",")).Value)),
+        LookUp(Table, 'Unique GUID field'  = GUID(Param("recordId")))
+    ); </pre>
+
+The record can also be wrapped in {} so that needs to be removed in some cases:
+
+<pre> Power Fx 
+GUID(Substitute(Substitute(Param("recordId"), "{", ""), "}", ""))</pre>
+
+> **Note:** 
+*Named Formulas needs to be closed using ;*
+
+*Param() function gets the record GUID parsed from the JavaScript, and GUID() formats the output as GUID, not a string. We are also checking if there are several records selected by splitting the string after ","*
+--->
 
 **Congratulations, you've finished Lab 2** 🥳
