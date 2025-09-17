@@ -272,8 +272,9 @@ ColorValue(nfBackgroundColor)
 
 For this exercise, we will start by adding a collection of data which will be used later to show *dummy data* in the galleries before building the actual layout. This collection will surface some "test" data for now, which will be replaced with real data from the ERP system in a later exercise.
 
-1. You should still be in the **Coho Winery Landing Page** from [✍️ Exercise 2](https://github.com/JJGriffin/Designing-Beautiful-Power-Apps-For-Makers/blob/5f8012895efa8ef1a129a35a45e09a8efd8ae1f3/Lab2-CreateCustomPages.md#L102); if not, navigate back to it.
-2. In the **Tree view**, select **App** and then **Formulas** from the App properties dropdown.
+You should still be in the **Coho Winery Landing Page** from [✍️ Exercise 2](https://github.com/JJGriffin/Designing-Beautiful-Power-Apps-For-Makers/blob/5f8012895efa8ef1a129a35a45e09a8efd8ae1f3/Lab2-CreateCustomPages.md#L102); if not, navigate back to it.
+
+1. In the **Tree view**, select **App** and then **Formulas** from the App properties dropdown.
 
 2. In the **Formulas**, create a *Named Formula* for the collection **nfcolPurchaseOrders** by setting the formula from [this resource](/Assets/Lab2/PurchaseOrderCollection.md). **Do not overwrite the existing formulas**.
 
@@ -281,6 +282,7 @@ For this exercise, we will start by adding a collection of data which will be us
 
 3. With **cntMainBody** selected in the **Tree View**, insert a **Horizontal container**. Rename it to **cntBodyGalleries**
 
+![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E3_11.png](Images/Lab2-CreateCustomPages/E3_11.png)
 
 4. Adjust the following properties on the **cntBodyGalleries** control to resemble the below. The changes will ensure that the container behaves like a responsive 2-column row.
 
@@ -294,7 +296,10 @@ For this exercise, we will start by adding a collection of data which will be us
     | **PaddingRight** | `8` |
     | **PaddingTop** | `4` |
 
-5. Insert two *Vertical containers* inside **cntBodyGalleries** and rename them to **cntPurchaseOrders** and **cntMyPurchaseOrders** respectively. Your **Tree view** should now resemble the below:
+5. Insert two *Vertical containers* inside **cntBodyGalleries** and rename them to **cntPurchaseOrders** and **cntMyPurchaseOrders** respectively. 
+    - **Insert** → **Layout** → **Vertical container**
+
+Your **Tree view** should now resemble the below:
 
 ![Images/Lab2-CreateCustomPages/E3_1.png](Images/Lab2-CreateCustomPages/E3_1.png)
 
@@ -312,6 +317,8 @@ For this exercise, we will start by adding a collection of data which will be us
     | **PaddingTop** | `8` |
 
 7. In **Tree view**, select **cntPurchaseOrders**. Go to **Insert** → **Layout** → **Horizontal container** and rename it **cntPOHeader**.
+
+
 8. With **cntPOHeader** selected, adjust the following properties:
 
     | Property | Formula |
