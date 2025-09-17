@@ -506,9 +506,9 @@ Here, we will create a new page from scratch following the instructions from **E
 
 ```powerfx
 // Record ID passed from command bar and JavaScript
-nfRecordId =Param("recordId")
+nfRecordId =Param("recordId");
 // Current PO (rename table/column to match your schema)
-nfPO = LookUp('Purchase Orders', 'Purchase Order' = nfRecordId); 
+nfPO = LookUp('Purchase Orders', 'Purchase Order' = GUID(nfRecordId)); 
 ```
 
 >[!NOTE]
