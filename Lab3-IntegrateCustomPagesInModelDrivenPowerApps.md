@@ -18,7 +18,7 @@ Finance and auditors need to **open PO PDFs** directly in the app and see the re
 
 ### ⌛ Length
 
-45-60 minutes
+45 minutes
 
 ### Assets You Will need
 
