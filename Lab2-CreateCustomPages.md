@@ -613,7 +613,7 @@ In this exercise, we will add some of these design elements to our existing cust
 
 ![Images/Lab2-CreateCustomPages/E5_6.png](Images/Lab2-CreateCustomPages/E5_6.png)
 
-The **cntHTMLBlur** should now contain two elements, the **cntMainBody** and **htmlBlur**.
+The **cntHTMLBlur** should now contain two elements, the `cntMainBody` and `htmlBlur`.
 
 
 10. On the properties dropdown of the **HTML text** control, select the **HtmlText** property and edit formula to the below value:
