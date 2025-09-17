@@ -565,6 +565,9 @@ nfPO = LookUp('Purchase Orders', 'Purchase Order' = GUID(nfRecordId));
 ![Images/Lab2-CreateCustomPages/E4_6.png](Images/Lab2-CreateCustomPages/E4_6.png)
 
 13. Click on **Save** and then **Publish** to save your progress.
+14. Select the **cntHeaderHorizontal** and set `flexible width` to `true`
+!
+
 14. With an initial version of our pages ready, we will now add the custom page to our model-driven app. Click on **Back** to return to the solution. Press **Leave** to confirm, if prompted.
 15. Click on the **Coho Winery Purchase Order Management** model-driven app to open the editor.
 16. You should now be in the editor for the model-driven app. Click on **+ Add page** -> **Custom page**.
@@ -719,8 +722,9 @@ $"<div style='
 
 20. Click on **Insert**
 
+21. You will now be able to see that the HTML blur effect is covering some of the background. Test it by clicking on **Play** in the right corner to preview the page. Does it look like the picture below?
 
-21. You will now be able to see that the HTML blur effect is covering some of the background. Test it by clicking on **Play** in the right corner to preview the page. 
+![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_23.png](Images/Lab2-CreateCustomPages/E5_23.png)
 
 22. On your keyboard, select **CTRL** + **SHIFT** + **P** or click on **Publish** to save and publish your page
 
@@ -734,18 +738,18 @@ $"<div style='
 
 5. Copy the **SVG code** by clicking the *copy to clipboard* option under **Copy HTML**
 
-![SVG bootstrap code](image-28.png)
+![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_14.png](Images/Lab2-CreateCustomPages/E5_14.png)
 
 6. Navigate back to the maker studio and your page **Purchase Order Side Pane** in edit mode
 7. Select **Image1** in the button container and click on **Image** on the properties to the right. 
 
-![SVG input image](image-33.png)
-
+![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_15.png](Images/Lab2-CreateCustomPages/E5_15.png)
 
 > ### 💡 When working with SVGs in Power Apps
 > Make sure to always use the formula for encoding the URL, the SVG code won't work without the encoding.
 >
 > The code copied from any SVG source often has to be updated and compatible with Power Apps syntax, meaning that every " in the original code snippet has to be converted to ' 
+>
 
 ### Build the correct syntax and SVG reference by replacing " with ' 
 8. Edit the **Image formula** to reference the SVG-code you copied in step 5, staring with encoding the URL:
@@ -765,17 +769,18 @@ $"<div style='
 
 10. You should see that there are syntax errors and nothing showing in the image
 
-![Syntax error](image-34.png)
+![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_16.png](Images/Lab2-CreateCustomPages/E5_16.png)
 
 11. Click on the **Find and replace** option on the formula bar - the string to search for should be visible
 12. Click on the **arrow pointing down** to expand the **Find and replace** section
 13. The first input should be **"** and the replace value should be **'**
 
-![Find and replace](image-35.png)
+![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_17.png](Images/Lab2-CreateCustomPages/E5_17.png)
+
 
 14. After updating the **Find and replace** values, click on the small **replace all** icon on the right:
 
-![Click on the Find and replace](image-36.png)
+![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_18.png](Images/Lab2-CreateCustomPages/E5_18.png)
 
 15. The result will still return errors and should resemble the below code:
 
@@ -795,15 +800,15 @@ $"<div style='
 
 ```  
 
-![replace ' with "](image-38.png)
+![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_19.png](Images/Lab2-CreateCustomPages/E5_19.png)
 
 17. Icon should now be visible ✅
 
-![visible icon](image-42.png)
+![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_20.png](Images/Lab2-CreateCustomPages/E5_20.png)
 
 18. Update the padding properties of the **Image1** control
 
-   | Property | Formula |
+    | Property | Formula |
     | --- | --- |
     | **Padding top** | `5` |
     | **Padding bottom** | `5` |
