@@ -499,10 +499,10 @@ Build a new page from scratch following the instrctions from exercise 1 and past
 
    ```powerfx
    // Record ID passed from command bar and JavaScript
-   nfRecordId =Param("recordId")
+   nfRecordId =Param("recordId");
 
    // Current PO (rename table/column to match your schema)
-   nfPO = LookUp('Purchase Orders', 'Purchase Order' = nfRecordId); ```
+   nfPO = LookUp('Purchase Orders', 'Purchase Order' = GUID(nfRecordId)); ```
 
 ### Passing record details from MDA to a page
 > As part of working with **side panes** in model-driven apps, we want to pass the **recordId** from the current record that is open. Therefore, 
