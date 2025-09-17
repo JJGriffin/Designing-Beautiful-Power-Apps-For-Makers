@@ -250,9 +250,11 @@ ColorValue(nfBackgroundColor)
 25. Leave the designer open if you plan to continue to the next Exercise.
 
 ## ✍️ Exercise 3: Build Responsive Galleries
-For this exercise we will start with adding a collection of data which will be used later to show in the galleries before building the actual layout.
 
-1. In the **Tree view**, select **App** and then **Formulas** from the App properties dropdown. 
+For this exercise, we will start by adding a collection of data which will be used later to show in the galleries before building the actual layout. This collection will surface some "test" data for now, which will be replaced with real data from the ERP system in a later exercise.
+
+1. You should still be in the **Coho Winery Landing Page** from Exercise 2; if not, navigate back to it.
+2. In the **Tree view**, select **App** and then **Formulas** from the App properties dropdown.
 
 2. In the **Formulas**, create a *Named Formula* for the collection **nfcolPurchaseOrders** by setting the formula from [this resource](/Assets/Lab2/PurchaseOrderCollection.md). **Do not overwrite the existing formulas**.
 
@@ -476,48 +478,55 @@ For this exercise we will start with adding a collection of data which will be u
 30. Leave the designer open if you plan to continue to the next Exercise.
 
 ## ✍️ Exercise 4: Side Pane custom page
-Add a **custom page** that opens as a **side pane** from a Purchase Order and shows the related **PDF** in context.
 
----
+With the basic structure of our app in place, we will now create the second custom page that will be used as a **side pane** to show the PDF version of a Purchase Order. There are two options available to create the page - **build from scratch** or **import a prebuilt page**.
 
-### Option 1 — Build from scratch (paste YAML)
-Build a new page from scratch following the instrctions from exercise 1 and pasting in the YAML from this [Resource](https://github.com/JJGriffin/Designing-Beautiful-Power-Apps-For-Makers/blob/c5935b91121df04e1de02169a9ac3a52ab5bbcbd/Assets/Lab2/PurchaseOrderSidePane.yml)
+### Option 1 — Build from scratch
 
-1. **Create the page**  
-   - In the **Coho Winery** solution: **+ New → App → Page**  (Follow the steps from exercise 1)
-   - Name: **Purchase Order Side Pane**
+Here, we will create a new page from scratch following the instructions from **Exercise 1** and paste in the YAML from this [Resource](/Assets/Lab2/PurchaseOrderSidePane.yml)
 
-2. **Apply the layout (YAML)**  
-   - Copy the YAML code from  **[PurchaseOrderSidePane.yml](https://github.com/JJGriffin/Designing-Beautiful-Power-Apps-For-Makers/blob/c5935b91121df04e1de02169a9ac3a52ab5bbcbd/Assets/Lab2/PurchaseOrderSidePane.yml)**  
+1. If you are still in the designer for the **Coho Winery Landing Page**, click on **Back** to return to the **Coho Winery PP Solution** solution. If not, navigate back to here.
+2. In the solution, select **New** -> **App** -> **Page** from the command bar.
+3. Configure the app per the instructions in **Exercise 1**. Use the following values for each property:
+    - Name: **Purchase Order Side Pane**
+    - Description: `Side pane to show PDF version of Purchase Order`
+    - App icon: Upload the **Coho-Winery.png** image again
+    - Icon background fill: `#f4e6d7`
 
-3. Select **Screen1** in the **Tree view** of the page and press **CTRL+V** on your keyboard or right click on the canvas and select **Paste** 
+![Images/Lab2-CreateCustomPages/E4_1.png](Images/Lab2-CreateCustomPages/E4_1.png)
 
-4. **Save** → **Publish** the page.
+4. Copy the YAML code from the [PurchaseOrderSidePane.yml](/Assets/Lab2/PurchaseOrderSidePane.yml) file.
+5. Return to the custom page designer, select **Screen1** in the **Tree view** and press **CTRL + V** on your keyboard or right click on the canvas and select **Paste**
+6. A new page called **PDFViewer** should render, resembling the below. Ignore any errors that may appear on the screen, as these will be fixed shortly.
 
-5. **Add context formulas** by setting *Named Formulas* that will fetch the passed record ID from the Purchase Order
-6.  Select **App** in the **Tree view**, and click on **Formulas** in the dropdown porperty list
+![Images/Lab2-CreateCustomPages/E4_2.png](Images/Lab2-CreateCustomPages/E4_2.png)
 
-   ```powerfx
-   // Record ID passed from command bar and JavaScript
-   nfRecordId =Param("recordId")
+6. Remove **Screen1** by right clicking and selecting **Delete**
+7. We will now **add context formulas** by setting **Named Formulas** that will fetch the passed record ID from the Purchase Order. Select **App** in the **Tree view**, and click on **Formulas** in the dropdown porperty list. Copy and paste the following code into the formula bar. Ignore any errors that appear for now.
 
-   // Current PO (rename table/column to match your schema)
-   nfPO = LookUp('Purchase Orders', 'Purchase Order' = nfRecordId); ```
+```powerfx
+// Record ID passed from command bar and JavaScript
+nfRecordId =Param("recordId")
+// Current PO (rename table/column to match your schema)
+nfPO = LookUp('Purchase Orders', 'Purchase Order' = nfRecordId); 
+```
 
-### Passing record details from MDA to a page
-> As part of working with **side panes** in model-driven apps, we want to pass the **recordId** from the current record that is open. Therefore, 
+>[!NOTE]
+> As part of working with **side panes** in model-driven apps, we want to pass the **recordId** from the current record that is open. Therefore, we create a named formula called **nfRecordId** that fetches the record ID from the URL parameter called `recordId`. This is a standard parameter that is passed when opening a custom page from a command bar or JavaScript.
 
-7. Remove **Screen1** by right clicking and **Delete**
+8. Click on **Save** and then **Publish** to save your progress.
+9. Scroll down and continue from the the section **Finalise side pane page configuration** below.
 
+### Option 2 — Import the prebuilt page (.msapp)
 
-## Option 2 — Import the prebuilt page (.msapp)
+1. **Download** the prebuilt file to your local machine:  
+   [Purchase Order Side Pane.msapp](Assets/Lab2/Purchase%20Order%20Side%20Pane.msapp)
 
-1. **Download** the prebuilt file:  
-   [Purchase Order Side Pane.msapp](https://github.com/JJGriffin/Designing-Beautiful-Power-Apps-For-Makers/blob/c5935b91121df04e1de02169a9ac3a52ab5bbcbd/Assets/Lab2/Purchase%20Order%20Side%20Pane.msapp)
+2. If you are still in the designer for the **Coho Winery Landing Page**, click on **Back** to return to the **Coho Winery PP Solution** solution. If not, navigate back to here.
 
-2. In the **Coho Winery** solution, go to **+ New → App → Page** (Follow the exercise 1 instructions)
+3. In the **Coho Winery** solution, go to **+ New → App → Page** (Follow the exercise 1 instructions)
 
-3. In the page studio, choose **File → Open → Browse** and select the `.msapp` from your downloads.
+4. In the page studio, choose **File → Open → Browse** and select the `.msapp` from your downloads.
 
 4. **Save** and **Publish** the page - name it **Purchase Order Side Pane** if the option pops up
 
@@ -533,12 +542,18 @@ Build a new page from scratch following the instrctions from exercise 1 and past
    nfPO = LookUp('Purchase Orders', 'Purchase Order' = nfRecordId); 
    ```
 
+>[!NOTE]
+> As part of working with **side panes** in model-driven apps, we want to pass the **recordId** from the current record that is open. Therefore, we create a named formula called **nfRecordId** that fetches the record ID from the URL parameter called `recordId`. This is a standard parameter that is passed when opening a custom page from a command bar or JavaScript.
 
 7. Remove **Screen1** by right clicking and **Delete**
 
 ---
 
-## Add the custom page to the model-driven app
+### Finalise side pane page configuration
+
+
+
+### Add the custom page to the model-driven app
 The page must exist within the MDA to work properly. Make sure the custom page is present under **All other pages** in the MDA editor. When successfully added to the model-driven app, you will be able to trigger it as part of the command bar from a Form. 
 
 1. **Open the editor of the model-driven app.**: 
