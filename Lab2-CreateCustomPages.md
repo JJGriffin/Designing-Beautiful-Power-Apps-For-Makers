@@ -566,7 +566,9 @@ nfPO = LookUp('Purchase Orders', 'Purchase Order' = GUID(nfRecordId));
 
 13. Click on **Save** and then **Publish** to save your progress.
 14. Select the **cntHeaderHorizontal** and set `flexible width` to `true`
-!
+![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E4_11.png](Images/Lab2-CreateCustomPages/E4_11.png)
+
+15. Select the **lblHeaderTitle** underneath **cntHeaderVertical** and set `font size` to `If(App.Width>600,18,12)` and
 
 14. With an initial version of our pages ready, we will now add the custom page to our model-driven app. Click on **Back** to return to the solution. Press **Leave** to confirm, if prompted.
 15. Click on the **Coho Winery Purchase Order Management** model-driven app to open the editor.
