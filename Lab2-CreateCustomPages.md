@@ -548,51 +548,50 @@ nfPO = LookUp('Purchase Orders', 'Purchase Order' = GUID(nfRecordId));
 19. Click on **Back** to return to the solution.
 20. Leave the solution open if you plan to continue to the next Exercise.
 
-## ✍️ Exercise 5: Styling 
+## ✍️ Exercise 5: Styling
 
-<!--- For this exercise you will use to YAML provided under lab resources as the pre build layout for the side pane. --->
+Designing apps can be difficult and challenging. Keeping it simple will help you build better user interfaces. Here are some tips to help you:
 
-> ### 💡 Design
-> Designing apps can be difficult and challenging. Keeping it simple will help you to build better user interfaces. 
->
-> Keep controls modern by utilizing shadow effect, bolder fonts, a unified color palett and slightly rounded corners
->
-> Add fun design objects that are gradient, moves and provides interactive options to engage the users. SVGs and HTML will be useful to understand.
->
-> Add rounded corners to controls, containers and visuals for a modern look (between 5-10 border radius) and set a light drop shadow   
+- Keep controls modern by utilizing shadow effect, bolder fonts, a unified color palett and slightly rounded corners
+- Add fun design objects that are gradient, moves and provides interactive options to engage the users. SVGs and HTML will be useful to understand.
+- Add rounded corners to controls, containers and visuals for a modern look (between 5-10 border radius) and set a light drop shadow
 
+In this exercise, we will add some of these design elements to our existing **Coho Winery Landing Page**.
 
+### Add Glass Morphism effect using HTML
 
-### Optional: **Add HTML blur to your page - Glass Morphism effect:**
-1. Select **MainScreen** in the **Tree view** 
-2. Select the container **cntMainVertical** 
+1. You should still be in the **Coho Winery Landing Page** from Exercise 4; if not, navigate back to it.
+2. Open the **Coho Winery Landing Page** custom page by selecting it from the list of components in the solution.
+3. Once the designer loads, select **MainScreen** in the **Tree view**.
+4. Select the container **cntMainVertical**. Then, click **+ Insert** on the ribbon and search for **Container**. Select **Container** from the layout section.
 
-![selecting cntmainvertical](image-58.png)
+![Images/Lab2-CreateCustomPages/E5_1.png](Images/Lab2-CreateCustomPages/E5_1.png)
 
-3. Click **+ Insert** on the ribbon and search for **Container** - Select *Container* from the layout section
+![Images/Lab2-CreateCustomPages/E5_2.png](Images/Lab2-CreateCustomPages/E5_2.png)
 
-![container](image-59.png)
+5. Rename the newly added container to **cntHTMLBlur** and drag the **cntHTMLBlur** container under **cntMainVertical**. It should be on the same level as **cntMainBody** and in between **cnMainHeader** and **cntMainBody**. Use the before/after images below as a guide.
 
-4. Rename the added container to **cntHTMLBlur** and drag the **cntHTMLBlur** container under **cntMainVertical** - should be on the same level as **cntMainBody** and in between **cnMainHeader** and **cntMainBody**.
+![Images/Lab2-CreateCustomPages/E5_3.png](Images/Lab2-CreateCustomPages/E5_3.png)
 
-![before](image-60.png) -> ![after](image-61.png)
+![Images/Lab2-CreateCustomPages/E5_4.png](Images/Lab2-CreateCustomPages/E5_4.png)
 
-5. Expand the **cntHTMLBlur** by clicking the arrow facing down. 
-6. Click and hold the **cntMainBody** to drag it into the **cntHTMLBlur** container as shown below
+7. To rearrange the components correctly, we first need to add a "dummy" component to the **cntHTMLBlur** container. With the **cntHTMLBlur** component selected, click on the **+** icon in the designer and add a **Label**.
 
-![Drag and drop](image-62.png)
+![Images/Lab2-CreateCustomPages/E5_5.png](Images/Lab2-CreateCustomPages/E5_5.png)
 
-7. The **cntHTMLBlur** should now contain one element, the **cntMainBody**.
+8. It should now be possible to expand the **cntHTMLBlur** by clicking the arrow facing down. Click and hold the **cntMainBody** to drag it into the **cntHTMLBlur** container as shown below.
 
-8. With the **cntHTMLBlur** container selected, insert an **HTMLtext control**
-9. Selecting **+ Insert** on the ribbon, search for **HTML** and select the *HTML Text* control
-10. Rename the control to **htmlBlur** and reorder **Send to back** by clicking the **three dots**, selecting **Reorder** and **Send to back**
-![Reorder object](image-64.png)
+![Images/Lab2-CreateCustomPages/E5_6.png](Images/Lab2-CreateCustomPages/E5_6.png)
 
-11. On the properties of the html control, select **HtmlText** and edit formula to the below value:
+7. Delete the **Label** component you added in step 7. The **cntHTMLBlur** should now contain one element, the **cntMainBody**.
+8. With the **cntHTMLBlur** container selected, insert a **HTML text** control.
+9. Rename the control to **htmlBlur** and reorder **Send to back** by clicking the **three dots**, selecting **Reorder** and **Send to back**.
+
+![Images/Lab2-CreateCustomPages/E5_7.png](Images/Lab2-CreateCustomPages/E5_7.png)
+
+10. On the properties dropdown of the **HTML text** control, select the **HtmlText** property and edit formula to the below value:
 
 ``` HTML 
-
 $"<div style='
   background: rgba(255,255,255,0.2);
   border-radius: 16px;
@@ -611,19 +610,14 @@ $"<div style='
   color: white;
   font-family: Poppins, sans-serif;
 '>"
-
-
 ```
 
-![Edit htmlText Value](image-63.png)
+![Images/Lab2-CreateCustomPages/E5_8.png](Images/Lab2-CreateCustomPages/E5_8.png)
 
-> ### Working with HTML
-> When creating the HTML code for Power Apps, use **'** instead of **"** in the string, or else it wont work
->
-> 💡 Change the effect and looks of the blur on https://css.glass/
->
-> 💡 Use $ to avoid excessive use of & as well as "" in the text, this enables you to only use {} when referring to dynamic content
-
+> [!TIP]
+> When creating HTML code for Power Apps, use **'** instead of **"** in the string, or else it wont work. Also, keep in mind the following:
+> 💡 We can change the effect and looks of the blur by using https://css.glass/.
+> 💡 Use $ to avoid excessive use of & as well as "" in the text, this enables you to only use {} when referring to dynamic content.
 
 ![Blur effect](image-68.png)
 
