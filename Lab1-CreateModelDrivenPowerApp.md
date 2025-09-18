@@ -706,8 +706,6 @@ Now that our custom connector is setup, let's configure a cloud flow that trigge
 
 We will now create a second cloud flow that will generate a Word document from a template whenever a Purchase Order request is approved. The document will then be saved to the OneDrive for Business folder we created in Lab 0.
 
-> [!NOTE]
-> The workflow to handle the approval process will be done in the next lab, so for now, we will just simulate the approval by manually changing some fields on the Purchase Order record.
 
 1. You should still be in the **Coho Winery PP Solution** from the previous exercise. In this solution, select **+ New** -> **Automation** -> **Cloud flow** -> **Automated**.
 

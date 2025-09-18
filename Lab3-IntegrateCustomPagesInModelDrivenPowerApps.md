@@ -180,8 +180,44 @@ To trigger the side pane with the custom page, you will have to configure a comm
 
 ![Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E3_11.png](Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E3_11.png)
 
+<<<<<<< HEAD
+### Set parameters for passing information to the custom page
+We are now setting the parameters for input to the JavaScript which will be passed on to the custom page
+
+19. In the command bar editor, make sure that the `Purchase Order Info` command bar button is selected
+20. Click on `+ Add parameter` → You should be able to see **Parameter 1** with a dropdown field showing **String** as the default value
+
+![Command bar paramters](image-13.png)
+
+21. **Edit Parameter 1 type:** → `PrimaryControl` - passing the Form Context to the JavaScript
+
+>### PrimaryControl
+> PrimaryControl references to the Form Context of the record that is currently open. This is used to find the attributes and GUID of the record that will be passed on to the custom page using `Param("recordId")`. PrimaryControl is also the modern approach that has replace the deprecated `Xrm.Page` API. You can read more about that here: https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/clientapi-form-context 
+>
+
+<br>
+
+### 💡 Find the page schema name 
+> Navigate to your solution for **Coho Winery** and locate the **Purchase Order Side Pane** page. The **page name** will be visible in under the column **Name** and have the format **coh_purchaseordersidepane_c898a** - And no, you can't copy it from the solution... 
+> 
+
+22. Click **+ Add parameter**  →  Should be of type `string`
+23. Set value of **Parameter 2** to the **schema name** of the page - should be this format **coh_purchaseordersidepane_c898a**
+
+![alt text](image-12.png)
+
+<br>
+
+
+> ### Working with parameters 
+> **Parameter 2** references the custom page you would like to open as a type of string - its passed as the second parameter
+>
+> When creating and updating parameter values for commands, the order of the parameters matter. The order is decided by the order of input parameters in the **JavaScript function**
+> 
+=======
 > [!NOTE]
 > **Parameter 2** references the custom page you would like to open as a type of string - its passed as the second parameter. When creating and updating parameter values for commands, the order of the parameters matter. The order is decided by the order of input parameters in the **JavaScript function**
+>>>>>>> fb9ce2115f4457844f17d062f1ae45c7c0ce2c40
 > In our case, the JavaScript expect `PrimaryControl` first, then the `pageName` (the schema name of the page) for the function **openPOViewer(PrimaryControl, pageName)** to work 
 
 ### Test the command for side pane on the Form of a **Purchase order**
@@ -198,8 +234,8 @@ To trigger the side pane with the custom page, you will have to configure a comm
 
 ![Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E3_13.png](Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E3_13.png)
 
-## 🌟 Extra Challenges
+<!---## 🌟 Extra Challenges
 
-JavaScript OnLoad - automatic opening the Custom Page
+JavaScript OnLoad - automatic opening the Custom Page--->
 
 **Congratulations, you've finished Lab 3** 🥳
