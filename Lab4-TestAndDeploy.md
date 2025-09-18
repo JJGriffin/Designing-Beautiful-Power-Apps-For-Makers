@@ -138,10 +138,10 @@ Based on the scenario, you can probably guess which type of solution we will be 
 
 ## ✍️ Exercise 3: Test the Solution
 
-TBC
+With the solution now imported and configured in the Production environment, you can begin to test the solution. Verify that the solution works as expected by doing the following:
 
-## 🌟 Extra Challenges
-
-TBC
+- Running the **Purchase Order Management** model-driven app.
+- Creating a new purchase order record and verifying that the related flows run successfully.
+- Testing to verify that your custom pages work as expected.
 
 **Congratulations, you've finished Lab 4** 🥳
