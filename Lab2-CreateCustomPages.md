@@ -509,7 +509,7 @@ Your **Tree view** should now resemble the below:
 > The difficult part when working with responsive layouts are the different properties and making sure you have selected the correct nested container.
 > You can always adjust the direction of the container after adding it to a screen. The other main properties you will be looking at are **X**, **Y**, **Width** and **Height**. These decide the placement, alignment and the size which makes them resize according to the user screen. 
 > 
-> **DO NOT** RESIZE MANUALLY IF YOU HAVE SET DYNAMIC VALUES
+> **DO NOT** resize manually if you have set dynamic values. You can recognise them as *dynamic* if the property is selectable and *grey* as you can see from the image below for the **positional** properties:
 
 ![Images/Lab2-CreateCustomPages/E3_10.png](Images/Lab2-CreateCustomPages/E3_10.png)
 
@@ -525,18 +525,21 @@ With the basic structure of our app in place, we will now create the second cust
 3. Configure the app per the instructions in **Exercise 1**. Use the following values for each property:
     - Name: **Purchase Order Side Pane**
     - Description: `Side pane to show PDF version of Purchase Order`
-    - App icon: Upload the **Coho-Winery.png** image again
+    - App icon: Upload the **Coho-Winery.png**  [image](https://github.com/JJGriffin/Designing-Beautiful-Power-Apps-For-Makers/blob/d1a3f37423d55942c252262259b4fa413274bb2c/Assets/Lab2/Coho-Winery.png) again
     - Icon background fill: `#f4e6d7`
 
 ![Images/Lab2-CreateCustomPages/E4_1.png](Images/Lab2-CreateCustomPages/E4_1.png)
 
 4. Copy the YAML code from the [PurchaseOrderSidePane.yml](/Assets/Lab2/PurchaseOrderSidePane.yml) file.
+
+> [TIP] Make sure you copy all of the text, also the **-** at the start. It won't work porperly without this. 
+
 5. Return to the custom page designer, select **Screen1** in the **Tree view** and press **CTRL + V** on your keyboard or right click on the canvas and select **Paste**
 6. A new page called **PDFViewer** should render, resembling the below. Ignore any errors that may appear on the screen, as these will be fixed shortly.
 
 ![Images/Lab2-CreateCustomPages/E4_2.png](Images/Lab2-CreateCustomPages/E4_2.png)
 
-7. Remove **Screen1** by right clicking and selecting **Delete**
+7. Remove **Screen1** by **right clicking** and selecting **Delete**
 8. In the page designer, click on **Data** and then **Add data**.
 
 ![Images/Lab2-CreateCustomPages/E4_3.png](Images/Lab2-CreateCustomPages/E4_3.png)
@@ -549,7 +552,9 @@ With the basic structure of our app in place, we will now create the second cust
 
 ![Images/Lab2-CreateCustomPages/E4_5.png](Images/Lab2-CreateCustomPages/E4_5.png)
 
-11. We will now **add context formulas** by setting **Named Formulas** that will fetch the passed record ID from the Purchase Order. Select **App** in the **Tree view**, and click on **Formulas** in the dropdown property list. Copy and paste the following code into the formula bar. Verify that none of the formulas error.
+11. We will now **add context formulas** by setting **Named Formulas** that will fetch the passed record ID from the Purchase Order. 
+    - Select **App** in the **Tree view**, and click on **Formulas** in the dropdown property list. 
+    - Copy and paste the following code into the formula bar. Verify that none of the formulas error.
 
 ```powerfx
 // Record ID passed from command bar and JavaScript
@@ -560,12 +565,13 @@ nfPO = LookUp('Purchase Orders', 'Purchase Order' = GUID(nfRecordId));
 
 >[!NOTE]
 > As part of working with **side panes** in model-driven apps, we want to pass the **recordId** from the current record that is open. Therefore, we create a named formula called **nfRecordId** that fetches the record ID from the URL parameter called `recordId`. This is a standard parameter that is passed when opening a custom page from a command bar or JavaScript.
+>
+>The Param() function gets the record GUID parsed from the JavaScript, and GUID() formats the output as GUID, not a string
+>
+>Named Formulas needs to be closed using ; after each formula. Make sure there are no errors in your app by clicking the health checker in the right corner of the app.
+>
+>
 
-> [!NOTE] **GUID()**
->
->*Named Formulas needs to be closed using ;*
->
->Param() function gets the record GUID parsed from the JavaScript, and GUID() formats the output as GUID, not a string
 
 12. The **PDFViewer** page should now have just a single error on the screen, on the **icnLaunch** component. We will fix this error later on, so for now, you can ignore it.
 
@@ -931,6 +937,7 @@ You should be able to see the color of the **icon** change to a green-blueish co
 
 22. Change the color of the button next to the icon to the same color for a more unified look.
 
+**You now know how to format and use SVGs ✅**
 ### 5c. Canvas YAML - reusing components
 To access the YAML code of a control, **right click**, **Copy** and **Paste**. You are **not** able to select several controls to copy their YAML code, but when you build controls and components using containers, you can copy the entire **container** code. Genious! 
 
