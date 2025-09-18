@@ -615,7 +615,7 @@ nfPO = LookUp('Purchase Orders', 'Purchase Order' = GUID(nfRecordId));
 
 ![Images/Lab2-CreateCustomPages/E4_14.png](Images/Lab2-CreateCustomPages/E4_14.png)
 
-22. Rename the flow to **Get Purchase Order PDF**.
+22. Rename the flow to **Get PO Documents**.
 
 ![Images/Lab2-CreateCustomPages/E4_15.png](Images/Lab2-CreateCustomPages/E4_15.png)
 
@@ -627,7 +627,7 @@ nfPO = LookUp('Purchase Orders', 'Purchase Order' = GUID(nfRecordId));
 
 ![Images/Lab2-CreateCustomPages/E4_17.png](Images/Lab2-CreateCustomPages/E4_17.png)
 
-25. Rename the **Initialize variable** action to **Set File Content**. Set the properties to resemble the below:
+25. Rename the **Initialize variable** action to **Initialize varFileContent**. Set the properties to resemble the below:
 
 | Property    | Value                    |
 |-------------|--------------------------|
@@ -662,6 +662,38 @@ nfPO = LookUp('Purchase Orders', 'Purchase Order' = GUID(nfRecordId));
 @triggerBody()['text']
 ```
 ![Images/Lab2-CreateCustomPages/E4_24.png](Images/Lab2-CreateCustomPages/E4_24.png)
+
+32. In the **If yes** branch of the condition, click on **+ Add an action** and search for **OneDrive for Business**. Select the action **Get file content**.
+
+![Images/Lab2-CreateCustomPages/E4_25.png](Images/Lab2-CreateCustomPages/E4_25.png)
+
+33. Set the **File** property to the **Id** from the **List files in folder** action.
+
+![Images/Lab2-CreateCustomPages/E4_26.png](Images/Lab2-CreateCustomPages/E4_26.png)
+
+34. Click on **+ New step** inside the **If yes** branch and search for **Variable**. Select the action **Set variable**.
+
+![Images/Lab2-CreateCustomPages/E4_27.png](Images/Lab2-CreateCustomPages/E4_27.png)
+
+34. Rename the **Set variable** action to **Set File Content**. Set the **Value** property to the **File content** from the **Get file content** action.
+
+![Images/Lab2-CreateCustomPages/E4_28.png](Images/Lab2-CreateCustomPages/E4_28.png)
+
+35. Click on **+ New step** outside of the **Apply to each** action and search for **Power Apps V2**. Select the action **Respond to a PowerApp or flow**.
+
+![Images/Lab2-CreateCustomPages/E4_29.png](Images/Lab2-CreateCustomPages/E4_29.png)
+
+36. Click on **+ Add an output** and select **File**. Rename the output to **POFile** and set the value to the following value:
+
+```
+concat('data:application/pdf;base64,', variables('varFileContent'))
+```
+
+![Images/Lab2-CreateCustomPages/E4_30.png](Images/Lab2-CreateCustomPages/E4_30.png)
+
+37. Click on **Save** to save the flow, and then the **X** in the top right corner to close the flow designer.
+
+![Images/Lab2-CreateCustomPages/E4_31.png](Images/Lab2-CreateCustomPages/E4_31.png)
 
 20. You are now ready to reference this custom page in Lab 3 for triggering the side pane on a **Purchase Order**. For now, click on **Save** and then **Publish** to save your progress. This may take a few moments to complete.
 21. Click on **Back** to return to the sotion.
