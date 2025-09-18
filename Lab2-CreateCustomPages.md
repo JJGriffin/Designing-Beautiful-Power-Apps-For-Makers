@@ -532,7 +532,7 @@ With the basic structure of our app in place, we will now create the second cust
 
 4. Copy the YAML code from the [PurchaseOrderSidePane.yml](/Assets/Lab2/PurchaseOrderSidePane.yml) file.
 
-> [TIP] Make sure you copy all of the text, also the **-** at the start. It won't work porperly without this. 
+> [!TIP] Make sure you copy all of the text, also the **-** at the start. It won't work porperly without this. 
 
 5. Return to the custom page designer, select **Screen1** in the **Tree view** and press **CTRL + V** on your keyboard or right click on the canvas and select **Paste**
 6. A new page called **PDFViewer** should render, resembling the below. Ignore any errors that may appear on the screen, as these will be fixed shortly.
@@ -585,10 +585,13 @@ nfPO = LookUp('Purchase Orders', 'Purchase Order' = GUID(nfRecordId));
 
 ![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E4_12.png](Images/Lab2-CreateCustomPages/E4_12.png)
 
-> [!TIP] Wrap
+> [!TIP] 
 >
 > Wrap with value `false` will make the text end with ... when there is no more space available for the control to show the text, while `Wrap` set to `true` will make the control content wrap over each other rather then just showing parts of the word
 >  
+
+16. Add the PDF Viewer. Copy the contents of the [YAML](Assets/Lab2/PurchaseOrderPDFViewer.yml) for the PDF viewer and select the screen **PDFviewer**, press **CTRL+V** on your keyboard to paste the YAML code for the second screen.
+    - You should now be able to see both the **PDFpage** and **PDFViewer** screen.
 
 16. With an initial version of our pages ready, we will now add the custom page to our model-driven app. Click on **Back** to return to the solution. Press **Leave** to confirm, if prompted.
 17. Click on the **Coho Winery Purchase Order Management** model-driven app to open the editor.
