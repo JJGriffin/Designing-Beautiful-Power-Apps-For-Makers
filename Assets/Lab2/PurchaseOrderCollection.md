@@ -9,9 +9,9 @@
     Table(
         {
             vendorId: "Vendor001",
-            vendorName: "Acme Corp",
+            coh_account: "Acme Corp",
             manuallyProcessedInApp: false,
-            poNumber: "PO12345",
+            coh_purchaseordernumber: "PO12345",
             warehouseId: "WH001",
             result: "Success",
             LastModified: DateAdd(Today(), -5, TimeUnit.Days),
@@ -21,9 +21,9 @@
         },
         {
             vendorId: "Vendor002",
-            vendorName: "Global Supplies",
+            coh_account: "Global Supplies",
             manuallyProcessedInApp: false,
-            poNumber: "PO67890",
+            coh_purchaseordernumber: "PO67890",
             warehouseId: "WH002",
             result: "Pending",
             LastModified: DateAdd(Today(), -3, TimeUnit.Days),
@@ -33,9 +33,9 @@
         },
         {
             vendorId: "Vendor003",
-            vendorName: "Tech Distributors",
+            coh_account: "Tech Distributors",
             manuallyProcessedInApp: false,
-            poNumber: "PO11223",
+            coh_purchaseordernumber: "PO11223",
             warehouseId: "WH003",
             result: "Failed",
             LastModified: DateAdd(Today(), -7, TimeUnit.Days),
@@ -45,9 +45,9 @@
         },
         {
             vendorId: "Vendor004",
-            vendorName: "FastTrack Logistics",
+            coh_account: "FastTrack Logistics",
             manuallyProcessedInApp: false,
-            poNumber: "PO44556",
+            coh_purchaseordernumber: "PO44556",
             warehouseId: "WH004",
             result: "Success",
             LastModified: DateAdd(Today(), -1, TimeUnit.Days),
@@ -57,9 +57,9 @@
         },
         {
             vendorId: "Vendor005",
-            vendorName: "Northern Lights",
+            coh_account: "Northern Lights",
             manuallyProcessedInApp: false,
-            poNumber: "PO77889",
+            coh_purchaseordernumber: "PO77889",
             warehouseId: "WH005",
             result: "Pending",
             LastModified: DateAdd(Today(), -2, TimeUnit.Days),
@@ -70,9 +70,9 @@
         // Additional Rows with Mixed Datasources
         {
             vendorId: "Vendor011",
-            vendorName: "Skyline Supplies",
+            coh_account: "Skyline Supplies",
             manuallyProcessedInApp: false,
-            poNumber: "PO33456",
+            coh_purchaseordernumber: "PO33456",
             warehouseId: "WH011",
             result: "Success",
             LastModified: DateAdd(Today(), -6, TimeUnit.Days),
@@ -82,9 +82,9 @@
         },
         {
             vendorId: "Vendor012",
-            vendorName: "NextGen Industries",
+            coh_account: "NextGen Industries",
             manuallyProcessedInApp: false,
-            poNumber: "PO77801",
+            coh_purchaseordernumber: "PO77801",
             warehouseId: "WH012",
             result: "Failed",
             LastModified: DateAdd(Today(), -4, TimeUnit.Days),
@@ -94,9 +94,9 @@
         },
         {
             vendorId: "Vendor013",
-            vendorName: "Alpha Distributors",
+            coh_account: "Alpha Distributors",
             manuallyProcessedInApp: false,
-            poNumber: "PO88912",
+            coh_purchaseordernumber: "PO88912",
             warehouseId: "WH013",
             result: "Pending",
             LastModified: DateAdd(Today(), -9, TimeUnit.Days),
@@ -106,9 +106,9 @@
         },
         {
             vendorId: "Vendor014",
-            vendorName: "Unified Logistics",
+            coh_account: "Unified Logistics",
             manuallyProcessedInApp: false,
-            poNumber: "PO99865",
+            coh_purchaseordernumber: "PO99865",
             warehouseId: "WH014",
             result: "Success",
             LastModified: DateAdd(Today(), -8, TimeUnit.Days),
@@ -118,9 +118,9 @@
         },
         {
             vendorId: "Vendor015",
-            vendorName: "Bright Horizons",
+            coh_account: "Bright Horizons",
             manuallyProcessedInApp: false,
-            poNumber: "PO12945",
+            coh_purchaseordernumber: "PO12945",
             warehouseId: "WH015",
             result: "Failed",
             LastModified: DateAdd(Today(), -10, TimeUnit.Days),
@@ -135,9 +135,9 @@
     Table(
         {
             vendorId: "V001",
-            vendorName: "Vendor A",
+            coh_account: "Vendor A",
             manuallyProcessedInApp: false,
-            poNumber: "PO12345",
+            coh_purchaseordernumber: "PO12345",
             warehouseId: "WH01",
             result: "Pending",
             LastModified: DateAdd(
@@ -151,9 +151,9 @@
         },
         {
             vendorId: "V002",
-            vendorName: "Vendor B",
+            coh_account: "Vendor B",
             manuallyProcessedInApp: false,
-            poNumber: "PO12346",
+            coh_purchaseordernumber: "PO12346",
             warehouseId: "WH02",
             result: "Approved",
             LastModified: DateAdd(
@@ -167,9 +167,9 @@
         },
         {
             vendorId: "V003",
-            vendorName: "Vendor C",
+            coh_account: "Vendor C",
             manuallyProcessedInApp: true,
-            poNumber: "PO12347",
+            coh_purchaseordernumber: "PO12347",
             warehouseId: "WH03",
             result: "Rejected",
             LastModified: DateAdd(
@@ -183,9 +183,9 @@
         },
         {
             vendorId: "V004",
-            vendorName: "Vendor D",
+            coh_account: "Vendor D",
             manuallyProcessedInApp: false,
-            poNumber: "PO12348",
+            coh_purchaseordernumber: "PO12348",
             warehouseId: "WH04",
             result: "Pending",
             LastModified: DateAdd(
@@ -199,9 +199,9 @@
         },
         {
             vendorId: "V005",
-            vendorName: "Vendor E",
+            coh_account: "Vendor E",
             manuallyProcessedInApp: true,
-            poNumber: "PO12349",
+            coh_purchaseordernumber: "PO12349",
             warehouseId: "WH05",
             result: "Approved",
             LastModified: Now(),
@@ -211,9 +211,9 @@
         },
         {
             vendorId: "Vendor001",
-            vendorName: "Acme Corp",
+            coh_account: "Acme Corp",
             manuallyProcessedInApp: false,
-            poNumber: "PO12345",
+            coh_purchaseordernumber: "PO12345",
             warehouseId: "WH001",
             result: "Success",
             LastModified: DateAdd(
@@ -227,9 +227,9 @@
         },
         {
             vendorId: "Vendor002",
-            vendorName: "Global Supplies",
+            coh_account: "Global Supplies",
             manuallyProcessedInApp: false,
-            poNumber: "PO67890",
+            coh_purchaseordernumber: "PO67890",
             warehouseId: "WH002",
             result: "Pending",
             LastModified: DateAdd(
@@ -243,9 +243,9 @@
         },
         {
             vendorId: "Vendor003",
-            vendorName: "Tech Distributors",
+            coh_account: "Tech Distributors",
             manuallyProcessedInApp: false,
-            poNumber: "PO11223",
+            coh_purchaseordernumber: "PO11223",
             warehouseId: "WH003",
             result: "Failed",
             LastModified: DateAdd(
@@ -259,9 +259,9 @@
         },
         {
             vendorId: "Vendor004",
-            vendorName: "FastTrack Logistics",
+            coh_account: "FastTrack Logistics",
             manuallyProcessedInApp: false,
-            poNumber: "PO44556",
+            coh_purchaseordernumber: "PO44556",
             warehouseId: "WH004",
             result: "Success",
             LastModified: DateAdd(
@@ -275,9 +275,9 @@
         },
         {
             vendorId: "Vendor005",
-            vendorName: "Northern Lights",
+            coh_account: "Northern Lights",
             manuallyProcessedInApp: false,
-            poNumber: "PO77889",
+            coh_purchaseordernumber: "PO77889",
             warehouseId: "WH005",
             result: "Pending",
             LastModified: DateAdd(
@@ -292,9 +292,9 @@
         // Additional Rows
         {
             vendorId: "Vendor006",
-            vendorName: "NextGen Supplies",
+            coh_account: "NextGen Supplies",
             manuallyProcessedInApp: false,
-            poNumber: "PO33445",
+            coh_purchaseordernumber: "PO33445",
             warehouseId: "WH006",
             result: "Success",
             LastModified: DateAdd(
@@ -308,9 +308,9 @@
         },
         {
             vendorId: "Vendor007",
-            vendorName: "Alpha Distributors",
+            coh_account: "Alpha Distributors",
             manuallyProcessedInApp: false,
-            poNumber: "PO55667",
+            coh_purchaseordernumber: "PO55667",
             warehouseId: "WH007",
             result: "Failed",
             LastModified: DateAdd(
@@ -324,9 +324,9 @@
         },
         {
             vendorId: "Vendor008",
-            vendorName: "Global Traders",
+            coh_account: "Global Traders",
             manuallyProcessedInApp: false,
-            poNumber: "PO88990",
+            coh_purchaseordernumber: "PO88990",
             warehouseId: "WH008",
             result: "Pending",
             LastModified: DateAdd(
@@ -340,9 +340,9 @@
         },
         {
             vendorId: "Vendor009",
-            vendorName: "Pro Logistics",
+            coh_account: "Pro Logistics",
             manuallyProcessedInApp: false,
-            poNumber: "PO99887",
+            coh_purchaseordernumber: "PO99887",
             warehouseId: "WH009",
             result: "Success",
             LastModified: DateAdd(
@@ -356,9 +356,9 @@
         },
         {
             vendorId: "Vendor010",
-            vendorName: "Blue Horizons",
+            coh_account: "Blue Horizons",
             manuallyProcessedInApp: false,
-            poNumber: "PO12399",
+            coh_purchaseordernumber: "PO12399",
             warehouseId: "WH010",
             result: "Failed",
             LastModified: DateAdd(

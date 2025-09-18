@@ -288,7 +288,7 @@ You should still be in the **Coho Winery Landing Page** from [✍️ Exercise 2]
 
 3. With **cntMainBody** selected in the **Tree View**, insert a **Horizontal container**. Rename it to **cntBodyGalleries**
 
-![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E3_11.png](Images/Lab2-CreateCustomPages/E3_11.png)
+![Images/Lab2-CreateCustomPages/E3_11.png](Images/Lab2-CreateCustomPages/E3_11.png)
 
 4. Adjust the following properties on the **cntBodyGalleries** control to resemble the below. The changes will ensure that the container behaves like a responsive 2-column row.
 
@@ -324,7 +324,7 @@ Your **Tree view** should now resemble the below:
 
 7. In **Tree view**, select **cntPurchaseOrders**. Go to **Insert** → **Layout** → **Horizontal container** and rename it **cntPOHeader**.
 
-![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E3_12.png](Images/Lab2-CreateCustomPages/E3_12.png)
+![Images/Lab2-CreateCustomPages/E3_12.png](Images/Lab2-CreateCustomPages/E3_12.png)
 
 8. With **cntPOHeader** selected, adjust the following properties:
 
@@ -438,7 +438,7 @@ Your **Tree view** should now resemble the below:
     | **Height** | `24` |
     | **LayoutMinHeight** | `Parent.Height/2` |
     | **TabIndex** | `-1` |
-    | **Text** | `ThisItem.poNumber` |
+    | **Text** | `ThisItem.coh_purchaseordernumber` |
     | **VerticalAlignment** | `VerticalAlign.Middle` |
     | **Width** | `344` |
     | **Wrap** | `false` |
@@ -454,7 +454,7 @@ Your **Tree view** should now resemble the below:
     | **Height** | `28` |
     | **LayoutMinHeight** | `Parent.Height/2` |
     | **TabIndex** | `-1` |
-    | **Text** | `ThisItem.vendorName & " \|\| " & ThisItem.vendorId` |
+    | **Text** | `ThisItem.coh_account` |
     | **VerticalAlignment** | `VerticalAlign.Top` |
     | **Width** | `355` |
     | **X** | `5` |
@@ -488,7 +488,7 @@ Your **Tree view** should now resemble the below:
 
 24. Navigate back to the **MainScreen** and select the label **lblTitlePurchaseOrders** within **cntPOHeader**
 
-![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E3_13.png](Images/Lab2-CreateCustomPages/E3_13.png)
+![Images/Lab2-CreateCustomPages/E3_13.png](Images/Lab2-CreateCustomPages/E3_13.png)
 
 >[!TIP]
 > You can search in the Tree view to locate controls faster (if you have been naming elements wisely 🥰)
@@ -701,7 +701,7 @@ $"<div style='
 >
 > Your page should look something like this - but soon it will look **very different**
 
-![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_9.png](Images/Lab2-CreateCustomPages/E5_9.png)
+![Images/Lab2-CreateCustomPages/E5_9.png](Images/Lab2-CreateCustomPages/E5_9.png)
 
 11. Select the **htmlBlur** control and set **Width** and **Height** to adjust according to screen size:
 
@@ -726,16 +726,16 @@ $"<div style='
 14. Set transparency of the Main Body Container **cntMainBody** to 100 by selecting **cntMainBody** in the **Tree View**
 15. Click on the *paint bucket* on the right and chosing the transparent color option:
 
-![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_10.png](Images/Lab2-CreateCustomPages/E5_10.png)
+![Images/Lab2-CreateCustomPages/E5_10.png](Images/Lab2-CreateCustomPages/E5_10.png)
 
 16. To see the effect of the blur - select **MainScreen** in the **Tree view** and locate the **Background image** under *Properties* on the right
 
-![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_11.png](Images/Lab2-CreateCustomPages/E5_11.png)
+![Images/Lab2-CreateCustomPages/E5_11.png](Images/Lab2-CreateCustomPages/E5_11.png)
 
 17. Select the first option **Stock images**.
 18. Scroll far down on the stock images gallery and select the **Confetti** image or another of your choosing (You're allowed to be creative)!
 
-![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_12.png](Images/Lab2-CreateCustomPages/E5_12.png)
+![Images/Lab2-CreateCustomPages/E5_12.png](Images/Lab2-CreateCustomPages/E5_12.png)
 
 > You can also input the value **'07_readyconfetti_light'** as a formula on the **BackgroungImage** property of the **MainScreen**
 
@@ -744,7 +744,7 @@ $"<div style='
 20. You will now be able to see that the HTML blur effect is covering some of the background. 
     -  Test it by clicking on **Play** in the right corner to preview the page. Does it look like the picture below?
 
-![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_23.png](Images/Lab2-CreateCustomPages/E5_23.png)
+![Images/Lab2-CreateCustomPages/E5_23.png](Images/Lab2-CreateCustomPages/E5_23.png)
 
 21. On your keyboard, select **CTRL** + **SHIFT** + **P** or click on **Publish** to save and publish your page
 
@@ -766,16 +766,16 @@ The library in Bootstrap contains a *large* set of icons, and the icons SVG **HT
 1. Open a new browser and navigate to https://icons.getbootstrap.com/ 
 2. Search for *Arrow* in the search bar and select the **arrow pointing down** (feel free to select any icon you would like)
 
-![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_13.png](Images/Lab2-CreateCustomPages/E5_13.png)
+![Images/Lab2-CreateCustomPages/E5_13.png](Images/Lab2-CreateCustomPages/E5_13.png)
 
 5. Copy the **SVG code** by clicking the *copy to clipboard* option under **Copy HTML**
 
-![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_14.png](Images/Lab2-CreateCustomPages/E5_14.png)
+![Images/Lab2-CreateCustomPages/E5_14.png](Images/Lab2-CreateCustomPages/E5_14.png)
 
 6. Navigate back to the maker studio and your page **Purchase Order Side Pane** in edit mode
 7. Select **Image1** in the button container and click on **Image** on the properties to the right. 
 
-![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_15.png](Images/Lab2-CreateCustomPages/E5_15.png)
+![Images/Lab2-CreateCustomPages/E5_15.png](Images/Lab2-CreateCustomPages/E5_15.png)
 
 > ### 💡 When working with SVGs in Power Apps
 > Make sure to always use the formula for encoding the URL, the SVG code won't work without the encoding.
@@ -801,18 +801,18 @@ The library in Bootstrap contains a *large* set of icons, and the icons SVG **HT
 
 10. You should see that there are syntax errors and nothing showing in the image
 
-![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_16.png](Images/Lab2-CreateCustomPages/E5_16.png)
+![Images/Lab2-CreateCustomPages/E5_16.png](Images/Lab2-CreateCustomPages/E5_16.png)
 
 11. Click on the **Find and replace** option on the formula bar - the string to search for should be visible
 12. Click on the **arrow pointing down** to expand the **Find and replace** section
 13. The first input should be **"** and the replace value should be **'**
 
-![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_17.png](Images/Lab2-CreateCustomPages/E5_17.png)
+![Images/Lab2-CreateCustomPages/E5_17.png](Images/Lab2-CreateCustomPages/E5_17.png)
 
 
 14. After updating the **Find and replace** values, click on the small **replace all** icon on the right:
 
-![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_18.png](Images/Lab2-CreateCustomPages/E5_18.png)
+![Images/Lab2-CreateCustomPages/E5_18.png](Images/Lab2-CreateCustomPages/E5_18.png)
 
 15. The result will still return errors and should resemble the below code:
 
@@ -832,11 +832,11 @@ The library in Bootstrap contains a *large* set of icons, and the icons SVG **HT
 
 ```  
 
-![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_19.png](Images/Lab2-CreateCustomPages/E5_19.png)
+![Images/Lab2-CreateCustomPages/E5_19.png](Images/Lab2-CreateCustomPages/E5_19.png)
 
 17. Icon should now be visible ✅
 
-![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_20.png](Images/Lab2-CreateCustomPages/E5_20.png)
+![Images/Lab2-CreateCustomPages/E5_20.png](Images/Lab2-CreateCustomPages/E5_20.png)
 
 18. Update the padding properties of the **Image1** control
 
@@ -894,5 +894,47 @@ If you already have a new screen added, you could select **Templates** or **with
 1. Click **New screen** on the ribbon and select a layout of your choosing
 2. Have fun 
 
+## Exercise 6: Connect the ERP API
+
+In the previous exercises, we setup a temporary collection to simulate data. In this exercise, we will instead connect to the Dataverse table and custom connector we created in Lab 1 to fetch real data from the ERP system.
+
+1. If you are not already in the **Coho Winery Landing Page** custom page, navigate back to it.
+2. Select **Data** from the right pane and then **Add data**.
+3. In the list of **Connections**, expand the **Connectors** heading and select the custom connector you created in Lab 1 called **Coho Winery ERP API**.
+
+![Images/Lab2-CreateCustomPages/E6_1.png](Images/Lab2-CreateCustomPages/E6_1.png)
+
+4. Select one of the existing connections or create a new connection by clicking on **+ New connection**. If you create a new connection, you will need to authenticate using the API key provided by your lab instructors.
+
+![Images/Lab2-CreateCustomPages/E6_2.png](Images/Lab2-CreateCustomPages/E6_2.png)
+
+5. The custom connector should now be listed under **Data** in the right pane.
+
+![Images/Lab2-CreateCustomPages/E6_3.png](Images/Lab2-CreateCustomPages/E6_3.png)
+
+6. Repeat steps 2-5 to add the **Purchase Orders** Dataverse table as a data source.
+
+![Images/Lab2-CreateCustomPages/E6_4.png](Images/Lab2-CreateCustomPages/E6_4.png)
+
+7. Navigate to the **icnAddDocument** icon in the header of the **MainScreen** and select it. Locate the **OnSelect** property in the properties dropdown and update the formula to the below:
+
+```powerfx
+ClearCollect(colPurchaseOrders, 'Purchase Orders');
+```
+
+![Images/Lab2-CreateCustomPages/E6_5.png](Images/Lab2-CreateCustomPages/E6_5.png)
+
+8. You will notice an error on the **lblPOVendorInfo** control. To fix this, replace the formula in the **Text** property with the below. This formula will concatenate the vendor name and the remaining value of the PO from the custom connector. When you are done, click on the **icnAddDocument** icon while holding down the **ALT** key to load the data.
+
+```powerfx
+ThisItem.coh_account.name & " || £" & OpenAPIDocumentonAzureFunctions.RetrieveRemainingValue(ThisItem.coh_purchaseordernumber).remainingValue
+```
+
+![Images/Lab2-CreateCustomPages/E6_6.png](Images/Lab2-CreateCustomPages/E6_6.png)
+
+>[!NOTE]
+> It may take a few moments for the value to display.
+
+9. Save and publish your changes.
 
 **Congratulations, you've finished Lab 2** 🥳
