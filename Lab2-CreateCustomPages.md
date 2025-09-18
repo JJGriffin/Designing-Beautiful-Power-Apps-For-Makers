@@ -155,6 +155,7 @@ Our goal is to ensure that our new **Coho Winery Landing Page** looks great, reg
 ![Images/Lab2-CreateCustomPages/E2_6.png](Images/Lab2-CreateCustomPages/E2_6.png)
 
 11. We will now build out the header, by first adding a welcome message to the user. We'll also add the Coho Winery Logo to the page. To do this, we will work with [named formulas](https://learn.microsoft.com/en-us/power-platform/power-fx/reference/object-app#formulas-property). To begin, select **App** in the **Tree View** and then select **Formulas** from the dropdown.
+
 12. Copy and paste the following code within the formula bar to create two named formulas: one to capture the font used for the title and one for the background color.
 
 ```
@@ -560,6 +561,12 @@ nfPO = LookUp('Purchase Orders', 'Purchase Order' = GUID(nfRecordId));
 >[!NOTE]
 > As part of working with **side panes** in model-driven apps, we want to pass the **recordId** from the current record that is open. Therefore, we create a named formula called **nfRecordId** that fetches the record ID from the URL parameter called `recordId`. This is a standard parameter that is passed when opening a custom page from a command bar or JavaScript.
 
+> [!NOTE] **GUID()**
+>
+>*Named Formulas needs to be closed using ;*
+>
+>Param() function gets the record GUID parsed from the JavaScript, and GUID() formats the output as GUID, not a string
+
 12. The **PDFViewer** page should now have just a single error on the screen, on the **icnLaunch** component. We will fix this error later on, so for now, you can ignore it.
 
 ![Images/Lab2-CreateCustomPages/E4_6.png](Images/Lab2-CreateCustomPages/E4_6.png)
@@ -568,15 +575,22 @@ nfPO = LookUp('Purchase Orders', 'Purchase Order' = GUID(nfRecordId));
 14. Select the **cntHeaderHorizontal** and set `flexible width` to `true`
 ![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E4_11.png](Images/Lab2-CreateCustomPages/E4_11.png)
 
-15. Select the **lblHeaderTitle** underneath **cntHeaderVertical** and set `font size` to `If(App.Width>600,18,12)` and
+15. Select the **lblHeaderTitle** underneath **cntHeaderVertical** and set `font size` to `If(App.Width>600,18,12)` and changing value of `Wrap` from `true` to `false`
 
-14. With an initial version of our pages ready, we will now add the custom page to our model-driven app. Click on **Back** to return to the solution. Press **Leave** to confirm, if prompted.
-15. Click on the **Coho Winery Purchase Order Management** model-driven app to open the editor.
-16. You should now be in the editor for the model-driven app. Click on **+ Add page** -> **Custom page**.
+![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E4_12.png](Images/Lab2-CreateCustomPages/E4_12.png)
+
+> [!TIP] Wrap
+>
+> Wrap with value `false` will make the text end with ... when there is no more space available for the control to show the text, while `Wrap` set to `true` will make the control content wrap over each other rather then just showing parts of the word
+>  
+
+16. With an initial version of our pages ready, we will now add the custom page to our model-driven app. Click on **Back** to return to the solution. Press **Leave** to confirm, if prompted.
+17. Click on the **Coho Winery Purchase Order Management** model-driven app to open the editor.
+18. You should now be in the editor for the model-driven app. Click on **+ Add page** -> **Custom page**.
 
 ![Images/Lab2-CreateCustomPages/E4_7.png](Images/Lab2-CreateCustomPages/E4_7.png)
 
-17. Search for the **Purchase Order Side Pane** custom page, select it and click on **Add**.
+19. Search for the **Purchase Order Side Pane** custom page, select it and click on **Add**.
 
 ![Images/Lab2-CreateCustomPages/E4_8.png](Images/Lab2-CreateCustomPages/E4_8.png)
 
@@ -587,9 +601,9 @@ nfPO = LookUp('Purchase Orders', 'Purchase Order' = GUID(nfRecordId));
 
 ![Images/Lab2-CreateCustomPages/E4_10.png](Images/Lab2-CreateCustomPages/E4_10.png)
 
-18. You are now ready to reference this custom page in Lab 3 for triggering the side pane on a **Purchase Order**. For now, click on **Save** and then **Publish** to save your progress. This may take a few moments to complete.
-19. Click on **Back** to return to the solution.
-20. Leave the solution open if you plan to continue to the next Exercise.
+20. You are now ready to reference this custom page in Lab 3 for triggering the side pane on a **Purchase Order**. For now, click on **Save** and then **Publish** to save your progress. This may take a few moments to complete.
+21. Click on **Back** to return to the solution.
+22. Leave the solution open if you plan to continue to the next Exercise.
 
 ## ✍️ Exercise 5: Styling
 
@@ -601,7 +615,7 @@ Designing apps can be difficult and challenging. Keeping it simple will help you
 
 In this exercise, we will add some of these design elements to our existing **Coho Winery Landing Page**.
 
-### Add Glass Morphism effect using HTML
+### 5a. Add Glass Morphism effect using HTML
 
 1. You should still be in the **Coho Winery Landing Page** from Exercise 4; if not, navigate back to it.
 2. Open the **Coho Winery Landing Page** custom page by selecting it from the list of components in the solution.
@@ -643,14 +657,16 @@ In this exercise, we will add some of these design elements to our existing **Co
 
 ![Images/Lab2-CreateCustomPages/E5_7.png](Images/Lab2-CreateCustomPages/E5_7.png)
 
-9. Click and hold the **cntMainBody** to drag it into the **cntHTMLBlur** container as shown below.
+9. Click and hold the **cntMainBody** to drag it into the **cntHTMLBlur** container as shown below. The **cntHTMLBlur** should now contain two elements, the `cntMainBody` and `htmlBlur`. 
 
 ![Images/Lab2-CreateCustomPages/E5_6.png](Images/Lab2-CreateCustomPages/E5_6.png)
 
-The **cntHTMLBlur** should now contain two elements, the `cntMainBody` and `htmlBlur`.
+> [!TIP] **COPY + PASTE YAML APPROACH**
+>
+> If the **cntMainBody** properties changes when you drag and drop, or you find it difficult, you can **right click** on the container, **Copy** - delete the **cntMainBody** (!! yes, delete so that you don't end up with cntMainBody **_1** ) - Select the **cntHTMLBlur** container, and **right click** - **Paste**. This way you're copying and pasting the YAML code of the container that will keep the properties intact. 
 
 
-10. On the properties dropdown of the **HTML text** control, select the **HtmlText** property and edit formula to the below value:
+10. On the properties dropdown of the **htmlBlur** control, select the **HtmlText** property and edit formula to the below value:
 
 ``` HTML 
 $"<div style='
@@ -675,14 +691,15 @@ $"<div style='
 
 ![Images/Lab2-CreateCustomPages/E5_8.png](Images/Lab2-CreateCustomPages/E5_8.png)
 
-> [!TIP]
-> When creating HTML code for Power Apps, use **'** instead of **"** in the string, or else it wont work. Also, keep in mind the following:
+> [!TIP] **WORKING WITH HTML**
+> 
+> When using HTML in Power Apps, use **'** instead of **"** when formatting the HTML, or else it won't work. Also, keep in mind the following:
 >
 > 💡 We can change the effect and looks of the blur by using https://css.glass/.
 >
 > 💡 Use $ to avoid excessive use of **&** as well as **""** in the text, this enables you to only use **{ }** when referring to dynamic content. For example when using variables for color values.
-
-> Your page should look something like this - but soon it will look very different
+>
+> Your page should look something like this - but soon it will look **very different**
 
 ![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_9.png](Images/Lab2-CreateCustomPages/E5_9.png)
 
@@ -694,8 +711,8 @@ $"<div style='
 | **Height** | `Parent.Height`                  |
 
 
-13. Ensure that Automatic Height is **On** to avoid a scroll bar
-14. Set **Padding** to (this avoids gaps between the content and the control box):
+12. Ensure that Automatic Height is **On** to avoid a scroll bar
+13. Set **Padding** to (this avoids gaps between the content and the control box):
 
 | Property | Formula |
 |---|---|
@@ -706,33 +723,46 @@ $"<div style='
 
 
 
-15. Set transparency of the Main Body Container **cntMainBody** to 100 by selecting **cntMainBody** in the **Tree View**
-16. Click on the *paint bucket* on the right and chosing the transparent color option:
+14. Set transparency of the Main Body Container **cntMainBody** to 100 by selecting **cntMainBody** in the **Tree View**
+15. Click on the *paint bucket* on the right and chosing the transparent color option:
 
 ![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_10.png](Images/Lab2-CreateCustomPages/E5_10.png)
 
-17. To see the effect of the blur - select **MainScreen** in the **Tree view** and locate the **Background image** under Properties on the right
+16. To see the effect of the blur - select **MainScreen** in the **Tree view** and locate the **Background image** under *Properties* on the right
 
 ![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_11.png](Images/Lab2-CreateCustomPages/E5_11.png)
 
-18. Select the first option **Stock images**.
-19. Scroll far down on the stock images gallery and select the **Confetti** image or another of your choosing (You're allowed to be creative)!
+17. Select the first option **Stock images**.
+18. Scroll far down on the stock images gallery and select the **Confetti** image or another of your choosing (You're allowed to be creative)!
 
 ![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_12.png](Images/Lab2-CreateCustomPages/E5_12.png)
 
-> You can also input the value **'07_readyconfetti_light'** as a formula on the BackgroungImage property of the **MainScreen**
+> You can also input the value **'07_readyconfetti_light'** as a formula on the **BackgroungImage** property of the **MainScreen**
 
-20. Click on **Insert**
+19. Click on **Insert**
 
-21. You will now be able to see that the HTML blur effect is covering some of the background. Test it by clicking on **Play** in the right corner to preview the page. Does it look like the picture below?
+20. You will now be able to see that the HTML blur effect is covering some of the background. 
+    -  Test it by clicking on **Play** in the right corner to preview the page. Does it look like the picture below?
 
 ![\JJGriffin\Designing-Beautiful-Power-Apps-For-Makers\Images\Lab2-CreateCustomPages\E5_23.png](Images/Lab2-CreateCustomPages/E5_23.png)
 
-22. On your keyboard, select **CTRL** + **SHIFT** + **P** or click on **Publish** to save and publish your page
+21. On your keyboard, select **CTRL** + **SHIFT** + **P** or click on **Publish** to save and publish your page
+
+> [!TIP] **LAYERING ORDER OF CONTROLS**
+>
+> If you don't see the blur effect correctly and/or you're not able to select items in the **Purchase Order Gallery** make sure to check the *order* of your controls in the **Tree view** - the html should be on the lowest level eg. behind the container
+>
 
 **You have successfully added a blur effect using HTML ✅**
 
-### Buttons with SVGs
+### 5b. Buttons with SVGs
+SVGs are fun to work with and can make a lot of your apps more engaging and interactive for the users. You can build static, dynamic or animated SVGs by altering the SVG code. 
+
+A hot tip when working with *Copilot* to build or alter code, is to first provide the correct **formatting and encoding** for Copilot to know what it should provide as output. Further down in the exercise you will learn how to format values for displaying SVGs the **Power Apps** way. 
+
+### Use premade icons from bootstrap
+The library in Bootstrap contains a *large* set of icons, and the icons SVG **HTML code** for you to use as you please. You will now go and find some nice looking icons to test it for yourself.
+
 1. Open a new browser and navigate to https://icons.getbootstrap.com/ 
 2. Search for *Arrow* in the search bar and select the **arrow pointing down** (feel free to select any icon you would like)
 
@@ -754,13 +784,13 @@ $"<div style='
 >
 
 ### Build the correct syntax and SVG reference by replacing " with ' 
-8. Edit the **Image formula** to reference the SVG-code you copied in step 5, staring with encoding the URL:
+8. Edit the **Image formula** to reference the SVG-code you copied in *step 5*, staring with encoding the URL:
 
 <pre> Power Fx
 "data:image/svg+xml," & EncodeUrl()
 </pre>
 
-9. Set this formula on the **Image** property:
+9. Set this formula or use the copied HTML code from Bootstrap on the **Image** property:
 
 ```  
 "data:image/svg+xml," & EncodeUrl("<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
@@ -819,6 +849,35 @@ $"<div style='
 
 19. Rename the control to **imgArrowIconSVG** 
 
+20. **Play** the app in preview to explore the newly added button with a nice modern icon. 
+
+### Extra: 
+
+21. Feel free to edit the *HTML code* on the **Image property** directly by updating *color value* to your liking by changing the **Fill**:
+
+**Before:**
+```  
+"data:image/svg+xml," & EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-arrow-down-circle' viewBox='0 0 16 16'>
+  <path fill-rule='evenodd' d='M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z'/>
+</svg>")
+
+```  
+
+**After:**
+
+```  
+"data:image/svg+xml," & EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='#007272' class='bi bi-arrow-down-circle' viewBox='0 0 16 16'>
+  <path fill-rule='evenodd' d='M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z'/>
+</svg>")
+
+```  
+You should be able to see the color of the **icon** change to a green-blueish color or to the **HEX color** you wanted it to be. 
+
+22. Change the color of the button next to the icon to the same color for a more unified look.
+
+### 5c. Canvas YAML - reusing components
+To access the YAML code of a control, **right click**, **Copy** and **Paste**. You are **not** able to select several controls to copy their YAML code, but when you build controls and components using containers, you can copy the entire **container** code. Genious! 
+
 ### Extra: Use templates
 
 💡 You can start from a template when working with responsive layouts
@@ -835,30 +894,5 @@ If you already have a new screen added, you could select **Templates** or **with
 1. Click **New screen** on the ribbon and select a layout of your choosing
 2. Have fun 
 
-<!---
-
-## ✍️ Exercise 3: Fetch Record Information
-1. Add datasource (Dataverse, SharePoint etc.)
-2. Select **App** in the left corner and click **Formulas**
-3. Create a formula for referencing the record GUID and use the function GUID() to ensure correct type
-
-<pre> Power Fx 
-nfRecordItem =
-    If(
-        "," in Text(Param("recordId")),
-        LookUp(Table, 'Unique GUID field' = GUID(Last(Split(Param("recordId"), ",")).Value)),
-        LookUp(Table, 'Unique GUID field'  = GUID(Param("recordId")))
-    ); </pre>
-
-The record can also be wrapped in {} so that needs to be removed in some cases:
-
-<pre> Power Fx 
-GUID(Substitute(Substitute(Param("recordId"), "{", ""), "}", ""))</pre>
-
-> **Note:** 
-*Named Formulas needs to be closed using ;*
-
-*Param() function gets the record GUID parsed from the JavaScript, and GUID() formats the output as GUID, not a string. We are also checking if there are several records selected by splitting the string after ","*
---->
 
 **Congratulations, you've finished Lab 2** 🥳
