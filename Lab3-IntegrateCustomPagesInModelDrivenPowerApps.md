@@ -41,27 +41,27 @@ We will begin by adding the **Coho Winery Landing page** to the MDA.
 1. Navigate to the [Power Apps Maker portal](https://make.powerapps.com) and ensure you are in the **Developer** environment you created in Lab 0.
 2. Select **Solutions** from the left navigation pane.
 
-![Images/Lab2-CreateCustomPages/E1_1.png](Images/Lab2-CreateCustomPages/E1_1.png)
+![Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E1_1.png](Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E1_1.png)
 
 3. Select the **Coho Winery** solution you created in Lab 0.
 
-![Images/Lab2-CreateCustomPages/E1_2.png](Images/Lab2-CreateCustomPages/E1_2.png)
+![Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E1_2.png](Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E1_2.png)
 
 4. Select the **Coho Winery Purchase Order Management** model-driven app by clicking the **three dots** and selecting **Edit**.
 
-![Images/Lab2-CreateCustomPages/E1_3.png](Images/Lab2-CreateCustomPages/E1_3.png)
+![Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E1_3.png](Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E1_3.png)
 
 5. In the App Designer, select **+ Add page** → **Custom page**.
 
-![Images/Lab2-CreateCustomPages/E1_4.png](Images/Lab2-CreateCustomPages/E1_4.png)
+![Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E1_4.png](Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E1_4.png)
 
 6. Pick your landing page (**Coho Winery Landing Page**) by searching for *Coho*, select the page and click **Add**.
 
-![Images/Lab2-CreateCustomPages/E1_5.png](Images/Lab2-CreateCustomPages/E1_5.png)
+![Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E1_5.png](Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E1_5.png)
 
 7. **Save and Publish** your changes. 
 
-![Images/Lab2-CreateCustomPages/E1_6.png](Images/Lab2-CreateCustomPages/E1_6.png)
+![Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E1_6.png](Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E1_6.png)
 
 8. Your custom page is now a full page in the sitemap. You can test the app by clicking **Play**. When you are finished, close the browser window and get back to the App Designer.
 9. Close the App Designer by clicking **Back**.
@@ -71,58 +71,35 @@ We will begin by adding the **Coho Winery Landing page** to the MDA.
 
 For this exercise, we will implement the JavaScript used to trigger the Side Pane on a Form. This will fetch the record details and pass them on to the custom page for us to work with. 
 
-1. Navigate to the [Power Apps Maker portal](https://make.powerapps.com) and ensure you are in the **Developer** environment you created in Lab 0.
-2. Select **Solutions** from the left navigation pane.
+1. You should still be in the **Coho Winery** solution from **Exercise 1**. If not, navigate there now.
+2. Download the JavaScript file from **Assets** -> ![CohoWinerySidePane.js](Assets/Lab3/CohoWinerySidePane.js) and save it to your local machine.
+3. Add a new **Web Resource** for the Side Pane by clicking **+ New** → **More** → **Web resource**.
 
-<img src="Images/Lab2-CreateCustomPages/E1_1.png" width="500" alt="Solution selection in Maker Portal" />
+![Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E2_1.png](Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E2_1.png)
 
-<br>
+4. Select **Choose file** and find the **CohoWinerySidePane.js** JavaScript file
 
-3. Select the **Coho Winery** solution you created in Lab 0.
+![Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E2_2.png](Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E2_2.png)
 
-
-<img src="Images/Lab2-CreateCustomPages/E1_2.png" width="800" alt="Coho Winery solution selection" />
-
-<br>
-
-4. Download the JavaScript file from **Assets** -><a href="Assets/Lab3/CohoWinerySidePane.js" download>Download the JavaScript file</a>
-
-5. Add a new **Web Resource** for the Side Pane by clicking **+ New** → **More** → **Web resource**
-
-![Adding the Web Resource](image-1.png)
-
-<br>
-
-6. Select **Choose file** and find the **CohoWinerySidePane.js** JavaScript file
-
-![Choose JS file](image-2.png)
-
-### Understanding the JavaScript
+>[!INFORMATION]
 > We are passing two parameters to the JavaScript in order to fetch the record details and also the custom page name. 
->
-> In the JavaScript there is a section where we are stripping the `recordId` of braces for better readability
+> In the JavaScript there is a section where we are stripping the `recordId` of braces for better readability:
 
-<pre>JavaScript   
-    const recordIdRaw = formContext.data.entity.getId();
-    const recordId = (recordIdRaw || "").replace(/[{}]/g, "");
-    if (!recordId) throw new Error("Record Id is empty.");
-</pre>
+```javascript
+const recordIdRaw = formContext.data.entity.getId();
+const recordId = (recordIdRaw || "").replace(/[{}]/g, "");
+if (!recordId) throw new Error("Record Id is empty.");
+```
 
-<br>
+7. You should now see that the **Code** section has been populated with the JavaScript code from the file. Check the **name** of the **Web Resource** and click **Save**.
 
-7. You should now see that the **Code** section has been populated with the JavaScript code from the file. Check the **name** of the **Web Resource** and click **Save**
-
-![Saving the web resource](image-16.png)
-
-<br>
+![Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E2_3.png](Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E2_3.png)
 
 8. Verify that the Web Resource **CohoWinerySidePane** is created in the solution.
 
-![Web Resource is present in solution](image-17.png)
+![Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E2_4.png](Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E2_4.png)
 
-
----
-
+9. Leave the **Coho Winery** solution open if you plan to continue to the next exercise.
 
 ## Exercise 3: Getting Started with Command Bar Configuration
 
