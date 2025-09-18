@@ -601,8 +601,64 @@ nfPO = LookUp('Purchase Orders', 'Purchase Order' = GUID(nfRecordId));
 
 ![Images/Lab2-CreateCustomPages/E4_10.png](Images/Lab2-CreateCustomPages/E4_10.png)
 
+20. We now need to add a Power Automate cloud flow that will return the PDF version of the Purchase Order. This flow will be called from the **icnLaunch** icon on the **Purchase Order Side Pane** custom page. To add the flow, click on **+ Add** under **Cloud flows** and then select **Create a new flow**.
+
+![Images/Lab2-CreateCustomPages/E4_13.png](Images/Lab2-CreateCustomPages/E4_13.png)
+
+21. In the **Create a flow** dialog, cick on **Create from blank**.
+
+![Images/Lab2-CreateCustomPages/E4_14.png](Images/Lab2-CreateCustomPages/E4_14.png)
+
+22. Rename the flow to **Get Purchase Order PDF**.
+
+![Images/Lab2-CreateCustomPages/E4_15.png](Images/Lab2-CreateCustomPages/E4_15.png)
+
+23. Expand the **Power Apps V2** trigger and click on **+ Add an input**. Select **Text** and rename the input to **PONumber**.
+
+![Images/Lab2-CreateCustomPages/E4_16.png](Images/Lab2-CreateCustomPages/E4_16.png)
+
+24. Click on **+ New step** and search for **Variable**. Select **Initialize variable**.
+
+![Images/Lab2-CreateCustomPages/E4_17.png](Images/Lab2-CreateCustomPages/E4_17.png)
+
+25. Rename the **Initialize variable** action to **Set File Content**. Set the properties to resemble the below:
+
+| Property    | Value                    |
+|-------------|--------------------------|
+| **Name**    | `varFileContent`                 |
+| **Type**    | `String`                 |
+
+![Images/Lab2-CreateCustomPages/E4_18.png](Images/Lab2-CreateCustomPages/E4_18.png)
+
+26. Click on **+ New step** and search for **OneDrive for Business**. Select the action **List files in folder**.
+
+![Images/Lab2-CreateCustomPages/E4_19.png](Images/Lab2-CreateCustomPages/E4_19.png)
+
+27. Set the **Folder** property to the folder where you have stored the sample PDF files. This will be the same folder location you setup in **Lab 0**.
+
+![Images/Lab2-CreateCustomPages/E4_20.png](Images/Lab2-CreateCustomPages/E4_20.png)
+
+28. Click on **+ New step** and search for **Apply to each**. Select the action **Apply to each**.
+
+![Images/Lab2-CreateCustomPages/E4_21.png](Images/Lab2-CreateCustomPages/E4_21.png)
+
+29. Set the **Select an output from previous steps** property to the **value** from the **List files in folder** action.
+
+![Images/Lab2-CreateCustomPages/E4_22.png](Images/Lab2-CreateCustomPages/E4_22.png)
+
+30. Inside the **Apply to each** action, click on **+ Add an action** and search for **Condition**. Select the **Condition** action.
+
+![Images/Lab2-CreateCustomPages/E4_23.png](Images/Lab2-CreateCustomPages/E4_23.png)
+
+31. Rename the **Condition** action to **Find correct PO file**. In the left **Choose a value** input, select **Name** from the **List files in folder** action. Set the middle dropdown to **contains**. In the right **Choose a value** input, enter the following expression:
+
+```
+@triggerBody()['text']
+```
+![Images/Lab2-CreateCustomPages/E4_24.png](Images/Lab2-CreateCustomPages/E4_24.png)
+
 20. You are now ready to reference this custom page in Lab 3 for triggering the side pane on a **Purchase Order**. For now, click on **Save** and then **Publish** to save your progress. This may take a few moments to complete.
-21. Click on **Back** to return to the solution.
+21. Click on **Back** to return to the sotion.
 22. Leave the solution open if you plan to continue to the next Exercise.
 
 ## ✍️ Exercise 5: Styling
