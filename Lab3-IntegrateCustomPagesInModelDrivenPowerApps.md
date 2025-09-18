@@ -105,49 +105,49 @@ if (!recordId) throw new Error("Record Id is empty.");
 
 To trigger the side pane with the custom page, you will have to configure a command bar button to execute the JavaScript with the custom page reference
 
-1. If you don't have the solution for **Coho Winery** open already, select it from **Solutions** and open the **Coho Winery Purchase Orders** model-driven application by clicking on the **name**
+1. You should still be in the **Coho Winery** solution from **Exercise 1**. If not, navigate there now.
+2. Open the **Coho Winery Purchase Orders** model-driven application by clicking on it's **name**.
 
-![Opening the model-driven app](image-18.png)
- 
- <br>
+![Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E3_1.png](Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E3_1.png)
 
-3. In the editor, **Locate the Purchase Order table** and the three dots on the right - **Select** `Edit Command bar`  
+3. In the editor, locate the **Purchase Order view** component and the three dots on the right, then select **Edit Command bar**.  
 
-![Locate command bar button](image-20.png)
+![Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E3_2.png](Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E3_2.png)
 
-<br>
+4. **Choose** to edit the command bar on the **Main Form** and click `Edit `
 
-4. **Choose** to edit the command bar on the  `Main Form` and click  `Edit `
+![Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E3_3.png](Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E3_3.png)
 
-![Edit command bar on main form](image-21.png)
-
-<br>
-
-### Possibilities: Main Form and Grid View 
+> ![TIP]
 > You can trigger a *dialog* or *side pane* from both a View on the main grid and on a Form, but the input and parameters passed to the JavaScript function has to be altered to fit the different scenarios. For this exercise we are focusing on the Form.  
 
-5. Create a new command bar button by selecting `+New` → `Command` on the ribbon to the left
+5. Create a new command bar button by selecting **+ New** → **Command** on the ribbon to the left.
 
-![Create a new button](image-22.png)
+![Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E3_4.png](Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E3_4.png)
 
-<br>
+6. Create a type of command for **JavaScript** and click **Continue**.
 
-6. Create a type of command for  `JavaScript` and click  `Continue`
+![Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E3_5.png](Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E3_5.png)
 
+9. **Provide a name** for the button → **Purchase Order Info** and choose an Icon → **PdfIconFile**.
+10. Ensure the action is set to **Run JavaScript**.  
+11. Click **+ Add library**  → Search for *Coho* → Select **CohoWinerySidePane** → **Add**.
 
-![Create command for JavaScript](image-23.png)
-
-9. **Provide a name** for the button → **Purchase Order Info** and choose an Icon → **PdfIconFile**
-10. **Ensure action is** `Run JavaScript`  
-11. Click **+ Add library**  → Search for *Coho* → Select **CohoWinerySidePane** → **Add**
-
-![Add a library](image-50.png)
+![Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E3_6.png](Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E3_6.png)
 
 12. **Set the function name** to `openPOViewer`  
 
-> [TIP] You find the function name in the JavaScript File
+> [!TIP] 
+>You find the function name in the JavaScript File
 
-13. **Verify the command bar settings** → you should see the following so far:
+13. Click on **+ Add parameter** and, using the dropdown, select **PrimaryControl** as the parameter type.
+
+![Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E3_7.png](Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E3_7.png)
+
+> [!NOTE]
+> **PrimaryControl** references the Form Context of the record that is currently open. This is used to find the attributes and GUID of the record that will be passed on to the custom page using `Param("recordId")`. PrimaryControl is also the modern approach that has replace the deprecated `Xrm.Page` API. You can read more about that here: https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/clientapi-form-context 
+
+14. **Verify the command bar settings** → you should see the following so far:
 
     | Property | Formula |
     | --- | --- |
@@ -156,80 +156,47 @@ To trigger the side pane with the custom page, you will have to configure a comm
     | **Action** | `Run JavaScript` |
     | **Library** | `coh_CohoWinerySidePane` |
     | **Function** | `openPOViewer` |
+    | **Parameter 1** | `PrimaryControl` |
 
-### Should resemble the below settings
+![Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E3_8.png](Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E3_8.png)
 
- ![Settings for command bar](image-25.png)
-
-14. **Save and publish** - Play your app to verify that the button is visible on the **Purchase Order form**
+14. **Save and publish** and then **Play** your app to verify that the button is visible on the **Purchase Order** form.
 15. In the model-driven app, select the **Purchase Order** table from the navigation
-16. Click `+ New` to open a Form or select an **excisting PO** and locate the `Purchase Order Info` command bar button on the ribbon.
+16. Click `+ New` to open a Form or select an **existing PO** and locate the `Purchase Order Info` command bar button on the ribbon.
 17. Verify that the button is visible and clickable → The side pane should open on the right hand side with the message **Page not found**
 
-![Test the button](image-14.png)
+![Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E3_9.png](Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E3_9.png)
 
-> ### Working with commands
-> Sometimes the command bar ribbon misbehaves and the button might *disappear* from the Form. In that case, you should navigate to the editor of the commands and select the button, in our case the **Purchase Order Info** button and click on **Open formula bar** under **visability**. Set the formula to *true* - **Save and Publish**
->
+> [!NOTE]
+> Sometimes the command bar ribbon misbehaves and the button might *disappear* from the Form. In that case, you should navigate to the editor of the commands and select the button, in our case the **Purchase Order Info** button and click on **Open formula bar** under **visability**. Set the formula to *true* - **Save and Publish**.
 
-![alt text](image-30.png)
-
-<br>
+![Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E3_10.png](Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E3_10.png)
 
 18. Close the browser window, and get back to the **Editor** for the command bar on the Purchase Order Form.
+19. Open a new browser tab and navigate to the **Coho Winery Solution** in the Power Apps Maker portal.
+20. Locate the **Purchase Order Side Pane** custom page and copy the **Name** of the page - it should be something like **coh_purchaseordersidepane_c898a**. You will need this in the next step.
+21. Click **+ Add parameter**  →  Should be of type `string`
+22. Set value of **Parameter 2** to the **schema name** of the page - should be in this format **coh_purchaseordersidepane_c898a**
 
+![Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E3_11.png](Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E3_11.png)
 
-### Set parameters for passing information to the custom page
-We are now setting the parameters for input to the JavaScript which will be passed on to the custom page
-
-19. In the command bar editor, make sure that the `Purchase Order Info` command bar button is selected
-20. Click on `+ Add parameter` → You should be able to see **Parameter 1** with a dropdown field showing **String** as the default value
-
-![Command bar paramters](image-13.png)
-
-21. **Edit Parameter 1 type:** → `PrimaryControl` - passing the Form Context to the JavaScript
-
-### PrimaryControl
-> PrimaryControl references to the Form Context of the record that is currently open. This is used to find the attributes and GUID of the record that will be passed on to the custom page using `Param("recordId")`. PrimaryControl is also the modern approach that has replace the deprecated `Xrm.Page` API. You can read more about that here: https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/clientapi-form-context 
->
-
-<br>
-
-### 💡 Find the page schema name 
-> Navigate to your solution for **Coho Winery** and locate the **Purchase Order Side Pane** page. The **page name** will be visible in under the column **Name** and have the format **coh_purchaseordersidepane_c898a** - And no, you can't copy it from the solution... 
-> 
-
-22. Click **+ Add parameter**  →  Should be of type `string`
-23. Set value of **Parameter 2** to the **schema name** of the page - should be this format **coh_purchaseordersidepane_c898a**
-
-![alt text](image-12.png)
-
-<br>
-
-
-> ### Working with parameters 
-> **Parameter 2** references the custom page you would like to open as a type of string - its passed as the second parameter
->
-> When creating and updating parameter values for commands, the order of the parameters matter. The order is decided by the order of input parameters in the **JavaScript function**
-> 
+> [!NOTE]
+> **Parameter 2** references the custom page you would like to open as a type of string - its passed as the second parameter. When creating and updating parameter values for commands, the order of the parameters matter. The order is decided by the order of input parameters in the **JavaScript function**
 > In our case, the JavaScript expect `PrimaryControl` first, then the `pageName` (the schema name of the page) for the function **openPOViewer(PrimaryControl, pageName)** to work 
->
 
 ### Test the command for side pane on the Form of a **Purchase order**
+
 24. **Save and publish** - Play your app to verify that the button is visible on the Purchase Order Form
 25. In the model-driven app, select the **Purchase Order** table from the navigation
 26. Click `+ New` to open a new Form or select an existing record. 
 27. Locate the `Purchase Order Info` command bar button on the ribbon and verify that the side pane opens
 
-![open side pane](image-57.png)
+![Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E3_12.png](Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E3_12.png)
 
+> [!TIP]
+> To get info about your custom page, JavaScript and trouble shooting, use the developer tools. Opens by clicking **CTRL+SHIFT+I** on your keyboard. Ehen you select the command bar button, the developer tools will shouw you the console logging output and give you some pointers on what is missing or working if that's the case. Look for the console logging in the JavaScript to recognise what it would be named in the developer tool console
 
-### Developer tools 
-> To get info about your custom page, JavaScript and trouble shooting, use the developer tools. Opens by clicking **CTRL+SHIFT+I** on your keyboard. Ehen you select the command bar button, the developer tools will shouw you the console logging output and give you some pointers on what is missing or working if that's the case. Look for the console logging in the JavaSxript to recognise what it would be named in the developer tool console
->
-
-![Developer tools](image-32.png)
-
+![Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E3_13.png](Images/Lab3-IntegrateCustomPagesInModelDrivenPowerApps/E3_13.png)
 
 ## 🌟 Extra Challenges
 

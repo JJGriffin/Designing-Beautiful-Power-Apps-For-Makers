@@ -243,7 +243,7 @@ $"<div style='
 
 ![Images/Lab2-CreateCustomPages/E2_14.png](Images/Lab2-CreateCustomPages/E2_14.png)
 
- >![TIP] **Dynamic values**
+ >[!TIP] **Dynamic values**
  > 
  > If it looks like the containers, placement and looks of the layout is *off* in a way, usually the issue is related to the properties **X** and **Y** not being set to **0** (starting point within the parent object), and the **Width** and **Height** not being set to **Parent.Width** or **Parent.Height**
  >
