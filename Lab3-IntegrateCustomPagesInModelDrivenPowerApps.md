@@ -32,45 +32,40 @@ Finance and auditors need to **open PO PDFs** directly in the app and see the re
 
 - The model-driven app (from Lab 1)
 
-- New JS web resource: **CohoWinerySidePane.js** found in the [Assets - Lab 3 folder.](https://github.com/JJGriffin/Designing-Beautiful-Power-Apps-For-Makers/blob/8589cd47e5c755c7cebb951aaf28aba61597a3d6/Assets/Lab3/CohoWinerySidePane.js)
-
+- New JS web resource: **CohoWinerySidePane.js** found in the [Assets - Lab 3 folder.](/Assets/Lab3/CohoWinerySidePane.js)
 
 ## Exercise 1: Embedding a Full page as part of the Model-driven Application
+
 We will begin by adding the **Coho Winery Landing page** to the MDA.
 
 1. Navigate to the [Power Apps Maker portal](https://make.powerapps.com) and ensure you are in the **Developer** environment you created in Lab 0.
 2. Select **Solutions** from the left navigation pane.
 
-
-<img src="Images/Lab2-CreateCustomPages/E1_1.png" width="500" alt="Solution selection in Maker Portal" />
-
+![Images/Lab2-CreateCustomPages/E1_1.png](Images/Lab2-CreateCustomPages/E1_1.png)
 
 3. Select the **Coho Winery** solution you created in Lab 0.
 
+![Images/Lab2-CreateCustomPages/E1_2.png](Images/Lab2-CreateCustomPages/E1_2.png)
 
-<img src="Images/Lab2-CreateCustomPages/E1_2.png" width="800" alt="Coho Winery solution selection" />
+4. Select the **Coho Winery Purchase Order Management** model-driven app by clicking the **three dots** and selecting **Edit**.
 
-4. Select the **Coho Winery** model-driven app by clicking the **three dots** and **Edit**
-
-![Edit mda](image-69.png)
+![Images/Lab2-CreateCustomPages/E1_3.png](Images/Lab2-CreateCustomPages/E1_3.png)
 
 5. In the App Designer, select **+ Add page** → **Custom page**.
 
-![Select the Add page](image-46.png)
+![Images/Lab2-CreateCustomPages/E1_4.png](Images/Lab2-CreateCustomPages/E1_4.png)
 
-6. Pick your landing page (**Coho Winery Landing Page**) by searching for *Coho*, select the page and click **Add**
+6. Pick your landing page (**Coho Winery Landing Page**) by searching for *Coho*, select the page and click **Add**.
 
-![Selecting the page for the navigation](image-47.png)
+![Images/Lab2-CreateCustomPages/E1_5.png](Images/Lab2-CreateCustomPages/E1_5.png)
 
+7. **Save and Publish** your changes. 
 
-7. **Save and Publish**.
+![Images/Lab2-CreateCustomPages/E1_6.png](Images/Lab2-CreateCustomPages/E1_6.png)
 
-![Save and publish](image-70.png)
-
-> *Result after step 7*: Your custom page is now a full page in the sitemap. You can test the app by clicking **Play**.
-
----
-
+8. Your custom page is now a full page in the sitemap. You can test the app by clicking **Play**. When you are finished, close the browser window and get back to the App Designer.
+9. Close the App Designer by clicking **Back**.
+10. Remain in the **Coho Winery** solution if you plan to continue to the next exercise.
 
 ## Exercise 2: Create the JavaScript Web Resource
 
