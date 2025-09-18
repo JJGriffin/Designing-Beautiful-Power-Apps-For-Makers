@@ -983,11 +983,11 @@ To access the YAML code of a control, **right click**, **Copy** and **Paste**. Y
 **✅ Prerequisites** 
 - Multiple screens in settings under the Display tab must be enabled to add several screens to your Coho Winery page
 
-![Screen with containers from template](image-10.png)
+![Images/Lab2-CreateCustomPages/E5_21.png](Images/Lab2-CreateCustomPages/E5_21.png)
 
 If you already have a new screen added, you could select **Templates** or **with Layout** to start with a responsive page
 
-![New screen with templates // layout](image-26.png)
+![Images/Lab2-CreateCustomPages/E5_22.png](Images/Lab2-CreateCustomPages/E5_22.png)
 
 1. Click **New screen** on the ribbon and select a layout of your choosing
 2. Have fun 
