@@ -1,0 +1,73 @@
+- HtmlText3_6:
+    Control: HtmlViewer@2.1.0
+    Properties:
+      Font: =Font.'Segoe UI'
+      Height: =83
+      HtmlText: |
+        =$"<div style='
+        width: " & Self.Width*0.9 & "px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 12px;
+        border: 1px solid transparent;
+        border-image: linear-gradient(45deg, #FF9A9E, #FAD0C4) 1;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        '>
+
+        <a href='#' style='
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: bold;
+        background: linear-gradient(to right, #FF9A9E, #FAD0C4);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        transition: all 0.3s ease;
+        '>
+        Home</a>
+
+        <a href='#' style='
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: bold;
+        background: linear-gradient(to right, #A1C4FD, #C2E9FB);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        transition: all 0.3s ease;
+        '>
+        About</a>
+
+        <a href='#' style='
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: bold;
+        background: linear-gradient(to right, #FFDEE9, #B5FFFC);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        transition: all 0.3s ease;
+        '>
+        Contact</a>
+
+        <style>
+        a:hover {
+          text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+          transform: scale(1.05);
+        }
+        </style>
+
+        </div>"
+      PaddingBottom: =10
+      PaddingLeft: =10
+      PaddingRight: =10
+      PaddingTop: =10
+      Size: =10.5
+      Width: =515
+      X: =449
+      Y: =56
